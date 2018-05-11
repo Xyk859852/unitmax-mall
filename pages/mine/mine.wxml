@@ -1,0 +1,56 @@
+<!--mine.wxml-->
+<view class="container" style='background-image: url(../../images/1.png);'>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<view class='mine_container'>
+  <view class='mine_order_state'>
+    <view class='mine_order_state_container'>
+      <view>待付款</view>
+      <image src='../../images/category.png'></image>
+    </view>
+    <view class='mine_order_state_container'>
+      <view>待发货</view>
+      <image src='../../images/category.png'></image>
+    </view>
+    <view class='mine_order_state_container'>
+      <view>待收货</view>
+      <image src='../../images/category.png'></image>
+    </view>
+    <view class='mine_order_state_container'>
+      <view>待评价</view>
+      <image src='../../images/category.png'></image>
+    </view>
+    <view class='mine_order'>
+        全部订单
+      <image src='../../images/category.png'></image>
+    </view>
+  </view>
+  <view class='mine_menu'>
+    <view class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>待付款</view>
+    </view>
+    <view class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>待付款</view>
+    </view>
+    <view class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>待付款</view>
+    </view>
+    <view class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>待付款</view>
+    </view>
+    <view class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>待付款</view>
+    </view>
+  </view>
+</view>

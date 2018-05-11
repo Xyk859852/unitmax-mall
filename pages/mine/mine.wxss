@@ -1,0 +1,88 @@
+/**mine.wxss**/
+.container {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-size:100% 100%;
+} 
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:100px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin-top: -20px;
+}
+
+.userinfo-nickname {
+  color: #fff;
+}
+.mine_container{
+  position:relative;
+  padding:0 4%;
+  background-color:#ffffff;
+}
+.mine_order_state{
+  position:absolute;
+  top:-50px;
+  width:92%;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 20px;
+	-webkit-box-shadow: 0 5px 8px #dddddd;
+	-moz-box-shadow: 0 5px 8px #dddddd;
+	box-shadow: 0 5px 8px #dddddd;
+}
+.mine_order_state_container{
+  width:21%;
+  float: left;
+  padding: 20px 2%;
+}
+.mine_order_state_container view{
+  text-align:center;
+  font-size: 16px;
+}
+.mine_order_state_container image{
+  padding-top: 10px;
+  width:40px;
+  height:40px;
+  margin:0 auto;
+  display:block;
+}
+.mine_order{
+  float: left;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  border-top: #eee 1px solid;
+  font-size: 12px;
+  color: #999;
+}
+.mine_order image{
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-top:-4px;
+}
+.mine_menu{
+  overflow: hidden;
+  padding-top: 120px;
+}
+.mine_menu .mine_order_state_container{
+  border-bottom: #eee 1px solid;
+}
+.mine_menu .mine_order_state_container image{
+  padding: 0;
+}
+.mine_menu .mine_order_state_container view{
+  padding-top:10px;
+}

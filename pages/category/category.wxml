@@ -1,0 +1,87 @@
+<!--category.wxml-->
+<navigator id="search_box" url="../search/search">
+<view id="search">搜索</view>
+</navigator>
+<view class='category_box'>
+  <!-- <scroll-view class='category_left' bindtap='getchildren'>
+    <view data-id='1' class="{{tabArr.curHdIndex=='1' || tabdefault=='1'? 'on' : ''}}">分类1</view>
+    <view data-id='2' class="{{tabArr.curHdIndex=='2'? 'on' : ''}}">分类2</view>
+    <view data-id='3' class="{{tabArr.curHdIndex=='3'? 'on' : ''}}">分类3</view>
+    <view data-id='4' class="{{tabArr.curHdIndex=='4'? 'on' : ''}}">分类4</view>
+    <view data-id='5' class="{{tabArr.curHdIndex=='5'? 'on' : ''}}">分类5</view>
+    <view data-id='6' class="{{tabArr.curHdIndex=='6'? 'on' : ''}}">分类6</view>
+    <view data-id='7' class="{{tabArr.curHdIndex=='7'? 'on' : ''}}">分类7</view>
+    <view data-id='8' class="{{tabArr.curHdIndex=='8'? 'on' : ''}}">分类8</view>
+    <view data-id='9' class="{{tabArr.curHdIndex=='9'? 'on' : ''}}">分类9</view>
+    <view data-id='10' class="{{tabArr.curHdIndex=='10'? 'on' : ''}}">分类10</view>
+    <view data-id='11' class="{{tabArr.curHdIndex=='11'? 'on' : ''}}">分类11</view>
+    <view data-id='12' class="{{tabArr.curHdIndex=='12'? 'on' : ''}}">分类12</view>
+    <view data-id='13' class="{{tabArr.curHdIndex=='13'? 'on' : ''}}">分类13</view>
+    <view data-id='14' class="{{tabArr.curHdIndex=='14'? 'on' : ''}}">分类14</view>
+    <view data-id='15' class="{{tabArr.curHdIndex=='15'? 'on' : ''}}">分类15</view>
+  </scroll-view> -->
+  <view class='category_right'>
+    <view class='category_container'>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称名称名称名称名称名称名称名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+      <view class='category'>
+        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
+        <view>名称</view>
+      </view>
+    </view>
+  </view>
+</view>

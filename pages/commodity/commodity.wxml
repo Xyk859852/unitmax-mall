@@ -1,0 +1,68 @@
+<!--commodity.wxml-->
+<view class="body">
+  <view class="nav">
+    <view class="{{selected?'red':'default'}}" bindtap="selected">综合</view>
+    <view class="{{selected1?'red':'default'}}" bindtap="selected1">销量</view>
+    <view class="{{selected2?'red':'default'}}" bindtap="selected2">价格</view>
+    <view class="{{selected3?'red':'default'}}" bindtap="">筛选</view>
+  </view> 
+  <view class="{{selected1?'show':'hidden'}}">
+  <view bindtap="select">销量从高到低</view>
+  <view bindtap="select">销量从低到高</view>
+  </view>  
+  <view class="{{selected2?'show':'hidden'}}">
+  <view bindtap="select">价格从低到高</view>
+  <view bindtap="select">价格从高到低</view>
+  </view>
+</view>
+
+<view class='commodity_list'>
+  <navigator class='commodity_li' url="../commodity_detail/commodity_detail">
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </navigator>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_price'>￥1299.00</view>
+      <view class='commodity_li_tip'>4100+条评价 好评99%</view>
+    </view>
+  </view>
+</view>

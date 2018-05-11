@@ -1,0 +1,28 @@
+<!--search.wxml-->
+<view class='search_box'>
+  <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
+    <image src='../../images/search.png'></image>
+    <input type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="line-height:20px;color:#cccccc;font-size:14px;"></input>
+  </view>
+  <view id='search_box_close'>取消</view>
+</view>
+<view class='search_history'>
+  <view class='search_title'>搜索历史<image src='../../images/delete.png' class='search_delete'></image></view>
+  <view class='search_container'>
+    <view class='search_container_li'>会员卡</view>
+    <view class='search_container_li'>会员卡</view>
+  </view>
+</view>
+<view class='search_hot'>
+  <view class='search_title'>热门搜索</view>
+  <view class='search_container'>
+    <view class='search_container_li'>面膜</view>
+    <view class='search_container_li'>洁面乳</view>
+    <view class='search_container_li'>洁面乳</view>
+    <view class='search_container_li'>洁面乳</view>
+    <view class='search_container_li'>洁面乳</view>
+    <view class='search_container_li'>洁面乳洁面乳</view>
+    <view class='search_container_li'>洁面乳</view>
+    <view class='search_container_li'>洁面乳</view>
+  </view>
+</view>
