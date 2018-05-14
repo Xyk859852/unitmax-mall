@@ -35,5 +35,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  IP: "https://service.systarsoft.com/"
 })
