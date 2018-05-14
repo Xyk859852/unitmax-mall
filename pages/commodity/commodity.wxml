@@ -1,18 +1,36 @@
 <!--commodity.wxml-->
-<view class="body">
+<view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">
-    <view class="{{selected?'red':'default'}}" bindtap="selected">综合</view>
-    <view class="{{selected1?'red':'default'}}" bindtap="selected1">销量</view>
-    <view class="{{selected2?'red':'default'}}" bindtap="selected2">价格</view>
-    <view class="{{selected3?'red':'default'}}" bindtap="">筛选</view>
+    <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">综合</view>
+    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">销量</view>
+    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">价格</view>
+    <view style='border-left:1px solid #f5f5f5;' class="default" bindtap="selected3">筛选</view>
   </view> 
-  <view class="{{selected1?'show':'hidden'}}">
+  <view class="{{selected1?'show':'hide'}}">
   <view bindtap="select">销量从高到低</view>
   <view bindtap="select">销量从低到高</view>
   </view>  
-  <view class="{{selected2?'show':'hidden'}}">
+  <view class="{{selected2?'show':'hide'}}">
   <view bindtap="select">价格从低到高</view>
   <view bindtap="select">价格从高到低</view>
+  </view>
+  <view class="{{selected3?'show':'hide'}}">
+  <view class='filtrate'>
+  <view class='title'>品类</view>
+  <view class='content'>
+    <view bindtap="select">品类1</view>
+    <view bindtap="select">品类1</view>
+    <view bindtap="select">品类1</view>
+    <view bindtap="select">品类1</view>
+  </view>
+  <view class='title'>等级</view>
+  <view class='content'>
+    <view bindtap="select">等级1</view>
+    <view bindtap="select">等级1</view>
+    <view bindtap="select">等级1</view>
+    <view bindtap="select">等级1</view>
+  </view>
+  </view>
   </view>
 </view>
 
