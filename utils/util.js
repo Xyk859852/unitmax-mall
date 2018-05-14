@@ -1,3 +1,7 @@
+
+const app = getApp();
+const p_c = require("time.js");
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -15,5 +19,7 @@ const formatNumber = n => {
 }
 
 module.exports = {
+  province: p_c.province,
+  city: p_c.city,
   formatTime: formatTime
 }
