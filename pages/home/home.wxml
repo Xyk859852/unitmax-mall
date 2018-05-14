@@ -1,15 +1,17 @@
 <!--index.wxml-->
 <!-- 搜索 -->
 <navigator id="search_box" url="../search/search">
-<view id="search">搜索</view>
+ <view id="search">搜索</view> 
 </navigator>
 <view>
 <!-- 顶部轮播图 -->
   <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="unique">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image"  mode="widthFix"/>
-      </swiper-item>
+    <block wx:for="{{imgUrls}}"  wx:key="this">
+    <view wx:if="{{item.AD_IMG!=''}}">
+        <swiper-item>
+          <image src="http://localhost:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
+        </swiper-item>
+    </view>
     </block>
   </swiper>
 </view>
@@ -35,64 +37,19 @@
 </view> -->
 <!-- 分类 -->
  <view id='category_box'>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
-  </view>
-  <view class='category_box'>
-    <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-    <view>名称</view>
+  <view class='category_box' wx:for="{{varClass}}"  wx:key="this">
+    <image src='http://localhost:8080/static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+    <view>{{item.NAME}}</view>
   </view>
 </view> 
 <!-- 新闻 -->
 <view id='new_box'>
-  <image id='new_box_img' src='../../images/category.png'></image>
   <swiper class="swiper_container" style='width:{{swiper_container_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
-      <navigator open-type="navigate" url="../commodity/commodity">
+      <navigator wx:for="{{newlist}}"  wx:key="this" open-type="navigate" url="../commodity/commodity">
         <swiper-item>
-          <view class="swiper_item">
-            <view>1公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代</view>
-            <view>2公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代</view>
-          </view>
-        </swiper-item>
-      </navigator>
-      <navigator open-type="navigate" url="../commodity/commodity">
-        <swiper-item>
-          <view class="swiper_item">
-            <view>1公告：悦如公寓三周年生日趴邀你免费吃喝欢唱</view>
-            <view>2公告：悦如公寓三周年生日趴邀你免费吃喝欢唱</view>
+  <image class='new_box_img' src='http://localhost:8080/static/uploadImgs/news/{{item.AD_IMG}}'></image>
+          <view class="swiper_item" style='width:{{swiper_item_width}}px;'>
+            <view>{{item.AD_TITLE}}</view> 
           </view>
         </swiper-item>
       </navigator>
@@ -104,51 +61,11 @@
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
+    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' url="../commodity_detail/commodity_detail">
+      <image src='http://localhost:8080/{{item.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
+      <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>
-        <view>￥109</view>
-        <image src='../../images/shopping_trolley.png'></image>
-      </view>
-    </navigator>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
-      <view class='category_commodity_container_price'>
-        <view>￥109</view>
-        <image src='../../images/shopping_trolley.png'></image>
-      </view>
-    </navigator>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
-      <view class='category_commodity_container_price'>
-        <view>￥109</view>
-        <image src='../../images/shopping_trolley.png'></image>
-      </view>
-    </navigator>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
-      <view class='category_commodity_container_price'>
-        <view>￥109</view>
-        <image src='../../images/shopping_trolley.png'></image>
-      </view>
-    </navigator>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
-      <view class='category_commodity_container_price'>
-        <view>￥109</view>
-        <image src='../../images/shopping_trolley.png'></image>
-      </view>
-    </navigator>
-    <navigator class='category_commodity_container' url="../commodity_detail/commodity_detail">
-      <image src='../../images/category.png' style='height:{{category_commodity_img_width}}px'></image>
-      <view class='category_commodity_container_title'>名称名称名称名称名称名称名称</view>
-      <view class='category_commodity_container_price'>
-        <view>￥109</view>
+        <view>￥{{item.goods_price}}</view>
         <image src='../../images/shopping_trolley.png'></image>
       </view>
     </navigator>

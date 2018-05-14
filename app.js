@@ -36,5 +36,5 @@ App({
   globalData: {
     userInfo: null
   },
-  IP: "https://service.systarsoft.com/"
+  IP: "http://localhost:8080/"
 })
