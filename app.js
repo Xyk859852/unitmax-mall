@@ -35,5 +35,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  IP: "http://localhost:8080/"
 })

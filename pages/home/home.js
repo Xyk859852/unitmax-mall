@@ -4,12 +4,6 @@ const app = getApp()
 
 Page({
   data: {
-    //轮播图
-    imgUrls: [
-      '../../images/1.png',
-      '../../images/2.png',
-      '../../images/3.png'
-    ],
     category:[
       '../../images/category.png'
     ],
@@ -24,12 +18,18 @@ Page({
     size: 14,
     scrolltxt_box_width: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.92*0.158,
-    category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29,
-    swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.92-60
+    category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29*0.96,
+    swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.92,
+    swiper_item_width: wx.getSystemInfoSync().windowWidth * 0.88-40
   },
   onLoad: function () {
   },
   onShow: function () {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
     // 页面显示
     var that = this;
     var length = that.data.text.length * that.data.size;//文字长度
@@ -40,6 +40,38 @@ Page({
       windowWidth: windowWidth
     });
     that.scrolltxt();// 第一个字消失后立即从右边出现
+    var that = this;
+    wx.request({
+      url: getApp().IP +'chatIndex/index',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+        console.log(res.data);
+        that.setData({
+          imgUrls: res.data.advertImgs,
+          text:res.data.title,
+          varClass:res.data.varClass,
+          newlist: res.data.newlist,
+          goodlist: res.data.goodlist
+        })
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    })
+    
   },
   scrolltxt: function () {
     var that = this;
