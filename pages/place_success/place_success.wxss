@@ -1,0 +1,27 @@
+/* pages/place_success/place_success.wxss */
+image{
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.paysuccess{
+  text-align: center;
+  font-size: 24px;
+  color: #1de510;
+  margin-top: 30%;
+}
+.detail{
+  position: fixed;
+  left: 10%;
+  bottom: 40px;
+  width: 80%;
+  height: 40px;
+  text-align: center;
+  background-color: #fe6500;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 40px;
+  border-radius: 5px;
+  margin: 0 auto;
+}

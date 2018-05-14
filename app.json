@@ -2,16 +2,19 @@
   "pages": [
     "pages/home/home",
     "pages/category/category",
+    "pages/shopping_cart/shopping_cart",
     "pages/mine/mine",
     "pages/search/search",
     "pages/commodity/commodity",
-    "pages/commodity_detail/commodity_detail"
+    "pages/commodity_detail/commodity_detail",
+    "pages/place_order/place_order",
+    "pages/place_success/place_success"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#333",
     "navigationBarTitleText": "聚脉商城",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "light"
   },
   "tabBar": {
     "color": "#8a8a8a",
@@ -29,6 +32,12 @@
         "iconPath": "images/order.png",
         "pagePath": "pages/category/category",
         "text": "分类"
+      },
+      {
+        "selectedIconPath": "images/shopping_s.png",
+        "iconPath": "images/shopping.png",
+        "pagePath": "pages/shopping_cart/shopping_cart",
+        "text": "购物车"
       },
       {
         "selectedIconPath": "images/mine_s.png",

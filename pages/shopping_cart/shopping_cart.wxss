@@ -1,0 +1,93 @@
+/* shopping_cart.wxss */
+checkbox-group{
+  padding-bottom: 70px;
+}
+.checkbox{
+  background-color: #ffffff;
+  padding: 10px 4%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.check{
+  float: left;
+  line-height: 80px;
+}
+.commodity_li{
+  overflow: hidden;
+  height: 80px;
+  float: left;
+  margin-left: 4%;
+}
+.commodity_li image{
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+.commodity_li_right{
+  float: left;
+  margin-left: 4%;
+}
+.commodity_li_title{
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.commodity_li_price{
+  color: #ff6692;
+  font-size: 16px;
+  margin-top:10px;
+  height: 27px;
+  line-height: 27px;
+}
+.commodity_li_tip{
+  font-size: 12px;
+  color: #cccccc;
+  margin-top: 5px;
+}
+.num_box{
+  float: right;
+  overflow: hidden;
+}
+.smallbtn{
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  border: #f5f5f5 1px solid;
+  float: left;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 92%;
+  padding: 10px 4%;
+  z-index: 10;
+  line-height: 40px;
+}
+.footer .all{
+  color: #fe6500;
+  float: right;
+  margin-right: 4%;
+  font-size: 14px;
+}
+.check_label{
+  font-size: 12px;
+}
+.buy{
+  width:100px;
+  float: right;
+  line-height: 40px;
+  background-color: #fe6500;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}

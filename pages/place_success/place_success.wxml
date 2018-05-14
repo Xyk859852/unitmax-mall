@@ -1,0 +1,4 @@
+<!--pages/place_success/place_success.wxml-->
+
+<view class='paysuccess'><image src='../../images/success.png'/>支付成功！</view>
+<view class='detail'>查看详情</view>
