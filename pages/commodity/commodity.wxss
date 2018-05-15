@@ -1,5 +1,29 @@
 /**commodity.wxss**/  
-
+.search_box{
+  padding: 10px 4%;
+  overflow: hidden;
+  width: 92%;
+}
+.search_box_left{
+  height: 30px;
+  overflow: hidden;
+  background-color: #ffffff;
+  float: left;
+  border-radius: 20px;
+  padding: 0 2%;
+}
+.search_box_left image{
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-top: 5px;
+}
+ #search{
+   padding:2px 0;
+   margin-left: 2%;
+   float: left;
+   font-size: 16px;
+} 
 .commodity_list{
   background-color: #ffffff;
   width: 100%;

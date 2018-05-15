@@ -44,7 +44,9 @@ Page({
     selectedbtn1: false,
     selectedbtn2: false,
     selectedbtn3: false,
-    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
+    search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
+    search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
   onLoad: function () {
     var that = this;
