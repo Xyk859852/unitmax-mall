@@ -11,7 +11,7 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    text: "这是一条会滚动的文字滚来滚去的文字跑马灯这是一条会滚动的文字滚来滚去的文字跑马灯",
+    text: "",
     marqueePace: 1,//滚动速度
     marqueeDistance: 0,//初始滚动距离
     marquee_margin: 30,
@@ -25,13 +25,9 @@ Page({
   onLoad: function () {
   },
   onShow: function () {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })
     // 页面显示
     var that = this;
+    console.log(that);
     var length = that.data.text.length * that.data.size;//文字长度
     var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
     //console.log(length,windowWidth);
@@ -40,7 +36,6 @@ Page({
       windowWidth: windowWidth
     });
     that.scrolltxt();// 第一个字消失后立即从右边出现
-    var that = this;
     wx.request({
       url: getApp().IP +'chatIndex/index',
       // data: {},

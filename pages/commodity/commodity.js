@@ -7,6 +7,7 @@ var jiage = -1;
 var xiaoliang = -1;
 var GOODSLEVEL_ID = '';
 var GOODSTYPE_ID = '';
+var keywords = '';
 var GetList = function (that) {
   wx.showNavigationBarLoading()
   that.setData({
@@ -20,7 +21,8 @@ var GetList = function (that) {
       xiaoliang: xiaoliang,
       jiage: jiage,
       GOODSTYPE_ID: GOODSTYPE_ID,
-      GOODSLEVEL_ID: GOODSLEVEL_ID
+      GOODSLEVEL_ID: GOODSLEVEL_ID,
+      keywords, keywords
     },
     success: function (res) {
       console.log(res.data);
@@ -68,12 +70,21 @@ Page({
     selectedbtn1: false,
     selectedbtn2: false,
     selectedbtn3: false,
+    search: false,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
-  onLoad: function () {
+  onLoad: function (e) {
     var that = this;
+    console.log(e);
+    if (e.keywords != null && e.keywords != undefined){
+      keywords = e.keywords;
+      that.setData({
+        search: true,
+        keywords: e.keywords
+      });
+    }
     // wx.getSystemInfo({
     //   success: function (res) {
     //     console.info(res.windowHeight);
@@ -85,6 +96,11 @@ Page({
   }, 
   onShow: function () {
     var that = this;
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
     GetList(that);
   },
   scroll: function (event) {
@@ -172,29 +188,6 @@ Page({
   },
   selected3: function (e) {
     var that = this;
-    // wx.request({
-    //   url: app.IP +"chatGoods/listGoodsType",
-    //   data: {},
-    //   success: function (res) {
-    //     console.log(res.data);
-    //     that.setData({
-    //       goodsTypes: res.data.goodsTypes
-    //     });
-    //   },
-    //   fail: function () {
-    //     // fail
-    //     setTimeout(function () {
-    //       wx.showToast({
-    //         title: "加载失败",
-    //         duration: 1500
-    //       })
-    //     }, 100)
-    //   },
-    //   complete: function () {
-    //     // complete
-    //     wx.hideToast();
-    //   }
-    // });
     that.setData({
       selected: false,
       selected1: false,
@@ -253,5 +246,37 @@ Page({
 
     }
     
+  },
+  //选择等级
+  bindLevel: function(e) {
+    GOODSLEVEL_ID = e.currentTarget.dataset.goodslevel_id
+  },
+  //重置
+  reset: function(e) {
+    GOODSLEVEL_ID = "";
+    GOODSTYPE_ID = "";
+    this.setData({
+      goodsLevels: []
+    });
+  },
+  //点击确定
+  submint: function(e) {
+    var that = this;
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(that);
+    that.setData({
+      selected1: false,
+      selected2: false,
+      selected: false,
+      selected3: false
+    })
+  },
+  back: function(e){
+    keywords = "";
+    wx.navigateBack({ changed: true });//返回上一页  
   }
 })

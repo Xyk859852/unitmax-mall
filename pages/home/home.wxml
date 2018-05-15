@@ -9,7 +9,7 @@
     <block wx:for="{{imgUrls}}"  wx:key="this">
     <view wx:if="{{item.AD_IMG!=''}}">
         <swiper-item>
-          <image src="http://localhost:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
+          <image src="http://192.168.31.227:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
         </swiper-item>
     </view>
     </block>

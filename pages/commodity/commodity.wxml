@@ -1,8 +1,8 @@
 <!--commodity.wxml-->
-<view class='search_box'>
+<view class="search_box,{{search?'show1':'hide'}} ">
   <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
     <image src='../../images/search.png'></image>
-    <input disabled='true' type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="color:#cccccc;" placeholder='搜索内容'></input>
+    <input bindtap='back' type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="color:#cccccc;" disabled='true' placeholder='{{keywords}}'></input>
   </view>
 </view>
 <view class="body,{{overflow?'hidden':'auto'}}">
@@ -28,17 +28,17 @@
       </view>
       <view class='title'>等级</view>
       <view class='content'>
-        <view wx:for="{{goodsLevels}}" bindtap="select">{{item.level_name}}</view>
+        <view data-goodslevel_id='{{item.goodslevel_id}}' wx:for="{{goodsLevels}}" bindtap="bindLevel">{{item.level_name}}</view>
       </view>
       <view class='filtrate_btn'>
-        <button>重置</button>
-        <button>确定</button>
+        <button bindtap='reset'>重置</button>
+        <button bindtap='submint'>确定</button>
       </view>
     </view>
   </view>
 </view>
 
-<view class='commodity_list'>
+<view wx:if="{{list.length>0}}" class='commodity_list'>
   <scroll-view scroll-y="true" class="list">
     <view class='commodity_li' wx:for="{{list}}" wx:key="this">
       <image src='http://localhost:8080/{{item.IMGSRC}}'></image>
@@ -49,9 +49,5 @@
       </view>
     </view>
   </scroll-view>
-  <view class="body-view">
-    <loading hidden="{{hidden}}" bindchange="loadingChange">
-      加载中...
-    </loading>
-  </view>
 </view>
+<view wx:else class='no_data'>暂无数据</view>
