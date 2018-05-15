@@ -3,8 +3,12 @@
 const app = getApp()
 var url = app.IP +"chatGoods/listPageGoods";
 var page = 1;
-
+var jiage = -1;
+var xiaoliang = -1;
+var GOODSLEVEL_ID = '';
+var GOODSTYPE_ID = '';
 var GetList = function (that) {
+  wx.showNavigationBarLoading()
   that.setData({
     hidden: false
   });
@@ -12,20 +16,40 @@ var GetList = function (that) {
     url: url,
     data: {
       pageSize: 10,
-      pageNo: page
+      pageNo: page,
+      xiaoliang: xiaoliang,
+      jiage: jiage,
+      GOODSTYPE_ID: GOODSTYPE_ID,
+      GOODSLEVEL_ID: GOODSLEVEL_ID
     },
     success: function (res) {
       console.log(res.data);
       var l = that.data.list
       for (var i = 0; i < res.data.goodslist.length; i++) {
-        l.push(res.data[i])
+        l.push(res.data.goodslist[i])
       }
       that.setData({
-        list: l
+        list: l,
+        goodsTypes: res.data.goodstypeList
       });
       page++;
+      console.log(l.length);
+    },
+    fail: function () {
+      // fail
+      setTimeout(function () {
+        wx.showToast({
+          title: "加载失败",
+          duration: 1500
+        })
+      }, 100)
+    },
+    complete: function () {
+      // complete
+      wx.hideToast();
     }
   });
+  wx.hideNavigationBarLoading()
   that.setData({
     hidden: true
   });
@@ -50,20 +74,16 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        console.info(res.windowHeight);
-        that.setData({
-          scrollHeight: res.windowHeight
-        });
-      }
-    });
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     console.info(res.windowHeight);
+    //     that.setData({
+    //       scrollHeight: res.windowHeight
+    //     });
+    //   }
+    // });
   }, 
   onShow: function () {
-    var that = this;
-    GetList(that);
-  },
-  bindDownLoad: function () {
     var that = this;
     GetList(that);
   },
@@ -81,7 +101,27 @@ Page({
     GetList(this)
   },  
   select: function (e) {
-    this.setData({
+    var that = this;
+    // console.log(e.currentTarget.dataset.jiage);
+    if (e.currentTarget.dataset.xiaoliang != undefined 
+        && e.currentTarget.dataset.xiaoliang != null
+         && e.currentTarget.dataset.xiaoliang!=''){
+      xiaoliang = e.currentTarget.dataset.xiaoliang;
+      jiage = -1;
+    }
+    if (e.currentTarget.dataset.jiage != undefined
+      && e.currentTarget.dataset.jiage != null
+      && e.currentTarget.dataset.jiage != ''){
+      jiage = e.currentTarget.dataset.jiage;
+      xiaoliang = -1;
+    }
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(that);
+    that.setData({
       selected1: false,
       selected2: false,
       selected: false,
@@ -89,7 +129,16 @@ Page({
     })
   },
   selected: function (e) {
-    this.setData({
+    var that = this;
+    page = 1;
+    jiage = -1;
+    xiaoliang = -1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(that);
+    that.setData({
       selected1: false,
       selected2: false,
       selected: true,
@@ -122,7 +171,31 @@ Page({
     })
   },
   selected3: function (e) {
-    this.setData({
+    var that = this;
+    // wx.request({
+    //   url: app.IP +"chatGoods/listGoodsType",
+    //   data: {},
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     that.setData({
+    //       goodsTypes: res.data.goodsTypes
+    //     });
+    //   },
+    //   fail: function () {
+    //     // fail
+    //     setTimeout(function () {
+    //       wx.showToast({
+    //         title: "加载失败",
+    //         duration: 1500
+    //       })
+    //     }, 100)
+    //   },
+    //   complete: function () {
+    //     // complete
+    //     wx.hideToast();
+    //   }
+    // });
+    that.setData({
       selected: false,
       selected1: false,
       selected2: false,
@@ -132,9 +205,53 @@ Page({
   //下拉
   onPullDownRefresh: function(e){
     console.log("123");
+    page = 1;
+    this.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(this);
+    wx.stopPullDownRefresh();
   },
 
+  //下拉
   onReachBottom:function(e) {
-    console.log("321")
+    var that = this;
+    GetList(that);
+  },
+
+  levelSelect: function(e) {
+    var that = this;
+    console.log(e);
+    if (e.currentTarget.dataset.goodstype_id!=undefined
+      && e.currentTarget.dataset.goodstype_id!=null
+      && e.currentTarget.dataset.goodstype_id!=''){
+      GOODSTYPE_ID = e.currentTarget.dataset.goodstype_id;
+      wx.request({
+        url: app.IP + "chatGoods/listLevel",
+        data: { GOODSTYPE_ID: GOODSTYPE_ID},
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            goodsLevels: res.data.goodsLevels
+          });
+        },
+        fail: function () {
+          // fail
+          setTimeout(function () {
+            wx.showToast({
+              title: "加载失败",
+              duration: 1500
+            })
+          }, 100)
+        },
+        complete: function () {
+          // complete
+          wx.hideToast();
+        }
+      });
+
+    }
+    
   }
 })
