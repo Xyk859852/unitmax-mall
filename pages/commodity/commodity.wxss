@@ -93,9 +93,27 @@
   float:right;
   height:100%;
   overflow-y: auto;
+  padding-bottom: 50px;
 }
 .filtrate .title{
   font-size: 14px;
+}
+.filtrate_btn{
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  width: 60%;
+  padding: 0 4%;
+  overflow: hidden;
+}
+.filtrate_btn button{
+  width: 40%;
+  margin: 0 5%;
+  float: left;
+  color: #ffffff;
+  background-color: #fe6500;
+  font-size: 14px;
+  line-height: 30px;
 }
 .content{
   overflow: hidden;
