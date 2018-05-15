@@ -10,14 +10,14 @@
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone">
       <view>待付款</view>
       <image src='../../images/category.png'></image>
-    </view>
-    <view class='mine_order_state_container'>
+    </navigator>
+    <navigator class='mine_order_state_container' url="../order_detail/order_detail">
       <view>待发货</view>
       <image src='../../images/category.png'></image>
-    </view>
+    </navigator>
     <view class='mine_order_state_container'>
       <view>待收货</view>
       <image src='../../images/category.png'></image>
@@ -32,10 +32,10 @@
     </view>
   </view>
   <view class='mine_menu'>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../address_management/address_management">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
+      <view>地址管理</view>
+    </navigator>
     <view class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>待付款</view>

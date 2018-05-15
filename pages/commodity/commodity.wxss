@@ -1,5 +1,29 @@
 /**commodity.wxss**/  
-
+.search_box{
+  padding: 10px 4%;
+  overflow: hidden;
+  width: 92%;
+}
+.search_box_left{
+  height: 30px;
+  overflow: hidden;
+  background-color: #ffffff;
+  float: left;
+  border-radius: 20px;
+  padding: 0 2%;
+}
+.search_box_left image{
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-top: 5px;
+}
+ #search{
+   padding:2px 0;
+   margin-left: 2%;
+   float: left;
+   font-size: 16px;
+} 
 .commodity_list{
   background-color: #ffffff;
   width: 100%;
@@ -49,6 +73,9 @@
 .red{color:#ff6692;
   line-height:40px;text-align:center;flex:1;border-bottom:1px solid #ff6692;
   }
+  .show{
+    z-index:99
+  }
 .show > view,.hide > view{
   padding:0 4%;
   font-size: 14px;
@@ -66,9 +93,27 @@
   float:right;
   height:100%;
   overflow-y: auto;
+  padding-bottom: 50px;
 }
 .filtrate .title{
   font-size: 14px;
+}
+.filtrate_btn{
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  width: 60%;
+  padding: 0 4%;
+  overflow: hidden;
+}
+.filtrate_btn button{
+  width: 40%;
+  margin: 0 5%;
+  float: left;
+  color: #ffffff;
+  background-color: #fe6500;
+  font-size: 14px;
+  line-height: 30px;
 }
 .content{
   overflow: hidden;

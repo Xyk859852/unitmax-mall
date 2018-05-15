@@ -19,13 +19,13 @@
   </view>
 </view>
 <view class='body'>
-<view class='address_box'>
-<image class='address_left' src='../../images/address.png'/>
-<view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
-<view>收货人：姓名<label>电话</label></view>
-<view class='address_detail'>收件地址：地址地址地址地址</view>
-</view>
-<image class='address_right' src='../../images/right.png'/>
+  <view class='address_box'>
+    <image class='address_left' src='../../images/address.png'/>
+    <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
+    <view>收货人：姓名<label>电话</label></view>
+    <view class='address_detail'>收件地址：地址地址地址地址</view>
+  </view>
+  <image class='address_right' src='../../images/right.png'/>
 </view>
 <view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
 <view class='commodity_list'>
@@ -46,18 +46,18 @@
       <view class='commodity_li_price'>￥1299.00<view class="num_box">x1</view></view>
     </view>
   </view>
-  </view>
+</view>
   <view class='other' bindtap='showDelivery'><label>配送方式</label><label class='other_right'>第三方物流￥100.00元</label></view>
-  <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>余额支付</label></view>
+    <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>余额支付</label></view>
   <view class="section" >  
-   <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
-    <view class="picker">
-      送达时间<label class='other_right'>{{p_c[0][pcIndex[0]]}} {{p_c[1][pcIndex[1]]}}</label>
-    </view>
-  </picker>
-</view> 
+    <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
+      <view class="picker">
+        送达时间<label class='other_right'>{{p_c[0][pcIndex[0]]}} {{p_c[1][pcIndex[1]]}}</label>
+      </view>
+    </picker>
+  </view> 
   <view class='other'><label>买家留言</label><input class='other_input' style='width:{{other_input_width}}px;' placeholder='请输入留言内容'/></view>
-  </view>
+</view>
 <view class='footer'>
    <navigator class='buy' url="../place_success/place_success">提交订单</navigator>
   <label class='all'>总计：0.00元</label>

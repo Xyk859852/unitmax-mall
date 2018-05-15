@@ -1,0 +1,6 @@
+<!--pages/binding_phone/binding_phone.wxml-->
+<view class='body'>
+<view class='phone'><text>手机号：</text><input style='width:{{input_width}}px;' type='tel' placeholder='输入手机号码'/><text class='bingding'>微信一键登录</text></view>
+<view class='code'><text>验证码：</text><input style='width:{{input_width}}px;' type='tel' placeholder='输入短信验证码'/><button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button> </view>
+<button class='submit'>提交</button>
+</view>

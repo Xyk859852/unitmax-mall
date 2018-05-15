@@ -8,7 +8,10 @@
     "pages/commodity/commodity",
     "pages/commodity_detail/commodity_detail",
     "pages/place_order/place_order",
-    "pages/place_success/place_success"
+    "pages/place_success/place_success",
+    "pages/binding_phone/binding_phone",
+    "pages/order_detail/order_detail",
+    "pages/address_management/address_management"
   ],
   "window": {
     "backgroundTextStyle": "light",
