@@ -1,0 +1,21 @@
+<!--pages/address_management/address_management.wxml-->
+<view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
+<view class='body'>
+  <view class='address_box'>
+    <view class='address' style='width:{{address_width}}px;'>
+      <view>收货人：姓名<label>电话</label></view>
+      <view class='address_detail'>收件地址：地址地址地址地址</view>
+    </view>
+    <view class='address_right'>删除</view>
+  </view>
+  <view class='address_box'>
+    <view class='address' style='width:{{address_width}}px;'>
+      <view>收货人：姓名<text>默认</text><label>电话</label></view>
+      <view class='address_detail'>收件地址：地址地址地址地址</view>
+    </view>
+    <view class='address_right'>删除</view>
+  </view>
+</view>
+<view class='footer'>
+<button>新增地址</button>
+</view>
