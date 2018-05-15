@@ -1,4 +1,10 @@
 <!--commodity.wxml-->
+<view class='search_box'>
+  <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
+    <image src='../../images/search.png'></image>
+    <input disabled='true' type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="color:#cccccc;" placeholder='搜索内容'></input>
+  </view>
+</view>
 <view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">
     <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">综合</view>
