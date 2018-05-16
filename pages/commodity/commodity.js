@@ -86,6 +86,12 @@ Page({
         keywords: e.keywords
       });
     }
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(that);
     // wx.getSystemInfo({
     //   success: function (res) {
     //     console.info(res.windowHeight);
@@ -96,13 +102,7 @@ Page({
     // });
   }, 
   onShow: function () {
-    var that = this;
-    page = 1;
-    that.setData({
-      list: [],
-      scrollTop: 0
-    });
-    GetList(that);
+    
   },
   scroll: function (event) {
     this.setData({
