@@ -35,7 +35,13 @@
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
       <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-      <view class='commodity_li_price'>￥1299.00<view class="num_box">x1</view></view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">
+            <view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view>
+            <input class='smallbtn' value='{{item.num}}'/>
+            <view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view>
+            </view>
+      </view>
     </view>
   </view>
   <view class='commodity_li'>
@@ -43,10 +49,17 @@
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
       <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-      <view class='commodity_li_price'>￥1299.00<view class="num_box">x1</view></view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">
+            <view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view>
+            <input class='smallbtn' value='{{item.num}}'/>
+            <view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
+  <view class='other'><label>到店自取</label><switch class='other_right'></switch></view>
   <view class='other' bindtap='showDelivery'><label>配送方式</label><label class='other_right'>第三方物流￥100.00元</label></view>
     <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>余额支付</label></view>
   <view class="section" >  
