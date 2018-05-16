@@ -1,0 +1,26 @@
+<!--pages/logistics_tracking/logistics_tracking.wxml-->
+<view class='body'>
+  <view class='tracking'>
+    <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view class='white'></view>
+      <view>您已签收，订单完成</view>
+      <view class='time'>2018-05-16 16:11:04</view>
+    </view>
+    <view class='finally_circle,circle'></view>
+  </view>
+  <view class='tracking'>
+    <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view>您已签收，订单完成</view>
+      <view class='time'>2018-05-16 16:11:04</view>
+    </view>
+    <view class='circle'></view>
+  </view>
+  <view class='tracking'>
+    <view class='first_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view class='white'></view>
+      <view>您已签收，订单完成</view>
+      <view class='time'>2018-05-16 16:11:04</view>
+    </view>
+    <view class='circle'></view>
+  </view>
+</view>
