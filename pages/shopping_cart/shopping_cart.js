@@ -4,182 +4,69 @@ const app = getApp()
 
 Page({
   data: {
-    cartlist: [
-      {
-        id: 1,
-        good: {
-          title: "雷柏v500 RGB机械游戏键盘 机械键盘 黑轴 青轴 游戏键盘 有线背光",
-          pic: "",
-          tc: 1,
-          tcs: [
-            "官方标配",
-            "套餐一",
-            "套餐二",
-            "套餐三"
-          ],
-          tcprices: [
-            169,
-            200,
-            300,
-            400
-          ],
-          price: 169,
-          prevprice: 599,
-          store: 4,
-          "type": {
-            id: 1,
-            name: "键盘外设"
-          }
-        },
-        num: 1,
-        mode: 0,
-        checked: false,
-      },
-      {
-        id: 2,
-        good: {
-          title: "雷柏v500 RGB机械游戏键盘 机械键盘 黑轴 青轴 游戏键盘 有线背光",
-          pic: "",
-          tc: 1,
-          tcs: [
-            "官方标配",
-            "套餐一",
-            "套餐二",
-            "套餐三"
-          ],
-          tcprices: [
-            169,
-            200,
-            300,
-            400
-          ],
-          price: 169,
-          prevprice: 599,
-          store: 14,
-          "type": {
-            id: 1,
-            name: "键盘外设"
-          }
-        },
-        num: 1,
-        mode: 0,
-        checked: false,
-      },
-      {
-        id: 3,
-        good: {
-          title: "雷柏v500 RGB机械游戏键盘 机械键盘 黑轴 青轴 游戏键盘 有线背光",
-          pic: "",
-          tc: 1,
-          tcs: [
-            "官方标配",
-            "套餐一",
-            "套餐二",
-            "套餐三"
-          ],
-          tcprices: [
-            169,
-            200,
-            300,
-            400
-          ],
-          price: 169,
-          prevprice: 599,
-          store: 14,
-          "type": {
-            id: 1,
-            name: "键盘外设"
-          }
-        },
-        num: 1,
-        mode: 0,
-        checked: false,
-      },
-      {
-        id: 4,
-        good: {
-          title: "雷柏v500 RGB机械游戏键盘 机械键盘 黑轴 青轴 游戏键盘 有线背光",
-          pic: "",
-          tc: 1,
-          tcs: [
-            "官方标配",
-            "套餐一",
-            "套餐二",
-            "套餐三"
-          ],
-          tcprices: [
-            169,
-            200,
-            300,
-            400
-          ],
-          price: 169,
-          prevprice: 599,
-          store: 14,
-          "type": {
-            id: 1,
-            name: "键盘外设"
-          }
-        },
-        num: 1,
-        mode: 0,
-        checked: false,
-      },
-      {
-        id: 5,
-        good: {
-          title: "雷柏v500 RGB机械游戏键盘 机械键盘 黑轴 青轴 游戏键盘 有线背光",
-          pic: "",
-          tc: 1,
-          tcs: [
-            "官方标配",
-            "套餐一",
-            "套餐二",
-            "套餐三"
-          ],
-          tcprices: [
-            169,
-            200,
-            300,
-            400
-          ],
-          price: 169,
-          prevprice: 599,
-          store: 14,
-          "type": {
-            id: 1,
-            name: "键盘外设"
-          }
-        },
-        num: 1,
-        mode: 0,
-        checked: false,
-      }
-    ],
-    totalPrice: 0,
+    appIP: app.IP,
+    totalPrice: '0.00',
     totalCount: 0,
     isAll: false,
-  commodity_li_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30,
-  commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84-110
+    commodity_li_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30,
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84 - 110
   },
   onLoad: function () {
   },
+  onShow: function () {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
+    // 页面显示
+    var that = this;
+    wx.request({
+      url: this.data.appIP + 'chatGoodscart/toList',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+        if (res.data.result == "true") {
+          that.setData({
+            cartlist: res.data.cartlist
+          });
+        } else if (res.data.result == "noLogin") {//未登录
 
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });
+
+  },
   addNum: function (e) {
     var id = e.target.dataset.id;
     var cartlist = this.data.cartlist;
     var tc = e.detail.value;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
-        if (cartlist[i].num < cartlist[i].good.store) {
-          cartlist[i].num = cartlist[i].num + 1;
-          this.updateNum(id, cartlist[i].num);
+        if (cartlist[i].count < cartlist[i].goods_inventory) {
+          cartlist[i].count = cartlist[i].count + 1;
+          this.updateNum(id, cartlist[i].count);
         } else {
           wx.showToast({
             title: "不能再加了"
           })
         }
-        cartlist[i].num - 1;
+        cartlist[i].count - 1;
         break;
       }
     }
@@ -193,15 +80,15 @@ Page({
     var tc = e.detail.value;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
-        if (cartlist[i].num > 1) {
-          cartlist[i].num = cartlist[i].num - 1;
-          this.updateNum(id, cartlist[i].num);
+        if (cartlist[i].count > 1) {
+          cartlist[i].count = cartlist[i].count - 1;
+          this.updateNum(id, cartlist[i].count);
         } else {
           wx.showToast({
             title: "不能再减了"
           })
         }
-        cartlist[i].num - 1;
+        cartlist[i].count - 1;
         break;
       }
     }
@@ -245,27 +132,13 @@ Page({
     // })
     this.calcateTotal()
   },
-  calcateTotal: function () {
-    var cartlist = this.data.cartlist;
-    var totalPrice = 0;
-    for (var i = 0; i < cartlist.length; i++) {
-      if (cartlist[i].checked) {
-        totalPrice += cartlist[i].good.tcprices[cartlist[i].good.tc] * cartlist[i].num;
-      }
-    }
-    this.setData({
-      totalPrice: totalPrice
-    })
-  },
   checkItem: function (e) {
     var id = e.target.dataset.id;
     var checked = e.detail.value;
-    console.log(id)
     var cartlist = this.data.cartlist;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
         cartlist[i].checked = checked;
-        console.log(cartlist[i])
         break;
       }
     }
@@ -291,10 +164,11 @@ Page({
     var totalPrice = 0;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].checked) {
-        totalPrice += cartlist[i].good.tcprices[cartlist[i].good.tc] * cartlist[i].num;
+        totalPrice += cartlist[i].goods_price * cartlist[i].count;
       }
     }
-    console.log(totalPrice)
+    var totalPrice2 = totalPrice.toFixed(3);
+    totalPrice = totalPrice2.substring(0, totalPrice2.lastIndexOf('.') + 3);
     this.setData({
       totalPrice: totalPrice
     })
@@ -312,4 +186,64 @@ Page({
       isAll: isAll
     })
   },
+  submitOrder: function (){
+    var that = this;
+      //检查是否选择
+      var cartlist = this.data.cartlist;
+      var goodsArray = [];
+      var IDS = "";
+    for (var i = 0; i < cartlist.length; i++) {
+      if (cartlist[i].checked) {
+        //购物车id
+        if (IDS == "") {
+          IDS += cartlist[i].id;
+        } else {
+          IDS += "," + cartlist[i].id;
+        }
+         //组件选中商品对象数据
+        var data = { GOODS_ID: cartlist[i].goods_id, goodsCount: cartlist[i].count, GOODS_AMOUNT:cartlist[i].count };
+        goodsArray.push(data);                
+      }
+    }
+   
+    if (goodsArray.length == 0){
+      wx.showToast({
+        title: "请勾选宝贝",
+        duration: 1500
+      });
+      return;
+   }
+
+    // wx.request({
+    //   url: this.data.appIP + 'chatOrder/placeOrder',
+    //   // data: {},
+    //   method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    //   // header: {}, // 设置请求的 header
+    //   success: function (res) {
+    //     // success
+    //     if (res.data.result == "true") {
+    //       that.setData({
+    //         cartlist: res.data.cartlist
+    //       });
+    //     } else if (res.data.result == "noLogin") {//未登录
+
+    //     }
+    //   },
+    //   fail: function () {
+    //     // fail
+    //     setTimeout(function () {
+    //       wx.showToast({
+    //         title: "加载失败",
+    //         duration: 1500
+    //       })
+    //     }, 100)
+    //   },
+    //   complete: function () {
+    //     // complete
+    //     wx.hideToast();
+    //   }
+    // });
+   
+    // getApp().globalData.objArray = goodsArray;
+  }
 })
