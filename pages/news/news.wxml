@@ -1,0 +1,17 @@
+<!--pages/news/news.wxml-->
+<view class='news_list'>
+   <navigator open-type="navigate" url="../news_detail/news_detail">
+    <image class='news_img' src='../../images/category_title.jpg'/>
+    <view class='news_right' style='width:{{news_img_width}}px;'>
+      <view class='news_title'>新闻标题新闻标题新闻标题新闻标题新闻标题</view>
+      <view class='news_time'>2015-05-16 19:00</view>
+    </view>
+   </navigator>
+   <navigator open-type="navigate" url="../news_detail/news_detail">
+    <image class='news_img' src='../../images/category_title.jpg'/>
+    <view class='news_right' style='width:{{news_img_width}}px;'>
+      <view class='news_title'>新闻标题新闻标题新闻标题新闻标题新闻标题</view>
+      <view class='news_time'>2015-05-16 19:00</view>
+    </view>
+   </navigator>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/add_address/add_address.wxml-->
+<view class='address' bindtap='onChangeAddress'>
+      haha
+ </view>

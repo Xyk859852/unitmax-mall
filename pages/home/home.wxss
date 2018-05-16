@@ -62,6 +62,7 @@
   background-color: #ffffff;
   padding: 20px 4%;
   overflow: hidden;
+  margin-top: 10px;
 }
 .classify_left{
   width: 44%;
@@ -79,6 +80,7 @@
   padding: 4%;
   background-color: #ffffff;
   overflow: hidden;
+  margin-top: 10px;
 }
 .category_box{
   width: 15.8%;
@@ -101,11 +103,14 @@
   width: 96%;
   padding: 2%;
   overflow: hidden;
+  background-color: #ffffff;
 }
 .category_commodity_container{
-  width: 29%;
-  float: left;
-  padding: 2%;
+  float:left;
+  margin:2%;
+  border:#ddd 1px solid;
+  padding-bottom:5px;
+  border-radius:5px;
 }
 .category_commodity_container > image{
   width: 100%;
@@ -114,6 +119,7 @@
   width: 100%;
   font-size: 14px;
   color: #333;
+  padding: 0 2%;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -122,6 +128,7 @@
 }
 .category_commodity_container_price{
   overflow: hidden;
+  padding: 0 2%;
 }
 .category_commodity_container_price view{
   font-size: 12px;

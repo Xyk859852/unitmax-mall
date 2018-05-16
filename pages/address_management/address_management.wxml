@@ -17,5 +17,7 @@
   </view>
 </view>
 <view class='footer'>
+ <navigator url="../add_address/add_address">
 <button>新增地址</button>
+</navigator>
 </view>
