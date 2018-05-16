@@ -2,9 +2,9 @@
 <view class='search_box'>
   <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
     <image src='../../images/search.png'></image>
-    <input type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="line-height:20px;color:#cccccc;font-size:14px;"></input>
+    <input type='text' bindconfirm="realnameConfirm" confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="line-height:20px;color:#cccccc;font-size:14px;"></input>
   </view>
-  <view id='search_box_close'>取消</view>
+  <view bindtap='back' id='search_box_close'>取消</view>
 </view>
 <view class='search_history'>
   <view class='search_title'>搜索历史<image src='../../images/delete.png' class='search_delete'></image></view>

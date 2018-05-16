@@ -9,7 +9,6 @@
     <block wx:for="{{imgUrls}}"  wx:key="this">
     <view wx:if="{{item.AD_IMG!=''}}">
         <swiper-item>
-          <image src="http://localhost:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
         </swiper-item>
     </view>
     </block>
@@ -47,7 +46,6 @@
   <swiper class="swiper_container" style='width:{{swiper_container_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
       <navigator wx:for="{{newlist}}"  wx:key="this" open-type="navigate" url="../news/news">
         <swiper-item>
-  <image class='new_box_img' src='http://localhost:8080/static/uploadImgs/news/{{item.AD_IMG}}'></image>
           <view class="swiper_item" style='width:{{swiper_item_width}}px;'>
             <view>{{item.AD_TITLE}}</view> 
           </view>
@@ -61,8 +59,6 @@
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container'  style="width:{{category_commodity_container_width}}px;" url="../commodity_detail/commodity_detail">
-      <image src='http://localhost:8080/{{item.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
       <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>
         <view>￥{{item.goods_price}}</view>

@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    appIP:app.IP,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.7*0.27,
     svLeftHeight: '100',
     tabArr: {
@@ -27,5 +28,42 @@ Page({
     })
   },
   onLoad: function () {
-  }
+    var that = this;
+  },
+  onShow: function () {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
+    // 页面显示
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatGoods/findAllGoodsType',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+        that.setData({
+          goodsTypeList: res.data.goodsTypeList,
+          allType: res.data.allType
+        })
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    })
+
+  } 
 })  

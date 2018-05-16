@@ -36,5 +36,5 @@ App({
   globalData: {
     userInfo: null
   },
-  IP: "http://localhost:8080/"
+  IP: "http://192.168.31.227:8080/"
 })

@@ -1,22 +1,22 @@
 <!--commodity_detail.wxml-->
 <!-- 顶部轮播图 -->
   <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="unique">
+    <block wx:for="{{order.zsImgList}}" wx:key="unique">
       <swiper-item>
-        <image src="{{item}}" class="slide-image"  mode="widthFix"/>
+        <image src="http://192.168.31.227:8080/{{item.path}}" class="slide-image"  mode="widthFix"/>
       </swiper-item>
     </block>
   </swiper>
 <view class='commodity_detail_title'>
   <view class='commodity_detail_title_left' style='width:{{commodity_detail_title_left_width}}px;'>
-    <view class='commodity_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标</view>
-    <view class='commodity_price'>￥749.00</view>
-    <view class='commodity_tip'>库存：210 销量：152</view>
+    <view class='commodity_title'>{{order.GOODS_NAME}}</view>
+    <view class='commodity_price'>￥{{order.GOODS_PRICE}}</view>
+    <view class='commodity_tip'>库存：{{order.GOODS_INVENTORY}} 销量：{{order.GOODS_SALENUM}}</view>
   </view>
-  <view class='commodity_detail_title_right'> 
+  <!-- <view class='commodity_detail_title_right'> 
     <image src='../../images/share.png'></image>
     <view>分享</view>
-  </view>
+  </view> -->
 </view>
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>商品评价</view>
@@ -30,94 +30,13 @@
   </view>
 <view class='specification_box'>
       <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
+        <text class='specification_left'>{{order.SPECIFICATION}}</text> 
       </view>
     </view>
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>商品详情</view>
   </view>
-        <image class='detail_img' src='../../images/category_title.jpg' mode="widthFix"></image>
-    <image class='detail_img' src='../../images/category_title.jpg' mode="widthFix"></image>
-<!-- <view class="body">
-  <view class="nav">
-    <view class="{{selected?'red':'default'}}" bindtap="selected">商品详情</view>
-    <view class="{{selected1?'red':'default'}}" bindtap="selected1">规格参数</view>
-    <view class="{{selected2?'red':'default'}}" bindtap="selected2">评价</view>
-  </view>
-  <view class="{{selected?'show':'hidden'}}">
-    <image class='detail_img' src='../../images/category_title.jpg' mode="widthFix"></image>
-    <image class='detail_img' src='../../images/category_title.jpg' mode="widthFix"></image>
-  </view>
-  <view class="{{selected1?'show':'hidden'}}">
-    <view class='specification_box'>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-      <view class='specification'>
-        <view class='specification_left'>品牌</view>
-        <view class='specification_right'>聚脉</view>
-      </view>
-    </view>
-  </view>  
-  <view class="{{selected2?'show':'hidden'}}">
-    <view class='evaluate'>
-      <view class='evaluate_nickname'>哈哈哈哈哈</view>
-      <view class='evaluate_container'>很好</view>
-      <view class='evaluate_img_box'>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-      </view>
-    </view>
-    <view class='evaluate'>
-      <view class='evaluate_nickname'>哈哈哈哈哈</view>
-      <view class='evaluate_container'>很好</view>
-    </view>
-    <view class='evaluate'>
-      <view class='evaluate_nickname'>哈哈哈哈哈</view>
-      <view class='evaluate_container'>很好</view>
-    </view>
-    <view class='evaluate'>
-      <view class='evaluate_nickname'>哈哈哈哈哈</view>
-      <view class='evaluate_container'>很好</view>
-      <view class='evaluate_img_box'>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-        <image style='height:{{evaluate_img_width}}px;' src='../../images/category_title.jpg'></image>
-      </view>
-    </view>
-  </view>
-</view> -->
+    <image wx:for="{{order.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart'>
     <image src='../../images/shopping_cart.png'></image>

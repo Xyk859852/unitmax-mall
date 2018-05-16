@@ -22,66 +22,12 @@
   </scroll-view> -->
   <view class='category_right'>
     <view class='category_container'>
+     <block wx:for="{{goodsTypeList}}"  wx:key="this">
       <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称名称名称名称名称名称名称名称</view>
+        <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+        <view>{{item.name}}</view>
       </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
-      <view class='category'>
-        <image src='../../images/category.png' style='height:{{category_img_width}}px'></image>
-        <view>名称</view>
-      </view>
+      </block>
     </view>
   </view>
 </view>
