@@ -22,9 +22,13 @@
     <view>商品评价</view>
   </view>
      <view class='evaluate'>
-      <view class='evaluate_nickname'>哈哈哈哈哈</view>
-      <view class='evaluate_container'>很好</view>
-    </view>
+      <image src='../../images/notice.png'/>
+      <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
+        <view class='evaluate_nickname'>哈哈哈哈哈<text>2015-05-16</text></view>
+        <view class='evaluate_container'>很好</view>
+      </view>
+    </view> 
+    <navigator class='evaluate_more' open-type="navigate" url="../evaluate/evaluate">更多评价</navigator>
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>规格参数</view>
   </view>

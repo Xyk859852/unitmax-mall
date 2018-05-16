@@ -96,6 +96,13 @@
   text-align: center;
   color: #333;
 }
+.category_name{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all
+}
 #category_commodity_title image{
   width: 100%;
 }

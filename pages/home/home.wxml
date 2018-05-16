@@ -9,7 +9,7 @@
     <block wx:for="{{imgUrls}}"  wx:key="this">
     <view wx:if="{{item.AD_IMG!=''}}">
         <swiper-item>
-          <image src="http://192.168.31.227:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
+          <image src="{{appIP}}static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
         </swiper-item>
     </view>
     </block>
@@ -33,8 +33,8 @@
 <!-- 分类 -->
  <view id='category_box'>
   <view class='category_box' wx:for="{{varClass}}"  wx:key="this">
-    <image src='http://localhost:8080/static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
-    <view>{{item.NAME}}</view>
+    <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+    <view class='category_name'>{{item.NAME}}</view>
   </view>
 </view> 
  <!-- <view class='classify_box'>
@@ -61,7 +61,7 @@
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' data-goods_id='{{item.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}">
+    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' data-goods_id='{{item.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
       <image src='{{appIP}}{{item.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
       <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>

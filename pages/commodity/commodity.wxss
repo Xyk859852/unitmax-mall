@@ -24,9 +24,6 @@
    float: left;
    font-size: 16px;
 } 
-.show1{
-  
-}
 .commodity_list{
   background-color: #ffffff;
   width: 100%;
