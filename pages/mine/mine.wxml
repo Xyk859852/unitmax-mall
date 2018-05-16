@@ -1,5 +1,6 @@
 <!--mine.wxml-->
 <view class="container" style='background-image: url(../../images/1.png);'>
+ <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
