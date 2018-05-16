@@ -27,6 +27,8 @@ Page({
     })
   },
   onLoad: function () {
+    var that = this;
+    that.setData({appId: getApp().IP});
   },
   onShow: function () {
     wx.showToast({

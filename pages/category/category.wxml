@@ -24,7 +24,7 @@
     <view class='category_container'>
      <block wx:for="{{goodsTypeList}}"  wx:key="this">
       <view class='category'>
-        <image src='http://localhost:8085/static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+        <image src='{{appId}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
         <view>{{item.name}}</view>
       </view>
       </block>
