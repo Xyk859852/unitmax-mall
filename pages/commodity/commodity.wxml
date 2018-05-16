@@ -41,7 +41,7 @@
 <view wx:if="{{list.length>0}}" class='commodity_list'>
   <scroll-view scroll-y="true" class="list">
     <view class='commodity_li' wx:for="{{list}}" wx:key="this">
-      <image src='http://localhost:8080/{{item.IMGSRC}}'></image>
+      <image src='{{appIP}}{{item.IMGSRC}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
         <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}</view>

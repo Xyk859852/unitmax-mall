@@ -58,6 +58,7 @@ var GetList = function (that) {
 } 
 Page({
   data: {
+    appIP:app.IP,
     hidden: true,
     list: [],
     scrollTop: 0,
@@ -197,13 +198,16 @@ Page({
   },
   //下拉
   onPullDownRefresh: function(e){
-    console.log("123");
+     // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
     page = 1;
     this.setData({
       list: [],
       scrollTop: 0
     });
     GetList(this);
+      // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();  
     wx.stopPullDownRefresh();
   },
 

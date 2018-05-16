@@ -7,6 +7,7 @@ Page({
     category:[
       '../../images/category.png'
     ],
+    appIP: app.IP,
     indicatorDots: true,
     autoplay: true,
     interval: 5000,

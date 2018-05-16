@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    appIP:app.IP,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.7*0.27,
     svLeftHeight: '100',
     tabArr: {
@@ -28,7 +29,6 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    that.setData({appId: getApp().IP});
   },
   onShow: function () {
     wx.showToast({
