@@ -23,12 +23,12 @@
   <view class="{{selected3?'show':'hide'}}">
     <view class='filtrate'>
       <view class='title'>品类</view>
-      <view class='content'>
-        <view wx:for="{{goodsTypes}}" wx:key="unique" data-goodstype_id='{{item.goodstype_id}}' bindtap="levelSelect">{{item.name}} </view>
+      <view class="content">
+        <view wx:for="{{goodsTypes}}" wx:key="unique" data-goodstype_id='{{item.goodstype_id}}' data-index='{{index}}' class="{{index==typeIndex?' selected':''}}"  bindtap="levelSelect">{{item.name}} </view>
       </view>
       <view class='title'>等级</view>
       <view class='content'>
-        <view data-goodslevel_id='{{item.goodslevel_id}}' wx:for="{{goodsLevels}}" bindtap="bindLevel">{{item.level_name}}</view>
+        <view data-goodslevel_id='{{item.goodslevel_id}}' wx:for="{{goodsLevels}}" data-index='{{index}}' class="{{index==levelIndex?' selected':''}}" bindtap="bindLevel" >{{item.level_name}}</view>
       </view>
       <view class='filtrate_btn'>
         <button bindtap='reset'>重置</button>

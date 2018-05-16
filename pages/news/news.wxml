@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-<view class='news_list'>
+<!-- <view class='news_list'>
    <navigator open-type="navigate" url="../news_detail/news_detail">
     <image class='news_img' src='../../images/category_title.jpg'/>
     <view class='news_right' style='width:{{news_img_width}}px;'>
@@ -14,4 +14,17 @@
       <view class='news_time'>2015-05-16 19:00</view>
     </view>
    </navigator>
+</view> -->
+<!-- <web-view src="http://news.china.com/socialgd/10000169/20180516/32416885.html"></web-view> -->
+<view wx:if="{{list.length>0}}" class='news_list'>
+  <scroll-view scroll-y="true" class="list">
+    <view wx:for="{{list}}" wx:key="unique" data-url='{{item.AD_URL}}' data-type='{{item.AD_TYPE}}' data-id='{{item.ID}}' bindtap='openDetail' >
+      <image class='news_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'/>
+      <view class='news_right' style='width:{{news_img_width}}px;'>
+        <view class='news_title' >{{item.AD_TITLE}}</view>
+        <view class='news_time'>{{item.ADDTIME}}</view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
+<view wx:else class='no_data'>暂无数据</view>

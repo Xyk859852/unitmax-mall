@@ -15,7 +15,8 @@
     "pages/add_address/add_address",
     "pages/news/news",
     "pages/news_detail/news_detail",
-    "pages/evaluate/evaluate"
+    "pages/evaluate/evaluate",
+    "pages/news_detail_url/news_detail_url"
   ],
   "window": {
     "backgroundTextStyle": "light",

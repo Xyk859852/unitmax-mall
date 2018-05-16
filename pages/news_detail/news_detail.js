@@ -1,3 +1,5 @@
+var WxParse = require('../wxParse/wxParse.js');
+const app = getApp();
 // pages/news_detail/news_detail.js
 Page({
 
@@ -5,14 +7,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    IP:app.IP
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function (e) {
+    var that = this;
+    console.log(e);
+    wx.request({
+      url: getApp().IP +'chatNews/getNewsID',
+      data: {ID: e.ID },
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log(res);
+        console.log(res.data.new.AD_TEXT);
+        console.log(res.data.new.AD_TITLE);
+        WxParse.wxParse('text', 'html', res.data.new.AD_TEXT, that, 5);
+        WxParse.wxParse('title', 'html', res.data.new.AD_TITLE, that, 5); 
+        that.setData({
+          time: res.data.new.ADDTIME
+        })
+      },
+      fail: function(res) {
+
+      },
+      complete: function(res) {
+
+      },
+    })
+    
+
   },
 
   /**
