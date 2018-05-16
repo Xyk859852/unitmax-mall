@@ -9,7 +9,7 @@
     <block wx:for="{{imgUrls}}"  wx:key="this">
     <view wx:if="{{item.AD_IMG!=''}}">
         <swiper-item>
-          <image src="http://192.168.31.227:8080/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
+          <image src="{{appIP}}static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image"  mode="widthFix"></image>
         </swiper-item>
     </view>
     </block>
@@ -30,22 +30,22 @@
     </view>
   </scroll-view>
 </view>
-<!-- <view class='classify_box'>
-  <image class='classify_left' src='../../images/category_title.jpg'></image>
-  <image class='classify_right' src='../../images/category_title.jpg'></image>
-  <image class='classify_right' style='margin-top:10px;' src='../../images/category_title.jpg'></image>
-</view> -->
 <!-- 分类 -->
  <view id='category_box'>
   <view class='category_box' wx:for="{{varClass}}"  wx:key="this">
-    <image src='http://localhost:8080/static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
-    <view>{{item.NAME}}</view>
+    <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+    <view class='category_name'>{{item.NAME}}</view>
   </view>
 </view> 
+ <!-- <view class='classify_box'>
+  <image class='classify_left' src='../../images/category_title.jpg'></image>
+  <image class='classify_right' src='../../images/category_title.jpg'></image>
+  <image class='classify_right' style='margin-top:10px;' src='../../images/category_title.jpg'></image>
+</view>  -->
 <!-- 新闻 -->
-<view id='new_box'>
+ <view id='new_box'>
   <swiper class="swiper_container" style='width:{{swiper_container_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
-      <navigator wx:for="{{newlist}}"  wx:key="this" open-type="navigate" url="../commodity/commodity">
+      <navigator wx:for="{{newlist}}"  wx:key="this" open-type="navigate" url="../news/news">
         <swiper-item>
   <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image>
           <view class="swiper_item" style='width:{{swiper_item_width}}px;'>
@@ -54,14 +54,14 @@
         </swiper-item>
       </navigator>
   </swiper>
-</view>
+</view> 
 <!-- 分类商品 -->
 <view id='category_commodity'>
   <navigator id='category_commodity_title' url="../commodity/commodity">
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' data-goods_id='{{item.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}">
+    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' data-goods_id='{{item.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
       <image src='{{appIP}}{{item.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
       <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>

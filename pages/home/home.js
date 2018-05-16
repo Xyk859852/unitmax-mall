@@ -21,7 +21,8 @@ Page({
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.92*0.158,
     category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29*0.96,
     swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.92,
-    swiper_item_width: wx.getSystemInfoSync().windowWidth * 0.88-40
+    swiper_item_width: wx.getSystemInfoSync().windowWidth * 0.88 - 40,
+    category_commodity_container_width: wx.getSystemInfoSync().windowWidth * 0.28 - 2
   },
   onLoad: function () {
   },

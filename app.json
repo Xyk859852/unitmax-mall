@@ -11,7 +11,11 @@
     "pages/place_success/place_success",
     "pages/binding_phone/binding_phone",
     "pages/order_detail/order_detail",
-    "pages/address_management/address_management"
+    "pages/address_management/address_management",
+    "pages/add_address/add_address",
+    "pages/news/news",
+    "pages/news_detail/news_detail",
+    "pages/evaluate/evaluate"
   ],
   "window": {
     "backgroundTextStyle": "light",
