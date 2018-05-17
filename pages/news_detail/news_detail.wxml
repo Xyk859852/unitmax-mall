@@ -1,8 +1,11 @@
+<import src="../wxParse/wxParse.wxml"/>
 <!--pages/news_detail/news_detail.wxml-->
 <view class='body'>
-  <view class='news_title'>新闻标题新闻标题新闻标题新闻标题新闻标题</view>
-  <view class='news_time'>2015-05-16 19:00</view>
+  <view class='news_title'>
+    <template is="wxParse" data="{{wxParseData:title.nodes}}"/>  
+  </view>
+  <view class='news_time'>{{time}}</view>
   <view class='news_content'>
-    新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+    <template is="wxParse" data="{{wxParseData:text.nodes}}"/>  
   </view>
 </view>

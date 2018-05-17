@@ -224,13 +224,16 @@ Page({
       && e.currentTarget.dataset.goodstype_id!=null
       && e.currentTarget.dataset.goodstype_id!=''){
       GOODSTYPE_ID = e.currentTarget.dataset.goodstype_id;
+      var typeIndex = e.currentTarget.dataset.index;
+      console.log(typeIndex);
       wx.request({
         url: app.IP + "chatGoods/listLevel",
         data: { GOODSTYPE_ID: GOODSTYPE_ID},
         success: function (res) {
           console.log(res.data);
           that.setData({
-            goodsLevels: res.data.goodsLevels
+            goodsLevels: res.data.goodsLevels,
+            typeIndex: e.currentTarget.dataset.index
           });
         },
         fail: function () {
@@ -254,6 +257,9 @@ Page({
   //选择等级
   bindLevel: function(e) {
     GOODSLEVEL_ID = e.currentTarget.dataset.goodslevel_id
+    this.setData({
+      levelIndex: e.currentTarget.dataset.index
+    })
   },
   //重置
   reset: function(e) {

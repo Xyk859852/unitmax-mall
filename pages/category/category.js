@@ -3,8 +3,8 @@
 var app = getApp()
 Page({
   data: {
-    appIP:app.IP,
-    category_img_width: wx.getSystemInfoSync().windowWidth * 0.7*0.27,
+    appIP: app.IP,
+    category_img_width: wx.getSystemInfoSync().windowWidth * 0.7 * 0.27,
     svLeftHeight: '100',
     tabArr: {
       curHdIndex: 0,
@@ -39,7 +39,7 @@ Page({
     // 页面显示
     var that = this;
     wx.request({
-      url: getApp().IP + 'chatGoods/findAllGoodsType',
+      url: this.data.appIP + 'chatGoods/findAllGoodsType',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
@@ -65,5 +65,5 @@ Page({
       }
     })
 
-  } 
+  }
 })  

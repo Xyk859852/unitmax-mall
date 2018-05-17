@@ -84,7 +84,7 @@ checkbox-group{
 .buy{
   width:100px;
   float: right;
-  line-height: 40px;
+  height: 40px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;

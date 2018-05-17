@@ -36,6 +36,12 @@
 					"name": "商品列表",
 					"pathName": "pages/commodity/commodity",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/order_detail/order_detail",
+					"query": ""
 				}
 			]
 		}
