@@ -11,40 +11,40 @@
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
-    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone">
+    <navigator class='mine_order_state_container' url="../order_list/order_list">
       <view>待付款</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_detail/order_detail">
-      <view>待发货</view>
+    <navigator class='mine_order_state_container' url="../order_list/order_list">
+      <view>待接单</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <view class='mine_order_state_container'>
-      <view>待收货</view>
+    <navigator class='mine_order_state_container' url="../order_list/order_list">
+      <view>进行中</view>
       <image src='../../images/category.png'></image>
-    </view>
-    <view class='mine_order_state_container'>
-      <view>待评价</view>
+    </navigator>
+    <navigator class='mine_order_state_container' url="../order_list/order_list">
+      <view>已完成</view>
       <image src='../../images/category.png'></image>
-    </view>
-    <view class='mine_order'>
+    </navigator>
+    <navigator class='mine_order' url="../order_list/order_list">
         全部订单
       <image src='../../images/category.png'></image>
-    </view>
+    </navigator>
   </view>
   <view class='mine_menu'>
     <navigator class='mine_order_state_container' url="../address_management/address_management">
       <image src='../../images/category.png'></image>
       <view>地址管理</view>
     </navigator>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
-    <view class='mine_order_state_container'>
+      <view>绑定手机</view>
+    </navigator>
+    <navigator class='mine_order_state_container' url="../order_detail/order_detail">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
+      <view>订单详情</view>
+    </navigator>
     <view class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>待付款</view>

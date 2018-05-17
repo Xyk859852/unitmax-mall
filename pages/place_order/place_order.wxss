@@ -119,6 +119,14 @@
   float: right;
   overflow: hidden;
 }
+.smallbtn{
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  border: #f5f5f5 1px solid;
+  float: left;
+}
 .other{
   background-color: #ffffff;
   border-bottom: #f5f5f5 1px solid;
@@ -128,6 +136,9 @@
 }
 .other_right,.other_input{
   float: right;
+}
+.other switch{
+  margin-top: -7px;
 }
 .section{
    background:#ffffff;

@@ -16,6 +16,8 @@
     "pages/news/news",
     "pages/news_detail/news_detail",
     "pages/evaluate/evaluate",
+    "pages/order_list/order_list",
+    "pages/logistics_tracking/logistics_tracking",
     "pages/news_detail_url/news_detail_url"
   ],
   "window": {

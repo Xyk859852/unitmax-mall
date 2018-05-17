@@ -124,6 +124,10 @@
   color: #aaaaaa;
   line-height: 20px;
 }
+.seller_name{
+  font-size: 14px;
+  color: #333;
+}
 .other_right{
   float: right;
 }
@@ -155,6 +159,20 @@
    background:#ffffff;
   padding:10px 4%;
   font-size: 14px;
+}
+.contact{
+  padding: 10px 4%;
+  margin-top: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.contact view,.contact navigator{
+  float: left;
+  text-align: center;
+  font-size: 14px;
+}
+.contact_seller{
+  border-right: 1px #f5f5f5 solid;
 }
 .order_detail{
   padding: 10px 4%;

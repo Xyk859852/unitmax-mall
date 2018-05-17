@@ -1,0 +1,191 @@
+<!--pages/order_list/order_list.wxml-->
+<view class="nav">
+  <view class="{{selected?'red':'default'}}" bindtap="selected">全部</view>
+  <view class="{{selected1?'red':'default'}}" bindtap="selected1">待付款</view>
+  <view class="{{selected2?'red':'default'}}" bindtap="selected2">待接单</view>
+  <view class="{{selected3?'red':'default'}}" bindtap="selected3">进行中</view>
+  <view class="{{selected4?'red':'default'}}" bindtap="selected4">已完成</view>
+</view>
+<!-- 待付款 -->
+<view class='commodity_list'>
+  <view class='other'>
+     <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label>  -->
+    <label>到店自取</label>
+    <text class='order_state'>待付款</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x2</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+  <view class='order_btn'>
+    <view class='small_btn2'>支付</view>
+    <view class='small_btn'>取消</view>
+  </view>
+</view>
+<!-- 等待门店接单 -->
+<view class='commodity_list'>
+  <view class='other'>
+    <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label> -->
+    <label>配送单</label>
+    <text class='order_state'>等待门店接单</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+  <view class='order_btn'>
+    <view class='small_btn'>取消</view>
+  </view>
+</view>
+<!-- 备货中 -->
+<view class='commodity_list'>
+  <view class='other'>
+    <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label> -->
+    <label>到店自取</label>
+    <text class='order_state'>备货中</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+</view>
+<!-- 备货完成 -->
+<view class='commodity_list'>
+  <view class='other'>
+    <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label> -->
+    <label>到店自取</label>
+    <text class='order_state'>备货完成</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+</view>
+<!-- 配送中 -->
+<view class='commodity_list'>
+  <view class='other'>
+    <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label> -->
+    <label>配送单</label>
+    <text class='order_state'>配送中</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+</view>
+<!-- 待收货 -->
+<view class='commodity_list'>
+  <view class='other'>
+     <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label>  -->
+    <label>配送单</label>
+    <text class='order_state'>待收货</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x2</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+  <view class='order_btn'>
+    <view class='small_btn2'>确认收货</view>
+  </view>
+</view>
+<!-- 交易成功 -->
+<view class='commodity_list'>
+  <view class='other'>
+     <!-- <image src='../../images/seller.png'/>
+    <label>聚脉商城</label>  -->
+    <label>到店自取</label>
+    <text class='order_state'>交易成功</text>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view>
+    </view>
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x2</view>
+      </view>
+    </view>
+  </view>
+  <view class='order_total_money'>共1件商品 合计：￥68.00（含运费￥0.00）</view>
+  <view class='order_btn'>
+    <view class='small_btn2'>评价</view>
+  </view>
+</view>

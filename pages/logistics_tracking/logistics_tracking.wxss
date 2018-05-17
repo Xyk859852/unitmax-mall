@@ -1,0 +1,54 @@
+/* pages/logistics_tracking/logistics_tracking.wxss */
+.body{
+  background-color: #ffffff;
+  padding: 10px 4%;
+  overflow: hidden;
+}
+.tracking{
+  position: relative;  
+}
+.tracking_right{
+  margin-left: 14px;
+  padding: 10px 0;
+  border-left: #aaaaaa 1px solid;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+.finally_tracking{
+  color: #333;
+  position: relative;
+}
+.first_tracking{
+  position: relative;
+}
+.finally_tracking .white,.first_tracking .white{
+  background-color: #ffffff;
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  left: -1px;
+}
+.finally_tracking .white{
+  top: -50%;
+}
+.first_tracking .white{
+  bottom: -50%;
+}
+.circle{
+  width: 10px;
+  height: 10px;
+  background-color: #aaaaaa;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  margin-top: -7px;
+}
+.finally_circle{
+  background-color: #fe6500;
+  border: 2px solid #f4cbb7;
+}
+.time{
+  margin-top: 5px;
+}
