@@ -1,4 +1,5 @@
 //shopping_cart.js
+var util = require("../../utils/util.js");
 //获取应用实例
 const app = getApp()
 
@@ -22,7 +23,7 @@ Page({
     // 页面显示
     var that = this;
     wx.request({
-      url: this.data.appIP + 'chatGoodscart/toList',
+      url: app.IP + 'chatGoodscart/toList',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
@@ -61,6 +62,8 @@ Page({
         if (cartlist[i].count < cartlist[i].goods_inventory) {
           cartlist[i].count = cartlist[i].count + 1;
           this.updateNum(id, cartlist[i].count);
+          cartlist[i].price = this.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(cartlist[i].count));
+          this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, cartlist[i].count);
         } else {
           wx.showToast({
             title: "不能再加了"
@@ -83,6 +86,8 @@ Page({
         if (cartlist[i].count > 1) {
           cartlist[i].count = cartlist[i].count - 1;
           this.updateNum(id, cartlist[i].count);
+          cartlist[i].price = this.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(cartlist[i].count));
+          this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, cartlist[i].count);          
         } else {
           wx.showToast({
             title: "不能再减了"
@@ -186,6 +191,34 @@ Page({
       isAll: isAll
     })
   },
+  //改变购物车
+  changeCart: function (id,goodsprice,price,count){
+    if (id != '' && goodsprice != '' && price != '' && count != '') {
+      wx.request({   
+      url: this.data.appIP + 'appSupplier/change.json',
+      data: {ID: id, COUNT: count, PRICE: price,GOODS_PRICE:goodsprice},
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
+      success: function (res) {
+
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+      
+      });
+    }
+ },
   submitOrder: function (){
     var that = this;
       //检查是否选择
@@ -214,36 +247,92 @@ Page({
       return;
    }
 
-    // wx.request({
-    //   url: this.data.appIP + 'chatOrder/placeOrder',
-    //   // data: {},
-    //   method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-    //   // header: {}, // 设置请求的 header
-    //   success: function (res) {
-    //     // success
-    //     if (res.data.result == "true") {
-    //       that.setData({
-    //         cartlist: res.data.cartlist
-    //       });
-    //     } else if (res.data.result == "noLogin") {//未登录
+    wx.request({
+      url: this.data.appIP + 'chatOrder/placeOrder',
+      data: {goodsObjArray: JSON.stringify(goodsArray)},
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
+      success: function (res) {
+        // success
+        if (res.data.result == "true") {//跳转到订单页
+          wx.redirectTo({
+            url: '../place_order/place_order'
+          });
+        } else if (res.data.result == "1002") {//未登录
 
-    //     }
-    //   },
-    //   fail: function () {
-    //     // fail
-    //     setTimeout(function () {
-    //       wx.showToast({
-    //         title: "加载失败",
-    //         duration: 1500
-    //       })
-    //     }, 100)
-    //   },
-    //   complete: function () {
-    //     // complete
-    //     wx.hideToast();
-    //   }
-    // });
+        } else if (res.data.result == "10001") {//未设置支付密码
+          //window.open("<%=basePath%>RongSafety/goSetPay");
+        } else {
+          console.log(res.data.result);
+          wx.showToast({
+            title: res.data.result,
+            duration: 1500
+          });
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });
    
     // getApp().globalData.objArray = goodsArray;
-  }
+  },
+  //保留2位小数
+  changeTwoDecimal_f: function(x) {
+    var f_x = parseFloat(x);
+    var f_x = Math.round(x * 100) / 100;
+    var s_x = f_x.toString();
+    var pos_decimal = s_x.indexOf('.');
+    if(pos_decimal < 0) {
+      pos_decimal = s_x.length;
+      s_x += '.';
+    }
+                while (s_x.length <= pos_decimal + 2) {
+      s_x += '0';
+    }
+                return s_x;
+  },
+  countInput: function(e){
+    // var count = "";
+    // count = (e.detail.value).replace(/[^\d]/g, ''); 
+    // var id= e.target.dataset.id;
+    // var cartlist = this.data.cartlist;
+    // for (var i = 0; i < cartlist.length; i++) {
+    //   if (cartlist[i].id == id) {
+    //   if (count > cartlist[i].goods_inventory) {
+    //     count = cartlist[i].goods_inventory;       
+    //     }
+    //   cartlist[i].count = count;
+    //   }
+      
+    // }
+  },
+  // chageCount: function (id, count){
+  //   var cartlist = this.data.cartlist;
+  //   for (var i = 0; i < cartlist.length; i++) {
+  //     if (count < cartlist[i].goods_inventory) {
+  //       if (cartlist[i].id == id) {
+  //         cartlist[i].price = this.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(count));
+  //         this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, count);
+  //         cartlist[i].count = count;
+  //       }
+  //       this.setData({
+  //         cartlist: cartlist
+  //       });
+  //     } else {
+  //       count = cartlist[i].goods_inventory;
+  //       cartlist[i].count = count;
+  //     }
+  //   }
+  // }
 })

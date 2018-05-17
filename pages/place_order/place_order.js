@@ -37,6 +37,45 @@ Page({
     this.setData({ p_c: this.data.p_c })
     console.log(this.data.p_c)
   },
+  onShow: function () {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
+    // 页面显示
+    var that = this;
+    wx.request({
+      url: app.IP + 'chatGoodscart/toList',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+        if (res.data.result == "true") {
+          that.setData({
+            cartlist: res.data.cartlist
+          });
+        } else if (res.data.result == "noLogin") {//未登录
+
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });
+
+  },
   pkIndex: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
