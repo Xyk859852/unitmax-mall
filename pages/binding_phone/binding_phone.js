@@ -1,5 +1,9 @@
+// 引入CryptoJS
+var WXBizDataCrypt = require('../../utils/crypto.js');
 // pages/binding_phone/binding_phone.js
 var timer=1;
+var sessionKey = '';
+const app = getApp();
 Page({
 
   /**
@@ -15,7 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    //选择组件对象
+    this.verifycode = this.selectComponent("#verifycode");
   },
 
   /**
@@ -93,4 +98,52 @@ Page({
       }, 1000)
     }
   },
+  getPhoneNumber: function (e) {
+    var that = this;
+    console.log(e);
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '未授权',
+        success: function (res) { }
+      })
+    } else {
+      var pc = new WXBizDataCrypt(app.AppID, wx.getStorageSync("session_key"));
+      var data = pc.decryptData(e.detail.encryptedData, e.detail.iv);
+      console.log('解密后 data: ', data)
+      wx.request({
+        url: app.IP +'chatUser/registersms',
+        data: {PHONE: data.purePhoneNumber},
+        header: {},
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: function(res) {
+          that.verifycode.showView({
+            phone: data.purePhoneNumber,
+            inputSuccess: function (phoneCode) {
+              //调用组件关闭方法
+              that.verifycode.closeView(data.purePhoneNumber);
+              //设置数据
+              that.setData({
+                code: phoneCode
+              });
+            }
+          });
+        },
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '同意授权',
+        success: function (res) { }
+      })
+    }
+  }
 })

@@ -1,11 +1,10 @@
 <!--mine.wxml-->
 <view class="container" style='background-image: url(../../images/1.png);'>
- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+ <navigator open-type="navigate" url="../binding_phone/binding_phone">申请授权</navigator>
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <block >
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{nickName}}</text>
     </block>
   </view>
 </view>
