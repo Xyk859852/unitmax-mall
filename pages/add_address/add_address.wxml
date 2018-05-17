@@ -1,4 +1,15 @@
 <!--pages/add_address/add_address.wxml-->
-<view class='address' bindtap='onChangeAddress'>
-      haha
- </view>
+<view class='body'>
+  <input placeholder='姓名' type='text'/>
+  <input placeholder='手机号码' type='tel'/>
+  <input placeholder='选择地址' disabled='true' value='{{address}}' bindtap='onChangeAddress'/>
+  <input placeholder='详细地址' type='text'/>
+  <view class='default'>
+  <switch type="checkbox" id='set_default' /><label for='set_default'>设为默认地址</label>
+  </view>
+</view>
+<view class='footer'>
+ <navigator url="../add_address/add_address">
+<button>保存</button>
+</navigator>
+</view>
