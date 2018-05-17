@@ -34,7 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    objArray:[]
   },
-  IP: "http://192.168.31.227:8080/"
+  IP: "http://192.168.31.132:8080/"
 })
