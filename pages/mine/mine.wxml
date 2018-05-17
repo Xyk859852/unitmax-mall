@@ -1,6 +1,11 @@
 <!--mine.wxml-->
 <view class="container" style='background-image: url(../../images/1.png);'>
+<<<<<<< HEAD
  <navigator open-type="navigate" url="../binding_phone/binding_phone">申请授权</navigator>
+=======
+  <image class='refresh' src='../../images/refresh.png'/>
+ <button class='userinfo' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+>>>>>>> 7e0b8ee7a3082b46dc2d40b6d6da476aea6d414d
   <view class="userinfo">
     <block >
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
@@ -44,10 +49,10 @@
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
     </navigator>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../advertising_detail/advertising_detail">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
+      <view>广告详页</view>
+    </navigator>
     <view class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>待付款</view>

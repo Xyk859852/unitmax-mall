@@ -7,6 +7,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   background-size:100% 100%;
+  position: relative;
 } 
 
 .userinfo {
@@ -25,6 +26,13 @@
 
 .userinfo-nickname {
   color: #fff;
+}
+.refresh{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 4%;
+  top: 4%;
 }
 .mine_container{
   position:relative;

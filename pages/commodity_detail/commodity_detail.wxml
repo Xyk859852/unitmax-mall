@@ -43,7 +43,8 @@
     <image wx:for="{{order.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart'>
-    <image src='../../images/shopping_cart.png'></image>
+    <view class='number'>1</view>
+    <image src='../../images/shopping_cart.png'/>
     <view>购物车</view>
   </view>
   <navigator url="../place_order/place_order?goods_id={{order.GOODS_ID}}" class='buy'>立即购买</navigator>

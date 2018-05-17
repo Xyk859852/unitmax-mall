@@ -1,11 +1,11 @@
-// pages/add_address/add_address.js
+// pages/advertising_detail/advertising_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address:""
+  
   },
 
   /**
@@ -63,30 +63,4 @@ Page({
   onShareAppMessage: function () {
   
   }
-
-  // onChangeAddress: function () {
-  //   var that = this
-  //   wx.chooseLocation({
-  //     success: function (res) {
-  //       // success  
-  //       console.log(res, "location")
-  //       that.setData({
-  //         hasLocation: true,
-  //         location: {
-  //           longitude: res.longitude,
-  //           latitude: res.latitude
-  //         },
-  //         detail_info: res.address,
-  //         wd: res.latitude,
-  //         jd: res.longitude
-  //       })
-  //     },
-  //     fail: function () {
-  //       // fail  
-  //     },
-  //     complete: function () {
-  //       // complete  
-  //     }
-  //   })  
-  // }
 })

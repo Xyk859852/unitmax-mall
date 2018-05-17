@@ -1,0 +1,15 @@
+<!--pages/amap_address/amap_address.wxml-->
+<view class="section">
+  <input bindinput="bindInput" placeholder="搜索" focus="true" />
+</view>
+<view class='title'>当前地址</view>
+<view class='address'><view style='width:{{address_label_width}}px;' bindtouchstart="bindSearch1">{{address}}</view><image bindtap='getRegeo' src='../../images/location.png'/></view>
+<view class="title,{{content?'show1':'hide'}}">附近地址</view>
+<view class="title,{{content1?'show1':'hide'}}">搜索地址</view>
+<view data-keywords="{{j.name}}" bindtouchstart="bindSearch" class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">
+  {{j.name}}
+</view>
+<view bindtouchstart="bindSearch" data-keywords="{{i.name}}" wx:key="this" class="text_box,{{content1?'show1':'hide'}}" wx:for="{{tips}}" wx:for-item="i">
+  {{i.district}} {{i.name}}
+  <view>{{i.address}}</view>
+</view>
