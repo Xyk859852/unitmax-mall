@@ -18,7 +18,8 @@
     "pages/evaluate/evaluate",
     "pages/order_list/order_list",
     "pages/logistics_tracking/logistics_tracking",
-    "pages/news_detail_url/news_detail_url"
+    "pages/news_detail_url/news_detail_url",
+    "pages/amap_address/amap_address"
   ],
   "window": {
     "backgroundTextStyle": "light",
