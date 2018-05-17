@@ -18,8 +18,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function isAvalible(value) {
+  if (undefined != value && "undefined" != value && value != null && value != "" && value != "null") {
+    return true;
+  }
+
+  return false;
+}
+
 module.exports = {
   province: p_c.province,
   city: p_c.city,
   formatTime: formatTime
 }
+
+module.exports.isAvalible = isAvalible;
+
+
