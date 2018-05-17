@@ -12,43 +12,16 @@ Page({
     nearby: {},
     location:{},
     address:"",
-    content: true,
+    content: false,
     content1: false,
+    address_label_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    myAmapFun.getRegeo({
-      success: function (data) {
-        that.setData({
-          address: data[0].name + ' ' + data[0].desc,
-          location: data[0].longitude+","+data[0].latitude
-        });
-        myAmapFun.getPoiAround({
-          querytypes: "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务 | 风景名胜 | 商务住宅 | 政府机构及社会团体 | 科教文化服务 |交通设施服务 | 金融保险服务 | 公司企业 | 道路附属设施 | 地名地址信息 | 公共设施",
-          location: that.data.location,
-          success: function (data) {
-            //成功回调
-            if (data && data.poisData) {
-              that.setData({
-                nearby: data.poisData
-              });
-            }
-          },
-          fail: function (info) {
-            //失败回调
-            console.log(info)
-          }
-        })
-      },
-      fail: function (info) {
-        //失败回调
-        console.log(info)
-      }
-    })
+    this.getRegeo()
   },
 
   /**
@@ -98,6 +71,42 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getRegeo: function () {
+    var that = this;
+    myAmapFun.getRegeo({
+      success: function (data) {
+        that.setData({
+          address: data[0].name,
+          location: data[0].longitude + "," + data[0].latitude
+        });
+        myAmapFun.getPoiAround({
+          querytypes: "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务 | 风景名胜 | 商务住宅 | 政府机构及社会团体 | 科教文化服务 |交通设施服务 | 金融保险服务 | 公司企业 | 道路附属设施 | 地名地址信息 | 公共设施",
+          location: that.data.location,
+          success: function (data) {
+            //成功回调
+            if (data && data.poisData) {
+              that.setData({
+                nearby: data.poisData,
+                content: true,
+              });
+            }
+          },
+          fail: function (info) {
+            //失败回调
+            that.setData({
+              content: false,
+            });
+          }
+        })
+      },
+      fail: function (info) {
+        //失败回调
+        that.setData({
+          content: false,
+        });
+      }
+    })
   },
   bindInput: function (e) {
     var that = this;

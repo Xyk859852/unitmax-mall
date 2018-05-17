@@ -19,7 +19,8 @@
     "pages/order_list/order_list",
     "pages/logistics_tracking/logistics_tracking",
     "pages/news_detail_url/news_detail_url",
-    "pages/amap_address/amap_address"
+    "pages/amap_address/amap_address",
+    "pages/advertising_detail/advertising_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

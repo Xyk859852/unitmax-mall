@@ -1,6 +1,7 @@
 <!--mine.wxml-->
 <view class="container" style='background-image: url(../../images/1.png);'>
- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  <image class='refresh' src='../../images/refresh.png'/>
+ <button class='userinfo' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -45,10 +46,10 @@
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
     </navigator>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../advertising_detail/advertising_detail">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
+      <view>广告详页</view>
+    </navigator>
     <view class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>待付款</view>
