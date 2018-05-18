@@ -1,12 +1,11 @@
-// pages/add_address/add_address.js
-const app = getApp();
+// pages/about/about.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address:""
+  
   },
 
   /**
@@ -63,21 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  formBindsubmit: function(e){
-      console.log(e.detail.value);
-      wx.request({
-        url: app.IP +'chatAddRess/save',
-        data: e.detail.value,
-        header: {},
-        method: 'GET',
-        dataType: 'json',
-        success: function(res) {
-          console.log(res);
-        },
-        fail: function(res) {},
-        complete: function(res) {},
-      })
   }
 })

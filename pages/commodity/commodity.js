@@ -266,7 +266,9 @@ Page({
     GOODSLEVEL_ID = "";
     GOODSTYPE_ID = "";
     this.setData({
-      goodsLevels: []
+      goodsLevels: [],
+      levelIndex:-1,
+      typeIndex:-1
     });
   },
   //点击确定

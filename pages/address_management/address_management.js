@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/address_management/address_management.js
 Page({
 
@@ -12,7 +13,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: app.IP +'chatAddRess/getList',
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        that.setData({
+          list: res.data.list
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
   /**

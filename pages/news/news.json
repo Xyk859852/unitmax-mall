@@ -1,4 +1,5 @@
 {
   "enablePullDownRefresh": true,
-  "onReachBottomDisance": 50
+  "onReachBottomDisance": 50,
+  "navigationBarTitleText": "新闻列表"
 }

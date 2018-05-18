@@ -1,0 +1,11 @@
+<!--pages/about/about.wxml-->
+<view class='body'>
+  <view class='news_title'>上海星睿信息技术有限公司</view>
+  <view class='news_content'> 
+      上海星睿信息技术有限公司2015年11月于上海市普陀区注册成立，注册资金500万元。上海星睿信息技术有限公司以“星睿创客systarmaker”、“星睿软件systarsoftware”、“星睿互动systarinterface”为服务品牌，推出了星睿创客虚拟现实技术、客流分析技术、微信公众服务平台星睿cms、小事海淘ezthing跨境电商服务平台、走心旅程gogogoin在线旅行分享服务、开物黑科技51kaiwu电商平台、境外电商服务平台ezgoshopping等服务内容，成为一家以创意技术运营孵化运营为主的创新创业企业。
+  </view>
+</view>
+<view class='footer'>
+  <view>Copyright © 2014-2018</view>
+  <view>上海星睿信息技术有限公司</view>
+</view>

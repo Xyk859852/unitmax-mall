@@ -245,13 +245,14 @@ Page({
       });
       return;
     }
-
+    console.log(111111);
     wx.request({
       url: that.data.appIP + 'chatOrder/placeOrder',
       data: { goodsObjArray: JSON.stringify(goodsArray) },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
       success: function (res) {
+        console.log(res);
         // success
         if (res.data.result == "true") {//跳转到订单页  
           getApp().globalData.objArray = goodsArray;
@@ -259,7 +260,9 @@ Page({
             url: '../place_order/place_order?IDS=' + IDS
           });
         } else if (res.data.result == "1002") {//未登录
-
+          wx.switchTab({
+            url: '../mine/mine',
+          })
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");
         } else {

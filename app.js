@@ -3,17 +3,16 @@ var AppId = 'wx95c4320e48a6e988';
 var AppSecret = 'a0453042c687e4d8f08616ca4778f23e';
 //app.js
 App({
+  // ToastPannel,
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
-    console.log("app.js");
     // 发送 res.code 到后台换取 openId, sessionKey, unionId
     //调用登录接口，获取 code
     wx.login({
       success: function (res) {
-        console.log(123);
         //发起网络请求
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session',

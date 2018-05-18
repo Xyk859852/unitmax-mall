@@ -159,9 +159,7 @@ Page({
                           console.log("注册成功");
                           that.verifycode.closeView(data.purePhoneNumber);
                           wx.setStorageSync("user", res.data.user);
-                          wx.switchTab({
-                            url: '../mine/mine'
-                          })
+                          wx.navigateBack({ changed: true });//返回上一页
                         }
                       },
                       fail: function(res) {},

@@ -9,7 +9,7 @@ Page({
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
     address_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
-    contact_view_width: wx.getSystemInfoSync().windowWidth * 0.46 - 0.5,
+    contact_view_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     mobile:"18361296775"
   },
 

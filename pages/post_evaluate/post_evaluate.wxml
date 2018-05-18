@@ -1,0 +1,46 @@
+<!--pages/post_evaluate/post_evaluate.wxml-->
+<view class='evaluate_list'>
+  <view class='evaluate_box'>
+    <image class='commodity_img' src='../../images/category.png'/>
+    <view class='evaluate_title' style='width:{{evaluate_title_width}}px;'>
+      <view class='evaluate' bindtap='good'>
+        <image src='{{img1}}'/>
+        <label class="{{good1?'red':'default'}}">好评</label>
+      </view>
+      <view class='evaluate' bindtap='general'>
+        <image src='{{img2}}'/>
+        <label class="{{general1?'yellow':'default'}}">中评</label>
+      </view>
+      <view class='evaluate' bindtap='bad'>
+        <image src='{{img3}}'/>
+        <label class="{{bad1?'grey':'default'}}">差评</label>
+      </view>
+    </view>
+  </view>
+  <textarea placeholder='请输入你对商品的评价内容' class='evaluate_content'></textarea>
+</view>
+<view class='evaluate_list'>
+  <view class='evaluate_box'>
+    <image class='commodity_img' src='../../images/category.png'/>
+    <view class='evaluate_title' style='width:{{evaluate_title_width}}px;'>
+      <view class='evaluate' bindtap='good'>
+        <image src='{{img1}}'/>
+        <label class="{{good1?'red':'default'}}">好评</label>
+      </view>
+      <view class='evaluate' bindtap='general'>
+        <image src='{{img2}}'/>
+        <label class="{{general1?'yellow':'default'}}">中评</label>
+      </view>
+      <view class='evaluate' bindtap='bad'>
+        <image src='{{img3}}'/>
+        <label class="{{bad1?'grey':'default'}}">差评</label>
+      </view>
+    </view>
+  </view>
+  <textarea placeholder='请输入你对商品的评价内容' class='evaluate_content'></textarea>
+</view>
+<view class='footer'>
+ <navigator>
+<button>保存</button>
+</navigator>
+</view>

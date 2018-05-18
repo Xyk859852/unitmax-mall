@@ -1,0 +1,30 @@
+/* pages/about/about.wxss */
+page{
+  background-color: #ffffff;
+}
+.body{
+  border-top: 1px #f5f5f5 solid;
+  padding: 10px 4%;
+}
+.news_title{
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-align: center;
+}
+.news_content{
+  padding: 10px 0;
+  font-size: 14px;
+  line-height: 25px;
+  text-indent: 28px;
+}
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  color: #dddddd;
+  font-size: 12px;
+  width: 100%;
+  padding: 10px 0;
+}
