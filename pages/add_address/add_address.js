@@ -1,4 +1,5 @@
 // pages/add_address/add_address.js
+const app = getApp();
 Page({
 
   /**
@@ -62,31 +63,21 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
 
-  // onChangeAddress: function () {
-  //   var that = this
-  //   wx.chooseLocation({
-  //     success: function (res) {
-  //       // success  
-  //       console.log(res, "location")
-  //       that.setData({
-  //         hasLocation: true,
-  //         location: {
-  //           longitude: res.longitude,
-  //           latitude: res.latitude
-  //         },
-  //         detail_info: res.address,
-  //         wd: res.latitude,
-  //         jd: res.longitude
-  //       })
-  //     },
-  //     fail: function () {
-  //       // fail  
-  //     },
-  //     complete: function () {
-  //       // complete  
-  //     }
-  //   })  
-  // }
+  formBindsubmit: function(e){
+      console.log(e.detail.value);
+      wx.request({
+        url: app.IP +'chatAddRess/save',
+        data: e.detail.value,
+        header: {},
+        method: 'GET',
+        dataType: 'json',
+        success: function(res) {
+          console.log(res);
+        },
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+  }
 })

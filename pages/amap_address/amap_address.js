@@ -86,6 +86,7 @@ Page({
           success: function (data) {
             //成功回调
             if (data && data.poisData) {
+              console.log(data.poisData);
               that.setData({
                 nearby: data.poisData,
                 content: true,
@@ -164,14 +165,25 @@ Page({
     }
   },
   bindSearch: function (e) {
+    console.log(e);
     var keywords = e.target.dataset.keywords;
+    var location = e.target.dataset.location;
+
+    var cityname = e.target.dataset.cityname;
+    var adname = e.target.dataset.adname;
+    var pname = e.target.dataset.pname;
+
     if (keywords==undefined){
 
     }else{
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2]  //上一个页面
       prevPage.setData({
-        address: keywords
+        address: keywords,
+        location: location,
+        province: pname,
+        city: cityname,
+        district: adname
       })
       wx.navigateBack({
         delta: -1
@@ -179,11 +191,24 @@ Page({
     }
   },
   bindSearch1: function (e) {
+    console.log(e);
+    var location = e.target.dataset.location;
+    var keywords = e.target.dataset.keywords;
+   
+    var cityname = e.target.dataset.cityname;
+    var adname = e.target.dataset.adname;
+    var pname = e.target.dataset.pname;
+   
     var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
-      address: that.data.address
+      address: that.data.address,
+      location: location,
+      province: pname,
+      city: cityname,
+      district: adname
+
     })
     wx.navigateBack({
       delta: -1

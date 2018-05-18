@@ -41,6 +41,7 @@ Page({
     //初始化p_c
     this.setData({ p_c: this.data.p_c });
     console.log(this.data.p_c);
+    console.log(options);
     this.setData({ goodsCartId: options.IDS});
   },
   /**
@@ -61,6 +62,7 @@ Page({
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { 'content-type': 'application/x-www-form-urlencoded' },  // 设置请求的 header
       success: function (res) {
+        console.log(res);
         // success
         if (res.data.result == "true") {
           that.setData({
@@ -68,7 +70,9 @@ Page({
           });
           that.calculateFinalPrice();
         } else if (res.data.result == "1002") {//未登录
-
+          wx.switchTab({
+            url: '../mine/mine',
+          })
         }
       },
       fail: function () {

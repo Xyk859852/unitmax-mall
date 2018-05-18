@@ -1,17 +1,21 @@
 <!--pages/add_address/add_address.wxml-->
+<form bindsubmit="formBindsubmit" >
 <view class='body'>
-  <input placeholder='姓名' type='text'/>
-  <input placeholder='手机号码' type='tel'/>
+  <input name="CONSIGNEE" placeholder='姓名' type='text'/>
+  <input name="TAKEPHONE" placeholder='手机号码' type='tel'/>
  <navigator url="../amap_address/amap_address">
-  <input placeholder='选择地址' disabled='true' value='{{address}}'/>
+  <input name='MOBLE' placeholder='选择地址' disabled='true' value='{{address}}'/>
+  <input name="addRessLocation" placeholder='选择地址' disabled='true' value='{{location}}'/>
+  <input name="PROVINCE" placeholder='省' disabled='true' value='{{province}}'/>
+  <input name="CITY" placeholder='市' disabled='true' value='{{city}}'/>
+  <input name="DISTRICT" placeholder='区' disabled='true' value='{{district}}'/>
 </navigator>
-  <input placeholder='详细地址' type='text'/>
+  <input name="ADDRESS_DTEAIL" placeholder='详细地址' type='text'/>
   <view class='default'>
-  <switch type="checkbox" id='set_default' /><label for='set_default'>设为默认地址</label>
+  <switch name="set_default" type="checkbox" id='set_default' /><label for='set_default'>设为默认地址</label>
   </view>
 </view>
 <view class='footer'>
- <navigator url="../add_address/add_address">
-<button>保存</button>
-</navigator>
+<button form-type='submit'>保存</button>
 </view>
+</form>
