@@ -1,4 +1,5 @@
 // components/verifycode/verifycode.js
+var util = require("../utils/util.js");
 //获取应用实例  
 var app = getApp()
 Component({
@@ -36,7 +37,10 @@ Component({
     //展示
     showView({phone, inputSuccess}) {
       this.inputSuccess = inputSuccess;
-      var mPhone = phone.substr(0, 3) + '****' + phone.substr(7); 
+      var mPhone = '';
+      if(util.isAvalible(phone)){
+        mPhone = phone.substr(0, 3) + '****' + phone.substr(7);
+      } 
       this.setData({
         isShow: !this.data.isShow,
         phone: mPhone,

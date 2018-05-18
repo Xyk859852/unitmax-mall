@@ -58,8 +58,10 @@
     </picker>
   </view> 
   <view class='other'><label>买家留言</label><input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容'/></view>
+<!-- 验证码组件 -->
+<verifycode id='verifycode' title="请输入支付密码" content="" />
 </view>
 <view class='footer'>
-   <navigator class='buy' url="../place_success/place_success">提交订单</navigator>
+   <button class='buy' bindtap='submitOrder'>提交订单</button>  
   <label class='all'>总计：{{TOTALPRICE}}元</label>
 </view>
