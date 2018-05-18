@@ -2,12 +2,12 @@
 <view class="container" style='background-image: url(../../images/1.png);'>
   <image class='refresh' src='../../images/refresh.png'/>
   <view class="userinfo">
-  <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">获取用户信息</button>
+    <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+      获取用户信息
+    </button>
      <block wx:else>
     <open-data type="userAvatarUrl"></open-data>
-    <open-data type="userNickName"></open-data>
-       <!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>  -->
+    <open-data type="userNickName"></open-data>  -->
     </block> 
   </view>
 </view>
