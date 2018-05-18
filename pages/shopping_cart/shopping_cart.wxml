@@ -1,6 +1,6 @@
 <!--shopping_cart.wxml-->
 <checkbox-group>
-<block wx:for="{{cartlist}}">
+<block wx:for="{{cartlist}}" wx:key="this">
   <view class="checkbox">  
     <switch type="checkbox" class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
     <view class='commodity_li' style='width:{{commodity_li_width}}px;'>

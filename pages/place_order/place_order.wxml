@@ -19,18 +19,18 @@
   </view>
 </view>
 <view class='body'>
-  <view class='address_box'>
+  <view class='address_box' >
     <image class='address_left' src='../../images/address.png'/>
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
-    <view>收货人：姓名<label>电话</label></view>
-    <view class='address_detail'>收件地址：地址地址地址地址</view>
+    <view>收货人：{{CONSIGNEE}}<label>{{TAKEPHONE}}</label></view>
+    <view class='address_detail'>收件地址：{{ADDRESS_DTEAIL}}</view>
   </view>
   <image class='address_right' src='../../images/right.png'/>
 </view>
 <view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
 <view class='commodity_list'>
 <view class='other'><image src='../../images/seller.png'/><label>聚脉商城</label></view>
-<block wx:for="{{goodsList}}">
+<block wx:for="{{goodsList}}" wx:key="this">
   <view class='commodity_li'>
     <image src='{{appIP}}{{item.IMGSRC}}'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
