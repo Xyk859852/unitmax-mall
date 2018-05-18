@@ -117,21 +117,70 @@ Page({
       console.log('解密后 data: ', data)
       wx.request({
         url: app.IP +'chatUser/registersms',
-        data: {PHONE: data.purePhoneNumber},
+        data: { PHONE: data.purePhoneNumber},
         header: {},
         method: 'GET',
         dataType: 'json',
         responseType: 'text',
         success: function(res) {
+          console.log(res);
           that.verifycode.showView({
             phone: data.purePhoneNumber,
             inputSuccess: function (phoneCode) {
+              console.log("组件关闭");
+              console.log(that.verifycode.data.codes);
+              var code = that.verifycode.data.codes;
+              code = code.join("");
+              console.log(code);
+              wx.request({
+                url: app.IP +'chatUser/isCode',
+                data: {
+                  PHONE: data.purePhoneNumber,
+                  CODE: code},
+                header: {},
+                method: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                  console.log(res);
+                  if (res.data.result =="success"){
+                    wx.request({
+                      url: app.IP +'chatUser/register',
+                      data: {
+                        OPENID: wx.getStorageSync("openid"),
+                        PHONE: data.purePhoneNumber,
+                        NICKNAME: wx.getStorageSync("wxuser").nickName
+                        },
+                      header: {},
+                      method: 'GET',
+                      dataType: 'json',
+                      success: function(res) {
+                        console.log(res);
+                        if(res.data.result=="true"){
+                          console.log("注册成功");
+                          that.verifycode.closeView(data.purePhoneNumber);
+                          wx.setStorageSync("user", res.data.user);
+                          wx.switchTab({
+                            url: '../mine/mine'
+                          })
+                        }
+                      },
+                      fail: function(res) {},
+                      complete: function(res) {},
+                    })
+                  }else{
+                      
+                  }
+                },
+                fail: function(res) {},
+                complete: function(res) {},
+              })
               //调用组件关闭方法
-              that.verifycode.closeView(data.purePhoneNumber);
+             
               //设置数据
               that.setData({
                 code: phoneCode
               });
+
             }
           });
         },

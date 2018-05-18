@@ -1,6 +1,6 @@
 <!--shopping_cart.wxml-->
 <checkbox-group>
-<block wx:for="{{cartlist}}">
+<block wx:for="{{cartlist}}" wx:key="this">
   <view class="checkbox">  
     <switch type="checkbox" class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
     <view class='commodity_li' style='width:{{commodity_li_width}}px;'>
@@ -8,7 +8,7 @@
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title' data-id="{{item.goods_id}}">{{item.spec_info}}</view>
         <view class='commodity_li_tip'>品类：{{item.goodstype_name}} 等级：{{item.goodslevel_name}}</view>
-        <view class='commodity_li_price'>￥{{item.goods_price}}<view class="num_box"><view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view><input class='smallbtn' value='{{item.count}}'  bindinput='countInput' data-id="{{item.id}}"/><view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view></view></view>
+        <view class='commodity_li_price'>￥{{item.goods_price}}<view class="num_box"><view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view><input class='smallbtn' value='{{item.count}}' bindblur='blurCount' bindinput='countInput' data-id="{{item.id}}"/><view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view></view></view>
       </view>
     </view>
   </view>

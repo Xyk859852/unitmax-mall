@@ -3,12 +3,14 @@
 <template is="toast" data="{{..._toast_}}"/>
 <view class="container" style='background-image: url(../../images/1.png);'>
   <image class='refresh' src='../../images/refresh.png'/>
- <button class='userinfo' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
   <view class="userinfo">
-    <block >
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{nickName}}</text>
-    </block>
+    <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+      获取用户信息
+    </button>
+     <block wx:else>
+    <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data>  -->
+    </block> 
   </view>
 </view>
 <view class='mine_container'>
