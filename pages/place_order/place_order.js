@@ -29,7 +29,10 @@ Page({
     pcIndex: [0, 0],
     MSG:'',//留言
     TOTALPRICE:0.00, //总价格
-    TRANS_FEE:0.00
+    TRANS_FEE:0.00, //运费
+    goodsCartId:'',//购物车id
+    goodsList:null,///商品集合
+    defaultAddress:null //收货地址
   },
 
   /**
@@ -65,6 +68,7 @@ Page({
         if (res.data.result == "true") {
           that.setData({
             goodsList: res.data.goodsList,
+            defaultAddress: res.data.defaultAddress
           });
           that.calculateFinalPrice();
         } else if (res.data.result == "1002") {//未登录
@@ -200,5 +204,74 @@ Page({
       TOTALPRICE: util.changeTwoDecimal_f(TOTALPRICE),
       TRANS_FEE: TRANS_FEE
     });
+  },
+  selectAddress : function(){
+
+  },
+  submitOrder : function(){
+    var that = this;
+    var data = {};
+    var SHIP_PRICE = 0.00;
+    data.ADDRESSBOOK_ID = that.data.defaultAddress.ADDRESSBOOK_ID;
+    data.RECEIVE_TRUENAME = that.data.defaultAddress.CONSIGNEE;
+    data.RECEIVE_MOBILE = that.data.defaultAddress.TAKEPHONE;
+    data.RECEIVE_PROVINCE = that.data.defaultAddress.PROVINCE;
+    data.RECEIVE_CITY = that.data.defaultAddress.CITY;
+    data.RECEIVE_DISTRICT = that.data.defaultAddress.DISTRICT;
+    data.RECEIVE_ADDRESS = that.data.defaultAddress.ADDRESS_DTEAIL;
+    data.MSG = that.data.MSG;
+    var goodsList = that.data.goodsList;
+    var goodsList2 = [];
+    for (var i= 0;i < goodsList.length;i++){
+      var goods = {
+        GOODS_ID: goodsList[i].GOODS_ID,
+        GOODS_NAME: goodsList[i].GOODS_NAME,
+        GOODSTYPE_NAME: goodsList[i].GOODSTYPE_NAME,
+        GOODSLEVEL_NAME: goodsList[i].GOODSLEVEL_NAME,
+        GOODS_PRICE: goodsList[i].GOODS_PRICE,
+        GOODS_IMG: goodsList[i].IMGSRC,
+        TRANS_FEE: goodsList[i].TRANS_FEE,
+        GOODS_TOTAL_PRICE: util.changeTwoDecimal_f(goodsList[i].buyGoodsCount * goodsList[i].GOODS_PRICE),
+        GOODS_AMOUNT: goodsList[i].buyGoodsCount        
+      }
+      goodsList2.push(goods);
+      SHIP_PRICE += goodsList[i].TRANS_FEE;
+    }
+    data.SHIP_PRICE = SHIP_PRICE;
+    data.TOTALPRICE = that.data.TOTALPRICE;
+    data.goodsList = JSON.stringify(goodsList);
+    if (util.isAvalible(that.data.goodsCartId)){
+      data.IDS = that.data.goodsCartId;
+    }
+    wx.request({
+      url: app.IP + 'chatOrder/saveOrder',
+      data: data,
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/x-www-form-urlencoded' },  // 设置请求的 header
+      success: function (res) {
+        // success
+        if (res.data.result == "true") {
+ 
+        } else {//未登录
+          wx.showToast({
+            title: res.data.result,
+            duration: 1500
+          });
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });  
   }
 })
