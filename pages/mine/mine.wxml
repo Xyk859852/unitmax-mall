@@ -1,4 +1,6 @@
 <!--mine.wxml-->
+<import src="../../components/toast/toast.wxml"/>
+<template is="toast" data="{{..._toast_}}"/>
 <view class="container" style='background-image: url(../../images/1.png);'>
   <image class='refresh' src='../../images/refresh.png'/>
  <button class='userinfo' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
@@ -49,9 +51,17 @@
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator>
-    <view class='mine_order_state_container'>
+    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate">
       <image src='../../images/category.png'></image>
-      <view>待付款</view>
-    </view>
+      <view>发布评价</view>
+    </navigator>
+    <navigator class='mine_order_state_container' url="../about/about">
+      <image src='../../images/category.png'></image>
+      <view>关于我们</view>
+    </navigator>
+    <button bindtap='openToastPannel' class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view bindtap='openToastPannel'>测弹窗</view>
+    </button> 
   </view>
 </view>

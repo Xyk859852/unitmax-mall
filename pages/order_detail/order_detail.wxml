@@ -2,8 +2,13 @@
 <view class='body'>
   <view class='top'>
     <image src='../../images/IMG_213.png'/>
-    <text>订单已发货</text>
+    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking">
+      <view>订单已发货</view>
+      <view class='time'>2018-05-18 15:00</view>
+    </navigator>
+    <image class="right"src="../../images/right.png"></image>
   </view>
+  
   <view class='address_box'>
     <image class='address_left' src='../../images/address.png'/>
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
@@ -43,10 +48,7 @@
   <view class='actual'>实付款<text class='other_right'>￥100.00</text>
     <image src='../../images/order_price_bg.png'/></view>
   </view>
-  <view class='contact'>
-    <view class='contact_seller' bindtap='callmobile' style='width:{{contact_view_width}}px;'>联系卖家</view>
-    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking">订单跟踪</navigator>
-  </view>
+  <view class='contact' bindtap='callmobile'>联系卖家</view>
   <view class='order_detail'>
     <view class='other'>订单编号：1800002544225545115</view>
     <view class='other'>创建时间：2018-05-15 15:00</view>

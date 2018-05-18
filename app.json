@@ -20,13 +20,16 @@
     "pages/logistics_tracking/logistics_tracking",
     "pages/news_detail_url/news_detail_url",
     "pages/amap_address/amap_address",
-    "pages/advertising_detail/advertising_detail"
+    "pages/advertising_detail/advertising_detail",
+    "components/toast/toast",
+    "pages/about/about",
+    "pages/post_evaluate/post_evaluate"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#333",
-    "navigationBarTitleText": "荣昌商城",
-    "navigationBarTextStyle": "light"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "上海星睿",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#8a8a8a",

@@ -29,16 +29,16 @@
 </view>
 <view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
 <view class='commodity_list'>
-<view class='other'><image src='../../images/seller.png'/><label>聚脉商城</label></view>
+<view class='other'><image src='../../images/seller.png'/><label>星睿商城</label></view>
   <view class='commodity_li'>
     <image src='../../images/category_title.jpg'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
       <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-      <view class='commodity_li_price'>￥1299.00
+      <view class='commodity_li_price'>￥129.00
         <view class="num_box">
             <view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view>
-            <input class='smallbtn' value='{{item.num}}'/>
+            <input class='smallbtn' value='1'/>
             <view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view>
             </view>
       </view>
@@ -49,10 +49,10 @@
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
       <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-      <view class='commodity_li_price'>￥1299.00
+      <view class='commodity_li_price'>￥100.00
         <view class="num_box">
             <view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view>
-            <input class='smallbtn' value='{{item.num}}'/>
+            <input class='smallbtn' value='1'/>
             <view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view>
         </view>
       </view>
@@ -60,8 +60,8 @@
   </view>
 </view>
   <view class='other'><label>到店自取</label><switch class='other_right'></switch></view>
-  <view class='other' bindtap='showDelivery'><label>配送方式</label><label class='other_right'>第三方物流￥100.00元</label></view>
-    <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>余额支付</label></view>
+  <view class='other' bindtap='showDelivery'><label>配送方式</label><label class='other_right'>第三方物流￥0.00元</label></view>
+    <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>微信支付</label></view>
   <view class="section" >  
     <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
       <view class="picker">
@@ -73,5 +73,5 @@
 </view>
 <view class='footer'>
    <navigator class='buy' url="../place_success/place_success">提交订单</navigator>
-  <label class='all'>总计：0.00元</label>
+  <label class='all'>总计：229.00元</label>
 </view>

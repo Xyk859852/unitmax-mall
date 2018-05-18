@@ -1,16 +1,11 @@
-// pages/order_detail/order_detail.js
+// pages/about/about.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
-    other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
-    address_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
-    address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
-    contact_view_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
-    mobile:"18361296775"
+  
   },
 
   /**
@@ -67,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  callmobile:function(){
-    wx.makePhoneCall({
-      phoneNumber: this.data.mobile
-    })
   }
 })

@@ -5,6 +5,7 @@ Page({
   data: {
     appIP: app.IP,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.7 * 0.27,
+    category_width: wx.getSystemInfoSync().windowWidth /3 -1,
     svLeftHeight: '100',
     tabArr: {
       curHdIndex: 0,
