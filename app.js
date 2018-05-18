@@ -76,6 +76,6 @@ App({
     userInfo: null,
     objArray:[]
   },
-  IP: "http://192.168.31.227:8080/",
+  IP: "http://192.168.31.132:8085/",
   AppID:"wx95c4320e48a6e988"
 })
