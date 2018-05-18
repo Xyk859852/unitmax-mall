@@ -1,5 +1,8 @@
 // pages/place_order/place_order.jsvar app = getApp();
 var util = require("../../utils/util.js");
+//获取应用实例
+const app = getApp()
+
 var province = (util.province || []).map(v => {
   return v.title
 });
@@ -14,6 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    appIP: app.IP,
     Delivery:false,
     payment:false,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
@@ -23,6 +27,9 @@ Page({
     p_c: [["今天"], ["1:00"]],
     //对应的数组下标 eg: pcIndex[1,2]指的是 p_c[0][1] 省的名称 和 p_c[1][2] 市的名称
     pcIndex: [0, 0],
+    MSG:'',//留言
+    TOTALPRICE:0.00, //总价格
+    TRANS_FEE:0.00
   },
 
   /**
@@ -31,12 +38,14 @@ Page({
   onLoad: function (options) {
     this.data.p_c[0] = province
     this.data.p_c[1] = city
-
     //初始化p_c
-
-    this.setData({ p_c: this.data.p_c })
-    console.log(this.data.p_c)
+    this.setData({ p_c: this.data.p_c });
+    console.log(this.data.p_c);
+    this.setData({ goodsCartId: options.IDS});
   },
+  /**
+  * 生命周期函数--监听页面显示
+  */
   onShow: function () {
     wx.showToast({
       title: "Loading...",
@@ -45,18 +54,20 @@ Page({
     })
     // 页面显示
     var that = this;
+    console.log(JSON.stringify(getApp().globalData.objArray));
     wx.request({
-      url: app.IP + 'chatGoodscart/toList',
-      // data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      url: app.IP + 'chatOrder/placeOrderSuccess',
+      data: { goodsObjArray: JSON.stringify(getApp().globalData.objArray), IDS: that.data.goodsCartId },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/x-www-form-urlencoded' },  // 设置请求的 header
       success: function (res) {
         // success
         if (res.data.result == "true") {
           that.setData({
-            cartlist: res.data.cartlist
+            goodsList: res.data.goodsList,
           });
-        } else if (res.data.result == "noLogin") {//未登录
+          that.calculateFinalPrice();
+        } else if (res.data.result == "1002") {//未登录
 
         }
       },
@@ -74,7 +85,6 @@ Page({
         wx.hideToast();
       }
     });
-
   },
   pkIndex: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -120,13 +130,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
   
   },
 
@@ -183,5 +186,19 @@ Page({
     this.setData({
       payment: false
     })
+  },
+  calculateFinalPrice: function(){
+    var TOTALPRICE = 0;
+    var TRANS_FEE = 0;
+    var goodsList = this.data.goodsList;
+    for (var i = 0; i < goodsList.length;i++){
+      TOTALPRICE += goodsList[i].GOODS_PRICE * goodsList[i].buyGoodsCount;
+      TRANS_FEE += goodsList[i].TRANS_FEE;
+    }
+    TOTALPRICE += TRANS_FEE;
+    this.setData({
+      TOTALPRICE: util.changeTwoDecimal_f(TOTALPRICE),
+      TRANS_FEE: TRANS_FEE
+    });
   }
 })
