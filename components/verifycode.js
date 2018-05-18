@@ -48,24 +48,11 @@ Component({
      * 关闭组件
      */
     closeView(e){
-      
-      console.log(e);
-
-      wx.request({
-        url: app.IP +'chatUser/register',
-        data: {},
-        header: {},
-        method: 'GET',
-        dataType: 'json',
-        responseType: 'text',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
       this.setData({
         isShow: !this.data.isShow,
         isFocus:false
       })
+     
     },
     /**
      * 点击输入框
