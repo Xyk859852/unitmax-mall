@@ -62,6 +62,9 @@
 <verifycode id='verifycode' title="请输入支付密码" content="" />
 </view>
 <view class='footer'>
-   <button class='buy' bindtap='submitOrder'>提交订单</button>  
+   <!-- <navigator url='../place_success/place_success'> -->
+   <navigator url='../order_detail/order_detail'>
+    <!-- <button class='buy' bindtap='submitOrder'>提交订单</button>    -->
+   </navigator> 
   <label class='all'>总计：{{TOTALPRICE}}元</label>
 </view>

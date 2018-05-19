@@ -261,13 +261,11 @@ Page({
           that.verifycode.showView({
             phone: '',
             inputSuccess: function (phoneCode) {
-              console.log("组件关闭");
-              console.log(that.verifycode.data.codes);
               var code = that.verifycode.data.codes;
               code = code.join("");
               console.log(code);
               wx.request({
-                url: app.IP + 'chatUser/isCode',
+                url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + ORDERFORM_ID + '&PAY_PASSWORD=' + code,
                 data: {
                   PHONE: '',
                   CODE: code
@@ -276,32 +274,37 @@ Page({
                 method: 'GET',
                 dataType: 'json',
                 success: function (res) {
-                  console.log(res);
-                  if (res.data.result == "success") {
-                    wx.request({
-                      url: app.IP + 'chatUser/register',
-                      data: {
-                        OPENID: wx.getStorageSync("openid"),
-                        PHONE: '',
-                        NICKNAME: wx.getStorageSync("wxuser").nickName
-                      },
-                      header: {},
-                      method: 'GET',
-                      dataType: 'json',
-                      success: function (res) {
-                        console.log(res);
-                        if (res.data.result == "true") {
-                          console.log("注册成功");
-                          that.verifycode.closeView('');
-                          wx.setStorageSync("user", res.data.user);
-                          wx.navigateBack({ changed: true });//返回上一页
-                        }
-                      },
-                      fail: function (res) { },
-                      complete: function (res) { },
+                  if (res.data.result == "true") {//未登录
+                    wx.navigateTo({
+                      url: '../place_success/place_success?ORDERFORM_ID' + ORDERFORM_ID
                     })
-                  } else {
+                  }
 
+                  if (res.data.result == "1002") {//未登录
+                    
+                  }
+
+                  if (res.data.result == "10002") {//未登录
+                    wx.showToast({
+                      title: "您的账号已被冻结，无法下单，请联系管理员！",
+                      duration: 1500
+                    })
+                  }
+
+
+                  if (res.data.result == "1003") {//未登录
+                    wx.showToast({
+                      title: "您的余额不足",
+                      duration: 1500
+                    })
+                  }
+
+
+                  if (res.data.result == "1004") {//未登录
+                    wx.showToast({
+                      title: "支付密码错误",
+                      duration: 1500
+                    })
                   }
                 },
                 fail: function (res) { },

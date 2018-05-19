@@ -31,7 +31,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.request({
+      url: app.IP + 'chatOrder/orderDetail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data: {
+        PHONE: '',
+        CODE: code
+      },
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.result == "true") {
+          that.setData({
+            order: res.data.order
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
   /**
