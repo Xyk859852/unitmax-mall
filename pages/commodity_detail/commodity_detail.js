@@ -80,11 +80,10 @@ Page({
     goodsArray.push(data);
     wx.request({
       url: getApp().IP + 'chatOrder/placeOrder',
-      data: { goodsObjArray: JSON.stringify(goodsArray) },
+      data: data,
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
-        console.log(res);
         // success
         if (res.data.result == "true") {//跳转到订单页  
           getApp().globalData.objArray = goodsArray;
@@ -121,14 +120,21 @@ Page({
     });
 
   },
-  addGoods: function(){
+  addGoods: function(){//加入购物车
+    var that = this;
     var user = wx.getStorageSync("user");
     if (!util.isAvalible(user)){//未登录
 
     }
-
+    var goods = that.data.good;
+    var data: {
+      GOODS_ID: goods.GOODS_ID, PRICE: goods.GOODS_PRICE, GOODS_PRICE: goods.GOODS_PRICE
+      , GOODSTYPE_ID: goods.GOODSTYPE_ID, GOODSTYPE_NAME: goods.GOODSTYPE_NAME
+      , GOODSLEVEL_ID: goods.GOODSLEVEL_ID, GOODSLEVEL_NAME: goods.GOODSLEVEL_NAME
+      , COUNT: 1, SPEC_INFO: goods.SPEC_INFO
+    };
     wx.request({
-      url: getApp().IP + 'chatOrder/placeOrder',
+      url: getApp().IP + 'chatGoodscart/addGoodsCart.json',
       data: { goodsObjArray: JSON.stringify(goodsArray) },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
