@@ -69,7 +69,7 @@
       <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>
         <view>￥{{item.goods_price}}</view>
-        <image src='../../images/shopping_trolley.png'></image>
+        <!-- <image src='../../images/shopping_trolley.png'></image> -->
       </view>
     </navigator>
   </view>

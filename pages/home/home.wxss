@@ -140,9 +140,10 @@
 .category_commodity_container_price view{
   font-size: 12px;
   color: #ff6692;
-  width: 60%;
-  float: left;
+  /* width: 60%; */
+  /* float: left; */
   margin-top: 5px;
+  text-align: center;
 }
 .category_commodity_container_price image{
   width: 20px;
