@@ -1,17 +1,17 @@
 <!--commodity_detail.wxml-->
 <!-- 顶部轮播图 -->
   <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{order.zsImgList}}" wx:key="unique">
+    <block wx:for="{{good.zsImgList}}" wx:key="unique">
       <swiper-item>
-        <image src="http://192.168.31.227:8080/{{item.path}}" class="slide-image"  mode="widthFix"/>
+        <image src="{{appIP}}{{item.path}}" class="slide-image"  mode="widthFix"/>
       </swiper-item>
     </block>
   </swiper>
 <view class='commodity_detail_title'>
   <view class='commodity_detail_title_left' style='width:{{commodity_detail_title_left_width}}px;'>
-    <view class='commodity_title'>{{order.GOODS_NAME}}</view>
-    <view class='commodity_price'>￥{{order.GOODS_PRICE}}</view>
-    <view class='commodity_tip'>库存：{{order.GOODS_INVENTORY}} 销量：{{order.GOODS_SALENUM}}</view>
+    <view class='commodity_title'>{{good.GOODS_NAME}}</view>
+    <view class='commodity_price'>￥{{good.GOODS_PRICE}}</view>
+    <view class='commodity_tip'>库存：{{good.GOODS_INVENTORY}} 销量：{{good.GOODS_SALENUM}}</view>
   </view>
   <!-- <view class='commodity_detail_title_right'> 
     <image src='../../images/share.png'></image>
@@ -34,19 +34,19 @@
   </view>
 <view class='specification_box'>
       <view class='specification'>
-        <text class='specification_left'>{{order.SPECIFICATION}}</text> 
+        <text class='specification_left'>{{good.SPECIFICATION}}</text> 
       </view>
     </view>
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>商品详情</view>
   </view>
-    <image wx:for="{{order.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
+    <image wx:for="{{good.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart'>
     <view class='number'>1</view>
     <image src='../../images/shopping_cart.png'/>
     <view>购物车</view>
   </view>
-  <navigator url="../place_order/place_order?goods_id={{order.GOODS_ID}}" class='buy'>立即购买</navigator>
+  <navigator url="../place_order/place_order?goods_id={{good.GOODS_ID}}" class='buy'>立即购买</navigator>
   <view class='add_cart'>加入购物车</view>
 </view>
