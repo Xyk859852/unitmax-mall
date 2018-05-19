@@ -57,6 +57,10 @@
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
     </navigator>
+    <navigator class='mine_order_state_container' url="../after_service/after_service">
+      <image src='../../images/category.png'></image>
+      <view>申请售后</view>
+    </navigator>
     <navigator class='mine_order_state_container' url="../about/about">
       <image src='../../images/category.png'></image>
       <view>关于我们</view>

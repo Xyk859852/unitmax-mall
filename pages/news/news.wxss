@@ -2,7 +2,7 @@
 .news_list{
   padding: 0 4%;
 }
-.news_list navigator{
+.list{
   background-color: #ffffff;
   padding: 10px 4%;
   margin-top: 10px;

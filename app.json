@@ -23,7 +23,9 @@
     "pages/advertising_detail/advertising_detail",
     "components/toast/toast",
     "pages/about/about",
-    "pages/post_evaluate/post_evaluate"
+    "pages/post_evaluate/post_evaluate",
+    "pages/after_service/after_service",
+    "pages/after_service_2/after_service_2"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -27,18 +27,30 @@ App({
           },
           method: 'GET',
           success: function (res) {
-            console.log(res);
             wx.setStorageSync("session_key", res.data.session_key);
             wx.setStorageSync("openid", res.data.openid);
             console.log(wx.getStorageSync("session_key"));
             console.log(wx.getStorageSync("openid"));
+            wx.request({
+              url: 'http://192.168.31.227:8080/chatUser/openIdLogin',
+              data: { OPENID: res.data.openid},
+              header: {},
+              method: 'GET',
+              dataType: 'json',
+              success: function(res) {
+                if(res.data.result=="true"){
+                  wx.setStorageSync("user", res.data.user);
+                }
+              },
+              fail: function(res) {},
+              complete: function(res) {},
+            })
           },
           fail: function (res) { },
           complete: function (res) { }
         });
       }
     })
-    
   },
   //app.js
   getUserInfo: function (cb) {
@@ -61,10 +73,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    objArray:[],
-    header: { 'Cookie': '', 'content-type': 'application/x-www-form-urlencoded' } //这里还可以加入其它需要的请求头，比如'x-requested-with': 'XMLHttpRequest'表示ajax提交，微信的请求时不会带上这个的
+    objArray:[]
   },
   IP: "http://192.168.31.132:8085/",
-  AppID:"wx95c4320e48a6e988",
-  sessionId:''
+  AppID:"wx95c4320e48a6e988"
 })

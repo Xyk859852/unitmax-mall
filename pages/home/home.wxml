@@ -37,7 +37,7 @@
     <view class='category_name'>{{item.NAME}}</view>
   </view>
 </view> 
-  <view class='classify_box'>
+<view class='classify_box'>
   <image class='classify_left' src='../../images/category_title.jpg'></image>
   <image class='classify_right' src='../../images/category_title.jpg'></image>
   <image class='classify_right' style='margin-top:10px;' src='../../images/category_title.jpg'></image>
@@ -50,7 +50,7 @@
         <swiper-item>
   <!-- <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
           <view class="swiper_item">
-            <view style='width:{{swiper_container_width}}px;padding:10px 0;'>{{item.AD_TITLE}}</view> 
+            <view class='view1' style='width:{{swiper_container_width}}px;padding:10px 0;'>{{item.AD_TITLE}}</view> 
             <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image>
             <view class='news_navigator_view'></view>
           </view>
@@ -69,7 +69,7 @@
       <view class='category_commodity_container_title'>{{item.goods_name}}</view>
       <view class='category_commodity_container_price'>
         <view>￥{{item.goods_price}}</view>
-        <image src='../../images/shopping_trolley.png'></image>
+        <!-- <image src='../../images/shopping_trolley.png'></image> -->
       </view>
     </navigator>
   </view>

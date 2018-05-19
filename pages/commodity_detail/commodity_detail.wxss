@@ -54,17 +54,17 @@ page{
   }
 .show{display:block;font-size:0;}
 .hidden{display:none;}
-.detail_img{width: 100%;}
+.detail_img{width: 100%;display: block;}
 .specification_box{
   background-color: #ffffff;
-  padding: 20px 4%;
+  padding: 10px 4%;
 }
 .specification{
   overflow: hidden;
 }
 .specification_left{
-  float: left;
-  width: 30%;
+  /* float: left;
+  width: 30%; */
   color: #aaaaaa;
   line-height: 30px;
   font-size: 14px;
