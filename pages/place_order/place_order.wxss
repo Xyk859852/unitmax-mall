@@ -67,13 +67,6 @@
   vertical-align: middle;
 }
 .commodity_list{
-    margin-top: 10px;
-}
-.commodity_li{
-    width: 92%;
-      overflow: hidden;
-}
-.commodity_list{
   margin-top: 10px;
 }
 .commodity_li{
@@ -170,4 +163,5 @@
   text-align: center;
   background-color: #fe6500;
   font-size: 18px;
+  border-radius: 0;
 }

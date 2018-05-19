@@ -1,0 +1,34 @@
+<!--pages/after_service/after_service.wxml-->
+<view class='commodity_li'>
+  <image src='../../images/address.png'></image>
+  <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+    <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
+    <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+  </view>
+</view>
+<view class='after_service'>
+  <navigator class='address_box' url="../after_service_2/after_service_2">
+    <image class='address_left' src='../../images/address.png' />
+    <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
+      <view>退款</view>
+      <view class='address_detail'>卖家协商同意前提下</view>
+    </view>
+    <image class='address_right' src='../../images/right.png' />
+  </navigator>
+  <navigator class='address_box' url="../after_service_2/after_service_2">
+    <image class='address_left' src='../../images/address.png' />
+    <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
+      <view>退货</view>
+      <view class='address_detail'>卖家协商同意前提下</view>
+    </view>
+    <image class='address_right' src='../../images/right.png' />
+  </navigator>
+  <navigator class='address_box' url="../after_service_2/after_service_2">
+    <image class='address_left' src='../../images/address.png' />
+    <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
+      <view>换货</view>
+      <view class='address_detail'>卖家协商同意前提下</view>
+    </view>
+    <image class='address_right' src='../../images/right.png' />
+  </navigator>
+</view>

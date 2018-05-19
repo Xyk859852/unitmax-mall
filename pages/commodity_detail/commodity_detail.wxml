@@ -8,7 +8,8 @@
     </block>
   </swiper>
 <view class='commodity_detail_title'>
-  <view class='commodity_detail_title_left' style='width:{{commodity_detail_title_left_width}}px;'>
+  <view class='commodity_detail_title_left'>
+   <!-- style='width:{{commodity_detail_title_left_width}}px;' -->
     <view class='commodity_title'>{{order.GOODS_NAME}}</view>
     <view class='commodity_price'>￥{{order.GOODS_PRICE}}</view>
     <view class='commodity_tip'>库存：{{order.GOODS_INVENTORY}} 销量：{{order.GOODS_SALENUM}}</view>

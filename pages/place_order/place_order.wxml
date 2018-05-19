@@ -20,48 +20,66 @@
 </view>
 <view class='body'>
   <view class='address_box' bindtap='selectAddress'>
-    <image class='address_left' src='../../images/address.png'/>
+    <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
-    <view>收货人：{{defaultAddress.CONSIGNEE}}<label>{{defaultAddress.TAKEPHONE}}</label></view>
-    <view class='address_detail'>收件地址：{{defaultAddress.ADDRESS_DTEAIL}}</view>
-  </view>
-  <image class='address_right' src='../../images/right.png'/>
-</view>
-<view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
-<view class='commodity_list'>
-<view class='other'><image src='../../images/seller.png'/><label>聚脉商城</label></view>
-<block wx:for="{{goodsList}}" wx:key="this">
-  <view class='commodity_li'>
-    <image src='{{appIP}}{{item.IMGSRC}}'></image>
-    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-      <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-      <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
-      <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-        <view class="num_box">
-            <view class='minus smallbtn' catchtap='delNum' data-id="{{item.GOODS_ID}}">-</view>
-            <input class='smallbtn' value='{{item.buyGoodsCount}}'/>
-            <view class='add smallbtn' catchtap="addNum" data-id="{{item.GOODS_ID}}">+</view>
-            </view>
+      <view>收货人：{{defaultAddress.CONSIGNEE}}
+        <label>{{defaultAddress.TAKEPHONE}}</label>
       </view>
+      <view class='address_detail'>收件地址：{{defaultAddress.ADDRESS_DTEAIL}}</view>
     </view>
+    <image class='address_right' src='../../images/right.png' />
   </view>
-</block>
-</view>
-  <view class='other'><label>到店自取</label><switch class='other_right'></switch></view>
-  <view class='other' bindtap='showDelivery'><label>配送方式</label><label class='other_right'>第三方物流￥{{TRANS_FEE}}元</label></view>
-    <view class='other' bindtap='showpayment'><label>支付方式</label><label class='other_right'>余额支付</label></view>
-  <view class="section" >  
+  <view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
+  <view class='commodity_list'>
+    <view class='other'>
+      <image src='../../images/seller.png' />
+      <label>聚脉商城</label>
+    </view>
+    <block wx:for="{{goodsList}}" wx:key="this">
+      <view class='commodity_li'>
+        <image src='{{appIP}}{{item.IMGSRC}}'></image>
+        <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+          <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
+          <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+          <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
+            <view class="num_box">
+              <view class='minus smallbtn' catchtap='delNum' data-id="{{item.GOODS_ID}}">-</view>
+              <input class='smallbtn' value='{{item.buyGoodsCount}}' />
+              <view class='add smallbtn' catchtap="addNum" data-id="{{item.GOODS_ID}}">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='other'>
+    <label>到店自取</label>
+    <switch class='other_right'></switch>
+  </view>
+  <view class='other' bindtap='showDelivery'>
+    <label>配送方式</label>
+    <label class='other_right'>第三方物流￥{{TRANS_FEE}}元</label>
+  </view>
+  <view class='other' bindtap='showpayment'>
+    <label>支付方式</label>
+    <label class='other_right'>余额支付</label>
+  </view>
+  <view class="section">
     <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
       <view class="picker">
-        送达时间<label class='other_right'>{{p_c[0][pcIndex[0]]}} {{p_c[1][pcIndex[1]]}}</label>
+        送达时间
+        <label class='other_right'>{{p_c[0][pcIndex[0]]}} {{p_c[1][pcIndex[1]]}}</label>
       </view>
     </picker>
-  </view> 
-  <view class='other'><label>买家留言</label><input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容'/></view>
-<!-- 验证码组件 -->
-<verifycode id='verifycode' title="请输入支付密码" content="" />
+  </view>
+  <view class='other'>
+    <label>买家留言</label>
+    <input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容' />
+  </view>
+  <!-- 验证码组件 -->
+  <verifycode id='verifycode' title="请输入支付密码" content="" />
 </view>
 <view class='footer'>
-   <button class='buy' bindtap='submitOrder'>提交订单</button>  
+  <button class='buy' bindtap='submitOrder'>提交订单</button>
   <label class='all'>总计：{{TOTALPRICE}}元</label>
 </view>
