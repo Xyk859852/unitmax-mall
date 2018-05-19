@@ -1,5 +1,6 @@
 //shopping_cart.js
 var util = require("../../utils/util.js");
+var header = getApp().globalData.header;
 //获取应用实例
 const app = getApp()
 
@@ -26,7 +27,7 @@ Page({
       url: app.IP + 'chatGoodscart/toList',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: header, // 设置请求的 header
       success: function (res) {
         // success
         if (res.data.result == "true") {
@@ -198,7 +199,7 @@ Page({
         url: this.data.appIP + 'appSupplier/change.json',
         data: { ID: id, COUNT: count, PRICE: price, GOODS_PRICE: goodsprice },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
+        header: header, // 设置请求的 header
         success: function (res) {
 
         },
@@ -245,12 +246,12 @@ Page({
       });
       return;
     }
-    console.log(111111);
+
     wx.request({
       url: that.data.appIP + 'chatOrder/placeOrder',
       data: { goodsObjArray: JSON.stringify(goodsArray) },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/x-www-form-urlencoded' }, // 设置请求的 header
+      header: header, // 设置请求的 header
       success: function (res) {
         console.log(res);
         // success

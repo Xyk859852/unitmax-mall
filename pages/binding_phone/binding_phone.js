@@ -1,5 +1,6 @@
 // 引入CryptoJS
 var WXBizDataCrypt = require('../../utils/crypto.js');
+var header = getApp().globalData.header;
 // pages/binding_phone/binding_phone.js
 var timer=1;
 var sessionKey = '';
@@ -118,7 +119,7 @@ Page({
       wx.request({
         url: app.IP +'chatUser/registersms',
         data: { PHONE: data.purePhoneNumber},
-        header: {},
+        header: header,
         method: 'GET',
         dataType: 'json',
         responseType: 'text',
@@ -137,7 +138,7 @@ Page({
                 data: {
                   PHONE: data.purePhoneNumber,
                   CODE: code},
-                header: {},
+                header: header,
                 method: 'GET',
                 dataType: 'json',
                 success: function(res) {
@@ -150,7 +151,7 @@ Page({
                         PHONE: data.purePhoneNumber,
                         NICKNAME: wx.getStorageSync("wxuser").nickName
                         },
-                      header: {},
+                      header: header,
                       method: 'GET',
                       dataType: 'json',
                       success: function(res) {

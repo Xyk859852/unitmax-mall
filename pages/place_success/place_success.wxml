@@ -1,8 +1,10 @@
 <!--pages/place_success/place_success.wxml-->
 <view class='paysuccess'><image src='../../images/success.png'/><view>支付成功！</view></view>
 <view class='order_detail'>
-<view>订单编号:<text>111111220002330</text></view>
+<view>订单编号:<text>{{order.ORDER_NO}}</text></view>
 <view>支付方式:<text>微信</text></view>
-<view>支付金额:<text>20.00元</text></view>
+<view>支付金额:<text>{{order.TOTALPRICE}}元</text></view>
 </view>
-<view class='detail'>查看订单详情</view>
+<!-- <navigator url='../order_detail/order_detail'> -->
+<view class='detail' bindtap='detailOrder'>查看订单详情</view>
+<!-- </navigator> -->

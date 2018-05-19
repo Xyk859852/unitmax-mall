@@ -12,8 +12,8 @@
   <view class='address_box'>
     <image class='address_left' src='../../images/address.png'/>
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
-      <view>收货人：姓名<label>电话</label></view>
-      <view class='address_detail'>收件地址：地址地址地址地址</view>
+      <view>收货人：{{order.RECEIVE_TRUENAME}}<label>{{order.RECEIVE_MOBILE}}</label></view>
+      <view class='address_detail'>收件地址：{{order.RECEIVE_ADDRESS}}</view>
     </view>
   </view>
   <view class='commodity_list'>
@@ -21,39 +21,32 @@
       <image class='location' src='../../images/address.png'/>
       <image src='../../images/right.png'/>
     </view>
+    <block wx:for="{{order.detailList}}" wx:key="this">
     <view class='commodity_li'>
-      <image src='../../images/category_title.jpg'></image>
+      <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-        <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
-        <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-        <view class='commodity_li_price'>￥1299.00<view class="num_box">x1</view></view>
+        <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
+        <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+        <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}<view class="num_box">x{{item.GOODS_AMOUNT}}</view></view>
       </view>
       <view class='small_btn'>申请售后</view>
     </view>
-    <view class='commodity_li'>
-      <image src='../../images/category_title.jpg'></image>
-      <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-        <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
-        <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
-        <view class='commodity_li_price'>￥1299.00<view class="num_box">x1</view></view>
-      </view>
-      <view class='small_btn'>申请售后</view>
-    </view>
+   </block>
     <view class='other'>
       <view>商品总价<text class='other_right'>￥100.00</text></view>
-      <view>运费（第三方物流）<text class='other_right'>￥10.00</text></view>
+      <view>运费（第三方物流）<text class='other_right'>￥{{order.SHIP_PRICE}}</text></view>
       <view>店铺优惠<text class='other_right'>-￥10.00</text></view>
-      <view class='total_money'>订单总价<text class='other_right'>￥100.00</text></view>
+      <view class='total_money'>订单总价<text class='other_right'>￥{{order.TOTALPRICE}}</text></view>
   </view>
   <view class='actual'>实付款<text class='other_right'>￥100.00</text>
     <image src='../../images/order_price_bg.png'/></view>
   </view>
   <view class='contact' bindtap='callmobile'>联系卖家</view>
   <view class='order_detail'>
-    <view class='other'>订单编号：1800002544225545115</view>
-    <view class='other'>创建时间：2018-05-15 15:00</view>
-    <view class='other'>付款时间：2018-05-16 11:00</view>
-    <view class='other'>发货时间：2018-05-18 15:00</view>
+    <view class='other'>订单编号：{{order.ORDER_NO}}</view>
+    <view class='other'>创建时间：{{order.ADDTIME}}</view>
+    <view class='other'>付款时间：{{order.PAYTIME}}</view>
+    <view class='other'>发货时间：{{order.SHIPTIME}}</view>
   </view>
 </view>
 <view class='footer'>

@@ -1,4 +1,8 @@
 // pages/place_success/place_success.js
+
+var header = getApp().globalData.header;
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({ ORDERFORM_ID: options.ORDERFORM_ID});
   },
 
   /**
@@ -26,7 +30,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatOrder/payMoneySuccess.do?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data:{},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.result == "true") {
+          that.setData({
+            order: res.data.order
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
   /**
@@ -62,5 +82,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //订单详情
+  detailOrder: function(){
+    var that = this;
+     wx.navigateTo({
+       url: '../order_detail/order_detail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+     })
   }
 })

@@ -1,4 +1,5 @@
 var WxParse = require('../wxParse/wxParse.js');
+var header = getApp().globalData.header;
 const app = getApp();
 // pages/news_detail/news_detail.js
 Page({
@@ -19,7 +20,7 @@ Page({
     wx.request({
       url: getApp().IP +'chatNews/getNewsID',
       data: {ID: e.ID },
-      header: {},
+      header: header,
       method: 'GET',
       dataType: 'json',
       responseType: 'text',

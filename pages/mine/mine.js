@@ -1,6 +1,6 @@
 // 引入CryptoJS
 var WXBizDataCrypt = require('../../utils/crypto.js');
-var toastPannel = require('../../components/toast/toast.js');
+// var toastPannel = require('../../components/toast/toast.js');
 //mine.js
 //获取应用实例
 const app = getApp();
@@ -29,7 +29,7 @@ Page({
   },
   onLoad: function () {
     let app = getApp();
-    new app.ToastPannel();
+   // new app.ToastPannel();
     var that = this;
     var user = wx.getStorageSync("user");
     if(user!=undefined&&user!=''&&user!=null){

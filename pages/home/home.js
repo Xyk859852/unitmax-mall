@@ -1,7 +1,7 @@
 //home.js
 //获取应用实例
 const app = getApp()
-
+var header = getApp().globalData.header;
 Page({
   data: {
     category:[
@@ -30,7 +30,7 @@ Page({
       url: getApp().IP + 'chatIndex/index',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: header, // 设置请求的 header
       success: function (res) {
         // success
         that.setData({
@@ -61,6 +61,22 @@ Page({
         // complete
         wx.hideToast();
       }
+    })
+    wx.request({
+      url: getApp().IP+'chatUser/openIdLogin',
+      data: { OPENID: wx.getStorageSync("openid") },
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        console.log(res);
+        if (res.data.result == "true") {
+          wx.setStorageSync("user", res.data.user);
+          getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
   scrolltxt: function () {
