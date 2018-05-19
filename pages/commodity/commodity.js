@@ -1,3 +1,4 @@
+var header = getApp().globalData.header;
 //commodity.js
 //获取应用实例
 const app = getApp()
@@ -15,6 +16,7 @@ var GetList = function (that) {
   });
   wx.request({
     url: url,
+    header:header,
     data: {
       pageSize: 10,
       pageNo: page,

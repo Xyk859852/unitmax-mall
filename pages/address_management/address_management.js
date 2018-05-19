@@ -1,4 +1,5 @@
 const app = getApp();
+var header = getApp().globalData.header;
 // pages/address_management/address_management.js
 Page({
 
@@ -14,10 +15,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log(header);
     wx.request({
       url: app.IP +'chatAddRess/getList',
       data: '',
-      header: {},
+      header: header,
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
@@ -26,7 +28,7 @@ Page({
           list: res.data.list
         })
       },
-      fail: function(res) {},
+      fail: function (res) {},
       complete: function(res) {},
     })
   },
@@ -78,5 +80,20 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  edit: function(e){
+    console.log(e);
+    var ADDRESSBOOK_ID = e.currentTarget.dataset.addressbook_id;
+    var ADDRESS_DTEAIL = e.currentTarget.dataset.address_dteail;
+    var TAKEPHONE = e.currentTarget.dataset.takephone;
+    var CONSIGNEE = e.currentTarget.dataset.consignee;
+    var MOBLE = e.currentTarget.dataset.moble;
+    var ISDEFAULT = e.currentTarget.dataset.isdefault;
+    wx.navigateTo({
+      url: '../add_address/add_address?ADDRESSBOOK_ID=' + ADDRESSBOOK_ID
+      + '&ADDRESS_DTEAIL=' + ADDRESS_DTEAIL + '&TAKEPHONE=' + TAKEPHONE 
+      + '&CONSIGNEE=' + CONSIGNEE + '&TYPE=edit' + '&ISDEFAULT=' + ISDEFAULT,
+    })
   }
 })

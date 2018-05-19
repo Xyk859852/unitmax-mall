@@ -1,7 +1,8 @@
 // pages/add_address/add_address.js
+var type ="";
 const app = getApp();
+var header = getApp().globalData.header;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,7 +14,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options);
+    type = options.TYPE;
+    if(type == "edit"){
+      this.setData({
+        CONSIGNEE: options.CONSIGNEE,
+        TAKEPHONE: options.TAKEPHONE,
+        address: options.MOBLE,
+        ADDRESS_DTEAIL: options.ADDRESS_DTEAIL,
+        ADDRESSBOOK_ID: options.ADDRESSBOOK_ID,
+        ISDEFAULT: options.ISDEFAULT
+      })
+    }
+    
   },
 
   /**
@@ -67,17 +80,39 @@ Page({
 
   formBindsubmit: function(e){
       console.log(e.detail.value);
-      wx.request({
-        url: app.IP +'chatAddRess/save',
-        data: e.detail.value,
-        header: {},
-        method: 'GET',
-        dataType: 'json',
-        success: function(res) {
-          console.log(res);
-        },
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+      if(type=="save"){
+        wx.request({
+          url: app.IP + 'chatAddRess/save',
+          data: e.detail.value,
+          header: header,
+          method: 'GET',
+          dataType: 'json',
+          success: function (res) {
+            wx.redirectTo({
+              url: '../address_management/address_management'
+            })
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      }else{
+        wx.request({
+          url: app.IP + 'chatAddRess/edit',
+          data: e.detail.value,
+          header: header,
+          method: 'GET',
+          dataType: 'json',
+          success: function (res) {
+            if(res.data.result=="true"){
+              wx.redirectTo({
+                url: '../address_management/address_management'
+              })
+            }
+            
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      }
   }
 })

@@ -1,6 +1,7 @@
 //category.js
 //获取应用实例  
-var app = getApp()
+var app = getApp();
+var header = getApp().globalData.header;
 Page({
   data: {
     appIP: app.IP,
@@ -43,7 +44,7 @@ Page({
       url: this.data.appIP + 'chatGoods/findAllGoodsType',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: header, // 设置请求的 header
       success: function (res) {
         // success
         that.setData({

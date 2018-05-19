@@ -7,13 +7,13 @@
       <view class='address_detail'>收件地址：{{item.MOBLE}}{{item.ADDRESS_DTEAIL}}</view>
     </view>
     <view class='btn_box'>
-      <view class='small_btn'>编辑</view>
+      <view data-CONSIGNEE='{{item.CONSIGNEE}}' data-TAKEPHONE='{{item.TAKEPHONE}}' data-MOBLE='{{item.MOBLE}}' data-ADDRESS_DTEAIL='{{item.ADDRESS_DTEAIL}}' data-ISDEFAULT='{{ISDEFAULT}}' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' bindtap='edit' class='small_btn'>编辑</view>
       <view class='small_btn'>删除</view>
     </view>
   </view>
 </view>
 <view class='footer'>
- <navigator url="../add_address/add_address">
+ <navigator url="../add_address/add_address?TYPE=save">
 <button>新增地址</button>
 </navigator>
 </view>

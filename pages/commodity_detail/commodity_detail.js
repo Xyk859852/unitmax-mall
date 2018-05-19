@@ -1,7 +1,7 @@
 //commodity_detail.js
 //获取应用实例
 const app = getApp()
-
+var header = getApp().globalData.header;
 Page({
   data: {
     //轮播图
@@ -29,7 +29,7 @@ Page({
       url: getApp().IP + 'chatGoods/orderDetail',
       data: {GOODS_ID:e.goods_id},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: header, // 设置请求的 header
       success: function (res) {
         // success
         console.log(res.data.order);
