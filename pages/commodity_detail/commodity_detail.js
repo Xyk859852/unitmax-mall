@@ -26,15 +26,15 @@ Page({
     var that = this;
     console.log(e);
     wx.request({
-      url: getApp().IP + 'chatGoods/orderDetail',
+      url: getApp().IP + 'chatGoods/goodDetail',
       data: {GOODS_ID:e.goods_id},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
         // success
-        console.log(res.data.order);
+        console.log(res.data.good);
         that.setData({
-          order: res.data.order
+          good: res.data.good
         })
       },
       fail: function () {
