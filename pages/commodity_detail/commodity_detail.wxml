@@ -47,6 +47,7 @@
     <image src='../../images/shopping_cart.png'/>
     <view>购物车</view>
   </view>
-  <navigator url="../place_order/place_order?goods_id={{order.GOODS_ID}}" class='buy'>立即购买</navigator>
+  <!-- <navigator url="../place_order/place_order?goods_id={{order.GOODS_ID}}" class='buy'>立即购买</navigator> -->
+  <button  class='buy' bindtap='submitOrder'>立即购买</button>
   <view class='add_cart'>加入购物车</view>
 </view>

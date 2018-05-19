@@ -63,8 +63,7 @@
 </view>
 <view class='footer'>
    <!-- <navigator url='../place_success/place_success'> -->
-   <navigator url='../order_detail/order_detail'>
-    <!-- <button class='buy' bindtap='submitOrder'>提交订单</button>    -->
-   </navigator> 
+     <button class='buy' bindtap='submitOrder'>提交订单</button>    
+   <!-- </navigator>  -->
   <label class='all'>总计：{{TOTALPRICE}}元</label>
 </view>

@@ -264,9 +264,9 @@ Page({
             inputSuccess: function (phoneCode) {
               var code = that.verifycode.data.codes;
               code = code.join("");
-              console.log(code);
+              that.setData({ ORDERFORM_ID: res.data.ORDERFORM_ID});
               wx.request({
-                url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + ORDERFORM_ID + '&PAY_PASSWORD=' + code,
+                url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + res.data.ORDERFORM_ID + '&PAY_PASSWORD=' + code,
                 data: {
                   PHONE: '',
                   CODE: code
@@ -275,11 +275,17 @@ Page({
                 method: 'GET',
                 dataType: 'json',
                 success: function (res) {
+                  that.verifycode.closeView('');
+                  if(res.data.result == "true"){                  
+                    wx.navigateTo({
+                      url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+                    })
+                  }
                   if (res.data.result == "1002") {//未登录
                     
                   }
 
-                  if (res.data.result == "10002") {//未登录
+                  if (res.data.result == "10002") {
                     wx.showToast({
                       title: "您的账号已被冻结，无法下单，请联系管理员！",
                       duration: 1500
@@ -287,7 +293,7 @@ Page({
                   }
 
 
-                  if (res.data.result == "1003") {//未登录
+                  if (res.data.result == "1003") {
                     wx.showToast({
                       title: "您的余额不足",
                       duration: 1500
@@ -295,7 +301,7 @@ Page({
                   }
 
 
-                  if (res.data.result == "1004") {//未登录
+                  if (res.data.result == "1004") {
                     wx.showToast({
                       title: "支付密码错误",
                       duration: 1500
@@ -306,7 +312,7 @@ Page({
                 complete: function (res) { },
               })
               //调用组件关闭方法
-
+               
               //设置数据
               that.setData({
                 code: phoneCode

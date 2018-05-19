@@ -1,10 +1,14 @@
 // pages/order_detail/order_detail.js
+var header = getApp().globalData.header;
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    appIP: getApp().IP,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
     address_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
@@ -17,7 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+  this.setData({
+    ORDERFORM_ID: options.ORDERFORM_ID
+  });
   },
 
   /**
@@ -33,18 +39,15 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: app.IP + 'chatOrder/orderDetail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-      data: {
-        PHONE: '',
-        CODE: code
-      },
-      header: {},
+      url: getApp().IP + 'chatOrder/orderDetail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data: {},
+      header: header,
       method: 'GET',
       dataType: 'json',
       success: function (res) {
         if (res.data.result == "true") {
           that.setData({
-            order: res.data.order
+            order: res.data.order,          
           });
         }
       },

@@ -246,7 +246,7 @@ Page({
       });
       return;
     }
-    console.log(111111);
+
     wx.request({
       url: that.data.appIP + 'chatOrder/placeOrder',
       data: { goodsObjArray: JSON.stringify(goodsArray) },

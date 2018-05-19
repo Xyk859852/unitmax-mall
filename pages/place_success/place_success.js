@@ -1,4 +1,8 @@
 // pages/place_success/place_success.js
+
+var header = getApp().globalData.header;
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -28,12 +32,9 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: app.IP + 'chatOrder/payMoneySuccess.do?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-      data: {
-        PHONE: '',
-        CODE: code
-      },
-      header: {},
+      url: getApp().IP + 'chatOrder/payMoneySuccess.do?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data:{},
+      header: header,
       method: 'GET',
       dataType: 'json',
       success: function (res) {
@@ -86,7 +87,7 @@ Page({
   detailOrder: function(){
     var that = this;
      wx.navigateTo({
-       url: '../order_detail/order_detail',
+       url: '../order_detail/order_detail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
      })
   }
 })

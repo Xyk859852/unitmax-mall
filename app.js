@@ -64,7 +64,7 @@ App({
     objArray:[],
     header: { 'Cookie': '', 'content-type': 'application/x-www-form-urlencoded' } //这里还可以加入其它需要的请求头，比如'x-requested-with': 'XMLHttpRequest'表示ajax提交，微信的请求时不会带上这个的
   },
-  IP: "http://192.168.31.227:8080/",
+  IP: "http://192.168.31.132:8085/",
   AppID:"wx95c4320e48a6e988",
   sessionId:''
 })
