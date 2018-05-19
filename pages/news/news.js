@@ -1,6 +1,7 @@
 //news.js
 //获取应用实例
 const app = getApp()
+var header = getApp().globalData.header;
 var url = app.IP + "chatNews/listNews";
 var page = 1;
 var GetList = function (that) {
@@ -10,6 +11,7 @@ var GetList = function (that) {
   });
   wx.request({
     url: url,
+    header:header,
     data: {
       pageSize: 10,
       pageNo: page
