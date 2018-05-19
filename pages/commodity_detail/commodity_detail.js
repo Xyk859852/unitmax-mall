@@ -76,7 +76,7 @@ Page({
   submitOrder: function (){
     var that = this;
     var goodsArray = [];
-    var data = { GOODS_ID: that.data.order.GOODS_ID, goodsCount: 1, GOODS_AMOUNT: 1 };
+    var data = { GOODS_ID: that.data.good.GOODS_ID, goodsCount: 1, GOODS_AMOUNT: 1 };
     goodsArray.push(data);
     wx.request({
       url: getApp().IP + 'chatOrder/placeOrder',
@@ -120,5 +120,53 @@ Page({
       }
     });
 
-  }
+  },
+  addGoods: function(){
+    var user = wx.getStorageSync("user");
+    if (!util.isAvalible(user)){//未登录
+
+    }
+
+    wx.request({
+      url: getApp().IP + 'chatOrder/placeOrder',
+      data: { goodsObjArray: JSON.stringify(goodsArray) },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header, // 设置请求的 header
+      success: function (res) {
+        console.log(res);
+        // success
+        if (res.data.result == "true") {//跳转到订单页  
+          getApp().globalData.objArray = goodsArray;
+          wx.navigateTo({
+            url: '../place_order/place_order?IDS='
+          });
+        } else if (res.data.result == "1002") {//未登录
+          wx.switchTab({
+            url: '../mine/mine',
+          })
+        } else if (res.data.result == "10001") {//未设置支付密码
+          //window.open("<%=basePath%>RongSafety/goSetPay");
+        } else {
+          console.log(res.data.result);
+          wx.showToast({
+            title: res.data.result,
+            duration: 1500
+          });
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    }); 
+  } 
 })

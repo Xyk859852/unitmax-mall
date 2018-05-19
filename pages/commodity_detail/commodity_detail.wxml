@@ -47,7 +47,7 @@
     <image src='../../images/shopping_cart.png'/>
     <view>购物车</view>
   </view>
-  
+
   <button  class='buy' bindtap='submitOrder'>立即购买</button>
-  <view class='add_cart'>加入购物车</view>
+  <view class='add_cart' bindtap='addGoods'>加入购物车</view>
 </view>
