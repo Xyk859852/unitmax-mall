@@ -1,5 +1,6 @@
 // pages/place_order/place_order.jsvar app = getApp();
 var util = require("../../utils/util.js");
+var header = getApp().globalData.header;
 //获取应用实例
 const app = getApp()
 
@@ -66,7 +67,7 @@ Page({
       url: app.IP + 'chatOrder/placeOrderSuccess',
       data: { goodsObjArray: JSON.stringify(getApp().globalData.objArray), IDS: that.data.goodsCartId },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/x-www-form-urlencoded' },  // 设置请求的 header
+      header: header,  // 设置请求的 header
       success: function (res) {
         console.log(res);
         // success
@@ -254,7 +255,7 @@ Page({
       url: app.IP + 'chatOrder/saveOrder',
       data: data,
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/x-www-form-urlencoded' },  // 设置请求的 header
+      header: header,  // 设置请求的 header
       success: function (res) {
         // success
         if (res.data.result == "true") {
@@ -270,16 +271,10 @@ Page({
                   PHONE: '',
                   CODE: code
                 },
-                header: {},
+                header: header,
                 method: 'GET',
                 dataType: 'json',
                 success: function (res) {
-                  if (res.data.result == "true") {//未登录
-                    wx.navigateTo({
-                      url: '../place_success/place_success?ORDERFORM_ID' + ORDERFORM_ID
-                    })
-                  }
-
                   if (res.data.result == "1002") {//未登录
                     
                   }
