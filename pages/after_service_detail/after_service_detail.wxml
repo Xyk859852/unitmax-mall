@@ -1,0 +1,36 @@
+<!--pages/after_service_detail/after_service_detail.wxml-->
+<view class='commodity_li'>
+  <image src='../../images/address.png'></image>
+  <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+    <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
+    <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+  </view>
+</view>
+<view class='deal'>
+  <view class='other' bindtap='showpayment'>
+    <label>处理结果</label>
+    <label class='other_right'>余额支付</label>
+  </view>
+  <view class='other'>
+    <label>处理说明</label>
+    <view class="explain">退款说明退款说明退款说明退款说明退款说明退款说明</view>
+  </view>
+</view>
+<view class='other' bindtap='showpayment'>
+  <label>售后原因</label>
+  <label class='other_right'>余额支付</label>
+</view>
+<view class='other'>
+  <label>售后金额</label>
+  <label class='other_right'>￥16.00</label>
+</view>
+<view class='other'>
+  <label>退售后说明</label>
+  <view class="explain">退款说明退款说明退款说明退款说明退款说明退款说明</view>
+</view>
+<view class='other'>
+  <view>售后凭证</view>
+  <view class='image_box'>
+    <image style='height:{{image_box_width}}px;' src='../../images/address.png' />
+  </view>
+</view>

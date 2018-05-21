@@ -65,6 +65,14 @@
       <image src='../../images/category.png'></image>
       <view>关于我们</view>
     </navigator>
+    <navigator class='mine_order_state_container' url="../after_service_management/after_service_management">
+      <image src='../../images/category.png'></image>
+      <view>售后管理</view>
+    </navigator>
+    <navigator class='mine_order_state_container' url="../evaluate_management/evaluate_management">
+      <image src='../../images/category.png'></image>
+      <view>我的评价</view>
+    </navigator>
     <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view bindtap='openToastPannel'>测弹窗</view>
