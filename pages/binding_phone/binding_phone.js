@@ -144,12 +144,14 @@ Page({
                 success: function(res) {
                   console.log(res);
                   if (res.data.result =="success"){
+                    console.log(wx.getStorageSync("wxuser"));
                     wx.request({
                       url: app.IP +'chatUser/register',
                       data: {
                         OPENID: wx.getStorageSync("openid"),
                         PHONE: data.purePhoneNumber,
-                        NICKNAME: wx.getStorageSync("wxuser").nickName
+                        NICKNAME: wx.getStorageSync("wxuser").nickName,
+                        HEADIMGURL: wx.getStorageSync("wxuser").avatarUrl
                         },
                       header: header,
                       method: 'GET',
