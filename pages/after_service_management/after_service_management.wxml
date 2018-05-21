@@ -1,0 +1,39 @@
+<!--pages/after_service_management/after_service_management.wxml-->
+<view class='commodity_list'>
+  <view class='other'>
+     <image src='../../images/seller.png'/>
+    <label>聚脉商城</label>
+    <!-- <label>配送单</label> -->
+    <!-- <text class='order_state'>等待门店接单</text> -->
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <!-- <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view> -->
+    </view>
+  </view>
+   <view class='order_total_money'>退款 <view class='small_btn'>售后详情</view></view> 
+</view>
+<view class='commodity_list'>
+  <view class='other'>
+     <image src='../../images/seller.png'/>
+    <label>聚脉商城</label>
+    <!-- <label>配送单</label> -->
+    <!-- <text class='order_state'>等待门店接单</text> -->
+  </view>
+  <view class='commodity_li'>
+    <image src='../../images/category_title.jpg'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题</view>
+      <view class='commodity_li_tip'>品类：品类1 等级：等级1</view>
+      <!-- <view class='commodity_li_price'>￥1299.00
+        <view class="num_box">x1</view>
+      </view> -->
+    </view>
+  </view>
+   <view class='order_total_money'>退款 <navigator class='small_btn' url='../after_service_detail/after_service_detail'>售后详情</navigator></view> 
+</view>

@@ -123,6 +123,7 @@ Page({
       location: this.data.location,
       success: function (data) {
         if (data && data.tips) {
+          console.log(data.tips);
           that.setData({
             tips: data.tips,
             content1: true,
@@ -168,11 +169,7 @@ Page({
     console.log(e);
     var keywords = e.target.dataset.keywords;
     var location = e.target.dataset.location;
-
-    var cityname = e.target.dataset.cityname;
-    var adname = e.target.dataset.adname;
-    var pname = e.target.dataset.pname;
-
+    var moble = e.target.dataset.district;
     if (keywords==undefined){
 
     }else{
@@ -181,9 +178,7 @@ Page({
       prevPage.setData({
         address: keywords,
         location: location,
-        province: pname,
-        city: cityname,
-        district: adname
+        moble: moble
       })
       wx.navigateBack({
         delta: -1
@@ -194,21 +189,15 @@ Page({
     console.log(e);
     var location = e.target.dataset.location;
     var keywords = e.target.dataset.keywords;
-   
-    var cityname = e.target.dataset.cityname;
-    var adname = e.target.dataset.adname;
-    var pname = e.target.dataset.pname;
-   
+    var moble = e.target.dataset.district;
+
     var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
       address: that.data.address,
       location: location,
-      province: pname,
-      city: cityname,
-      district: adname
-
+      moble: moble
     })
     wx.navigateBack({
       delta: -1

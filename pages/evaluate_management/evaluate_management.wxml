@@ -1,0 +1,31 @@
+<!--pages/evaluate_management/evaluate_management.wxml-->
+<view class='evaluate_list'>
+  <view class='nickname'>
+    <image src='../../images/category.png'/>
+    <label>昵称</label>
+  </view>
+  <view class='commodity_li_tip'>2018-05-21 10:01</view>
+  <view class='evaluate_content'>评价内容</view>
+  <view class='commodity_li'>
+    <image src='../../images/address.png'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
+      <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+    </view>
+  </view>
+</view>
+<view class='evaluate_list'>
+  <view class='nickname'>
+    <image src='../../images/category.png'/>
+    <label>昵称</label>
+  </view>
+  <view class='commodity_li_tip'>2018-05-21 10:01</view>
+  <view class='evaluate_content'>评价内容</view>
+  <view class='commodity_li'>
+    <image src='../../images/address.png'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
+      <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+    </view>
+  </view>
+</view>

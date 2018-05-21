@@ -25,7 +25,10 @@
     "pages/about/about",
     "pages/post_evaluate/post_evaluate",
     "pages/after_service/after_service",
-    "pages/after_service_2/after_service_2"
+    "pages/after_service_2/after_service_2",
+    "pages/after_service_detail/after_service_detail",
+    "pages/after_service_management/after_service_management",
+    "pages/evaluate_management/evaluate_management"
   ],
   "window": {
     "backgroundTextStyle": "light",
