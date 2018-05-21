@@ -3,7 +3,7 @@
   <block wx:for="{{cartlist}}" wx:key="this">
     <checkbox-group>
       <view class="checkbox">
-        <switch type="checkbox" class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
+        <radio class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
         <view class='commodity_li' style='width:{{commodity_li_width}}px;'>
           <image src='{{appIP}}{{item.path}}'></image>
           <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
@@ -21,7 +21,7 @@
       </view>
     </checkbox-group>
     <view class='footer'>
-      <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
+      <radio id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
       <label for='all' class='check_label'>全选</label>
       <!-- <navigator class='buy' url="../place_order/place_order">去结算</navigator> -->
       <button class='buy' bindtap='submitOrder'>去结算</button>
