@@ -7,12 +7,12 @@
   <input name='address' placeholder='选择地址' disabled='true' value='{{address}}'/>
   <input class='hide' name="addRessLocation" placeholder='选择地址' disabled='true' value='{{location}}'/>
   <input class='hide' name="MOBLE" placeholder='省' disabled='true' value='{{moble}}'/>
-  <input  name="PROVINCE" placeholder='省' disabled='true' value='{{province}}'/>
-  <input  name="CITY" placeholder='市' disabled='true' value='{{city}}'/>
-  <input  name="DISTRICT" placeholder='区' disabled='true' value='{{district}}'/>
-  <input  name="ADDRESSBOOK_ID" placeholder='ID' disabled='true' value='{{ADDRESSBOOK_ID}}'/>
+  <input class='hide' name="PROVINCE" placeholder='省' disabled='true' value='{{province}}'/>
+  <input class='hide' name="CITY" placeholder='市' disabled='true' value='{{city}}'/>
+  <input class='hide' name="DISTRICT" placeholder='区' disabled='true' value='{{district}}'/>
+  <input class='hide' name="ADDRESSBOOK_ID" placeholder='ID' disabled='true' value='{{ADDRESSBOOK_ID}}'/>
   <input class='hide' name='ISDEFAULT' value='{{ISDEFAULT}}'/>
-  <input  name='DRESSTYPE' value='{{DRESSTYPE}}'/>
+  <input class='hide' name='DRESSTYPE' value='{{DRESSTYPE}}'/>
   <input class='hide' name='ADCODE' value='{{adcode}}'/>
 </navigator>
   <input name="ADDRESS_DTEAIL" value='{{ADDRESS_DTEAIL}}' placeholder='详细地址' type='text'/>
