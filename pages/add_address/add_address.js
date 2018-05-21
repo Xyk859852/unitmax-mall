@@ -80,6 +80,23 @@ Page({
 
   formBindsubmit: function(e){
       console.log(e.detail.value);
+      var phone = e.detail.TAKEPHONE;
+      if (!(/^1[34578]\d{9}$/.test(phone))) {
+        wx.showToast({
+          title: '手机号有误',
+          icon: 'success',
+          duration: 2000
+        })
+        return false;
+        if (phone.length >= 11) {
+          wx.showToast({
+            title: '手机号有误',
+            icon: 'success',
+            duration: 2000
+          })
+          return false;
+        }
+      }
       if(type=="save"){
         wx.request({
           url: app.IP + 'chatAddRess/save',
@@ -88,9 +105,9 @@ Page({
           method: 'GET',
           dataType: 'json',
           success: function (res) {
-            wx.redirectTo({
-              url: '../address_management/address_management'
-            })
+            if(res.data.result=="true"){
+              wx.navigateBack({ changed: true });//返回上一页
+            }
           },
           fail: function (res) { },
           complete: function (res) { },
@@ -104,11 +121,8 @@ Page({
           dataType: 'json',
           success: function (res) {
             if(res.data.result=="true"){
-              wx.redirectTo({
-                url: '../address_management/address_management'
-              })
+              wx.navigateBack({ changed: true });//返回上一页
             }
-            
           },
           fail: function (res) { },
           complete: function (res) { },
