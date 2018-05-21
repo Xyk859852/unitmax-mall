@@ -6,10 +6,11 @@
 <view class='address'><view style='width:{{address_label_width}}px;' bindtouchstart="bindSearch1">{{address}}</view><image bindtap='getRegeo' src='../../images/location.png'/></view>
 <view class="title,{{content?'show1':'hide'}}">附近地址</view>
 <view class="title,{{content1?'show1':'hide'}}">搜索地址</view>
-<view data-keywords="{{j.name}}" data-adname='{{j.adname}}' data-cityname='{{j.cityname}}' data-pname='{{j.pname}}' data-district='{{j.pname}}{{j.cityname}}{{j.adname}}  {{j.name}}'  data-location='{{j.location}}' bindtouchstart="bindSearch" class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">
-  <view>{{j.name}}</view>
+<view data-keywords="{{j.name}}" data-adname='{{j.adname}}' data-cityname='{{j.cityname}}' data-pname='{{j.pname}}' data-district='{{j.name}}'  data-location='{{j.location}}' bindtouchstart="bindSearch" class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">
+  {{j.name}}
+  <view>{{j.address}}</view>
 </view>
-<view bindtouchstart="bindSearch" data-district='{{i.district}} {{i.name}}' data-location='{{i.location}}' data-keywords="{{i.name}}" wx:key="this" class="text_box,{{content1?'show1':'hide'}}" wx:for="{{tips}}" wx:for-item="i">
+<view bindtouchstart="bindSearch" data-district='{{i.name}}' data-adcode='{{i.adcode}}' data-location='{{i.location}}' data-keywords="{{i.name}}" wx:key="this" class="text_box,{{content1?'show1':'hide'}}" wx:for="{{tips}}" wx:for-item="i">
   {{i.district}} {{i.name}}
   <view>{{i.address}}</view>
 </view>

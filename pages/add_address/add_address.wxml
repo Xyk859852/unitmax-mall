@@ -12,6 +12,8 @@
   <input class='hide' name="DISTRICT" placeholder='区' disabled='true' value='{{district}}'/>
   <input class='hide' name="ADDRESSBOOK_ID" placeholder='ID' disabled='true' value='{{ADDRESSBOOK_ID}}'/>
   <input class='hide' name='ISDEFAULT' value='{{ISDEFAULT}}'/>
+  <input class='hide' name='DRESSTYPE' value='{{DRESSTYPE}}'/>
+  <input class='hide' name='ADCODE' value='{{adcode}}'/>
 </navigator>
   <input name="ADDRESS_DTEAIL" value='{{ADDRESS_DTEAIL}}' placeholder='详细地址' type='text'/>
   <view class='default'>

@@ -32,6 +32,7 @@ Page({
    // new app.ToastPannel();
     var that = this;
     var user = wx.getStorageSync("user");
+    console.log(user);
     if(user!=undefined&&user!=''&&user!=null){
       that.setData({
         hasUserInfo:true

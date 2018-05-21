@@ -1,7 +1,7 @@
 <!--shopping_cart.wxml-->
-<checkbox-group>
-  <view wx:if="{{cartlist.length>0}}">
-    <block wx:for="{{cartlist}}" wx:key="this">
+<view wx:if="{{cartlist.length>0}}">
+  <block wx:for="{{cartlist}}" wx:key="this">
+    <checkbox-group>
       <view class="checkbox">
         <switch type="checkbox" class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
         <view class='commodity_li' style='width:{{commodity_li_width}}px;'>
@@ -19,14 +19,14 @@
           </view>
         </view>
       </view>
-    </block>
-  </view>
-  <view wx:else class='no_data'>暂无数据</view>
-</checkbox-group>
-<view class='footer'>
-  <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
-  <label for='all' class='check_label'>全选</label>
-  <!-- <navigator class='buy' url="../place_order/place_order">去结算</navigator> -->
-  <button class='buy' bindtap='submitOrder'>去结算</button>
-  <label class='all'>总计：{{totalPrice}}元</label>
+    </checkbox-group>
+    <view class='footer'>
+      <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
+      <label for='all' class='check_label'>全选</label>
+      <!-- <navigator class='buy' url="../place_order/place_order">去结算</navigator> -->
+      <button class='buy' bindtap='submitOrder'>去结算</button>
+      <label class='all'>总计：{{totalPrice}}元</label>
+    </view>
+  </block>
 </view>
+<view wx:else class='no_data'>暂无数据</view>

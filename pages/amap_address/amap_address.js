@@ -86,9 +86,15 @@ Page({
           success: function (data) {
             //成功回调
             if (data && data.poisData) {
-              console.log(data.poisData);
+              var nearby=[];
+              for (var i = 0; i < data.poisData.length; i++) {
+                if (data.poisData[i].pname != "" && data.poisData[i].location != "") {
+                  nearby.push(data.poisData[i]);
+                }
+              }
+              console.log(nearby);
               that.setData({
-                nearby: data.poisData,
+                nearby: nearby,
                 content: true,
               });
             }
@@ -123,9 +129,15 @@ Page({
       location: this.data.location,
       success: function (data) {
         if (data && data.tips) {
-          console.log(data.tips);
+          var tips = [];
+          for (var i = 0; i < data.tips.length; i++) {
+            if (data.tips[i].adcode != "" && data.tips[i].location!="") {
+              tips.push(data.tips[i]);
+            }
+          }
+          console.log(tips);
           that.setData({
-            tips: data.tips,
+            tips: tips,
             content1: true,
             content: false,
           });
@@ -170,6 +182,13 @@ Page({
     var keywords = e.target.dataset.keywords;
     var location = e.target.dataset.location;
     var moble = e.target.dataset.district;
+
+    var cityname = e.target.dataset.cityname;
+    var adname = e.target.dataset.adname;
+    var pname = e.target.dataset.pname;
+    var adcode = e.target.dataset.adcode;
+    console.log(adcode);
+    
     if (keywords==undefined){
 
     }else{
@@ -178,7 +197,12 @@ Page({
       prevPage.setData({
         address: keywords,
         location: location,
-        moble: moble
+        moble: moble,
+        province: pname,
+        city: cityname,
+        district: adname,
+        DRESSTYPE: 1,
+        adcode: adcode
       })
       wx.navigateBack({
         delta: -1
@@ -190,14 +214,14 @@ Page({
     var location = e.target.dataset.location;
     var keywords = e.target.dataset.keywords;
     var moble = e.target.dataset.district;
-
     var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
-      address: that.data.address,
+      address: keywords,
       location: location,
-      moble: moble
+      moble: moble,
+      DRESSTYPE: 2
     })
     wx.navigateBack({
       delta: -1
