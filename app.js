@@ -31,6 +31,23 @@ App({
             wx.setStorageSync("openid", res.data.openid);
             console.log(wx.getStorageSync("session_key"));
             console.log(wx.getStorageSync("openid"));
+            wx.request({
+              url: getApp().IP + 'chatUser/openIdLogin',
+              data: { OPENID: res.data.openid},
+              header: {},
+              method: 'GET',
+              dataType: 'json',
+              success: function (res) {
+                console.log(res);
+                if (res.data.result == "true") {
+                  wx.setStorageSync("user", res.data.user);
+                  getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
+                  console.log(getApp().globalData.header);
+                }
+              },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
           },
           fail: function (res) { },
           complete: function (res) { }

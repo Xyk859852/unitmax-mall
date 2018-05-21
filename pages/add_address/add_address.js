@@ -17,6 +17,9 @@ Page({
     console.log(options);
     type = options.TYPE;
     if(type == "edit"){
+      wx.setNavigationBarTitle({
+        title: "修改地址"//页面标题为路由参数
+      })
       this.setData({
         CONSIGNEE: options.CONSIGNEE,
         TAKEPHONE: options.TAKEPHONE,

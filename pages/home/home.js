@@ -62,22 +62,22 @@ Page({
         wx.hideToast();
       }
     })
-    wx.request({
-      url: getApp().IP+'chatUser/openIdLogin',
-      data: { OPENID: wx.getStorageSync("openid") },
-      header: {},
-      method: 'GET',
-      dataType: 'json',
-      success: function (res) {
-        console.log(res);
-        if (res.data.result == "true") {
-          wx.setStorageSync("user", res.data.user);
-          getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
-        }
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
+    // wx.request({
+    //   url: getApp().IP+'chatUser/openIdLogin',
+    //   data: { OPENID: wx.getStorageSync("openid") },
+    //   header: {},
+    //   method: 'GET',
+    //   dataType: 'json',
+    //   success: function (res) {
+    //     console.log(res);
+    //     if (res.data.result == "true") {
+    //       wx.setStorageSync("user", res.data.user);
+    //       getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
+    //     }
+    //   },
+    //   fail: function (res) { },
+    //   complete: function (res) { },
+    // })
   },
   scrolltxt: function () {
     var that = this;
