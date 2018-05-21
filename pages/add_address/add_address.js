@@ -17,6 +17,9 @@ Page({
     console.log(options);
     type = options.TYPE;
     if(type == "edit"){
+      wx.setNavigationBarTitle({
+        title: "修改地址"//页面标题为路由参数
+      })
       this.setData({
         CONSIGNEE: options.CONSIGNEE,
         TAKEPHONE: options.TAKEPHONE,
@@ -80,7 +83,7 @@ Page({
 
   formBindsubmit: function(e){
       console.log(e.detail.value);
-      var phone = e.detail.TAKEPHONE;
+      var phone = e.detail.value.TAKEPHONE;
       if (!(/^1[34578]\d{9}$/.test(phone))) {
         wx.showToast({
           title: '手机号有误',

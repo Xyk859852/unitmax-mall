@@ -28,7 +28,8 @@
     "pages/after_service_2/after_service_2",
     "pages/after_service_detail/after_service_detail",
     "pages/after_service_management/after_service_management",
-    "pages/evaluate_management/evaluate_management"
+    "pages/evaluate_management/evaluate_management",
+    "pages/myOrder/myOrder_list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -66,5 +67,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "enablePullDownRefresh": true
 }

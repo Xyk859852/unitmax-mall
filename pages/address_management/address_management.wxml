@@ -5,7 +5,7 @@
   <view wx:for="{{list}}" class='address_box'>
     <view class='address'>
       <view>收货人：{{item.CONSIGNEE}}<label>{{item.TAKEPHONE}}</label></view>
-      <view class='address_detail'>收件地址：{{item.MOBLE}} {{item.ADDRESS_DTEAIL}}</view>
+      <view class='address_detail'>收件地址：{{item.PROVINCE}}{{item.CITY}}{{item.DISTRICT}} {{item.MOBLE}} {{item.ADDRESS_DTEAIL}}</view>
     </view>
     <view class='btn_box'>
       <view data-CONSIGNEE='{{item.CONSIGNEE}}' data-TAKEPHONE='{{item.TAKEPHONE}}' data-MOBLE='{{item.MOBLE}}' data-ADDRESS_DTEAIL='{{item.ADDRESS_DTEAIL}}' data-ISDEFAULT='{{item.ISDEFAULT}}' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' bindtap='edit' class='small_btn'>编辑</view>

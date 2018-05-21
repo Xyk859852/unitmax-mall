@@ -253,7 +253,6 @@ Page({
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
-        console.log(res);
         // success
         if (res.data.result == "true") {//跳转到订单页  
           getApp().globalData.objArray = goodsArray;
