@@ -12,8 +12,6 @@
     <view wx:if="{{order.ORDER_STATUS == '1'}}">
       <view class='commodity_list'>
         <view class='other'>
-          <!-- <image src='../../images/seller.png'/>
-    <label>聚脉商城</label>  -->
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待付款</text>
         </view>
@@ -31,8 +29,8 @@
         </block>
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）
           <view class='order_btn'>
-            <view class='small_btn2'>支付</view>
-            <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}" >取消</view>
+            <view class='small_btn2' bindtap='' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
+            <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
           </view>
         </view>
       </view>
@@ -41,8 +39,6 @@
     <view wx:if="{{order.ORDER_STATUS == '2'}}">
       <view class='commodity_list'>
         <view class='other'>
-          <!-- <image src='../../images/seller.png'/>
-    <label>聚脉商城</label> -->
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待发货</text>
         </view>
@@ -66,8 +62,6 @@
       <block wx:for="{{order.detailList}}" wx:key="this">
         <view class='commodity_list'>
           <view class='other'>
-            <!-- <image src='../../images/seller.png'/>
-            <label>聚脉商城</label> -->
             <label>待发货</label>
             <text class='order_state'>待收货</text>
           </view>
@@ -86,7 +80,7 @@
       <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
       <view class='order_btn'>
         <view class='small_btn2'>发起售后</view>
-        <view class='small_btn'>确认收货</view>
+        <view class='small_btn' bindtap='confirmReceiveGoods' data-orderform_id="{{order.ORDERFORM_ID}}">确认收货</view>
       </view>
     </view>
     <!-- 待评价 -->
@@ -94,8 +88,6 @@
       <block wx:for="{{order.detailList}}" wx:key="this">
         <view class='commodity_list'>
           <view class='other'>
-            <!-- <image src='../../images/seller.png'/>
-          <label>聚脉商城</label> -->
             <label>{{order.ORDER_NO}}</label>
             <text class='order_state'>待评价</text>
           </view>
@@ -121,8 +113,6 @@
     <view wx:if="{{order.ORDER_STATUS == '5'}}">
       <view class='commodity_list'>
         <view class='other'>
-          <!-- <image src='../../images/seller.png'/>
-        <label>聚脉商城</label>  -->
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>交易成功</text>
         </view>
@@ -144,34 +134,30 @@
           <view class='small_btn'>评价商品</view>
         </view>
       </view>
-      <view>
-        <!-- 交易关闭 -->
-        <view wx:if="{{order.ORDER_STATUS == '6'}}">
-          <block wx:for="{{order.detailList}}" wx:key="this">
-            <view class='commodity_list'>
-              <view class='other'>
-                <!-- <image src='../../images/seller.png'/>
-              <label>聚脉商城</label>  -->
-                <label>{{order.ORDER_NO}}</label>
-                <text class='order_state'>交易关闭</text>
-              </view>
-              <view class='commodity_li'>
-                <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
-                <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-                  <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-                  <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
-                  <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                    <view class="num_box">x1</view>
-                  </view>
-                </view>
+    </view>
+    <!-- 交易关闭 -->
+    <view wx:if="{{order.ORDER_STATUS == '6'}}">
+      <block wx:for="{{order.detailList}}" wx:key="this">
+        <view class='commodity_list'>
+          <view class='other'>
+            <label>{{order.ORDER_NO}}</label>
+            <text class='order_state'>交易关闭</text>
+          </view>
+          <view class='commodity_li'>
+            <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
+            <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+              <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
+              <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+              <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
+                <view class="num_box">x1</view>
               </view>
             </view>
-          </block>
-          <view class='order_total_money'>共{{order.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
-          <view class='order_btn'>
-            <view class='small_btn2'>删除订单</view>
           </view>
         </view>
+      </block>
+      <view class='order_total_money'>共{{order.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+      <view class='order_btn'>
+        <view class='small_btn2' bindtap='delOrder' data-orderform_id="{{order.ORDERFORM_ID}}">删除订单</view>
       </view>
     </view>
   </block>

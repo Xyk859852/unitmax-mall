@@ -258,6 +258,146 @@ Page({
     })
   },
 
+  delOrder: function (e) {
+    var that = this;
+    var ORDERFORM_ID = e.target.dataset.orderform_id;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          // 用户点击了确定        
+          wx.request({
+            url: getApp().IP + 'chatOrder/delOrder?ORDERFORM_ID=' + ORDERFORM_ID,
+            // data: {},
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: header, // 设置请求的 header
+            success: function (res) {
+              // success
+              if (res.data.result == "true") {
+                that.onShow();
+              }
+
+              if (res.data.result == "1002") {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            },
+            fail: function () {
+              // fail
+              setTimeout(function () {
+                wx.showToast({
+                  title: "请求失败",
+                  duration: 1500
+                })
+              }, 100)
+            },
+            complete: function () {
+              // complete
+              wx.hideToast();
+            }
+          })
+        } else if (sm.cancel) {
+
+        }
+      }
+    })
+  },
+  confirmReceiveGoods: function(){
+    var that = this;
+    var ORDERFORM_ID = e.target.dataset.orderform_id;
+    wx.showModal({
+      title: '提示',
+      content: '确认您已经收到货物？',
+      success: function (sm) {
+        if (sm.confirm) {
+          // 用户点击了确定        
+          wx.request({
+            url: getApp().IP + 'chatOrder/confirmReceiveGoods?ORDERFORM_ID=' + ORDERFORM_ID,
+            // data: {},
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: header, // 设置请求的 header
+            success: function (res) {
+              // success
+              if (res.data.result == "true") {
+                that.onShow();
+              }
+
+              if (res.data.result == "1002") {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            },
+            fail: function () {
+              // fail
+              setTimeout(function () {
+                wx.showToast({
+                  title: "请求失败",
+                  duration: 1500
+                })
+              }, 100)
+            },
+            complete: function () {
+              // complete
+              wx.hideToast();
+            }
+          })
+        } else if (sm.cancel) {
+
+        }
+      }
+    })
+  },
+  //支付订单
+  payOrder: function(){
+  $.post("<%=basePath%>RongOrder/payMoney.do?ORDERFORM_ID=" + curORDERFORM_ID + "&PAY_PASSWORD=" + PAY_PASSWORD,
+    function (data) {
+      if (data) {
+        if (data.result) {
+          if (data.result == "true") {//支付成功
+            top.location.href = "<%=basePath%>RongOrder/payMoneySuccess.do?ORDERFORM_ID=" + data.ORDERFORM_ID;
+          }
+
+          if (data.result == "1002") {//未登录
+            top.location.href = "<%=basePath%>RongUser/goLogin";
+          }
+
+          if (data.result == "10002") {
+            $("#payPwd").tips({
+              side: 3,
+              msg: "您的账号已被冻结，无法下单，请联系管理员！",
+              bg: '#AE81FF',
+              time: 2
+            });
+          }
+
+          if (data.result == "1003") {//1003：余额不足
+            $("#payPwd").tips({
+              side: 3,
+              msg: "您的余额不足",
+              bg: '#AE81FF',
+              time: 2
+            });
+          }
+
+          if (data.result == "1004") {//1004：支付密码错误
+            $("#payPwd").tips({
+              side: 3,
+              msg: "支付密码错误",
+              bg: '#AE81FF',
+              time: 2
+            });
+          }
+
+
+        }
+      }
+
+    });
+	},
+
   /**
 * 页面相关事件处理函数--监听用户下拉动作
 */
@@ -278,5 +418,6 @@ Page({
       })
     }
   }
+
 
 })
