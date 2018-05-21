@@ -180,7 +180,7 @@
 }
 .swiper_item .view1{
   float: left;
-  height: 40px;
+  height: 30px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;

@@ -136,11 +136,11 @@
 }
 .other{
   background-color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
   width: 92%;
   padding: 10px 4%;
   color: #aaaaaa;
-  line-height: 20px;
+  line-height: 30px;
 }
 .seller_name{
   font-size: 14px;

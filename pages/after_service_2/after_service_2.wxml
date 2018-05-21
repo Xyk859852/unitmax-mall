@@ -6,10 +6,10 @@
     <view class='commodity_li_tip'>品类：品类 等级：等级</view>
   </view>
 </view>
-<view class='other' bindtap='showpayment'>
+<view class='other' bindtap='showcause'>
   <label>退款原因</label>
   <image class='other_right_img' src='../../images/right.png' />
-  <label class='other_right'>余额支付</label>
+  <label class='other_right'>{{cause}}</label>
 </view>
 <view class='other'>
   <label>退款金额</label>
