@@ -180,8 +180,14 @@ Page({
   
   },
   showDelivery:function(){
-    this.setData({
-      Delivery:true
+    wx.showActionSheet({
+      itemList: ['物流', '快递', 'EMS'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
     })
   },
   hideDelivery: function () {
