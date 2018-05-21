@@ -282,7 +282,9 @@ Page({
                     })
                   }
                   if (res.data.result == "1002") {//未登录
-                    
+                    wx.switchTab({
+                      url: '../mine/mine',
+                    })
                   }
 
                   if (res.data.result == "10002") {
