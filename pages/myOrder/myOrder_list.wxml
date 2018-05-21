@@ -14,7 +14,7 @@
         <view class='other'>
           <!-- <image src='../../images/seller.png'/>
     <label>聚脉商城</label>  -->
-          <label>订单状态</label>
+          <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待付款</text>
         </view>
         <block wx:for="{{order.detailList}}" wx:key="this">
@@ -32,7 +32,7 @@
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）
           <view class='order_btn'>
             <view class='small_btn2'>支付</view>
-            <view class='small_btn'>取消</view>
+            <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}" >取消</view>
           </view>
         </view>
       </view>
@@ -43,7 +43,7 @@
         <view class='other'>
           <!-- <image src='../../images/seller.png'/>
     <label>聚脉商城</label> -->
-          <label>订单状态</label>
+          <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待发货</text>
         </view>
         <block wx:for="{{order.detailList}}" wx:key="this">
@@ -96,7 +96,7 @@
           <view class='other'>
             <!-- <image src='../../images/seller.png'/>
           <label>聚脉商城</label> -->
-            <label>订单状态</label>
+            <label>{{order.ORDER_NO}}</label>
             <text class='order_state'>待评价</text>
           </view>
           <view class='commodity_li'>
@@ -123,7 +123,7 @@
         <view class='other'>
           <!-- <image src='../../images/seller.png'/>
         <label>聚脉商城</label>  -->
-          <label>订单状态</label>
+          <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>交易成功</text>
         </view>
         <block wx:for="{{order.detailList}}" wx:key="this">
@@ -152,7 +152,7 @@
               <view class='other'>
                 <!-- <image src='../../images/seller.png'/>
               <label>聚脉商城</label>  -->
-                <label>订单状态</label>
+                <label>{{order.ORDER_NO}}</label>
                 <text class='order_state'>交易关闭</text>
               </view>
               <view class='commodity_li'>
