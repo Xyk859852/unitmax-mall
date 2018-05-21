@@ -31,7 +31,7 @@
       <view>已完成</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order' url="../order_list/order_list">
+    <navigator class='mine_order' url="../myOrder/myOrder_list">
         全部订单
       <image src='../../images/category.png'></image>
     </navigator>
