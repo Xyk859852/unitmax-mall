@@ -11,7 +11,7 @@ Page({
     selected3: false,
     selected4: false,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
-    page: 1,
+    page: 2,
     pageSize: 30,
     hasMoreData: true,
     orderList: [],
@@ -43,7 +43,7 @@ Page({
     // 页面显示
     var that = this;
     wx.request({
-      url: this.data.appIP + 'chatOrder/myOrderList',
+      url: getApp().IP + 'chatOrder/myOrderList',
       // data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
@@ -165,18 +165,18 @@ Page({
       ORDER_STATUS: that.data.ORDER_STATUS,
     }
     wx.request({
-      url: this.data.appIP + 'chatOrder/myOrderList',
+      url: that.data.appIP + 'chatOrder/myOrderList',
       data: data,
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
         console.log(res)
         var orderListTem = that.data.orderList
-        if (res.showapi_res_code == 0) {
+        if (res.data.result == "true") {
           if (that.data.page == 1) {
             orderListTem = []
           }
-          var orderList = res.showapi_res_body.pagebean.orderList
+          var orderList = res.data.orderList
           if (orderList.length < that.data.pageSize) {
             that.setData({
               orderList: orderListTem.concat(orderList),
@@ -211,6 +211,53 @@ Page({
       }
     })
   },
+  cancelOrder: function (e) {
+    var that = this;
+    var ORDERFORM_ID = e.target.dataset.orderform_id;
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          // 用户点击了确定        
+          wx.request({
+            url: getApp().IP + 'chatOrder/cancelOrder?ORDERFORM_ID=' + ORDERFORM_ID,
+            // data: {},
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: header, // 设置请求的 header
+            success: function (res) {
+              // success
+              if (res.data.result == "true") {
+                that.onShow();
+              }
+
+              if (res.data.result == "1002") {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            },
+            fail: function () {
+              // fail
+              setTimeout(function () {
+                wx.showToast({
+                  title: "请求失败",
+                  duration: 1500
+                })
+              }, 100)
+            },
+            complete: function () {
+              // complete
+              wx.hideToast();
+            }
+          })
+        } else if (sm.cancel) {
+
+        }
+      }
+    })
+  },
+
   /**
 * 页面相关事件处理函数--监听用户下拉动作
 */
@@ -231,4 +278,5 @@ Page({
       })
     }
   }
+
 })
