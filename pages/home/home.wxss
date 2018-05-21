@@ -58,19 +58,19 @@
   line-height:40rpx;
 }
 .classify_box{
-  width: 100%;
+  width: 92%;
   background-color: #ffffff;
   padding: 20px 4%;
   overflow: hidden;
   margin-top: 10px;
 }
 .classify_left{
-  width: 44%;
+  width: 48%;
   height: 200px;
   float: left;
 }
 .classify_right{
-  width: 44%;
+  width: 48%;
   margin-left: 4%;
   height: 95px;
   float: left;
@@ -151,7 +151,7 @@
   float: right;
 }
 #new_box{
-  width: 100%;
+  width: 96%;
   overflow: hidden;
   padding-left: 4%;
   background-color: #ffffff;
