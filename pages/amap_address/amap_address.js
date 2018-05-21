@@ -170,6 +170,11 @@ Page({
     var keywords = e.target.dataset.keywords;
     var location = e.target.dataset.location;
     var moble = e.target.dataset.district;
+
+    var cityname = e.target.dataset.cityname;
+    var adname = e.target.dataset.adname;
+    var pname = e.target.dataset.pname;
+
     if (keywords==undefined){
 
     }else{
@@ -178,7 +183,11 @@ Page({
       prevPage.setData({
         address: keywords,
         location: location,
-        moble: moble
+        moble: moble,
+        province: pname,
+        city: cityname,
+        district: adname,
+        DRESSTYPE: 1
       })
       wx.navigateBack({
         delta: -1
@@ -190,14 +199,16 @@ Page({
     var location = e.target.dataset.location;
     var keywords = e.target.dataset.keywords;
     var moble = e.target.dataset.district;
-
+    var adcode = e.target.dataset.adcode;
     var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
       address: that.data.address,
       location: location,
-      moble: moble
+      moble: moble,
+      DRESSTYPE: 2,
+      adcode: adcode
     })
     wx.navigateBack({
       delta: -1
