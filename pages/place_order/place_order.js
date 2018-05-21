@@ -19,8 +19,8 @@ Page({
    */
   data: {
     appIP: app.IP,
-    Delivery:false,
-    payment:false,
+    Delivery:"第三方物流",
+    payment:"余额",
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
@@ -179,30 +179,36 @@ Page({
   onShareAppMessage: function () {
   
   },
-  showDelivery:function(){
+  showDelivery: function () {
+    var that = this;
+    var itemList = ['物流', '快递', 'EMS'];
     wx.showActionSheet({
-      itemList: ['物流', '快递', 'EMS'],
+      itemList: itemList,
       success: function (res) {
         console.log(res.tapIndex)
+        that.setData({
+          Delivery: itemList[res.tapIndex]
+        });
       },
       fail: function (res) {
         console.log(res.errMsg)
       }
     })
   },
-  hideDelivery: function () {
-    this.setData({
-      Delivery: false
-    })
-  },
   showpayment: function () {
-    this.setData({
-      payment: true
-    })
-  },
-  hidepayment: function () {
-    this.setData({
-      payment: false
+    var that=this;
+    var itemList = ['微信', '支付宝', '余额'];
+    wx.showActionSheet({
+      itemList: itemList,
+      success: function (res) {
+        console.log(res.tapIndex)
+        that.setData({
+          payment: itemList[res.tapIndex]
+        });
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
     })
   },
   calculateFinalPrice: function(){

@@ -12,6 +12,7 @@ Page({
     image1_src:"",
     image2_src:"",
     image3_src:"",
+    cause:"",
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
@@ -74,6 +75,22 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showcause:function(){
+    var that = this;
+    var itemList = ['商品破损', '规格不对', '不想要了'];
+    wx.showActionSheet({
+      itemList: itemList,
+      success: function (res) {
+        console.log(res.tapIndex)
+        that.setData({
+          cause: itemList[res.tapIndex]
+        });
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   },
   chooseImage:function(){
     var that=this;

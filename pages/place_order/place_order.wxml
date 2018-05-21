@@ -1,23 +1,4 @@
 <!--pages/place_order/place_order.wxml-->
-<view class="{{Delivery?'show':'hide'}}" bindtap='hideDelivery'>
-  <view class='delivery_box'>
-    <view class='delivery_title'>选择配送方式</view>
-    <view class='delivery_content'>
-      <view class='delivery_select' bindtap="selectDelivery">快递</view>
-      <view class='delivery_select' bindtap="selectDelivery">EMS</view>
-    </view>
-  </view>
-</view>
-<view class="{{payment?'show':'hide'}}" bindtap='hidepayment'>
-  <view class='payment_box'>
-    <view class='payment_title'>选择支付方式</view>
-    <view class='payment_content'>
-      <view class='payment_select' bindtap="selectpayment">微信</view>
-      <view class='payment_select' bindtap="selectpayment">支付宝</view>
-      <view class='payment_select' bindtap="selectpayment">余额</view>
-    </view>
-  </view>
-</view>
 <view class='body'>
   <view class='address_box' bindtap='selectAddress'>
     <image class='address_left' src='../../images/address.png' />
@@ -58,11 +39,11 @@
   </view>
   <view class='other' bindtap='showDelivery'>
     <label>配送方式</label>
-    <label class='other_right'>第三方物流￥{{TRANS_FEE}}元</label>
+    <label class='other_right'>{{Delivery}}￥{{TRANS_FEE}}元</label>
   </view>
   <view class='other' bindtap='showpayment'>
     <label>支付方式</label>
-    <label class='other_right'>余额支付</label>
+    <label class='other_right'>{{payment}}支付</label>
   </view>
   <view class="section">
     <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
