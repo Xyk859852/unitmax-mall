@@ -1,5 +1,5 @@
 /* shopping_cart.wxss */
-checkbox-group{
+page{
   padding-bottom: 70px;
 }
 .checkbox{
