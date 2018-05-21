@@ -14,23 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    console.log(header);
-    wx.request({
-      url: app.IP +'chatAddRess/getList',
-      data: '',
-      header: header,
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function(res) {
-        that.setData({
-          list: res.data.list
-        })
-      },
-      fail: function (res) {},
-      complete: function(res) {},
-    })
+    
   },
 
   /**
@@ -44,7 +28,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    console.log(header);
+    wx.request({
+      url: app.IP + 'chatAddRess/getList',
+      data: '',
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        that.setData({
+          list: res.data.list
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
   /**
@@ -93,7 +93,42 @@ Page({
     wx.navigateTo({
       url: '../add_address/add_address?ADDRESSBOOK_ID=' + ADDRESSBOOK_ID
       + '&ADDRESS_DTEAIL=' + ADDRESS_DTEAIL + '&TAKEPHONE=' + TAKEPHONE 
-      + '&CONSIGNEE=' + CONSIGNEE + '&TYPE=edit' + '&ISDEFAULT=' + ISDEFAULT,
+      + '&CONSIGNEE=' + CONSIGNEE + '&TYPE=edit' + '&MOBLE=' + MOBLE 
+      + '&ISDEFAULT=' + ISDEFAULT,
+    })
+  },
+
+  deleate : function(e){
+    var that = this;
+    var ADDRESSBOOK_ID = e.currentTarget.dataset.addressbook_id;
+    wx.request({
+      url: app.IP +'chatAddRess/deleate',
+      data: { ADDRESSBOOK_ID: ADDRESSBOOK_ID},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        if(res.data.result=="true"){
+          wx.request({
+            url: app.IP + 'chatAddRess/getList',
+            data: '',
+            header: header,
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: function (res) {
+              that.setData({
+                list: res.data.list
+              })
+            },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }
+      },
+      fail: function(res) {},
+      complete: function(res) {},
     })
   }
 })
