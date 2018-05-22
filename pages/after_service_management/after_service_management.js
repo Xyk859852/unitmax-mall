@@ -1,3 +1,44 @@
+const app = getApp();
+var header = getApp().globalData.header;
+var page = 1;
+var GetList = function (that) {
+  wx.request({
+    url: app.IP + 'chatSellafter/sellafterList',
+    data: {
+      pageSize: 10,
+      pageNo: page,
+      IP:app.IP
+    },
+    header: header,
+    method: 'GET',
+    dataType: 'json',
+    success: function (res) {
+      console.log(res);
+      var l = that.data.list
+      for (var i = 0; i < res.data.list.length; i++) {
+        l.push(res.data.list[i])
+      }
+      that.setData({
+        list: l
+      })
+      page++;
+    },
+    fail: function (res) {
+      // fail
+      setTimeout(function () {
+        wx.showToast({
+          title: "加载失败",
+          duration: 1500
+        })
+      }, 100)
+     },
+    complete: function (res) { 
+      // complete
+      wx.hideToast();
+    },
+  })
+
+}
 // pages/after_service_management/after_service_management.js
 Page({
 
@@ -6,7 +47,7 @@ Page({
    */
   data: {
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
-  
+    list:[]
   },
 
   /**
@@ -27,7 +68,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    });
+    var that = this;
+    page=1;
+    that.setData({
+      list:[]
+    })
+    GetList(that);
   },
 
   /**
@@ -48,14 +99,25 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    page = 1;
+    this.setData({
+      list: [],
+      scrollTop: 0
+    });
+    GetList(this);
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
+    
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var that = this;
+    GetList(that);
   },
 
   /**

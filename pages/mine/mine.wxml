@@ -53,7 +53,7 @@
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate">
+    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
     </navigator>
