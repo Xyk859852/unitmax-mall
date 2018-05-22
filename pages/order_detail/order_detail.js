@@ -14,7 +14,7 @@ Page({
     address_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
     contact_view_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
-    mobile:"18361296775"
+    service_phone:""
   },
 
   /**
@@ -49,7 +49,8 @@ Page({
       success: function (res) {
         if (res.data.result == "true") {
           that.setData({
-            order: res.data.order,          
+            order: res.data.order,  
+            service_phone: res.data.service_phone        
           });
         }
       },
@@ -94,7 +95,7 @@ Page({
   },
   callmobile:function(){
     wx.makePhoneCall({
-      phoneNumber: this.data.mobile
+      phoneNumber: this.data.service_phone
     })
   },
   cancelOrder: function () {
@@ -114,7 +115,7 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                wx.navigateTo({ url: '../myOrder/myOrder_list'});
               }
 
               if (res.data.result == "1002") {
@@ -161,7 +162,7 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                wx.navigateTo({ url: '../myOrder/myOrder_list'});
               }
 
               if (res.data.result == "1002") {
@@ -207,7 +208,7 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                wx.navigateTo({ url: '../myOrder/myOrder_list'});
               }
 
               if (res.data.result == "1002") {

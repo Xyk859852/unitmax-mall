@@ -9,8 +9,8 @@
 <view wx:if="{{orderList.length>0}}">
   <block wx:for="{{orderList}}" wx:key="this" wx:for-item="order">
     <!-- 待付款 -->
-    <view wx:if="{{order.ORDER_STATUS == '1'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <view class='commodity_list'>
+    <view wx:if="{{order.ORDER_STATUS == '1'}}">
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待付款</text>
@@ -28,16 +28,16 @@
           </view>
         </block>
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）
-          <view class='order_btn'>
-            <view class='small_btn2' bindtap='payOrder' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
-            <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
-          </view>
         </view>
+      </view>
+      <view class='order_btn'>
+        <view class='small_btn2' bindtap='payOrder' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
+        <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
       </view>
     </view>
     <!-- 待发货 -->
-    <view wx:if="{{order.ORDER_STATUS == '2'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <view class='commodity_list'>
+    <view wx:if="{{order.ORDER_STATUS == '2'}}">
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>待发货</text>
@@ -58,13 +58,13 @@
       </view>
     </view>
     <!-- 待收货 -->
-    <view wx:if="{{order.ORDER_STATUS == '3'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <block wx:for="{{order.detailList}}" wx:key="this">
-        <view class='commodity_list'>
-          <view class='other'>
-            <label>{{order.ORDER_NO}}</label>
-            <text class='order_state'>待收货</text>
-          </view>
+    <view wx:if="{{order.ORDER_STATUS == '3'}}">
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
+        <view class='other'>
+          <label>{{order.ORDER_NO}}</label>
+          <text class='order_state'>待收货</text>
+        </view>
+        <block wx:for="{{order.detailList}}" wx:key="this">
           <view class='commodity_li'>
             <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
             <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
@@ -75,22 +75,23 @@
               </view>
             </view>
           </view>
-        </view>
-      </block>
-      <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+        </block>
+        <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+      </view>
       <view class='order_btn'>
-        <view class='small_btn2'>发起售后</view>
-        <view class='small_btn' bindtap='confirmReceiveGoods' data-orderform_id="{{order.ORDERFORM_ID}}">确认收货</view>
+       <view class='small_btn2' bindtap='confirmReceiveGoods' data-orderform_id="{{order.ORDERFORM_ID}}">确认收货</view>
+        <view class='small_btn'>发起售后</view>   
       </view>
     </view>
     <!-- 待评价 -->
-    <view wx:if="{{order.ORDER_STATUS == '4'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <block wx:for="{{order.detailList}}" wx:key="this">
-        <view class='commodity_list'>
-          <view class='other'>
-            <label>{{order.ORDER_NO}}</label>
-            <text class='order_state'>待评价</text>
-          </view>
+    <view wx:if="{{order.ORDER_STATUS == '4'}}">
+
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
+        <view class='other'>
+          <label>{{order.ORDER_NO}}</label>
+          <text class='order_state'>待评价</text>
+        </view>
+        <block wx:for="{{order.detailList}}" wx:key="this">
           <view class='commodity_li'>
             <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
             <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
@@ -101,17 +102,17 @@
               </view>
             </view>
           </view>
-        </view>
-      </block>
-      <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+        </block>
+        <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+      </view>
       <view class='order_btn'>
         <view class='small_btn2'>发起售后</view>
         <view class='small_btn'>评价商品</view>
       </view>
     </view>
     <!-- 交易成功 -->
-    <view wx:if="{{order.ORDER_STATUS == '5'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <view class='commodity_list'>
+    <view wx:if="{{order.ORDER_STATUS == '5'}}">
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
           <text class='order_state'>交易成功</text>
@@ -129,20 +130,20 @@
           </view>
         </block>
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
-        <view class='order_btn'>
-          <view class='small_btn2'>发起售后</view>
-          <view class='small_btn'>评价商品</view>
-        </view>
+      </view>
+      <view class='order_btn'>
+        <view class='small_btn' bindtap='delOrder' data-orderform_id="{{order.ORDERFORM_ID}}">删除订单</view>
+        <view class='small_btn'>发起售后</view>    
       </view>
     </view>
     <!-- 交易关闭 -->
-    <view wx:if="{{order.ORDER_STATUS == '6'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
-      <block wx:for="{{order.detailList}}" wx:key="this">
-        <view class='commodity_list'>
-          <view class='other'>
-            <label>{{order.ORDER_NO}}</label>
-            <text class='order_state'>交易关闭</text>
-          </view>
+    <view wx:if="{{order.ORDER_STATUS == '6'}}">
+      <view class='commodity_list' bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
+        <view class='other'>
+          <label>{{order.ORDER_NO}}</label>
+          <text class='order_state'>交易关闭</text>
+        </view>
+        <block wx:for="{{order.detailList}}" wx:key="this">
           <view class='commodity_li'>
             <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
             <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
@@ -153,9 +154,9 @@
               </view>
             </view>
           </view>
-        </view>
-      </block>
-      <view class='order_total_money'>共{{order.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+        </block>
+        <view class='order_total_money'>共{{order.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
+      </view>
       <view class='order_btn'>
         <view class='small_btn2' bindtap='delOrder' data-orderform_id="{{order.ORDERFORM_ID}}">删除订单</view>
       </view>
@@ -163,5 +164,5 @@
   </block>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
-  <!-- 验证码组件 -->
-  <verifycode id='verifycode' title="请输入支付密码" content="" />
+<!-- 验证码组件 -->
+<verifycode id='verifycode' title="请输入支付密码" content="" />
