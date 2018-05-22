@@ -147,7 +147,7 @@ Page({
       var ADDRESS_DTEAIL = e.currentTarget.dataset.address_dteail;
      var pages = getCurrentPages();
      var prevPage = pages[pages.length - 2]  //上一个页面
-     prevPage.setData({
+     var defaultAddress = {
        ADDRESSBOOK_ID: ADDRESSBOOK_ID,
        CONSIGNEE: CONSIGNEE,
        TAKEPHONE: TAKEPHONE,
@@ -155,7 +155,12 @@ Page({
        CITY: CITY,
        DISTRICT: DISTRICT,
        ADDRESS_DTEAIL: ADDRESS_DTEAIL
-     })
+     }
+     prevPage.setData(
+       {
+         defaultAddress: defaultAddress
+       }
+     )
      wx.navigateBack({
        delta: -1
      });

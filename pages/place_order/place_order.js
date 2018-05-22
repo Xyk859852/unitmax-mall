@@ -58,7 +58,7 @@ Page({
 
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
-    initData();
+    this.initData();
   },
   /**
   * 生命周期函数--监听页面显示

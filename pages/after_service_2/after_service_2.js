@@ -78,7 +78,7 @@ Page({
   },
   showcause:function(){
     var that = this;
-    var itemList = ['商品破损', '规格不对', '不想要了'];
+    var itemList = ['不想要了', '买错了', '没收到货','与说明不符'];
     wx.showActionSheet({
       itemList: itemList,
       success: function (res) {
@@ -101,6 +101,7 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths);
         if (!that.data.image1) {
           if (that.data.image2 && that.data.image3) {
             that.setData({

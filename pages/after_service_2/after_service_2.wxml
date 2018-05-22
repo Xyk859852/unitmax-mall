@@ -11,11 +11,11 @@
   <image class='other_right_img' src='../../images/right.png' />
   <label class='other_right'>{{cause}}</label>
 </view>
-<view class='other'>
+<!-- <view class='other'>
   <label>退款金额</label>
   <input class='other_input_price' style='width:{{other_input_width}}px;' value='￥16.00' placeholder='请输入留言内容' />
-</view>
-<view class='price_tip'>最多￥16.00</view>
+</view> -->
+<!-- <view class='price_tip'>最多￥16.00</view> -->
 <view class='other'>
   <label>退款说明</label>
   <input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容' />

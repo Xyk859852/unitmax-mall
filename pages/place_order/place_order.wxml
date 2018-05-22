@@ -3,10 +3,10 @@
   <view class='address_box' bindtap='selectAddress'>
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
-      <view>收货人：{{CONSIGNEE}}
-        <label>{{TAKEPHONE}}</label>
+      <view>收货人：{{defaultAddress.CONSIGNEE}}
+        <label>{{defaultAddress.TAKEPHONE}}</label>
       </view>
-      <view class='address_detail'>收件地址：{{ADDRESS_DTEAIL}}</view>
+      <view class='address_detail'>收件地址：{{defaultAddress.ADDRESS_DTEAIL}}</view>
     </view>
     <image class='address_right' src='../../images/right.png' />
   </view>
