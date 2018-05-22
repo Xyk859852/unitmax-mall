@@ -12,7 +12,6 @@ Page({
     selected4: false,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     page: 2,
-    pageSize: 30,
     hasMoreData: true,
     orderList: [],
   },
@@ -21,7 +20,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //选择组件对象
+    this.verifycode = this.selectComponent("#verifycode");
   },
 
   /**
@@ -113,50 +113,65 @@ Page({
   onShareAppMessage: function () {
 
   },
-  selected: function (e) {
+  selected: function (e) {//查询全部
     this.setData({
       selected1: false,
       selected2: false,
       selected3: false,
       selected4: false,
-      selected: true
-    })
+      selected: true,
+      page:1,
+      ORDER_STATUS:-1
+    });
+    this.getMyOrderList('加载更多数据');
   },
-  selected1: function (e) {
+  selected1: function (e) {//查询待付款
     this.setData({
       selected: false,
       selected2: false,
       selected3: false,
       selected4: false,
-      selected1: true
-    })
+      selected1: true,
+      page: 1,
+      ORDER_STATUS: 1
+    });
+    this.getMyOrderList('加载更多数据');
   },
-  selected2: function (e) {
+  selected2: function (e) {//查询待发货
     this.setData({
       selected: false,
       selected1: false,
       selected3: false,
       selected2: true,
       selected4: false,
-    })
+      page: 1,
+      ORDER_STATUS: 2
+    });
+    this.getMyOrderList('加载更多数据');
   },
-  selected3: function (e) {
+  selected3: function (e) {//查询待收货
     this.setData({
       selected: false,
       selected1: false,
       selected2: false,
       selected3: true,
       selected4: false,
-    })
+      page: 1,
+      ORDER_STATUS: 3
+    });
+    this.getMyOrderList('加载更多数据');
   },
-  selected4: function (e) {
+  selected4: function (e) {//查询待评价
     this.setData({
       selected: false,
       selected1: false,
       selected2: false,
       selected3: false,
       selected4: true,
-    })
+      page: 1,
+      ORDER_STATUS: 4
+    });
+    this.getMyOrderList('加载更多数据');
   },
   getMyOrderList: function (message) {
     var that = this
@@ -170,14 +185,13 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
-        console.log(res)
         var orderListTem = that.data.orderList
         if (res.data.result == "true") {
           if (that.data.page == 1) {
             orderListTem = []
           }
           var orderList = res.data.orderList
-          if (orderList.length < that.data.pageSize) {
+          if (orderList.length < res.data.pageSize) {
             that.setData({
               orderList: orderListTem.concat(orderList),
               hasMoreData: false
@@ -304,7 +318,7 @@ Page({
       }
     })
   },
-  confirmReceiveGoods: function(){
+  confirmReceiveGoods: function(e){
     var that = this;
     var ORDERFORM_ID = e.target.dataset.orderform_id;
     wx.showModal({
@@ -351,53 +365,81 @@ Page({
     })
   },
   //支付订单
-  payOrder: function(){
-  $.post("<%=basePath%>RongOrder/payMoney.do?ORDERFORM_ID=" + curORDERFORM_ID + "&PAY_PASSWORD=" + PAY_PASSWORD,
-    function (data) {
-      if (data) {
-        if (data.result) {
-          if (data.result == "true") {//支付成功
-            top.location.href = "<%=basePath%>RongOrder/payMoneySuccess.do?ORDERFORM_ID=" + data.ORDERFORM_ID;
-          }
+  payOrder: function(e){
+    var that = this;
+    var ORDERFORM_ID = e.target.dataset.orderform_id;
+    that.verifycode.showView({
+      phone: '',
+      inputSuccess: function (phoneCode) {
+        var code = that.verifycode.data.codes;
+        code = code.join("");
+        that.setData({ ORDERFORM_ID: ORDERFORM_ID });
+        wx.request({
+          url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + ORDERFORM_ID + '&PAY_PASSWORD=' + code,
+          data: {
+            PHONE: '',
+            CODE: code
+          },
+          header: header,
+          method: 'GET',
+          dataType: 'json',
+          success: function (res) {
+            that.verifycode.closeView('');
+            if (res.data.result == "true") {
+              wx.navigateTo({
+                url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+              })
+            }
+            if (res.data.result == "1002") {//未登录
+              wx.switchTab({
+                url: '../mine/mine',
+              })
+            }
 
-          if (data.result == "1002") {//未登录
-            top.location.href = "<%=basePath%>RongUser/goLogin";
-          }
-
-          if (data.result == "10002") {
-            $("#payPwd").tips({
-              side: 3,
-              msg: "您的账号已被冻结，无法下单，请联系管理员！",
-              bg: '#AE81FF',
-              time: 2
-            });
-          }
-
-          if (data.result == "1003") {//1003：余额不足
-            $("#payPwd").tips({
-              side: 3,
-              msg: "您的余额不足",
-              bg: '#AE81FF',
-              time: 2
-            });
-          }
-
-          if (data.result == "1004") {//1004：支付密码错误
-            $("#payPwd").tips({
-              side: 3,
-              msg: "支付密码错误",
-              bg: '#AE81FF',
-              time: 2
-            });
-          }
+            if (res.data.result == "10002") {
+              wx.showToast({
+                title: "您的账号已被冻结，无法下单，请联系管理员！",
+                duration: 1500
+              })
+            }
 
 
-        }
+            if (res.data.result == "1003") {
+              wx.showToast({
+                title: "您的余额不足",
+                duration: 1500
+              })
+            }
+
+
+            if (res.data.result == "1004") {
+              wx.showToast({
+                title: "支付密码错误",
+                duration: 1500
+              })
+            }
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+        //调用组件关闭方法
+
+        //设置数据
+        that.setData({
+          code: phoneCode
+        });
+
       }
-
     });
-	},
 
+	},
+  //查看订单详情
+  detailOrder: function (e) {
+    var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
+    wx.navigateTo({
+      url: '../order_detail/order_detail?ORDERFORM_ID=' + ORDERFORM_ID,
+    })
+  },
   /**
 * 页面相关事件处理函数--监听用户下拉动作
 */

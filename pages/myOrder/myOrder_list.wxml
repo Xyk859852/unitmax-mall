@@ -9,7 +9,7 @@
 <view wx:if="{{orderList.length>0}}">
   <block wx:for="{{orderList}}" wx:key="this" wx:for-item="order">
     <!-- 待付款 -->
-    <view wx:if="{{order.ORDER_STATUS == '1'}}">
+    <view wx:if="{{order.ORDER_STATUS == '1'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <view class='commodity_list'>
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
@@ -22,21 +22,21 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
         </block>
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）
           <view class='order_btn'>
-            <view class='small_btn2' bindtap='' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
+            <view class='small_btn2' bindtap='payOrder' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
             <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
           </view>
         </view>
       </view>
     </view>
     <!-- 待发货 -->
-    <view wx:if="{{order.ORDER_STATUS == '2'}}">
+    <view wx:if="{{order.ORDER_STATUS == '2'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <view class='commodity_list'>
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
@@ -49,7 +49,7 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
@@ -58,11 +58,11 @@
       </view>
     </view>
     <!-- 待收货 -->
-    <view wx:if="{{order.ORDER_STATUS == '3'}}">
+    <view wx:if="{{order.ORDER_STATUS == '3'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <block wx:for="{{order.detailList}}" wx:key="this">
         <view class='commodity_list'>
           <view class='other'>
-            <label>待发货</label>
+            <label>{{order.ORDER_NO}}</label>
             <text class='order_state'>待收货</text>
           </view>
           <view class='commodity_li'>
@@ -71,7 +71,7 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
@@ -84,7 +84,7 @@
       </view>
     </view>
     <!-- 待评价 -->
-    <view wx:if="{{order.ORDER_STATUS == '4'}}">
+    <view wx:if="{{order.ORDER_STATUS == '4'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <block wx:for="{{order.detailList}}" wx:key="this">
         <view class='commodity_list'>
           <view class='other'>
@@ -97,7 +97,7 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
@@ -110,7 +110,7 @@
       </view>
     </view>
     <!-- 交易成功 -->
-    <view wx:if="{{order.ORDER_STATUS == '5'}}">
+    <view wx:if="{{order.ORDER_STATUS == '5'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <view class='commodity_list'>
         <view class='other'>
           <label>{{order.ORDER_NO}}</label>
@@ -123,7 +123,7 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
@@ -136,7 +136,7 @@
       </view>
     </view>
     <!-- 交易关闭 -->
-    <view wx:if="{{order.ORDER_STATUS == '6'}}">
+    <view wx:if="{{order.ORDER_STATUS == '6'}}" bindtap='detailOrder' data-orderform_id="{{order.ORDERFORM_ID}}">
       <block wx:for="{{order.detailList}}" wx:key="this">
         <view class='commodity_list'>
           <view class='other'>
@@ -149,7 +149,7 @@
               <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
               <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
               <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
-                <view class="num_box">x1</view>
+                <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
               </view>
             </view>
           </view>
@@ -163,3 +163,5 @@
   </block>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
+  <!-- 验证码组件 -->
+  <verifycode id='verifycode' title="请输入支付密码" content="" />
