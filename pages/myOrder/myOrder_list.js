@@ -459,6 +459,18 @@ Page({
         title: '没有更多数据',
       })
     }
+  },
+
+  /**
+   * 评价商品 
+  */
+  goEvaluate:function(e){
+    console.log(e);
+    var ORDER_NO = e.currentTarget.dataset.order_no;
+    var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
+      wx.navigateTo({
+        url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
+      })
   }
 
 
