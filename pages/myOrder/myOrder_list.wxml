@@ -107,7 +107,7 @@
       </view>
       <view class='order_btn'>
         <view class='small_btn2'>发起售后</view>
-        <view class='small_btn'>评价商品</view>
+        <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-goods_id='{{order.ORDER_NO}}' class='small_btn'>评价商品</view>
       </view>
     </view>
     <!-- 交易成功 -->
