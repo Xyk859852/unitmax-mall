@@ -135,9 +135,7 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        console.log("1111" + tempFilePaths);
-        console.log("1111" + res.tempFilePaths[0]);
+        var tempFilePaths = res.tempFilePaths[0];
         if (!that.data.image1) {
           if (that.data.image2 && that.data.image3) {
             that.setData({
@@ -145,9 +143,10 @@ Page({
             })
           }
           that.setData({
-            image1: true,
-            image1_src: tempFilePaths
-          })
+            image1: true
+           // image1_src: tempFilePaths
+          });
+          that.uploadSellafterImg(tempFilePaths, "image1_src");
         } else {
           if (!that.data.image2) {
             if (that.data.image1 && that.data.image3) {
@@ -156,9 +155,10 @@ Page({
               })
             }
             that.setData({
-              image2: true,
-              image2_src: tempFilePaths
-            })
+              image2: true
+              //image2_src: tempFilePaths
+            });
+            that.uploadSellafterImg(tempFilePaths, "image2_src");
           } else {
             if (!that.data.image3) {
               if (that.data.image1 && that.data.image2) {
@@ -167,9 +167,10 @@ Page({
                 })
               }
               that.setData({
-                image3: true,
-                image3_src: tempFilePaths
-              })
+                image3: true
+               // image3_src: tempFilePaths
+              });
+              that.uploadSellafterImg(tempFilePaths, "image3_src");
             }
           }
         }
@@ -198,6 +199,53 @@ Page({
       addimage: true
     })
   },
+  uploadSellafterImg: function (imageParth,img_src){
+    var that = this;
+    // var data = {
+    //   ORDERFORM_ID: that.data.ORDERFORM_ID,
+    // };
+    wx.uploadFile({
+      url: app.IP + 'chatOrder/uploadSellafterImg',
+      filePath: imageParth,
+      name: 'file',
+      header: {
+        'Cookie': '',
+        'Content-Type': 'multipart/form-data'
+      },
+      //formData: data,
+      success: function (res) {
+       var resdata = JSON.parse(res.data);
+       if (resdata.result == "true"){
+          console.log(img_src == "image1_src");
+          if (img_src == "image1_src"){
+            that.setData({
+              image1_src: resdata.SELLAFTER_IMG
+            });
+            console.log(that.data.image1_src);
+          }
+          if (img_src == "image2_src") {
+            that.setData({
+              image2_src: resdata.SELLAFTER_IMG
+            });
+          }
+          if (img_src == "image3_src") {
+            that.setData({
+              image3_src: resdata.SELLAFTER_IMG
+            });
+          }
+
+       }
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '上传失败',
+          duration:1500
+        })
+      }
+
+    });
+  }
+  ,
   AddSellafter: function () {
     var that = this;
     var data = {
@@ -205,60 +253,42 @@ Page({
       REMARK: that.data.MSG,
       ORDER_NO: that.data.order.ORDER_NO,
       ORDERFORM_ID: that.data.ORDERFORM_ID,
-      file1: that.data.image1_src[0],
-      file2: that.data.image2_src[0],
-      file3: that.data.image3_src[0]
+      SELLAFTER_IMG1: that.data.image1_src,
+      SELLAFTER_IMG2: that.data.image2_src,
+      SELLAFTER_IMG3: that.data.image3_src
     };
 
-    wx.uploadFile({
+    wx.request({
       url: app.IP + 'chatOrder/buyerAddSellafter',
-      filePath: that.data.image1_src[0],
-      name: 'file1',
-      header: {
-        'Cookie': '',
-        'Content-Type':'multipart/form-data'
-      },
-      formData: data,
+      data: data,
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header,  // 设置请求的 
       success: function (res) {
-        var cur_data = res.data;
-        console.log(cur_data.fileName);
+        // success
+        if (res.data.result == "true") {
+          wx.navigateTo({
+            url: '../after_service_management/after_service_management',
+          })
+        } else {//未登录
+          wx.showToast({
+            title: res.data.result,
+            duration: 1500
+          });
+        }
       },
-      fail: function (res) {
-        console.log('上传失败');
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
       }
-
-    })
-    // wx.request({
-    //   url: app.IP + 'chatOrder/buyerAddSellafter',
-    //   data: data,
-    //   method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-    //   header: { 'Cookie': '', 'content-type': 'multipart/form-data' },  // 设置请求的 header
-    //   success: function (res) {
-    //     // success
-    //     if (res.data.result == "true") {
-    //       wx.navigateTo({
-    //         url: '../after_service_management/after_service_management',
-    //       })
-    //     } else {//未登录
-    //       wx.showToast({
-    //         title: res.data.result,
-    //         duration: 1500
-    //       });
-    //     }
-    //   },
-    //   fail: function () {
-    //     // fail
-    //     setTimeout(function () {
-    //       wx.showToast({
-    //         title: "加载失败",
-    //         duration: 1500
-    //       })
-    //     }, 100)
-    //   },
-    //   complete: function () {
-    //     // complete
-    //     wx.hideToast();
-    //   }
-    // });
+    });
   }
 })
