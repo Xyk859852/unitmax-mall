@@ -11,9 +11,6 @@ var GOODSTYPE_ID = '';
 var keywords = '';
 var GetList = function (that) {
   wx.showNavigationBarLoading()
-  that.setData({
-    hidden: false
-  });
   wx.request({
     url: url,
     header:header,
@@ -94,14 +91,7 @@ Page({
       scrollTop: 0
     });
     GetList(that);
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     console.info(res.windowHeight);
-    //     that.setData({
-    //       scrollHeight: res.windowHeight
-    //     });
-    //   }
-    // });
+    
   }, 
   onShow: function () {
     

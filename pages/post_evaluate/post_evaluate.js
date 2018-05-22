@@ -1,4 +1,8 @@
 // pages/post_evaluate/post_evaluate.js
+const app = getApp();
+var header = getApp().globalData.header;
+var ORDER_NO = "";
+var ORDERFORM_ID = "";
 Page({
 
   /**
@@ -9,16 +13,44 @@ Page({
     img1:"../../images/iconfont-evaluate.png",
     img2:"../../images/iconfont-evaluate.png",
     img3:"../../images/iconfont-bad.png",
-    good1:false,
-    general1:false,
-    bad1:false,
+    good1:'good1',
+    general1:-1,
+    bad1:-1,
+    DESCRIPTION_EVALUATE:[],
+    EVALUATE_INFO:[],
+    IP:app.IP
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
+    var that = this;
+    ORDER_NO = options.ORDER_NO;
+    ORDERFORM_ID = options.ORDERFORM_ID
+    wx.request({
+      url: app.IP +'chatEvaluate/evaluate',
+      data: { ORDER_NO: ORDER_NO,
+        ORDERFORM_ID: ORDERFORM_ID},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res);
+        that.setData({
+          list: res.data.varList
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {
+        wx.hideToast();
+      },
+    })
   },
 
   /**
@@ -69,34 +101,98 @@ Page({
   onShareAppMessage: function () {
   
   },
-  good:function(){
-    this.setData({
-      img1: "../../images/iconfont-good.png",
-      img2: "../../images/iconfont-evaluate.png",
-      img3: "../../images/iconfont-bad.png",
-      good1: true,
-      general1: false,
-      bad1: false,
+  good:function(e){
+    var that = this;
+    console.log(e);
+    var goods_id = e.currentTarget.dataset.goods_id;
+    var list = that.data.list;
+    for (var i = 0; i < list.length; i++) {
+      console.log(list[i]);
+      if (goods_id == list[i].GOODS_ID) {
+        list[i].evaluate_buyer_val = 1;
+      }
+    }    var that = this;
+    var up = "DESCRIPTION_EVALUATE[" + e.currentTarget.dataset.index + "]";//先用一个变量，把(info[0].gMoney)用字符串拼接起来
+    console.log(goods_id);
+    that.setData({
+      list:list,
+      [up]:5
     })
   },
-  general: function () {
-    this.setData({
-      img1: "../../images/iconfont-evaluate.png",
-      img2: "../../images/iconfont-middle.png",
-      img3: "../../images/iconfont-bad.png",
-      good1: false,
-      general1: true,
-      bad1: false,
+  general: function (e) {
+    var that = this;
+    var goods_id = e.currentTarget.dataset.goods_id;
+    var list = that.data.list;
+    for(var i=0;i<list.length;i++){
+      console.log(list[i]);
+      if (goods_id == list[i].GOODS_ID){
+        list[i].evaluate_buyer_val=0;
+      }
+    }
+    console.log(goods_id);
+    var up = "DESCRIPTION_EVALUATE[" + e.currentTarget.dataset.index + "]";//先用一个变量，把(info[0]
+    that.setData({
+      list:list,
+      [up]: 3
     })
   },
-  bad: function () {
-    this.setData({
-      img1: "../../images/iconfont-evaluate.png",
-      img2: "../../images/iconfont-evaluate.png",
-      img3: "../../images/iconfont-badon.png",
-      good1: false,
-      general1: false,
-      bad1: true,
+  bad: function (e) {
+    var that = this;
+    var goods_id = e.currentTarget.dataset.goods_id;
+    var list = that.data.list;
+    for (var i = 0; i < list.length; i++) {
+      console.log(list[i]);
+      if (goods_id == list[i].GOODS_ID) {
+        list[i].evaluate_buyer_val = -1;
+      }
+    }    console.log(goods_id);
+    var up = "DESCRIPTION_EVALUATE[" + e.currentTarget.dataset.index + "]";//先用一个变量，把(info[0]
+    that.setData({
+      list:list,
+      [up]: 0
     })
+  },
+  formBindsubmit: function(e){
+    console.log(this.data);
+    var EVALUATE_INFO = this.data.EVALUATE_INFO;
+    if (this.data.EVALUATE_INFO.length!=this.data.list.length){
+      wx.showToast({
+        title: '有商品未输入评价内容',
+      })
+      return false;
+    }
+    var DESCRIPTION_EVALUATE = this.data.DESCRIPTION_EVALUATE;
+    if (this.data.DESCRIPTION_EVALUATE.length != this.data.list.length) {
+      wx.showToast({
+        title: '有商品未评价',
+      })
+      return false;
+    }
+    wx.request({
+      url: app.IP +'chatEvaluate/saveEvaluate',
+      data: { EVALUATE_INFO: EVALUATE_INFO,
+        DESCRIPTION_EVALUATE: DESCRIPTION_EVALUATE,
+        ORDER_NO: ORDER_NO,
+        ORDERFORM_ID: ORDERFORM_ID},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res);
+        wx.redirectTo({
+          url: '../evaluate_management/evaluate_management',
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  bindblur:function(e){
+    var that = this;
+    var up = "EVALUATE_INFO[" + e.currentTarget.dataset.index + "]";//先用一个变量，把(info[0]
+    that.setData({
+      [up]: e.detail.value
+    })
+    console.log(e);
   }
 })

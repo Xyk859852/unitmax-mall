@@ -1,46 +1,26 @@
 <!--pages/post_evaluate/post_evaluate.wxml-->
-<view class='evaluate_list'>
+<form bindsubmit="formBindsubmit">
+<view wx:for="{{list}}" class='evaluate_list'>
   <view class='evaluate_box'>
-    <image class='commodity_img' src='../../images/category.png'/>
+    <image class='commodity_img' src='{{IP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'/>
     <view class='evaluate_title' style='width:{{evaluate_title_width}}px;'>
-      <view class='evaluate' bindtap='good'>
-        <image src='{{img1}}'/>
-        <label class="{{good1?'red':'default'}}">好评</label>
+      <view data-index='{{index}}' data-goods_id='{{item.GOODS_ID}}' class='evaluate' bindtap='good'>
+        <image src="{{item.evaluate_buyer_val==1?'../../images/iconfont-good.png':'../../images/iconfont-evaluate.png'}}"/>
+        <label class="{{item.evaluate_buyer_val==1?'red':'default'}}">好评</label>
       </view>
-      <view class='evaluate' bindtap='general'>
-        <image src='{{img2}}'/>
-        <label class="{{general1?'yellow':'default'}}">中评</label>
+      <view class='evaluate' data-goods_id='{{item.GOODS_ID}}' data-index='{{index}}' bindtap='general'>
+        <image src="{{item.evaluate_buyer_val==0?'../../images/iconfont-middle.png':'../../images/iconfont-evaluate.png'}}"/>
+        <label class="{{item.evaluate_buyer_val==0?'yellow':'default'}}">中评</label>
       </view>
-      <view class='evaluate' bindtap='bad'>
-        <image src='{{img3}}'/>
-        <label class="{{bad1?'grey':'default'}}">差评</label>
+      <view class='evaluate' data-goods_id='{{item.GOODS_ID}}' data-index='{{index}}' bindtap='bad'>
+        <image src="{{item.evaluate_buyer_val==-1?'../../images/iconfont-badon.png':'../../images/iconfont-bad.png'}}"/>
+        <label class="{{item.evaluate_buyer_val==-1?'grey':'default'}}">差评</label>
       </view>
     </view>
   </view>
-  <textarea placeholder='请输入你对商品的评价内容' class='evaluate_content'></textarea>
-</view>
-<view class='evaluate_list'>
-  <view class='evaluate_box'>
-    <image class='commodity_img' src='../../images/category.png'/>
-    <view class='evaluate_title' style='width:{{evaluate_title_width}}px;'>
-      <view class='evaluate' bindtap='good'>
-        <image src='{{img1}}'/>
-        <label class="{{good1?'red':'default'}}">好评</label>
-      </view>
-      <view class='evaluate' bindtap='general'>
-        <image src='{{img2}}'/>
-        <label class="{{general1?'yellow':'default'}}">中评</label>
-      </view>
-      <view class='evaluate' bindtap='bad'>
-        <image src='{{img3}}'/>
-        <label class="{{bad1?'grey':'default'}}">差评</label>
-      </view>
-    </view>
-  </view>
-  <textarea placeholder='请输入你对商品的评价内容' class='evaluate_content'></textarea>
+  <textarea bindblur='bindblur' data-index='{{index}}' placeholder='请输入你对商品的评价内容' class='evaluate_content'></textarea> 
 </view>
 <view class='footer'>
- <navigator>
-<button>保存</button>
-</navigator>
+<button form-type='submit'>保存</button>
 </view>
+</form>
