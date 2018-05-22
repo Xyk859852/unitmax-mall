@@ -35,9 +35,9 @@ Page({
       success: function (res) {
         // success
         console.log(res.data.good);
-
         that.setData({
-          good: res.data.good
+          good: res.data.good,
+          evaluate: res.data.evaluate
         });
 
         if (util.isAvalible(res.data.goodsCartCount)){

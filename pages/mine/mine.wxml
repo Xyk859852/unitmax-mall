@@ -8,8 +8,8 @@
       获取用户信息
     </button>
      <block wx:else>
-    <open-data type="userAvatarUrl"></open-data>
-    <open-data type="userNickName"></open-data>  -->
+    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+    <open-data type="userNickName" class="userinfo-nickname"></open-data>
     </block> 
   </view>
 </view>

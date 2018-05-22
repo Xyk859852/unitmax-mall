@@ -10,9 +10,9 @@
 <view class='commodity_detail_title'>
   <view class='commodity_detail_title_left'>
    <!-- style='width:{{commodity_detail_title_left_width}}px;' -->
-    <view class='commodity_title'>{{order.GOODS_NAME}}</view>
-    <view class='commodity_price'>￥{{order.GOODS_PRICE}}</view>
-    <view class='commodity_tip'>库存：{{order.GOODS_INVENTORY}} 销量：{{order.GOODS_SALENUM}}</view>
+    <view class='commodity_title'>{{good.GOODS_NAME}}</view>
+    <view class='commodity_price'>￥{{good.GOODS_PRICE}}</view>
+    <view class='commodity_tip'>库存：{{good.GOODS_INVENTORY}} 销量：{{good.GOODS_SALENUM}}</view>
   </view>
   <!-- <view class='commodity_detail_title_right'> 
     <image src='../../images/share.png'></image>
@@ -22,14 +22,15 @@
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>商品评价</view>
   </view>
-     <view class='evaluate'>
-      <image src='../../images/notice.png'/>
+     <view wx:if="{{evaluate!=null || evaluate!= undefined}}" class='evaluate'>
+      <image src='{{evaluate.NAME}}'/>
       <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
-        <view class='evaluate_nickname'>哈哈哈哈哈<text>2015-05-16</text></view>
-        <view class='evaluate_container'>很好</view>
+        <view class='evaluate_nickname'>{{evaluate.NAME}}<text>{{evaluate.addTime}}</text></view>
+        <view class='evaluate_container'>{{evaluate.evaluate_info}}</view>
       </view>
+      <navigator class='evaluate_more' open-type="navigate" url="../evaluate/evaluate">更多评价</navigator>
     </view> 
-    <navigator class='evaluate_more' open-type="navigate" url="../evaluate/evaluate">更多评价</navigator>
+    <view wx:else>暂无评价</view>
   <view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
     <view>规格参数</view>
   </view>
