@@ -1,5 +1,6 @@
 const app = getApp();
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 // pages/address_management/address_management.js
 Page({
 
@@ -14,7 +15,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if (util.isAvalible(options) && util.isAvalible(options.page_from)){
+     this.setData({
+       page_from: options.page_from
+     });
+   }
   },
 
   /**
@@ -130,5 +135,30 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  selectAddress: function(e){
+    if (util.isAvalible(this.data.page_from)){
+      var ADDRESSBOOK_ID = e.currentTarget.dataset.addressbook_id;
+      var CONSIGNEE = e.currentTarget.dataset.consignee;
+      var TAKEPHONE = e.currentTarget.dataset.takephone;
+      var PROVINCE = e.currentTarget.dataset.province;
+      var CITY = e.currentTarget.dataset.city;
+      var DISTRICT = e.currentTarget.dataset.district;
+      var ADDRESS_DTEAIL = e.currentTarget.dataset.address_dteail;
+     var pages = getCurrentPages();
+     var prevPage = pages[pages.length - 2]  //上一个页面
+     prevPage.setData({
+       ADDRESSBOOK_ID: ADDRESSBOOK_ID,
+       CONSIGNEE: CONSIGNEE,
+       TAKEPHONE: TAKEPHONE,
+       PROVINCE: PROVINCE,
+       CITY: CITY,
+       DISTRICT: DISTRICT,
+       ADDRESS_DTEAIL: ADDRESS_DTEAIL
+     })
+     wx.navigateBack({
+       delta: -1
+     });
+   }
   }
 })
