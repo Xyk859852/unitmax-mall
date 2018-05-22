@@ -1,11 +1,13 @@
 <!--pages/after_service_2/after_service_2.wxml-->
-<view class='commodity_li'>
-  <image src='../../images/address.png'></image>
-  <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-    <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
-    <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+<block wx:for="{{orderDetailList}}" wx:key="this">
+  <view class='commodity_li'>
+    <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
+    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+      <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
+      <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+    </view>
   </view>
-</view>
+</block>
 <view class='other' bindtap='showcause'>
   <label>退款原因</label>
   <image class='other_right_img' src='../../images/right.png' />
@@ -36,5 +38,5 @@
   </view>
 </view>
 <view class='footer'>
-  <button form-type='submit'>提交</button>
+  <button form-type='submit' bindtap='AddSellafter'>提交</button>
 </view>

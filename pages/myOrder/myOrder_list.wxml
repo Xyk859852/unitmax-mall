@@ -80,7 +80,7 @@
       </view>
       <view class='order_btn'>
        <view class='small_btn2' bindtap='confirmReceiveGoods' data-orderform_id="{{order.ORDERFORM_ID}}">确认收货</view>
-        <view class='small_btn'>发起售后</view>   
+        <view class='small_btn' bindtap='addAfterService'  data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>   
       </view>
     </view>
     <!-- 待评价 -->
@@ -106,7 +106,7 @@
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
       </view>
       <view class='order_btn'>
-        <view class='small_btn2'>发起售后</view>
+        <view class='small_btn2' bindtap='addAfterService'  data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>
         <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-goods_id='{{order.ORDER_NO}}' class='small_btn'>评价商品</view>
       </view>
     </view>
@@ -133,7 +133,7 @@
       </view>
       <view class='order_btn'>
         <view class='small_btn' bindtap='delOrder' data-orderform_id="{{order.ORDERFORM_ID}}">删除订单</view>
-        <view class='small_btn'>发起售后</view>    
+        <view class='small_btn' bindtap='addAfterService'  data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>    
       </view>
     </view>
     <!-- 交易关闭 -->

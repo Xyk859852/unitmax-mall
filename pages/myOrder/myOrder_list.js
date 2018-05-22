@@ -438,7 +438,13 @@ Page({
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
     wx.navigateTo({
       url: '../order_detail/order_detail?ORDERFORM_ID=' + ORDERFORM_ID,
-    })
+    });
+  },
+  addAfterService: function(e){
+    var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
+    wx.navigateTo({
+      url: '../after_service_2/after_service_2?ORDERFORM_ID=' + ORDERFORM_ID,
+    });
   },
   /**
 * 页面相关事件处理函数--监听用户下拉动作
