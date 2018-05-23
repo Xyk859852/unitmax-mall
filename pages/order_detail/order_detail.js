@@ -306,4 +306,11 @@ Page({
     });
 
   },
+  addAfterService: function (e) {
+    var that = this;
+    var ORDERFORM_ID = that.data.ORDERFORM_ID;
+    wx.navigateTo({
+      url: '../after_service_2/after_service_2?ORDERFORM_ID=' + ORDERFORM_ID,
+    });
+  },
 })

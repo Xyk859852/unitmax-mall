@@ -79,7 +79,7 @@
   </view>
     <view wx:if="{{order.ORDER_STATUS == '3' || order.ORDER_STATUS == '4' || order.ORDER_STATUS == '5'}}">
     <view wx:if="{{order.sellafter == null}}">
-      <view class='small_btn'>发起售后</view>
+      <view class='small_btn' bindtap='addAfterService'>发起售后</view>
     </view>
     <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='1'}}">
       <view class='small_btn'>售后成功</view>
