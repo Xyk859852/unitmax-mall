@@ -16,14 +16,23 @@ Page({
     input_width: wx.getSystemInfoSync().windowWidth * 0.92 - 186,
     sendmsg: "sendmsg", 
     getmsg: "获取验证码", 
+    update:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
+    var update = options.updatePhone;
+    console.log(update)
+    if (update){
+      that.setData({
+        update:2
+      })
+    }
   },
 
   /**

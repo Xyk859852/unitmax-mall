@@ -41,7 +41,7 @@
       <image src='../../images/category.png'></image>
       <view>地址管理</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone">
+    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>绑定手机</view>
     </navigator>
