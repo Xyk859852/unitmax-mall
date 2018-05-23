@@ -2,6 +2,7 @@
 
 var app = getApp();
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 Page({
   data: {
     appIP: app.IP,
@@ -20,6 +21,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (util.isAvalible(options) && util.isAvalible(options.ORDER_STATUS)){
+      if (options.ORDER_STATUS == 1) {
+        this.selected1();
+      }
+      if (options.ORDER_STATUS == 2) {
+        this.selected2();
+      }
+      if (options.ORDER_STATUS == 3) {
+        this.selected3();
+      }
+      if (options.ORDER_STATUS == 4) {
+        this.selected4();
+      }
+    }else{//查询全部
+      this.selected();
+    }
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
   },
@@ -35,47 +52,48 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })
-    // 页面显示
-    var that = this;
-    wx.request({
-      url: getApp().IP + 'chatOrder/myOrderList',
-      // data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: header, // 设置请求的 header
-      success: function (res) {
-        // success
-        if (res.data.result == "true") {
-          that.setData({
-            orderList: res.data.orderList,
-            ORDER_STATUS: res.data.ORDER_STATUS
-          });
-        }
+    
+    // wx.showToast({
+    //   title: "Loading...",
+    //   icon: "loading",
+    //   duration: 2000
+    // })
+    // // 页面显示
+    // var that = this;
+    // wx.request({
+    //   url: getApp().IP + 'chatOrder/myOrderList',
+    //   // data: {},
+    //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    //   header: header, // 设置请求的 header
+    //   success: function (res) {
+    //     // success
+    //     if (res.data.result == "true") {
+    //       that.setData({
+    //         orderList: res.data.orderList,
+    //         ORDER_STATUS: res.data.ORDER_STATUS
+    //       });
+    //     }
 
-        if (res.data.result == "1002") {
-          wx.switchTab({
-            url: '../mine/mine',
-          })
-        }
-      },
-      fail: function () {
-        // fail
-        setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
-        }, 100)
-      },
-      complete: function () {
-        // complete
-        wx.hideToast();
-      }
-    })
+    //     if (res.data.result == "1002") {
+    //       wx.switchTab({
+    //         url: '../mine/mine',
+    //       })
+    //     }
+    //   },
+    //   fail: function () {
+    //     // fail
+    //     setTimeout(function () {
+    //       wx.showToast({
+    //         title: "加载失败",
+    //         duration: 1500
+    //       })
+    //     }, 100)
+    //   },
+    //   complete: function () {
+    //     // complete
+    //     wx.hideToast();
+    //   }
+    // })
 
   },
 

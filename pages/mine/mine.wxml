@@ -15,20 +15,20 @@
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=1">
       <view>待付款</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>待接单</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=2">
+      <view>待发货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>进行中</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=3">
+      <view>待收货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>已完成</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=4">
+      <view>待评价</view>
       <image src='../../images/category.png'></image>
     </navigator>
     <navigator class='mine_order' url="../myOrder/myOrder_list">
