@@ -271,10 +271,7 @@ Page({
             url: '../after_service_management/after_service_management',
           })
         } else {//未登录
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);
         }
       },
       fail: function () {

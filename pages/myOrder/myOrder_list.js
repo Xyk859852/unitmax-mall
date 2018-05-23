@@ -15,6 +15,7 @@ Page({
     page: 2,
     hasMoreData: true,
     orderList: [],
+    isShow:true
   },
 
   /**
@@ -37,8 +38,12 @@ Page({
     }else{//查询全部
       this.selected();
     }
+
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
+    
   },
 
   /**
@@ -47,12 +52,11 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+   // this.toast.showView("啦啦啦啦");
     // wx.showToast({
     //   title: "Loading...",
     //   icon: "loading",
@@ -222,9 +226,7 @@ Page({
             })
           }
         } else {
-          wx.showToast({
-            title: res.data.result,
-          })
+          that.toast.showView(res.data.result);
         }
 
       },
@@ -415,26 +417,17 @@ Page({
             }
 
             if (res.data.result == "10002") {
-              wx.showToast({
-                title: "您的账号已被冻结，无法下单，请联系管理员！",
-                duration: 1500
-              })
+              that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
             }
 
 
             if (res.data.result == "1003") {
-              wx.showToast({
-                title: "您的余额不足",
-                duration: 1500
-              })
+              that.toast.showView("您的余额不足");
             }
 
 
             if (res.data.result == "1004") {
-              wx.showToast({
-                title: "支付密码错误",
-                duration: 1500
-              })
+              that.toast.showView("支付密码错误");
             }
           },
           fail: function (res) { },

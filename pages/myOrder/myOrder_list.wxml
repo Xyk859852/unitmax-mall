@@ -1,4 +1,5 @@
 <!--pages/myOrder/myOrder_list.wxml-->
+<toast id='toast'/>
 <view class="nav">
   <view class="{{selected?'red':'default'}}" bindtap="selected">全部</view>
   <view class="{{selected1?'red':'default'}}" bindtap="selected1">待付款</view>
