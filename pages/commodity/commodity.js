@@ -1,4 +1,5 @@
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 //commodity.js
 //获取应用实例
 const app = getApp()
@@ -76,6 +77,11 @@ Page({
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
   onLoad: function (e) {
+    //接收参数
+    if (util.isAvalible(e.GOODSTYPE_ID)){
+      GOODSTYPE_ID = e.GOODSTYPE_ID;
+      GOODSLEVEL_ID ='';
+    }
     wx.showToast({
       title: "Loading...",
       icon: "loading",
