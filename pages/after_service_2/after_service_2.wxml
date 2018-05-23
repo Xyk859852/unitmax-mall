@@ -20,7 +20,7 @@
 <!-- <view class='price_tip'>最多￥16.00</view> -->
 <view class='other'>
   <label>退款说明</label>
-  <input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容' />
+  <input class='other_input' style='width:{{other_input_width}}px;' bindblur='remarkBlur' value='{{remark}}' placeholder='请输入留言内容' />
 </view>
 <view class='other'>
   <view>上传凭证</view>

@@ -12,6 +12,7 @@ Page({
     image2_src: "",
     image3_src: "",
     cause: "",
+    remark: "",
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
@@ -250,8 +251,8 @@ Page({
     var that = this;
     var data = {
       PROBLEM_DESC: that.data.cause,
-      REMARK: that.data.MSG,
-      ORDER_NO: that.data.order.ORDER_NO,
+      REMARK: that.data.remark,
+      TITLE: that.data.order.ORDER_NO,
       ORDERFORM_ID: that.data.ORDERFORM_ID,
       SELLAFTER_IMG1: that.data.image1_src,
       SELLAFTER_IMG2: that.data.image2_src,
@@ -289,6 +290,12 @@ Page({
         // complete
         wx.hideToast();
       }
+    });
+  },
+  remarkBlur: function(e){
+    var remark = e.detail.value;
+    this.setData({
+      remark: remark
     });
   }
 })
