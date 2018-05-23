@@ -7,7 +7,6 @@ var GetList = function (that) {
     data: {
       pageSize: 10,
       pageNo: page,
-      IP:app.IP
     },
     header: header,
     method: 'GET',
@@ -47,7 +46,8 @@ Page({
    */
   data: {
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
-    list:[]
+    list:[],
+    IP: app.IP
   },
 
   /**

@@ -85,10 +85,10 @@
           <view class='small_btn' bindtap='addAfterService' data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='0'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='1'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
         </view>
       </view>
     </view>
@@ -119,10 +119,10 @@
           <view class='small_btn' bindtap='addAfterService' data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='0'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='1'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
         </view>
         <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-goods_id='{{order.ORDER_NO}}' class='small_btn'>评价商品</view>
       </view>
@@ -154,10 +154,10 @@
           <view class='small_btn' bindtap='addAfterService' data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='0'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后中</view>
         </view>
         <view wx:if="{{order.sellafter!=null &&  order.sellafter.STATE=='1'}}">
-          <view class='small_btn' bindtap='afterServiceDetail' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
+          <view class='small_btn' bindtap='afterServiceDetail' data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}">售后成功</view>
         </view>
       </view>
     </view>
