@@ -1,3 +1,5 @@
+const app = getApp();
+var header = getApp().globalData.header;
 // pages/after_service_detail/after_service_detail.js
 Page({
 
@@ -9,14 +11,58 @@ Page({
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
     image_box_width: wx.getSystemInfoSync().windowWidth * 0.92 * 0.32,
-  
+    IP:app.IP
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var ORDERFORM_ID = options.orderform_id;
+    var SELLAFTERID = options.sellafterid;
+    if (ORDERFORM_ID != '' && ORDERFORM_ID!=undefined
+      && SELLAFTERID != '' && SELLAFTERID!=undefined){
+      wx.showToast({
+        title: "Loading...",
+        icon: "loading",
+        duration: 2000
+      })
+      wx.request({
+        url: app.IP + 'chatSellafter/goRecord',
+        data: {
+          ORDERFORM_ID: ORDERFORM_ID,
+          SELLAFTERID: SELLAFTERID
+        },
+        header: header,
+        method: 'GET',
+        dataType: 'json',
+        success: function (res) {
+          console.log(res.data);
+          if(res.data.msg==undefined){
+            that.setData({
+              order: res.data.order,
+              orderDetailList: res.data.orderDetailList,
+              sellafter: res.data.sellafter
+            })
+          }
+        },
+        fail: function (res) { 
+          // fail
+          setTimeout(function () {
+            wx.showToast({
+              title: "加载失败",
+              duration: 1500
+            })
+          }, 100)
+        },
+        complete: function (res) { 
+          // complete
+          wx.hideToast();
+        },
+      })
+    }
+   
   },
 
   /**

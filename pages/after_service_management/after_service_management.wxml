@@ -3,21 +3,21 @@
 <view wx:for="{{list}}" class='commodity_list'>
   <view class='other'>
      <image src='../../images/seller.png'/>
-    <label>聚脉商城</label>
+    <label>{{item.order_no}}</label>
     <!-- <label>配送单</label> -->
     <!-- <text class='order_state'>等待门店接单</text> -->
   </view>
-  <view class='commodity_li'>
-    <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{item.goods[0].GOODS_IMG}}'></image>
+  <view wx:for="{{item.goods}}" wx:for-item="good" class='commodity_li'>
+    <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{good.GOODS_IMG}}'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-      <view class='commodity_li_title'>{{item.goods[0].GOODS_NAME}}</view>
-      <view class='commodity_li_tip'>品类：{{item.goods[0].GOODS_NAME}} 等级：{{item.goods[0].GOODSLEVEL_NAME}}</view>
-      <!-- <view class='commodity_li_price'>￥1299.00
-        <view class="num_box">x1</view>
-      </view> -->
+      <view class='commodity_li_title'>{{good.GOODS_NAME}}</view>
+      <view class='commodity_li_tip'>品类：{{good.GOODS_NAME}} 等级：{{good.GOODSLEVEL_NAME}}</view>
     </view>
   </view>
-   <view class='order_total_money'>退款 <navigator class='small_btn' url='../after_service_detail/after_service_detail'>售后详情</navigator></view> 
+
+   <view wx:if="{{item.state==0}}" class='order_total_money'>{{item.problem_desc}}<navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator></view> 
+   <view wx:else>
+   <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator></view>
 </view>
 </view>
 <view class='no_data' wx:else>暂无数据</view>
