@@ -5,6 +5,8 @@ var header = getApp().globalData.header;
 var timer=1;
 var sessionKey = '';
 const app = getApp();
+var phone = '';
+var code = '';
 Page({
 
   /**
@@ -76,28 +78,53 @@ Page({
  * 获取短信验证码 
  */
   sendmessg: function (e) {
-    if (timer == 1) {
-      timer = 0
-      var that = this
-      var time = 60
-      that.setData({
-        sendmsg: "sendmsgafter",
-      })
-      var inter = setInterval(function () {
-        that.setData({
-          getmsg: time + "s后重新发送",
-        })
-        time--
-        if (time < 0) {
-          timer = 1
-          clearInterval(inter)
-          that.setData({
-            sendmsg: "sendmsg",
-            getmsg: "获取验证码",
+    var that = this;
+    console.log(phone);
+    wx.request({
+      url: app.IP+'chatUser/updateUsernameByNewPhone',
+      data: {PHONE:phone},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        if(res.data.result=="success"){
+          if (timer == 1) {
+            timer = 0
+            var that = this
+            var time = 60
+            that.setData({
+              sendmsg: "sendmsgafter",
+            })
+            var inter = setInterval(function () {
+              that.setData({
+                getmsg: time + "s后重新发送",
+              })
+              time--
+              if (time < 0) {
+                timer = 1
+                clearInterval(inter)
+                that.setData({
+                  sendmsg: "sendmsg",
+                  getmsg: "获取验证码",
+                })
+              }
+            }, 1000)
+          }
+        } else {
+          wx.showLoading({
+            title: res.data.result,
+            duration: 1000
           })
         }
-      }, 1000)
-    }
+      },
+      fail: function(res) {
+
+      },
+      complete: function(res) {
+
+      },
+    })
+    
   },
   getPhoneNumber: function (e) {
     var that = this;
@@ -195,5 +222,59 @@ Page({
         success: function (res) { }
       })
     }
+  },
+  savePhone: function(e){
+    phone = e.detail.value;
+  },
+  saveCode: function(e){
+    code = e.detail.value;
+  },
+  bindUserName: function(e){
+    if (!(/^1[34578]\d{9}$/.test(phone))) {
+      wx.showToast({
+        title: '手机号有误',
+        icon: 'success',
+        duration: 2000
+      })
+      return false;
+      if (phone.length >= 11) {
+        wx.showToast({
+          title: '手机号有误',
+          icon: 'success',
+          duration: 2000
+        })
+        return false;
+      }
+    }
+    if(code==''){
+      wx.showToast({
+        title: '请输入验证码',
+        icon: 'success',
+        duration: 2000
+      })
+      return false;
+    }
+    wx.request({
+      url: app.IP +'chatUser/bindUserName',
+      data: {PHONE:phone,
+              CODE:code},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        if(res.data.result=="true"){
+          wx.setStorageSync("user", res.data.user);
+          wx.switchTab({
+            url: '../mine/mine',
+          })
+        }
+      },
+      fail: function(res) {
+
+      },
+      complete: function(res) {
+
+      },
+    })
   }
 })

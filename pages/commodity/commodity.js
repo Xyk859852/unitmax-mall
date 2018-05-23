@@ -76,6 +76,11 @@ Page({
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
   onLoad: function (e) {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
     var that = this;
     console.log(e);
     if (e.keywords != null && e.keywords != undefined){
@@ -91,6 +96,7 @@ Page({
       scrollTop: 0
     });
     GetList(that);
+    wx.hideToast();
     
   }, 
   onShow: function () {
