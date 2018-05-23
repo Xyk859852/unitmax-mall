@@ -58,6 +58,9 @@ Page({
 
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
+
     this.initData();
   },
   /**
@@ -271,26 +274,17 @@ Page({
                   }
 
                   if (res.data.result == "10002") {
-                    wx.showToast({
-                      title: "您的账号已被冻结，无法下单，请联系管理员！",
-                      duration: 1500
-                    })
+                    that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
                   }
 
 
                   if (res.data.result == "1003") {
-                    wx.showToast({
-                      title: "您的余额不足",
-                      duration: 1500
-                    })
+                    that.toast.showView("您的余额不足");
                   }
 
 
                   if (res.data.result == "1004") {
-                    wx.showToast({
-                      title: "支付密码错误",
-                      duration: 1500
-                    })
+                    that.toast.showView("支付密码错误");
                   }
                 },
                 fail: function (res) { },
@@ -306,10 +300,7 @@ Page({
             }
           });
         } else {//未登录
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);
         }
       },
       fail: function () {
@@ -373,4 +364,10 @@ Page({
       }
     });
   },
+  msgBlur: function(e){
+    var MSG = e.detail.value;
+   this.setData({
+     MSG: MSG
+   });
+  }
 })

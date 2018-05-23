@@ -1,4 +1,5 @@
 <!--pages/after_service_2/after_service_2.wxml-->
+<toast id='toast'/>
 <block wx:for="{{orderDetailList}}" wx:key="this">
   <view class='commodity_li'>
     <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>

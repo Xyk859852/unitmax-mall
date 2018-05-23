@@ -25,6 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
+    
     wx.showToast({
       title: "Loading...",
       icon: "loading",
@@ -153,19 +156,15 @@ Page({
     })
   },
   formBindsubmit: function(e){
-    console.log(this.data);
+    var that = this;
     var EVALUATE_INFO = this.data.EVALUATE_INFO;
     if (this.data.EVALUATE_INFO.length!=this.data.list.length){
-      wx.showToast({
-        title: '有商品未输入评价内容',
-      })
+      that.toast.showView("有商品未输入评价内容");
       return false;
     }
     var DESCRIPTION_EVALUATE = this.data.DESCRIPTION_EVALUATE;
     if (this.data.DESCRIPTION_EVALUATE.length != this.data.list.length) {
-      wx.showToast({
-        title: '有商品未评价',
-      })
+      that.toast.showView("有商品未评价");
       return false;
     }
     wx.request({

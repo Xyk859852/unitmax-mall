@@ -1,4 +1,5 @@
 <!--pages/order_detail/order_detail.wxml-->
+<toast id='toast'/>
 <view class='body'>
   <view class='top'>
     <image src='../../images/IMG_214.png' />

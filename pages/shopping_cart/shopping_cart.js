@@ -14,6 +14,8 @@ Page({
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84 - 110
   },
   onLoad: function () {
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
   },
   onShow: function () {
     wx.showToast({
@@ -266,11 +268,7 @@ Page({
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");
         } else {
-          console.log(res.data.result);
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);
         }
       },
       fail: function () {

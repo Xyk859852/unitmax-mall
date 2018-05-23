@@ -27,6 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
+
     this.setData({
       ORDERFORM_ID: options.ORDERFORM_ID
     });

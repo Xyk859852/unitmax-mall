@@ -1,4 +1,5 @@
 <!--pages/post_evaluate/post_evaluate.wxml-->
+<toast id='toast'/>
 <form bindsubmit="formBindsubmit">
 <view wx:for="{{list}}" class='evaluate_list'>
   <view class='evaluate_box'>
