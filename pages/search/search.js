@@ -62,5 +62,11 @@ Page({
   },
   back:function(e){
     wx.navigateBack({ changed: true });//返回上一页  
+  },
+  goList: function(e){
+    console.log(e);
+    wx.navigateTo({
+      url: '../commodity/commodity?keywords=' + e.currentTarget.dataset.keywords
+    });
   }
 })
