@@ -149,6 +149,7 @@ Page({
         success: function (res) { }
       })
     } else {
+      console.log(app.AppID + "----" + wx.getStorageSync("session_key"));
       var pc = new WXBizDataCrypt(app.AppID, wx.getStorageSync("session_key"));
       var data = pc.decryptData(e.detail.encryptedData, e.detail.iv);
       console.log('解密后 data: ', data)

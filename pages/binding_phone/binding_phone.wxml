@@ -2,8 +2,8 @@
 <view wx:if="{{update==2}}" class='body'>
 <view class='phone'><text>手机号：</text><input style='width:{{input_width}}px;' type='tel' bindblur='savePhone' placeholder='输入手机号码'/></view>
 <view class='code'><text>验证码：</text><input style='width:{{input_width}}px;' type='tel' bindblur='saveCode' placeholder='输入短信验证码'/><button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button> </view>
-<!-- 验证码组件 -->
-<verifycode id='verifycode' title="请输入验证码哈" content="已发送到手机:" />
 <button class='submit' bindtap='bindUserName'>提交</button>
 </view>
 <button wx:else class='bingding' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >微信一键登录</button>
+<!-- 验证码组件 -->
+<verifycode id='verifycode' title="请输入验证码哈" content="已发送到手机:" />
