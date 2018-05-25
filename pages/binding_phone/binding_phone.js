@@ -161,66 +161,77 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function(res) {
-          console.log(res);
-          that.verifycode.showView({
-            phone: data.purePhoneNumber,
-            inputSuccess: function (phoneCode) {
-              console.log("组件关闭");
-              console.log(that.verifycode.data.codes);
-              var code = that.verifycode.data.codes;
-              code = code.join("");
-              console.log(code);
-              wx.request({
-                url: app.IP +'chatUser/isCode',
-                data: {
-                  PHONE: data.purePhoneNumber,
-                  CODE: code},
-                header: header,
-                method: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                  console.log(res);
-                  if (res.data.result =="success"){
-                    console.log(wx.getStorageSync("wxuser"));
-                    wx.request({
-                      url: app.IP +'chatUser/register',
-                      data: {
-                        OPENID: wx.getStorageSync("openid"),
-                        PHONE: data.purePhoneNumber,
-                        NICKNAME: wx.getStorageSync("wxuser").nickName,
-                        HEADIMGURL: wx.getStorageSync("wxuser").avatarUrl
+          if (res.data.result=="true"){
+            console.log(res);
+            that.verifycode.showView({
+              phone: data.purePhoneNumber,
+              inputSuccess: function (phoneCode) {
+                console.log("组件关闭");
+                console.log(that.verifycode.data.codes);
+                var code = that.verifycode.data.codes;
+                code = code.join("");
+                console.log(code);
+                wx.request({
+                  url: app.IP + 'chatUser/isCode',
+                  data: {
+                    PHONE: data.purePhoneNumber,
+                    CODE: code
+                  },
+                  header: header,
+                  method: 'GET',
+                  dataType: 'json',
+                  success: function (res) {
+                    console.log(res);
+                    if (res.data.result == "success") {
+                      console.log(wx.getStorageSync("wxuser"));
+                      wx.request({
+                        url: app.IP + 'chatUser/register',
+                        data: {
+                          OPENID: wx.getStorageSync("openid"),
+                          PHONE: data.purePhoneNumber,
+                          NICKNAME: wx.getStorageSync("wxuser").nickName,
+                          HEADIMGURL: wx.getStorageSync("wxuser").avatarUrl
                         },
-                      header: header,
-                      method: 'GET',
-                      dataType: 'json',
-                      success: function(res) {
-                        console.log(res);
-                        if(res.data.result=="true"){
-                          console.log("注册成功");
-                          that.verifycode.closeView(data.purePhoneNumber);
-                          wx.setStorageSync("user", res.data.user);
-                          wx.navigateBack({ changed: true });//返回上一页
-                        }
-                      },
-                      fail: function(res) {},
-                      complete: function(res) {},
-                    })
-                  }else{
-                      
-                  }
-                },
-                fail: function(res) {},
-                complete: function(res) {},
-              })
-              //调用组件关闭方法
-             
-              //设置数据
-              that.setData({
-                code: phoneCode
-              });
+                        header: header,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (res) {
+                          console.log(res);
+                          if (res.data.result == "true") {
+                            console.log("注册成功");
+                            that.verifycode.closeView(data.purePhoneNumber);
+                            wx.setStorageSync("user", res.data.user);
+                            wx.navigateBack({ changed: true });//返回上一页
+                          }
+                        },
+                        fail: function (res) { },
+                        complete: function (res) { },
+                      })
+                    } else {
 
-            }
-          });
+                    }
+                  },
+                  fail: function (res) { },
+                  complete: function (res) { },
+                })
+                //调用组件关闭方法
+
+                //设置数据
+                that.setData({
+                  code: phoneCode
+                });
+
+              }
+            });
+          }else{
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: res.data.result,
+              success: function (res) { }
+            })
+          }
+         
         },
         fail: function(res) {},
         complete: function(res) {},
