@@ -1,6 +1,38 @@
+const app = getApp();
+var header = getApp().globalData.header;
 // pages/evaluate/evaluate.js
+var goods_id = '';
+var page = 1;
+var EVALUATE_BUYER_VAL = '';
+var GetList = function (that) {
+  wx.request({
+    url: app.IP + 'chatEvaluate/findEvaluateList',
+    data: {
+      pageSize: 10,
+      pageNo: page,
+      GOODS_ID:goods_id,
+      EVALUATE_BUYER_VAL: EVALUATE_BUYER_VAL
+    },
+    header: header,
+    method: 'GET',
+    dataType: 'json',
+    success: function (res) {
+      console.log(res.data);
+      var l = that.data.list
+      for (var i = 0; i < res.data.evaluateList.length; i++) {
+        l.push(res.data.evaluateList[i])
+      }
+      that.setData({
+        list: l
+      });
+      page++;
+      console.log(l.length);
+    },
+    fail: function (res) { },
+    complete: function (res) { },
+  })
+}
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,7 +48,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    });
+    var that = this;
+    var user = wx.getStorageSync("user");
+    goods_id = options.goods_id;
+    console.log(goods_id);
+
+    page = 1;
+    that.setData({
+      list: [],
+      user: user
+    })
+    GetList(that);
+    wx.hideToast();
   },
 
   /**
@@ -30,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**
@@ -51,14 +99,26 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log("刷新");
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    page = 1;
+    this.setData({
+      list: []
+    });
+    GetList(this);
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    console.log("下拉");
+    var that = this;
+    GetList(that);
   },
 
   /**
@@ -68,35 +128,56 @@ Page({
   
   },
   selected: function (e) {
-    this.setData({
+    var that = this;
+    that.setData({
+      list:[],
       selected1: false,
       selected2: false,
       selected3: false,
       selected: true
     })
+    EVALUATE_BUYER_VAL = '';
+    page = 1;
+    GetList(that);
   },
   selected1: function (e) {
-    this.setData({
+    var that = this;
+    that.setData({
+      list:[],
       selected: false,
       selected2: false,
       selected3: false,
       selected1: true
     })
+    EVALUATE_BUYER_VAL = 1;
+    page = 1;
+    GetList(that);
+   
   },
   selected2: function (e) {
-    this.setData({
+    var that = this;
+    that.setData({
+      list:[],
       selected: false,
       selected1: false,
       selected3: false,
       selected2: true,
     })
+    EVALUATE_BUYER_VAL = 0;
+    page = 1;
+    GetList(that);
   },
   selected3: function (e) {
+    var that = this;
     this.setData({
+      list:[],
       selected: false,
       selected1: false,
       selected2: false,
       selected3: true,
     })
+    EVALUATE_BUYER_VAL = -1;
+    page = 1;
+    GetList(that);
   }
 })

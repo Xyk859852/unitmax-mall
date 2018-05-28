@@ -1,4 +1,5 @@
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 //commodity.js
 //获取应用实例
 const app = getApp()
@@ -9,11 +10,10 @@ var xiaoliang = -1;
 var GOODSLEVEL_ID = '';
 var GOODSTYPE_ID = '';
 var keywords = '';
+var GOODSTYPE = '';
+var GOODSLEVEL = '';
 var GetList = function (that) {
   wx.showNavigationBarLoading()
-  that.setData({
-    hidden: false
-  });
   wx.request({
     url: url,
     header:header,
@@ -22,8 +22,8 @@ var GetList = function (that) {
       pageNo: page,
       xiaoliang: xiaoliang,
       jiage: jiage,
-      GOODSTYPE_ID: GOODSTYPE_ID,
-      GOODSLEVEL_ID: GOODSLEVEL_ID,
+      GOODSTYPE_ID: GOODSTYPE,
+      GOODSLEVEL_ID: GOODSLEVEL,
       keywords, keywords
     },
     success: function (res) {
@@ -36,6 +36,40 @@ var GetList = function (that) {
         list: l,
         goodsTypes: res.data.goodstypeList
       });
+      if (GOODSTYPE != '' && GOODSTYPE != null && GOODSTYPE != undefined) {
+        console.log(GOODSTYPE);
+        var s = res.data.goodstypeList;
+        for (var i = 0; i < s.length; i++) {
+          if (s[i].goodstype_id == GOODSTYPE) {
+            that.setData({
+              typeIndex: i
+            })
+          }
+        }
+        wx.request({
+          url: app.IP + "chatGoods/listLevel",
+          data: { GOODSTYPE_ID: GOODSTYPE },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              goodsLevels: res.data.goodsLevels
+            });
+          },
+          fail: function () {
+            // fail
+            setTimeout(function () {
+              wx.showToast({
+                title: "加载失败",
+                duration: 1500
+              })
+            }, 100)
+          },
+          complete: function () {
+            // complete
+            wx.hideToast();
+          }
+        });
+      }
       page++;
       console.log(l.length);
     },
@@ -74,11 +108,24 @@ Page({
     selectedbtn2: false,
     selectedbtn3: false,
     search: false,
+    levelIndex: -1,
+    typeIndex: -1,
+    goodsTypes:[],
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
   onLoad: function (e) {
+    //接收参数
+    if (util.isAvalible(e.GOODSTYPE_ID)){
+      GOODSTYPE = e.GOODSTYPE_ID;
+      GOODSLEVEL ='';
+    }
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
     var that = this;
     console.log(e);
     if (e.keywords != null && e.keywords != undefined){
@@ -94,17 +141,12 @@ Page({
       scrollTop: 0
     });
     GetList(that);
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     console.info(res.windowHeight);
-    //     that.setData({
-    //       scrollHeight: res.windowHeight
-    //     });
-    //   }
-    // });
+    wx.hideToast();
+    
   }, 
   onShow: function () {
-    
+    console.log(this.data.goodsTypes);
+   
   },
   scroll: function (event) {
     this.setData({
@@ -219,6 +261,7 @@ Page({
     GetList(that);
   },
 
+  //选择品类
   levelSelect: function(e) {
     var that = this;
     console.log(e);
@@ -252,7 +295,14 @@ Page({
           wx.hideToast();
         }
       });
-
+    } else if(e.currentTarget.dataset.index==-1){
+      GOODSTYPE_ID='';
+      GOODSLEVEL_ID='';
+      that.setData({
+        goodsLevels: '',
+        typeIndex: -1,
+        levelIndex:-1
+      });
     }
     
   },
@@ -275,6 +325,8 @@ Page({
   },
   //点击确定
   submint: function(e) {
+    GOODSLEVEL = GOODSLEVEL_ID;
+    GOODSTYPE = GOODSTYPE_ID;
     var that = this;
     page = 1;
     that.setData({

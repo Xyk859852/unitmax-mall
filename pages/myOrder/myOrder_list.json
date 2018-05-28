@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "订单列表"
+      "usingComponents": {
+        "verifycode": "/components/verifycode",
+        "toast": "/components/toast/toast"
+      },
+  "navigationBarTitleText": "订单列表",
+  "enablePullDownRefresh": true
 }

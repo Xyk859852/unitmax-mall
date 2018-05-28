@@ -3,7 +3,7 @@
 <view class='body'>
 <view wx:if="{{list.length>0}}">
   <view wx:for="{{list}}" class='address_box'>
-    <view class='address'>
+    <view class='address' bindtap='selectAddress' data-consignee='{{item.CONSIGNEE}}' data-takephone='{{item.TAKEPHONE}}'  data-address_dteail='{{item.ADDRESS_DTEAIL}}'  data-addressbook_id='{{item.ADDRESSBOOK_ID}}' data-province='{{item.PROVINCE}}'  data-city='{{item.CITY}}' data-district='{{item.DISTRICT}}'>
       <view>收货人：{{item.CONSIGNEE}}<label>{{item.TAKEPHONE}}</label></view>
       <view class='address_detail'>收件地址：{{item.PROVINCE}}{{item.CITY}}{{item.DISTRICT}} {{item.MOBLE}} {{item.ADDRESS_DTEAIL}}</view>
     </view>

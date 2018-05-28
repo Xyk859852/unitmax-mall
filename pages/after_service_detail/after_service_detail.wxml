@@ -1,36 +1,40 @@
 <!--pages/after_service_detail/after_service_detail.wxml-->
-<view class='commodity_li'>
-  <image src='../../images/address.png'></image>
+<view wx:for="{{orderDetailList}}" class='commodity_li'>
+  <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
   <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-    <view class='commodity_li_title'>商品名称商品名称商品名称商品名称商品名称商品名称</view>
-    <view class='commodity_li_tip'>品类：品类 等级：等级</view>
+    <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
+    <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
   </view>
 </view>
-<view class='deal'>
+<view wx:if="{{sellafter.STATE==1}}" class='deal'>
   <view class='other' bindtap='showpayment'>
-    <label>处理结果</label>
-    <label class='other_right'>余额支付</label>
+    <label>处理结果:</label>
+    <label wx:if="{{order.HANDLE_ORDER_TYPE==1}}" class='other_right'>交易正常进行</label>
+    <label wx:else class='other_right'>交易关闭</label>
   </view>
   <view class='other'>
-    <label>处理说明</label>
-    <view class="explain">退款说明退款说明退款说明退款说明退款说明退款说明</view>
+    <label>处理说明:</label>
+    <view class="explain">{{sellafter.RESULT_DESC_BUYER}}</view>
   </view>
 </view>
 <view class='other' bindtap='showpayment'>
-  <label>售后原因</label>
-  <label class='other_right'>余额支付</label>
+  <label>售后原因:</label>
+  <label class='other_right'>{{sellafter.PROBLEM_DESC}}</label>
 </view>
-<view class='other'>
+<!-- <view class='other'>
   <label>售后金额</label>
   <label class='other_right'>￥16.00</label>
-</view>
+</view> -->
 <view class='other'>
-  <label>退售后说明</label>
-  <view class="explain">退款说明退款说明退款说明退款说明退款说明退款说明</view>
+  <label>售后说明:</label>
+  <view wx:if="{{sellafter.REMARK!=''}}" class="explain">{{sellafter.REMARK}}</view>
+  <view wx:else class="explain">无</view>
 </view>
 <view class='other'>
   <view>售后凭证</view>
   <view class='image_box'>
-    <image style='height:{{image_box_width}}px;' src='../../images/address.png' />
+    <image wx:if="{{sellafter.SELLAFTER_IMG1!=''&&sellafter.SELLAFTER_IMG1!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG1}}' />
+     <image wx:if="{{sellafter.SELLAFTER_IMG2!=''&&sellafter.SELLAFTER_IMG2!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG2}}' />
+    <image wx:if="{{sellafter.SELLAFTER_IMG3!=''&&sellafter.SELLAFTER_IMG3!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG3}}' /> 
   </view>
 </view>

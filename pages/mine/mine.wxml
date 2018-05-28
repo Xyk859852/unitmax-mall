@@ -8,27 +8,27 @@
       获取用户信息
     </button>
      <block wx:else>
-    <open-data type="userAvatarUrl"></open-data>
-    <open-data type="userNickName"></open-data>  -->
+    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+    <open-data type="userNickName" class="userinfo-nickname"></open-data>
     </block> 
   </view>
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=1">
       <view>待付款</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>待接单</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=2">
+      <view>待发货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>进行中</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=3">
+      <view>待收货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_list/order_list">
-      <view>已完成</view>
+    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=4">
+      <view>待评价</view>
       <image src='../../images/category.png'></image>
     </navigator>
     <navigator class='mine_order' url="../myOrder/myOrder_list">
@@ -41,7 +41,7 @@
       <image src='../../images/category.png'></image>
       <view>地址管理</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone">
+    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>绑定手机</view>
     </navigator>
@@ -53,7 +53,7 @@
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate">
+    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
     </navigator>

@@ -1,4 +1,5 @@
 <!--shopping_cart.wxml-->
+<toast id='toast'/>
 <view wx:if="{{cartlist.length>0}}">
   <block wx:for="{{cartlist}}" wx:key="this">
     <checkbox-group>

@@ -33,7 +33,15 @@ Page({
     TRANS_FEE:0.00, //运费
     goodsCartId:'',//购物车id
     goodsList:null,///商品集合
-    defaultAddress:null //收货地址
+    defaultAddress:{
+    CONSIGNEE: "",
+    ADDRESSBOOK_ID: "",
+    TAKEPHONE: "",
+    PROVINCE: "",
+    CITY: "",
+    DISTRICT: "",
+    ADDRESS_DTEAIL: ""
+    }
   },
 
   /**
@@ -50,53 +58,16 @@ Page({
 
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
+
+    this.initData();
   },
   /**
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })
-    // 页面显示
-    var that = this;
-    console.log(JSON.stringify(getApp().globalData.objArray));
-    wx.request({
-      url: app.IP + 'chatOrder/placeOrderSuccess',
-      data: { goodsObjArray: JSON.stringify(getApp().globalData.objArray), IDS: that.data.goodsCartId },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: header,  // 设置请求的 header
-      success: function (res) {
-        console.log(res);
-        // success
-        if (res.data.result == "true") {
-          that.setData({
-            goodsList: res.data.goodsList,
-            defaultAddress: res.data.defaultAddress
-          });
-          that.calculateFinalPrice();
-        } else if (res.data.result == "1002") {//未登录
-          wx.switchTab({
-            url: '../mine/mine',
-          })
-        }
-      },
-      fail: function () {
-        // fail
-        setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
-        }, 100)
-      },
-      complete: function () {
-        // complete
-        wx.hideToast();
-      }
-    });
+  
   },
   pkIndex: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -225,7 +196,10 @@ Page({
       TRANS_FEE: TRANS_FEE
     });
   },
-  selectAddress : function(){
+  selectAddress : function(){//选择地址
+  wx.navigateTo({
+    url: '../address_management/address_management?page_from=place_order',
+  });
 
   },
   submitOrder : function(){
@@ -300,26 +274,17 @@ Page({
                   }
 
                   if (res.data.result == "10002") {
-                    wx.showToast({
-                      title: "您的账号已被冻结，无法下单，请联系管理员！",
-                      duration: 1500
-                    })
+                    that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
                   }
 
 
                   if (res.data.result == "1003") {
-                    wx.showToast({
-                      title: "您的余额不足",
-                      duration: 1500
-                    })
+                    that.toast.showView("您的余额不足");
                   }
 
 
                   if (res.data.result == "1004") {
-                    wx.showToast({
-                      title: "支付密码错误",
-                      duration: 1500
-                    })
+                    that.toast.showView("支付密码错误");
                   }
                 },
                 fail: function (res) { },
@@ -335,10 +300,7 @@ Page({
             }
           });
         } else {//未登录
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);
         }
       },
       fail: function () {
@@ -355,5 +317,57 @@ Page({
         wx.hideToast();
       }
     });  
+  },
+  /**
+  * 生命周期函数--监听页面显示
+  */
+  initData: function () {
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })
+    // 页面显示
+    var that = this;
+    wx.request({
+      url: app.IP + 'chatOrder/placeOrderSuccess',
+      data: { goodsObjArray: JSON.stringify(getApp().globalData.objArray), IDS: that.data.goodsCartId },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header,  // 设置请求的 header
+      success: function (res) {
+        console.log(res);
+        // success
+        if (res.data.result == "true") {
+          that.setData({
+            goodsList: res.data.goodsList,
+            defaultAddress: res.data.defaultAddress
+          });
+          that.calculateFinalPrice();
+        } else if (res.data.result == "1002") {//未登录
+          wx.switchTab({
+            url: '../mine/mine',
+          })
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });
+  },
+  msgBlur: function(e){
+    var MSG = e.detail.value;
+   this.setData({
+     MSG: MSG
+   });
   }
 })

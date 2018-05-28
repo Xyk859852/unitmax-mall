@@ -1,6 +1,6 @@
 // var WXBizDataCrypt = require('../../utils/cryptojs/cryptojs.js');
-var AppId = 'wx95c4320e48a6e988';
-var AppSecret = 'a0453042c687e4d8f08616ca4778f23e';
+var AppId = 'wx3ca6b175f568098c';
+var AppSecret = 'add1a1cfb52973b39a677f6889059ac9';
 //app.js
 App({
   // ToastPannel,
@@ -15,12 +15,9 @@ App({
       success: function (res) {
         //发起网络请求
         wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          url: getApp().IP + 'chatIndex/getSession',
           data: {
-            appid: AppId,
-            secret: AppSecret,
-            js_code: res.code,
-            grant_type: 'authorization_code'
+            code: res.code,
           },
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -38,10 +35,10 @@ App({
               method: 'GET',
               dataType: 'json',
               success: function (res) {
+                getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
                 console.log(res);
                 if (res.data.result == "true") {
                   wx.setStorageSync("user", res.data.user);
-                  getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
                   console.log(getApp().globalData.header);
                 }
               },
@@ -79,6 +76,6 @@ App({
     objArray:[],
     header: { 'Cookie': '', 'content-type':'application/x-www-form-urlencoded' } //这里还可以加入其它需要的请求头，比如'x-requested-with': 'XMLHttpRequest'表示ajax提交，微信的请求时不会带上这个的
   },
-  IP: "http://192.168.31.227:8080/",
-  AppID:"wx95c4320e48a6e988"
+  IP: "https://www.systarsoft.com/",
+  AppID:"wx3ca6b175f568098c"
 })

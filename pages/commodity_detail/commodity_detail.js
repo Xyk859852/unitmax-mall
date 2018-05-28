@@ -26,7 +26,9 @@ Page({
   },
   onLoad: function (e) {
     var that = this;
-    console.log(e);
+    //选择组件对象
+    that.toast = this.selectComponent("#toast");
+    
     wx.request({
       url: getApp().IP + 'chatGoods/goodDetail',
       data: {GOODS_ID:e.goods_id},
@@ -35,9 +37,9 @@ Page({
       success: function (res) {
         // success
         console.log(res.data.good);
-
         that.setData({
-          good: res.data.good
+          good: res.data.good,
+          evaluate: res.data.evaluate
         });
 
         if (util.isAvalible(res.data.goodsCartCount)){
@@ -110,10 +112,7 @@ Page({
           //window.open("<%=basePath%>RongSafety/goSetPay");
         } else {
           console.log(res.data.result);
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);
         }
       },
       fail: function () {
@@ -165,20 +164,11 @@ Page({
             url: '../mine/mine',
           })
         } else if (res.data.result == "moreInventory") {//超过库存
-          wx.showToast({
-            title: "商品加购件数超过库存",
-            duration: 1500
-          });  
+          that.toast.showView("商品加购件数超过库存"); 
         } else if (res.data.result == "exist"){
-          wx.showToast({
-            title: "商品已在您的购物车中",
-            duration: 1500
-          });       
+          that.toast.showView("商品已在您的购物车中");      
         }else{
-          wx.showToast({
-            title: res.data.result,
-            duration: 1500
-          });
+          that.toast.showView(res.data.result);      
         }
       },
       fail: function () {
@@ -195,5 +185,10 @@ Page({
         wx.hideToast();
       }
     }); 
+  },
+  go_shopping_cart: function(){
+    wx.switchTab({
+      url: '../shopping_cart/shopping_cart',
+    })
   } 
 })

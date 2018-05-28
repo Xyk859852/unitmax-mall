@@ -1,3 +1,6 @@
+var WxParse = require('../wxParse/wxParse.js');
+var header = getApp().globalData.header;
+const app = getApp();
 // pages/advertising_detail/advertising_detail.js
 Page({
 
@@ -11,8 +14,33 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function (e) {
+    var that = this;
+    console.log(e);
+    wx.request({
+      url: getApp().IP + 'chatIndex/advertDetail',
+      data: { ID: e.ID },
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log(res);
+        console.log(res.data.advert.AD_TEXT);
+        console.log(res.data.advert.AD_TITLE);
+        WxParse.wxParse('text', 'html', res.data.advert.AD_TEXT, that, 5);
+        WxParse.wxParse('title', 'html', res.data.advert.AD_TITLE, that, 5);
+        that.setData({
+          time: res.data.advert.ADDTIME
+        })
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      },
+    })
   },
 
   /**

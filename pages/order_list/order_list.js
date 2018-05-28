@@ -1,4 +1,6 @@
 // pages/order_list/order_list.js
+const app = getApp();
+var header = getApp().globalData.header;
 Page({
 
   /**
@@ -31,7 +33,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      wx.request({
+        url: app.IP+'',
+        data: '',
+        header: header,
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
   },
 
   /**

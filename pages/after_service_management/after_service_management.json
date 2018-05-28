@@ -1,1 +1,5 @@
-{}
+{
+  "enablePullDownRefresh": true,
+  "onReachBottomDisance": 50,
+  "navigationBarTitleText": "售后列表"
+}

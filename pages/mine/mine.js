@@ -63,6 +63,26 @@ Page({
     }
   },
   openToastPannel: function () {
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    let app = getApp();
+    // new app.ToastPannel();
+    var that = this;
+    var user = wx.getStorageSync("user");
+    console.log(user);
+    if (user != undefined && user != '' && user != null) {
+      that.setData({
+        hasUserInfo: true
+      })
+    }
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   }
   
 })

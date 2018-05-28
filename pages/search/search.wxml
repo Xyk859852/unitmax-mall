@@ -9,20 +9,13 @@
 <view class='search_history'>
   <view class='search_title'>搜索历史<image src='../../images/delete.png' class='search_delete'></image></view>
   <view class='search_container'>
-    <view class='search_container_li'>会员卡</view>
-    <view class='search_container_li'>会员卡</view>
+    <view bindtap='goList' data-keywords='{{item}}' wx:for="{{souList}}" class='search_container_li'>{{item}}</view>
   </view>
 </view>
 <view class='search_hot'>
   <view class='search_title'>热门搜索</view>
   <view class='search_container'>
-    <view class='search_container_li'>面膜</view>
-    <view class='search_container_li'>洁面乳</view>
-    <view class='search_container_li'>洁面乳</view>
-    <view class='search_container_li'>洁面乳</view>
-    <view class='search_container_li'>洁面乳</view>
-    <view class='search_container_li'>洁面乳洁面乳</view>
-    <view class='search_container_li'>洁面乳</view>
-    <view class='search_container_li'>洁面乳</view>
+    <view bindtap='goList' data-keywords='{{item.SEARCH_NAME}}' wx:for="{{searchList}}" class='search_container_li'>{{item.SEARCH_NAME}}</view>
+    
   </view>
 </view>

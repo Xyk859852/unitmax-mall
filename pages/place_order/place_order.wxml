@@ -1,4 +1,5 @@
 <!--pages/place_order/place_order.wxml-->
+<toast id='toast'/>
 <view class='body'>
   <view class='address_box' bindtap='selectAddress'>
     <image class='address_left' src='../../images/address.png' />
@@ -55,7 +56,7 @@
   </view>
   <view class='other'>
     <label>买家留言</label>
-    <input class='other_input' style='width:{{other_input_width}}px;' value='{{MSG}}' placeholder='请输入留言内容' />
+    <input class='other_input' style='width:{{other_input_width}}px;' bindblur='msgBlur' value='{{MSG}}' placeholder='请输入留言内容' />
   </view>
   <!-- 验证码组件 -->
   <verifycode id='verifycode' title="请输入支付密码" content="" />

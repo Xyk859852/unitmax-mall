@@ -1,3 +1,7 @@
 {
+  "usingComponents": {
+    "toast": "/components/toast/toast",
+    "verifycode": "/components/verifycode"
+  },
   "navigationBarTitleText": "订单详情"
 }

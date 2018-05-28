@@ -34,8 +34,9 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "上海星睿",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "小事海淘",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f0145a"
   },
   "tabBar": {
     "color": "#8a8a8a",
