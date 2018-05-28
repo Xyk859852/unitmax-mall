@@ -10,6 +10,8 @@ var xiaoliang = -1;
 var GOODSLEVEL_ID = '';
 var GOODSTYPE_ID = '';
 var keywords = '';
+var GOODSTYPE = '';
+var GOODSLEVEL = '';
 var GetList = function (that) {
   wx.showNavigationBarLoading()
   wx.request({
@@ -20,8 +22,8 @@ var GetList = function (that) {
       pageNo: page,
       xiaoliang: xiaoliang,
       jiage: jiage,
-      GOODSTYPE_ID: GOODSTYPE_ID,
-      GOODSLEVEL_ID: GOODSLEVEL_ID,
+      GOODSTYPE_ID: GOODSTYPE,
+      GOODSLEVEL_ID: GOODSLEVEL,
       keywords, keywords
     },
     success: function (res) {
@@ -221,6 +223,7 @@ Page({
     GetList(that);
   },
 
+  //选择品类
   levelSelect: function(e) {
     var that = this;
     console.log(e);
@@ -277,6 +280,8 @@ Page({
   },
   //点击确定
   submint: function(e) {
+    GOODSLEVEL = GOODSLEVEL_ID;
+    GOODSTYPE = GOODSTYPE_ID;
     var that = this;
     page = 1;
     that.setData({

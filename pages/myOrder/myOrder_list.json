@@ -3,5 +3,6 @@
         "verifycode": "/components/verifycode",
         "toast": "/components/toast/toast"
       },
-  "navigationBarTitleText": "订单列表"
+  "navigationBarTitleText": "订单列表",
+  "enablePullDownRefresh": true
 }

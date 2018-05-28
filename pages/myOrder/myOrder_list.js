@@ -497,6 +497,17 @@ Page({
     wx.navigateTo({
       url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid+'&orderform_id=' + orderform_id,
     })
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    this.getMyOrderList("加载更多数据");
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   }
 
 

@@ -1,10 +1,12 @@
-<!--pages/advertising_detail/advertising_detail.wxml-->
+
+<import src="../wxParse/wxParse.wxml"/>
+<!--pages/news_detail/news_detail.wxml-->
 <view class='body'>
   <view class='news_title'>
-    广告标题广告标题广告标题广告标题
+    <template is="wxParse" data="{{wxParseData:title.nodes}}"/>  
   </view>
-  <view class='news_time'>2018-05-05 15:26</view>
+  <view class='news_time'>{{time}}</view>
   <view class='news_content'>
-    广告内容广告内容广告内容广告内容广告内容
+    <template is="wxParse" data="{{wxParseData:text.nodes}}"/>  
   </view>
 </view>

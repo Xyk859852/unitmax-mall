@@ -32,6 +32,7 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
+        console.log(res.data.advertImgs);
         // success
         that.setData({
           imgUrls: res.data.advertImgs,
@@ -62,22 +63,6 @@ Page({
         wx.hideToast();
       }
     })
-    // wx.request({
-    //   url: getApp().IP+'chatUser/openIdLogin',
-    //   data: { OPENID: wx.getStorageSync("openid") },
-    //   header: {},
-    //   method: 'GET',
-    //   dataType: 'json',
-    //   success: function (res) {
-    //     console.log(res);
-    //     if (res.data.result == "true") {
-    //       wx.setStorageSync("user", res.data.user);
-    //       getApp().globalData.header.Cookie = 'JSESSIONID=' + res.data.sessionId;
-    //     }
-    //   },
-    //   fail: function (res) { },
-    //   complete: function (res) { },
-    // })
   },
   scrolltxt: function () {
     var that = this;
@@ -103,6 +88,68 @@ Page({
     } else {
       that.setData({ marquee_margin: "1000" });//只显示一条不滚动右边间距加大，防止重复显示
     }
+  },
+  goAdvertising:function (e){
+    console.log(e);
+    var types = e.currentTarget.dataset.type;
+    if (types == 1) {
+      wx.navigateTo({
+        url: '../news_detail_url/news_detail_url?url=' + e.currentTarget.dataset.url
+      })
+    } else {
+      wx.navigateTo({
+        url: "../advertising_detail/advertising_detail?ID=" + e.currentTarget.dataset.id
+      })
+    }
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatIndex/index',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header, // 设置请求的 header
+      success: function (res) {
+        console.log(res.data.advertImgs);
+        // success
+        that.setData({
+          imgUrls: res.data.advertImgs,
+          text: res.data.title,
+          varClass: res.data.varClass,
+          newlist: res.data.newlist,
+          goodlist: res.data.goodlist
+        })
+        var length = that.data.text.length * that.data.size;//文字长度
+        var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度
+        that.setData({
+          length: length,
+          windowWidth: windowWidth
+        });
+        that.scrolltxt();// 第一个字消失后立即从右边出现
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          wx.showToast({
+            title: "加载失败",
+            duration: 1500
+          })
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    })
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   }
 
 })
