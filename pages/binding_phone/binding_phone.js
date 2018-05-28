@@ -211,7 +211,12 @@ Page({
                         complete: function (res) { },
                       })
                     } else {
-
+                      wx.showModal({
+                        title: '提示',
+                        showCancel: false,
+                        content: res.data.result,
+                        success: function (res) { }
+                      })
                     }
                   },
                   fail: function (res) { },
