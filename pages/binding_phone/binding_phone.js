@@ -155,7 +155,10 @@ Page({
       console.log('解密后 data: ', data)
       wx.request({
         url: app.IP +'chatUser/registersms',
-        data: { PHONE: data.purePhoneNumber},
+        data: { PHONE: data.purePhoneNumber,
+          OPENID: wx.getStorageSync("openid"),
+          NICKNAME: wx.getStorageSync("wxuser").nickName,
+          HEADIMGURL: wx.getStorageSync("wxuser").avatarUrl},
         header: header,
         method: 'GET',
         dataType: 'json',
@@ -223,6 +226,10 @@ Page({
 
               }
             });
+          } else if (res.data.result =="更新用户"){
+            console.log("注册成功");
+            wx.setStorageSync("user", res.data.user);
+            wx.navigateBack({ changed: true });//返回上一页
           }else{
             wx.showModal({
               title: '提示',
@@ -235,12 +242,6 @@ Page({
         },
         fail: function(res) {},
         complete: function(res) {},
-      })
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '同意授权',
-        success: function (res) { }
       })
     }
   },

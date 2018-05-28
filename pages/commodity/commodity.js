@@ -36,6 +36,40 @@ var GetList = function (that) {
         list: l,
         goodsTypes: res.data.goodstypeList
       });
+      if (GOODSTYPE != '' && GOODSTYPE != null && GOODSTYPE != undefined) {
+        console.log(GOODSTYPE);
+        var s = res.data.goodstypeList;
+        for (var i = 0; i < s.length; i++) {
+          if (s[i].goodstype_id == GOODSTYPE) {
+            that.setData({
+              typeIndex: i
+            })
+          }
+        }
+        wx.request({
+          url: app.IP + "chatGoods/listLevel",
+          data: { GOODSTYPE_ID: GOODSTYPE },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              goodsLevels: res.data.goodsLevels
+            });
+          },
+          fail: function () {
+            // fail
+            setTimeout(function () {
+              wx.showToast({
+                title: "加载失败",
+                duration: 1500
+              })
+            }, 100)
+          },
+          complete: function () {
+            // complete
+            wx.hideToast();
+          }
+        });
+      }
       page++;
       console.log(l.length);
     },
@@ -74,6 +108,9 @@ Page({
     selectedbtn2: false,
     selectedbtn3: false,
     search: false,
+    levelIndex: -1,
+    typeIndex: -1,
+    goodsTypes:[],
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
@@ -81,8 +118,8 @@ Page({
   onLoad: function (e) {
     //接收参数
     if (util.isAvalible(e.GOODSTYPE_ID)){
-      GOODSTYPE_ID = e.GOODSTYPE_ID;
-      GOODSLEVEL_ID ='';
+      GOODSTYPE = e.GOODSTYPE_ID;
+      GOODSLEVEL ='';
     }
     wx.showToast({
       title: "Loading...",
@@ -108,7 +145,8 @@ Page({
     
   }, 
   onShow: function () {
-    
+    console.log(this.data.goodsTypes);
+   
   },
   scroll: function (event) {
     this.setData({
@@ -257,7 +295,14 @@ Page({
           wx.hideToast();
         }
       });
-
+    } else if(e.currentTarget.dataset.index==-1){
+      GOODSTYPE_ID='';
+      GOODSLEVEL_ID='';
+      that.setData({
+        goodsLevels: '',
+        typeIndex: -1,
+        levelIndex:-1
+      });
     }
     
   },
