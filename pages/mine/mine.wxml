@@ -2,14 +2,15 @@
 <import src="../../components/toast/toast.wxml"/>
 <template is="toast" data="{{..._toast_}}"/>
 <view class="container" style='background-image: url(../../images/1.png);'>
-  <image class='refresh' src='../../images/refresh.png'/>
+<button open-type="getUserInfo"  bindgetuserinfo="updateUser">123<image class='refresh' src='../../images/refresh.png'/></button>
+  
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
       获取用户信息
     </button>
      <block wx:else>
-    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
-    <open-data type="userNickName" class="userinfo-nickname"></open-data>
+     <image class="userinfo-avatar" src='{{avatarUrl}}'></image>
+     <view class="userinfo-nickname">{{nickName}}</view>
     </block> 
   </view>
 </view>
@@ -37,7 +38,7 @@
     </navigator>
   </view>
   <view class='mine_menu'>
-    <navigator class='mine_order_state_container' url="../address_management/address_management">
+    <navigator class='mine_order_state_container' bindtap='goAddRess' url="../address_management/address_management">
       <image src='../../images/category.png'></image>
       <view>地址管理</view>
     </navigator>
@@ -45,22 +46,22 @@
       <image src='../../images/category.png'></image>
       <view>绑定手机</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../order_detail/order_detail">
+    <!-- <navigator class='mine_order_state_container' url="../order_detail/order_detail">
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
-    </navigator>
-    <navigator class='mine_order_state_container' url="../advertising_detail/advertising_detail">
+    </navigator> -->
+    <!-- <navigator class='mine_order_state_container' url="../advertising_detail/advertising_detail">
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
-    </navigator>
-    <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
+    </navigator> -->
+    <!-- <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
-    </navigator>
-    <navigator class='mine_order_state_container' url="../after_service/after_service">
+    </navigator> -->
+    <!-- <navigator class='mine_order_state_container' url="../after_service/after_service">
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
-    </navigator>
+    </navigator> -->
     <navigator class='mine_order_state_container' url="../about/about">
       <image src='../../images/category.png'></image>
       <view>关于我们</view>
@@ -73,9 +74,9 @@
       <image src='../../images/category.png'></image>
       <view>我的评价</view>
     </navigator>
-    <button bindtap='openToastPannel' class='mine_order_state_container'>
+    <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view bindtap='openToastPannel'>测弹窗</view>
-    </button> 
+    </button>  -->
   </view>
 </view>

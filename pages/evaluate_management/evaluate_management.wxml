@@ -1,4 +1,5 @@
 <!--pages/evaluate_management/evaluate_management.wxml-->
+<view wx:if="{{list.length>0}}">
 <view wx:for="{{list}}" class='evaluate_list'>
   <view class='nickname'>
     <image src='{{user.HEADIMGURL}}'/>
@@ -14,4 +15,5 @@
     </view>
   </view>
 </view>
-
+</view>
+<view wx:else class='no_data'>暂无数据</view>

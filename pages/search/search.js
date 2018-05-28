@@ -16,7 +16,7 @@ Page({
     var that = this;
     souList = wx.getStorageSync("souList");
     if (souList == undefined || souList==''){
-      souList = [];
+      souList = ['暂无搜索记录'];
     }
     that.setData({
       souList: souList
@@ -47,6 +47,9 @@ Page({
     if (e.detail != undefined && e.detail != null && e.detail!=''){
       console.log(souList);
       var l = that.data.souList;
+      if (l[0] == '暂无搜索记录') {
+        l = [];
+      }
       if(l.length==10){
         l.splice(9, 1);
         l.unshift(e.detail.value);
@@ -68,5 +71,13 @@ Page({
     wx.navigateTo({
       url: '../commodity/commodity?keywords=' + e.currentTarget.dataset.keywords
     });
+  },
+  removeList:function(e){
+    souList=['暂无搜索记录'];
+    console.log('清除信息');
+    this.setData({
+      souList: souList
+    })
+    wx.setStorageSync("souList", souList);
   }
 })

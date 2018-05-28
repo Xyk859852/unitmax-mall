@@ -7,7 +7,7 @@
   <view bindtap='back' id='search_box_close'>取消</view>
 </view>
 <view class='search_history'>
-  <view class='search_title'>搜索历史<image src='../../images/delete.png' class='search_delete'></image></view>
+  <view class='search_title'>搜索历史<image bindtap='removeList' src='../../images/delete.png' class='search_delete'></image></view>
   <view class='search_container'>
     <view bindtap='goList' data-keywords='{{item}}' wx:for="{{souList}}" class='search_container_li'>{{item}}</view>
   </view>
