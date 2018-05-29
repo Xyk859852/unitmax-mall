@@ -31,7 +31,7 @@
           <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
             <view class="num_box">
               <view class='minus smallbtn' catchtap='delNum' data-id="{{item.GOODS_ID}}">-</view>
-              <input class='smallbtn' value='{{item.buyGoodsCount}}' />
+              <input class='smallbtn' bindblur='blurCount' bindinput='countInput' data-id="{{item.GOODS_ID}}" value='{{item.buyGoodsCount}}' />
               <view class='add smallbtn' catchtap="addNum" data-id="{{item.GOODS_ID}}">+</view>
             </view>
           </view>
