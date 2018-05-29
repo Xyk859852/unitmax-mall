@@ -11,6 +11,7 @@ Page({
     selected2: false,
     selected3: false,
     selected4: false,
+    isFresh: false,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     page: 2,
     hasMoreData: true,
@@ -56,6 +57,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    if (that.data.isFresh){
+      that.data.isFresh = false;
+      if (that.data.selected1) {
+        that.selected1();
+      } else if (that.data.selected2) {
+        that.selected2();
+      } else if (that.data.selected3) {
+        that.selected3();
+      } else if (that.data.selected4) {
+        that.selected4();
+      } else {
+        that.selected();
+      }
+    }
    // this.toast.showView("啦啦啦啦");
     // wx.showToast({
     //   title: "Loading...",
@@ -276,7 +292,10 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                wx.navigateTo({
+                  url: '../order_detail/order_detail?ORDERFORM_ID=' + ORDERFORM_ID,
+                });
+                that.data.isFresh = true;
               }
 
               if (res.data.result == "1002") {
@@ -379,7 +398,10 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                wx.navigateTo({
+                  url: '../order_detail/order_detail?ORDERFORM_ID=' + ORDERFORM_ID,
+                });
+                that.data.isFresh = true;
               }
 
               if (res.data.result == "1002") {
@@ -432,7 +454,8 @@ Page({
             if (res.data.result == "true") {
               wx.navigateTo({
                 url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-              })
+              });
+              that.data.isFresh = true;
             }
             if (res.data.result == "1002") {//未登录
               wx.switchTab({

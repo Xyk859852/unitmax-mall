@@ -326,5 +326,13 @@ Page({
     wx.navigateTo({
       url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
     })
+  },
+  afterServiceDetail: function (e) {
+    console.log(e);
+    var sellafterid = e.currentTarget.dataset.sellafterid;
+    var orderform_id = e.currentTarget.dataset.orderform_id;
+    wx.navigateTo({
+      url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
+    })
   }
 })
