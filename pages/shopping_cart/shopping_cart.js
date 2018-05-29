@@ -38,7 +38,9 @@ Page({
             cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
           }
           that.setData({
-            cartlist: cartlist
+            cartlist: cartlist,
+            totalPrice: '0.00',
+            isAll: false,            
           });
         } else if (res.data.result == "noLogin") {//未登录
           wx.switchTab({

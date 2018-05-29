@@ -323,7 +323,17 @@ Page({
             success: function (res) {
               // success
               if (res.data.result == "true") {
-                that.onShow();
+                if (that.data.selected1){
+                  that.selected1();
+                } else if (that.data.selected2){
+                  that.selected2();
+                } else if (that.data.selected3){
+                  that.selected3();
+                } else if (that.data.selected4) {
+                  that.selected4();
+                }else{
+                  that.selected();
+                }
               }
 
               if (res.data.result == "1002") {
