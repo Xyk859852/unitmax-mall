@@ -10,7 +10,8 @@ Page({
     souList:[]
   },
   onLoad: function () {
-
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
   },
   onShow: function() {
     var that = this;
@@ -44,7 +45,8 @@ Page({
   },
   realnameConfirm: function(e){
     var that = this;
-    if (e.detail != undefined && e.detail != null && e.detail!=''){
+    console.log(e);
+    if (e.detail.value != undefined && e.detail.value != null && e.detail.value !=''){
       console.log(souList);
       var l = that.data.souList;
       if (l[0] == '暂无搜索记录') {
@@ -60,6 +62,8 @@ Page({
       wx.navigateTo({
         url: '../commodity/commodity?keywords=' + e.detail.value
       });
+    }else{
+      this.toast.showView("请输入搜索内容");
     }
     console.log(e);
   },
@@ -68,6 +72,18 @@ Page({
   },
   goList: function(e){
     console.log(e);
+    var that = this;
+    var l = that.data.souList;
+    if (l[0] == '暂无搜索记录') {
+      l = [];
+    }
+    if (l.length == 10) {
+      l.splice(9, 1);
+      l.unshift(e.currentTarget.dataset.keywords);
+    } else {
+      l.unshift(e.currentTarget.dataset.keywords);
+    }
+    wx.setStorageSync("souList", l);
     wx.navigateTo({
       url: '../commodity/commodity?keywords=' + e.currentTarget.dataset.keywords
     });

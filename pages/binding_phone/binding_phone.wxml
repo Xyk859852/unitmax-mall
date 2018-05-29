@@ -7,3 +7,4 @@
 <button wx:else class='bingding' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >微信一键登录</button>
 <!-- 验证码组件 -->
 <verifycode id='verifycode' title="请输入验证码哈" content="已发送到手机:" />
+<toast id='toast'/>

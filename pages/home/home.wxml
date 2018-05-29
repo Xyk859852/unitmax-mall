@@ -61,18 +61,20 @@
   </swiper>
 </view>
 <!-- 分类商品 -->
-<view id='category_commodity'>
-  <navigator id='category_commodity_title' url="../commodity/commodity">
+<view wx:for="{{varClass}}" id='category_commodity'>
+<view wx:if="{{item.goodList.length==9}}">
+  <navigator id='category_commodity_title' url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator wx:for="{{goodlist}}" wx:key="this" class='category_commodity_container' data-goods_id='{{item.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
-      <image src='{{appIP}}{{item.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
-      <view class='category_commodity_container_title'>{{item.goods_name}}</view>
+    <navigator wx:for="{{item.goodList}}" wx:for-item="good" wx:key="this" class='category_commodity_container' data-goods_id='{{good.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{good.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
+      <image src='{{appIP}}{{good.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
+      <view class='category_commodity_container_title'>{{good.goods_name}}</view>
       <view class='category_commodity_container_price'>
-        <view>￥{{item.goods_price}}</view>
+        <view>￥{{good.goods_price}}</view>
         <!-- <image src='../../images/shopping_trolley.png'></image> -->
       </view>
     </navigator>
+  </view>
   </view>
 </view>

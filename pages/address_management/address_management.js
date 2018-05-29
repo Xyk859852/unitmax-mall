@@ -106,34 +106,42 @@ Page({
   deleate : function(e){
     var that = this;
     var ADDRESSBOOK_ID = e.currentTarget.dataset.addressbook_id;
-    wx.request({
-      url: app.IP +'chatAddRess/deleate',
-      data: { ADDRESSBOOK_ID: ADDRESSBOOK_ID},
-      header: header,
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function(res) {
-        if(res.data.result=="true"){
-          wx.request({
-            url: app.IP + 'chatAddRess/getList',
-            data: '',
-            header: header,
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
-            success: function (res) {
-              that.setData({
-                list: res.data.list
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除？',
+      success: function (sm) {
+        if (sm.confirm) {
+        wx.request({
+          url: app.IP + 'chatAddRess/deleate',
+          data: { ADDRESSBOOK_ID: ADDRESSBOOK_ID },
+          header: header,
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: function (res) {
+            if (res.data.result == "true") {
+              wx.request({
+                url: app.IP + 'chatAddRess/getList',
+                data: '',
+                header: header,
+                method: 'GET',
+                dataType: 'json',
+                responseType: 'text',
+                success: function (res) {
+                  that.setData({
+                    list: res.data.list
+                  })
+                },
+                fail: function (res) { },
+                complete: function (res) { },
               })
-            },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-        }
-      },
-      fail: function(res) {},
-      complete: function(res) {},
+            }
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      }
+      }
     })
   },
   selectAddress: function(e){

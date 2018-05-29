@@ -33,18 +33,20 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
-        console.log(res.data.advertImgs);
+        console.log(res.data.varClass);
         // success
-        var goodlist = res.data.goodlist;
+        var goodlist = res.data.varClass;
+        console.log(goodlist);
         for (var i = 0; i < goodlist.length;i++){
-          goodlist[i].goods_price = util.changeTwoDecimal_f(goodlist[i].goods_price);
+          for (var j = 0; j < goodlist[i].goodList.length; j++) {
+            goodlist[i].goodList[j].goods_price = util.changeTwoDecimal_f(goodlist[i].goodList[j].goods_price);
+          }
         }
         that.setData({
           imgUrls: res.data.advertImgs,
           text: res.data.title,
           varClass: res.data.varClass,
-          newlist: res.data.newlist,
-          goodlist: goodlist
+          newlist: res.data.newlist
         })
         var length = that.data.text.length * that.data.size;//文字长度
         var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度

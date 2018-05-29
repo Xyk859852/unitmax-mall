@@ -26,6 +26,8 @@ Page({
     var that = this;
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
     var update = options.updatePhone;
     console.log(update)
     if (update){
@@ -89,19 +91,14 @@ Page({
   sendmessg: function (e) {
     var that = this;
     console.log(phone);
+    if (phone != '' || phone != null){
+      this.toast.showView('请输入手机号');
+    }
     if (!(/^1[34578]\d{9}$/.test(phone))) {
-      wx.showToast({
-        title: '手机号有误',
-        icon: 'success',
-        duration: 2000
-      })
+      this.toast.showView('手机号有误');
       return false;
       if (phone.length >= 11) {
-        wx.showToast({
-          title: '手机号有误',
-          icon: 'success',
-          duration: 2000
-        })
+        this.toast.showView('手机号有误');
         return false;
       }
     }
@@ -227,19 +224,12 @@ Page({
                         complete: function (res) { },
                       })
                     } else {
-                      wx.showModal({
-                        title: '提示',
-                        showCancel: false,
-                        content: res.data.result,
-                        success: function (res) { }
-                      })
+                      this.toast.showView(res.data.result);
                     }
                   },
                   fail: function (res) { },
                   complete: function (res) { },
-                })
-                //调用组件关闭方法
-
+                });
                 //设置数据
                 that.setData({
                   code: phoneCode
@@ -252,12 +242,7 @@ Page({
             wx.setStorageSync("user", res.data.user);
             wx.navigateBack({ changed: true });//返回上一页
           }else{
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: res.data.result,
-              success: function (res) { }
-            })
+            this.toast.showView(res.data.result);
           }
          
         },
@@ -274,27 +259,15 @@ Page({
   },
   bindUserName: function(e){
     if (!(/^1[34578]\d{9}$/.test(phone))) {
-      wx.showToast({
-        title: '手机号有误',
-        icon: 'success',
-        duration: 2000
-      })
+      this.toast.showView('手机号有误');
       return false;
       if (phone.length >= 11) {
-        wx.showToast({
-          title: '手机号有误',
-          icon: 'success',
-          duration: 2000
-        })
+        this.toast.showView('手机号有误');
         return false;
       }
     }
     if(code==''){
-      wx.showToast({
-        title: '请输入验证码',
-        icon: 'success',
-        duration: 2000
-      })
+      this.toast.showView('输入验证码');
       return false;
     }
     wx.request({
