@@ -25,6 +25,14 @@
       <view class='address_detail'>收件地址：{{order.RECEIVE_ADDRESS}}</view>
     </view>
   </view>
+  <!-- 有留言显示，没留言不显示 -->
+  <view class='address_box'>
+    <image class='address_left' src='../../images/address.png' />
+    <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
+      <view>买家留言</view>
+      <view class='address_detail'>留言内容</view>
+    </view>
+  </view>
   <view class='commodity_list'>
     <view class='other'>
       <image src='../../images/seller.png' />

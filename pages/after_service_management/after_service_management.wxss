@@ -72,6 +72,7 @@
   font-size: 14px;
   color: #fe6500;
   line-height: 30px;
+  overflow: hidden;
 } 
 /* .order_btn{
   height: 30px;
