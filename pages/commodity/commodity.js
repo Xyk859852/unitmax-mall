@@ -30,6 +30,7 @@ var GetList = function (that) {
       console.log(res.data);
       var l = that.data.list
       for (var i = 0; i < res.data.goodslist.length; i++) {
+        res.data.goodslist[i].GOODS_PRICE = util.changeTwoDecimal_f(res.data.goodslist[i].GOODS_PRICE);
         l.push(res.data.goodslist[i])
       }
       that.setData({

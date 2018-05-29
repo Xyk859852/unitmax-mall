@@ -212,21 +212,35 @@ Page({
           if (that.data.page == 1) {
             orderListTem = []
           }
-          var orderList = res.data.orderList
-          if (orderList.length < res.data.pageSize) {
+
+          for (var i = 0; i < res.data.orderList.length; i++) {
+            res.data.orderList[i].SHIP_PRICE = util.changeTwoDecimal_f(res.data.orderList[i].SHIP_PRICE);
+            res.data.orderList[i].TOTALPRICE = util.changeTwoDecimal_f(res.data.orderList[i].TOTALPRICE);
+            for (var j = 0; j < res.data.orderList[i].detailList.length; j++){
+              res.data.orderList[i].detailList[j].GOODS_PRICE = util.changeTwoDecimal_f(res.data.orderList[i].detailList[j].GOODS_PRICE);
+            }
+          }         
+          if (res.data.orderList.length < res.data.pageSize) {
             that.setData({
-              orderList: orderListTem.concat(orderList),
+              orderList: orderListTem.concat(res.data.orderList),
               hasMoreData: false
             })
           } else {
             that.setData({
-              orderList: orderListTem.concat(orderList),
+              orderList: orderListTem.concat(res.data.orderList),
               hasMoreData: true,
               page: that.data.page + 1
             })
           }
         } else {
-          that.toast.showView(res.data.result);
+          if (res.data.result == "1002"){
+            wx.switchTab({
+              url: '../mine/mine',
+            })
+          }else{
+            that.toast.showView(res.data.result);
+          }
+          
         }
 
       },

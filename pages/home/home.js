@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 Page({
   data: {
     category:[
@@ -34,6 +35,13 @@ Page({
       success: function (res) {
         console.log(res.data.varClass);
         // success
+        var goodlist = res.data.varClass;
+        console.log(goodlist);
+        for (var i = 0; i < goodlist.length;i++){
+          for (var j = 0; j < goodlist[i].goodList.length; j++) {
+            goodlist[i].goodList[j].goods_price = util.changeTwoDecimal_f(goodlist[i].goodList[j].goods_price);
+          }
+        }
         that.setData({
           imgUrls: res.data.advertImgs,
           text: res.data.title,
