@@ -32,14 +32,13 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header, // 设置请求的 header
       success: function (res) {
-        console.log(res.data.advertImgs);
+        console.log(res.data.varClass);
         // success
         that.setData({
           imgUrls: res.data.advertImgs,
           text: res.data.title,
           varClass: res.data.varClass,
-          newlist: res.data.newlist,
-          goodlist: res.data.goodlist
+          newlist: res.data.newlist
         })
         var length = that.data.text.length * that.data.size;//文字长度
         var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度

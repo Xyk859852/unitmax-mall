@@ -16,6 +16,6 @@
   <view class='search_title'>热门搜索</view>
   <view class='search_container'>
     <view bindtap='goList' data-keywords='{{item.SEARCH_NAME}}' wx:for="{{searchList}}" class='search_container_li'>{{item.SEARCH_NAME}}</view>
-    
   </view>
 </view>
+<toast id='toast'/>
