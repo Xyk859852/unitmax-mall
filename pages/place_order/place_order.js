@@ -404,6 +404,7 @@ Page({
 
       }
     }
+    this.calculateFinalPrice();
     this.setData({
       goodsList: goodsList
     })
