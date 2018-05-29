@@ -211,17 +211,28 @@ Page({
     })
   },
   selected1: function (e) {
-    this.setData({
-      selected: false,
-      selected2: false,
-      selected1: true,
-      selected3: false,
-      selectedbtn: false,
-      selectedbtn2: false,
-      selectedbtn1: true
-    })
+    if (this.data.selected1) {
+      this.setData({
+        selected1: false
+      })
+    }else{
+      this.setData({
+        selected: false,
+        selected2: false,
+        selected1: true,
+        selected3: false,
+        selectedbtn: false,
+        selectedbtn2: false,
+        selectedbtn1: true
+      })
+    }
   },
   selected2: function (e) {
+    if (this.data.selected2) {
+      this.setData({
+        selected2: false
+      })
+    } else {
     this.setData({
       selected: false,
       selected1: false,
@@ -231,15 +242,21 @@ Page({
       selectedbtn1: false,
       selectedbtn2: true,
     })
+    }
   },
   selected3: function (e) {
-    var that = this;
-    that.setData({
+    if (this.data.selected3) {
+      this.setData({
+        selected3: false
+      })
+    } else {
+    this.setData({
       selected: false,
       selected1: false,
       selected2: false,
       selected3: true
     })
+    }
   },
   //下拉
   onPullDownRefresh: function(e){

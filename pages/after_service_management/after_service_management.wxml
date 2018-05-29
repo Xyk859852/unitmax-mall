@@ -1,23 +1,26 @@
 <!--pages/after_service_management/after_service_management.wxml-->
 <view wx:if="{{list.length>0}}">
-<view wx:for="{{list}}" class='commodity_list'>
-  <view class='other'>
-     <image src='../../images/seller.png'/>
-    <label>{{item.order_no}}</label>
-    <!-- <label>配送单</label> -->
-    <!-- <text class='order_state'>等待门店接单</text> -->
-  </view>
-  <view wx:for="{{item.goods}}" wx:for-item="good" class='commodity_li'>
-    <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{good.GOODS_IMG}}'></image>
-    <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
-      <view class='commodity_li_title'>{{good.GOODS_NAME}}</view>
-      <view class='commodity_li_tip'>品类：{{good.GOODSTYPE_NAME}} 等级：{{good.GOODSLEVEL_NAME}}</view>
+  <view wx:for="{{list}}" class='commodity_list'>
+    <view class='other'>
+      <image src='../../images/seller.png' />
+      <label>{{item.order_no}}</label>
+      <!-- <label>配送单</label> -->
+      <!-- <text class='order_state'>等待门店接单</text> -->
+    </view>
+    <view wx:for="{{item.goods}}" wx:for-item="good" class='commodity_li'>
+      <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{good.GOODS_IMG}}'></image>
+      <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+        <view class='commodity_li_title'>{{good.GOODS_NAME}}</view>
+        <view class='commodity_li_tip'>品类：{{good.GOODSTYPE_NAME}} 等级：{{good.GOODSLEVEL_NAME}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{item.state==0}}" class='order_total_money'>{{item.problem_desc}}
+      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
+    </view>
+    <view wx:else class='order_total_money'>
+      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
     </view>
   </view>
-
-   <view wx:if="{{item.state==0}}" class='order_total_money'>{{item.problem_desc}}<navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator></view> 
-   <view wx:else>
-   <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator></view>
-</view>
 </view>
 <view class='no_data' wx:else>暂无数据</view>
