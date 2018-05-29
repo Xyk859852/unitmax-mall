@@ -81,6 +81,10 @@ page{
 .check_label{
   font-size: 12px;
 }
+.check_label1{
+  font-size: 12px;
+  margin-left: 4%;
+}
 .buy{
   width:100px;
   float: right;

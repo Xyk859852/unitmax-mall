@@ -24,6 +24,7 @@
     <view class='footer'>
       <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
       <label for='all' class='check_label'>全选</label>
+      <label class='check_label1'>删除</label>
       <!-- <navigator class='buy' url="../place_order/place_order">去结算</navigator> -->
       <button class='buy' bindtap='submitOrder'>去结算</button>
       <label class='all'>总计：{{totalPrice}}元</label>
