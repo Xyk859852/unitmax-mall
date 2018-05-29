@@ -89,6 +89,22 @@ Page({
   sendmessg: function (e) {
     var that = this;
     console.log(phone);
+    if (!(/^1[34578]\d{9}$/.test(phone))) {
+      wx.showToast({
+        title: '手机号有误',
+        icon: 'success',
+        duration: 2000
+      })
+      return false;
+      if (phone.length >= 11) {
+        wx.showToast({
+          title: '手机号有误',
+          icon: 'success',
+          duration: 2000
+        })
+        return false;
+      }
+    }
     wx.request({
       url: app.IP+'chatUser/updateUsernameByNewPhone',
       data: {PHONE:phone},
