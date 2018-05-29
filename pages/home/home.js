@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 Page({
   data: {
     category:[
@@ -34,12 +35,16 @@ Page({
       success: function (res) {
         console.log(res.data.advertImgs);
         // success
+        var goodlist = res.data.goodlist;
+        for (var i = 0; i < goodlist.length;i++){
+          goodlist[i].goods_price = util.changeTwoDecimal_f(goodlist[i].goods_price);
+        }
         that.setData({
           imgUrls: res.data.advertImgs,
           text: res.data.title,
           varClass: res.data.varClass,
           newlist: res.data.newlist,
-          goodlist: res.data.goodlist
+          goodlist: goodlist
         })
         var length = that.data.text.length * that.data.size;//文字长度
         var windowWidth = wx.getSystemInfoSync().windowWidth;// 屏幕宽度

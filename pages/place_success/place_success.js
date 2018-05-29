@@ -1,5 +1,5 @@
 // pages/place_success/place_success.js
-
+var util = require("../../utils/util.js");
 var header = getApp().globalData.header;
 //获取应用实例
 const app = getApp()
@@ -39,6 +39,7 @@ Page({
       dataType: 'json',
       success: function (res) {
         if (res.data.result == "true") {
+          res.data.order.TOTALPRICE = util.changeTwoDecimal_f(res.data.order.TOTALPRICE);
           that.setData({
             order: res.data.order
           });

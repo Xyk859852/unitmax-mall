@@ -33,11 +33,17 @@ Page({
       success: function (res) {
         // success
         if (res.data.result == "true") {
+          var cartlist = res.data.cartlist;
+          for (var i = 0; i < cartlist.length;i++){
+            cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
+          }
           that.setData({
-            cartlist: res.data.cartlist
+            cartlist: cartlist
           });
         } else if (res.data.result == "noLogin") {//未登录
-
+          wx.switchTab({
+            url: '../mine/mine',
+          })
         }
       },
       fail: function () {

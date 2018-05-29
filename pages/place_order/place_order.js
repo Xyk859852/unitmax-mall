@@ -193,7 +193,7 @@ Page({
     TOTALPRICE += TRANS_FEE;
     this.setData({
       TOTALPRICE: util.changeTwoDecimal_f(TOTALPRICE),
-      TRANS_FEE: TRANS_FEE
+      TRANS_FEE: util.changeTwoDecimal_f(TRANS_FEE)
     });
   },
   selectAddress : function(){//选择地址
@@ -204,6 +204,11 @@ Page({
   },
   submitOrder : function(){
     var that = this;
+    //判断是否选择地址
+    if (!util.isAvalible(that.data.defaultAddress)){
+      that.toast.showView("请选择地址");
+      return;
+    }
     var data = {};
     var SHIP_PRICE = 0.00;
     data.ADDRESSBOOK_ID = that.data.defaultAddress.ADDRESSBOOK_ID;
@@ -338,6 +343,10 @@ Page({
         console.log(res);
         // success
         if (res.data.result == "true") {
+          var goodsList = res.data.goodsList;
+          for (var i = 0; i < goodsList.length;i++){
+            goodsList[i].GOODS_PRICE = util.changeTwoDecimal_f(goodsList[i].GOODS_PRICE);
+          }
           that.setData({
             goodsList: res.data.goodsList,
             defaultAddress: res.data.defaultAddress

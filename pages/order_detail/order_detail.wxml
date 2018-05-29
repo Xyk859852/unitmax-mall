@@ -3,11 +3,17 @@
 <view class='body'>
   <view class='top'>
     <image src='../../images/IMG_214.png' />
-    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking">
-      <view>订单已发货</view>
-      <view class='time'>2018-05-18 15:00</view>
+    <!-- url="../logistics_tracking/logistics_tracking" -->
+    <navigator style='width:{{contact_view_width}}px;' > 
+      <view wx:if="{{order.ORDER_STATUS == '1'}}">待付款</view>
+      <view wx:if="{{order.ORDER_STATUS == '2'}}">待发货</view>
+      <view wx:if="{{order.ORDER_STATUS == '3'}}">待收货</view>
+      <view wx:if="{{order.ORDER_STATUS == '4'}}">待评价</view>
+      <view wx:if="{{order.ORDER_STATUS == '5'}}">交易成功</view>
+      <view wx:if="{{order.ORDER_STATUS == '6'}}">交易关闭 </view>
+      <!-- <view class='time'>2018-05-18 15:00</view> -->
     </navigator>
-    <image class="right" src="../../images/right_fff.png"></image>
+    <!-- <image class="right" src="../../images/right_fff.png"></image> -->
   </view>
 
   <view class='address_box'>
@@ -41,7 +47,7 @@
     </block>
     <view class='other'>
       <view>商品总价
-        <text class='other_right'>￥{{order.TOTALPRICE-order.SHIP_PRICE}}</text>
+        <text class='other_right'>￥{{order.GoodsAllPrice}}</text>
       </view>
       <view>运费（第三方物流）
         <text class='other_right'>￥{{order.SHIP_PRICE}}</text>
@@ -59,7 +65,7 @@
     <view class='other'>订单编号：{{order.ORDER_NO}}</view>
     <view class='other'>创建时间：{{order.ADDTIME}}</view>
     <view class='other'>付款时间：{{order.PAYTIME}}</view>
-    <view class='other'>发货时间：{{order.SHIPTIME}}</view>
+    <!-- <view class='other'>发货时间：{{order.SHIPTIME}}</view> -->
   </view>
 </view>
 <view class='footer'>

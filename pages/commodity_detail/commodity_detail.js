@@ -36,7 +36,7 @@ Page({
       header: header, // 设置请求的 header
       success: function (res) {
         // success
-        console.log(res.data.good);
+        res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
         that.setData({
           good: res.data.good,
           evaluate: res.data.evaluate

@@ -1,5 +1,6 @@
 // pages/order_detail/order_detail.js
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 //获取应用实例
 const app = getApp()
 Page({
@@ -50,9 +51,17 @@ Page({
       method: 'GET',
       dataType: 'json',
       success: function (res) {
-        if (res.data.result == "true") {
+        if (res.data.result == "true") {         
+          var order = res.data.order;
+          order.SHIP_PRICE = util.changeTwoDecimal_f(order.SHIP_PRICE);
+          order.TOTALPRICE = util.changeTwoDecimal_f(order.TOTALPRICE);
+          order.GoodsAllPrice = util.changeTwoDecimal_f(order.TOTALPRICE - order.SHIP_PRICE);
+          for (var i = 0; i < order.detailList.length;i++){
+            order.detailList[i].GOODS_PRICE = util.changeTwoDecimal_f(order.detailList[i].GOODS_PRICE);
+          }
+
           that.setData({
-            order: res.data.order,  
+            order: order,  
             service_phone: res.data.service_phone        
           });
         }
