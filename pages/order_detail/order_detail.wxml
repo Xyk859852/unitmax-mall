@@ -30,7 +30,8 @@
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>买家留言</view>
-      <view class='address_detail'>留言内容</view>
+      <view class='address_detail' wx:if="{{order.MSG}}">{{order.MSG}}</view>
+       <view class='address_detail' wx:else>无</view> 
     </view>
   </view>
   <view class='commodity_list'>

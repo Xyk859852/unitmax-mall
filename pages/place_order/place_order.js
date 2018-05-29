@@ -304,6 +304,17 @@ Page({
 
             }
           });
+
+          //关闭支付密码弹窗事件
+          that.verifycode.closeSuccessMe({
+            isUse:true,
+            closeSuccess: function(){
+              wx.redirectTo({
+                url: '../order_detail/order_detail?ORDERFORM_ID=' + res.data.ORDERFORM_ID,
+              })
+            }
+          });
+
         } else {//未登录
           that.toast.showView(res.data.result);
         }
@@ -384,30 +395,31 @@ Page({
       }
       
     }
+    this.calculateFinalPrice();
     this.setData({
       goodsList: goodsList
     });
 
   },
   blurCount: function (e) {
-    var id = e.target.dataset.id;
-    var count = e.detail.value;
-    var goodsList = this.data.goodsList;
-    for (var i = 0; i < goodsList.length; i++) {
-      if (goodsList[i].id == id) {
-        if (count < goodsList[i].GOODS_INVENTORY) {
-          goodsList[i].buyGoodsCount = Number(count);
-        } else {
-          count = goodsList[i].GOODS_INVENTORY;
-          goodsList[i].buyGoodsCount = Number(count);
-        }
+    // var id = e.target.dataset.id;
+    // var count = e.detail.value;
+    // var goodsList = this.data.goodsList;
+    // for (var i = 0; i < goodsList.length; i++) {
+    //   if (goodsList[i].id == id) {
+    //     if (count < goodsList[i].GOODS_INVENTORY) {
+    //       goodsList[i].buyGoodsCount = Number(count);
+    //     } else {
+    //       count = goodsList[i].GOODS_INVENTORY;
+    //       goodsList[i].buyGoodsCount = Number(count);
+    //     }
 
-      }
-    }
-    this.calculateFinalPrice();
-    this.setData({
-      goodsList: goodsList
-    })
+    //   }
+    // }
+    // this.calculateFinalPrice();
+    // this.setData({
+    //   goodsList: goodsList
+    // })
   },
   /**
   * 生命周期函数--监听页面显示

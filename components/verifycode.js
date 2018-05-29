@@ -12,6 +12,7 @@ Component({
   data: {
     isShow:false,
     isFocus:false,
+    isUse:false,
     inputValue:'',
     src:'image/close.png',
     phone:'15200000000',
@@ -51,12 +52,32 @@ Component({
     /**
      * 关闭组件
      */
-    closeView(e){
+    closeView(e){     
       this.setData({
         isShow: !this.data.isShow,
         isFocus:false
-      })
-     
+      });
+
+      if (this.data.isUse){
+        this.closeSuccess();
+        this.data.isUse = false;
+     }
+      
+
+    },
+    
+  /**
+   * 关闭组件之后的事件
+   */
+    closeSuccessMe({isUse, closeSuccess}) {
+    if (util.isAvalible(closeSuccess)) {
+      this.closeSuccess = closeSuccess;
+      this.data.isUse = isUse;
+    }
+
+  },
+    closeSuccess(){
+
     },
     /**
      * 点击输入框
