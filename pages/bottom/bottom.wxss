@@ -1,20 +1,20 @@
 /* pages/bottom/bottom.wxss */
-#category_box{
+#category1_box{
   width: 100%;
   overflow: hidden;
 }
-.category_box{
+.category1_box{
   width: 25%;
   float: left;
   background-color: #ffffff;
 }
-.category_box image{
+.category1_box image{
   width: 30px;
   height: 30px;
   margin: 0 auto;
   display: block;
 }
-.category_box view{
+.category1_box view{
   width: 100%;
   font-size: 12px;
   text-align: center;

@@ -1,6 +1,8 @@
 // 引入CryptoJS
 var WXBizDataCrypt = require('../../utils/crypto.js');
 var header = getApp().globalData.header;
+// import tempObj from '../bottom/bottom.js';
+var tempObj = require("../../utils/bottom.js");
 // var toastPannel = require('../../components/toast/toast.js');
 //mine.js
 //获取应用实例
@@ -59,6 +61,57 @@ Page({
     }
   },
   openToastPannel: function () {
+    wx.request({
+      url: app.IP +'WxPay/WxXiaoPayS',
+      data: { ZHIFUJINE:'0.01'},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res.data);
+        wx.requestPayment({
+          timeStamp: res.data.timeStamp,
+          nonceStr: res.data.nonceStr,
+          package: res.data.prepay_id,
+          signType: res.data.signType,
+          paySign: res.data.paySign,
+          success: function (res) {
+            // success  
+            console.log(res)
+            wx.navigateBack({
+              delta: 1, // 回退前 delta(默认为1) 页面  
+              success: function (res) {
+                wx.showToast({
+                  title: '支付成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+              },
+              fail: function () {
+                // fail  
+              },
+              complete: function () {
+                // complete  
+              }
+            })
+          },
+          fail: function () {
+            // fail  
+            console.log("支付失败")
+          },
+          complete: function () {
+            // complete  
+            console.log("pay complete")
+          }
+        })  
+      },
+      fail: function(res) {
+
+      },
+      complete: function(res) {
+        
+      },
+    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -108,5 +161,32 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  refund:function(e){
+    wx.request({
+      url: app.IP + 'apppay/refundPay',
+      data: { MONEY: '0.01' ,
+        PAYNO:"f7ee407d6b854390897de2b98d07b3e3"},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        console.log(res.data);
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  gohome: function (e) {
+    tempObj.gohome(e);
+  },
+  gocategory: function (e) {
+    tempObj.gocategory(e);
+  },
+  goshoppingcart: function (e) {
+    tempObj.goshoppingcart(e);
+  },
+  getUserInfo: function (e) {
+    tempObj.getUserInfo(e)
   }
 })

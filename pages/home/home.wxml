@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <!-- 搜索 -->
+<!-- 声明需要使用的模板文件 -->
+<import src ="../bottom/bottom.wxml"/>
+<view>
 <navigator id="search_box" url="../search/search">
   <view id="search">搜索</view>
 </navigator>
@@ -78,3 +81,6 @@
   </view>
   </view>
 </view>
+</view>
+　　<view>This is index.wxml</view>
+ <template is="msgItem"/> 

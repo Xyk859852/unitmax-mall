@@ -74,9 +74,14 @@
       <image src='../../images/category.png'></image>
       <view>我的评价</view>
     </navigator>
-    <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
+     <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
-      <view bindtap='openToastPannel'>测弹窗</view>
-    </button>  -->
+      <view>微信支付</view>
+    </button>  
+    <button bindtap='refund' class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>微信退款</view>
+    </button>  
   </view>
 </view>
+<include src="../bottom/bottom.wxml"/>

@@ -1,3 +1,4 @@
+@import "../bottom/bottom.wxss";
 /* shopping_cart.wxss */
 page{
   padding-bottom: 70px;

@@ -1,3 +1,4 @@
+@import "../bottom/bottom.wxss";
 /**category.wxss**/  
 page{
   height: 100%;
