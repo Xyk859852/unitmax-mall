@@ -12,6 +12,7 @@ Page({
     nearby: {},
     location:{},
     address:"",
+    address_detail:"",
     content: false,
     content1: false,
     address_label_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
@@ -77,7 +78,8 @@ Page({
     myAmapFun.getRegeo({
       success: function (data) {
         that.setData({
-          address: data[0].name,
+          address: data[0].desc,
+          address_detail: data[0].name,
           location: data[0].longitude + "," + data[0].latitude
         });
         myAmapFun.getPoiAround({
@@ -92,7 +94,6 @@ Page({
                   nearby.push(data.poisData[i]);
                 }
               }
-              console.log(nearby);
               that.setData({
                 nearby: nearby,
                 content: true,
