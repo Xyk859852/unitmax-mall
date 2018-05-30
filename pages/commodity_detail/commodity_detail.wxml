@@ -12,10 +12,10 @@
   <view class='commodity_detail_title_left' style='width:{{commodity_detail_title_left_width}}px;'>
     <view class='commodity_title'>{{good.GOODS_NAME}}</view>
   </view>
-  <view class='commodity_detail_title_right'> 
+  <button open-type="share" class='commodity_detail_title_right'> 
     <image src='../../images/share.png'></image>
     <view>分享</view>
-  </view>
+  </button>
     <view class='commodity_price'>￥{{good.GOODS_PRICE}}</view>
     <view class='commodity_tip'>运费：￥10.00元<text>库存：{{good.GOODS_INVENTORY}} 销量：{{good.GOODS_SALENUM}}</text></view>
 </view>

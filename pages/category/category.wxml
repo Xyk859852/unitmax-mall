@@ -31,4 +31,6 @@
     </view>
   </view>
 </view>
-<include src="../bottom/bottom.wxml"/>
+<!-- 声明需要使用的模板文件 -->
+<import src ="../bottom/bottom.wxml"/>
+<template is="msgItem"/> 

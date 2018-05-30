@@ -88,6 +88,15 @@ Page({
       selected2: true
     })
   },
+  onShareAppMessage: function () {
+    var good = this.data.good;
+    console.log(good);
+    return {
+      title: good.GOODS_NAME,
+      desc: '小事海淘',
+      path: '/page/commodity_detail/commodity_detail'
+    }
+  },
   submitOrder: function (){
     var that = this;
     var goodsArray = [];

@@ -32,4 +32,6 @@
   </block>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
-<include src="../bottom/bottom.wxml"/>
+<!-- 声明需要使用的模板文件 -->
+<import src ="../bottom/bottom.wxml"/>
+ <template is="msgItem"/> 

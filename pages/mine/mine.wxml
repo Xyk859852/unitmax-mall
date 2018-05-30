@@ -86,6 +86,12 @@
       <image src='../../images/category.png'></image>
       <view>微信退款</view>
     </button>  
+    <button bindtap='share' open-type="share" class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>微信分享</view>
+    </button>  
   </view>
 </view>
-<include src="../bottom/bottom.wxml"/>
+<!-- 声明需要使用的模板文件 -->
+<import src ="../bottom/bottom.wxml"/>
+<template is="msgItem"/> 
