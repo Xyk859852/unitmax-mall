@@ -277,8 +277,8 @@ Page({
     var ORDERFORM_ID = that.data.ORDERFORM_ID;
     wx.request({
       url: app.IP + 'WxPay/WxXiaoPayS',
-      data: { ZHIFUJINE: '0.01' },
-      // data: { ZHIFUJINE: that.data.order.TOTALPRICE },
+      //data: { ZHIFUJINE: '0.01' },
+      data: { ZHIFUJINE: that.data.order.TOTALPRICE },
       header: header,
       method: 'GET',
       dataType: 'json',

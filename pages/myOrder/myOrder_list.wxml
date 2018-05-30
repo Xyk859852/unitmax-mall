@@ -1,5 +1,5 @@
 <!--pages/myOrder/myOrder_list.wxml-->
-<toast id='toast'/>
+<toast id='toast' />
 <view class="nav">
   <view class="{{selected?'red':'default'}}" bindtap="selected">全部</view>
   <view class="{{selected1?'red':'default'}}" bindtap="selected1">待付款</view>
@@ -32,7 +32,7 @@
         </view>
       </view>
       <view class='order_btn'>
-        <view class='small_btn2' bindtap='payOrder' data-orderform_id="{{order.ORDERFORM_ID}}">支付</view>
+        <view class='small_btn2' bindtap='payOrder' data-orderform_id="{{order.ORDERFORM_ID}}" data-totalprice="{{order.TOTALPRICE}}">支付</view>
         <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
       </view>
     </view>
@@ -56,6 +56,9 @@
           </view>
         </block>
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}） </view>
+      </view>
+      <view class='order_btn'>
+        <view class='small_btn' bindtap='cancelOrder' data-orderform_id="{{order.ORDERFORM_ID}}">取消</view>
       </view>
     </view>
     <!-- 待收货 -->

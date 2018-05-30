@@ -456,10 +456,10 @@ Page({
   payOrder: function(e){
     var that = this;
     var ORDERFORM_ID = e.target.dataset.orderform_id;
+    var totalprice = e.target.dataset.totalprice;
     wx.request({
       url: app.IP + 'WxPay/WxXiaoPayS',
-      data: { ZHIFUJINE: '0.01' },
-      // data: { ZHIFUJINE: that.data.order.TOTALPRICE },
+      data: { ZHIFUJINE: totalprice},
       header: header,
       method: 'GET',
       dataType: 'json',
