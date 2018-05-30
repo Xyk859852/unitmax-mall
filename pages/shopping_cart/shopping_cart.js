@@ -1,6 +1,7 @@
 //shopping_cart.js
 var util = require("../../utils/util.js");
 var header = getApp().globalData.header;
+var tempObj = require("../../utils/bottom.js");
 //获取应用实例
 const app = getApp()
 
@@ -44,9 +45,20 @@ Page({
             isAll: false,            
           });
         } else if (res.data.result == "noLogin") {//未登录
-          wx.switchTab({
-            url: '../mine/mine',
+          wx.showModal({
+            title: '提示',
+            content: '用户是否去登陆？',
+            success: function (sm) {
+              if (sm.confirm) {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            }
           })
+          // wx.switchTab({
+          //   url: '../mine/mine',
+          // })
         }
       },
       fail: function () {
@@ -341,5 +353,17 @@ Page({
     this.setData({
       cartlist: cartlist
     })
+  },
+  gohome: function (e) {
+    tempObj.gohome(e);
+  },
+  gocategory: function (e) {
+    tempObj.gocategory(e);
+  },
+  goshoppingcart: function (e) {
+    tempObj.goshoppingcart(e);
+  },
+  getUserInfo: function (e) {
+    tempObj.getUserInfo(e)
   }
 })

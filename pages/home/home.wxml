@@ -1,6 +1,9 @@
 <!--index.wxml-->
 <!-- 搜索 -->
-<navigator id="search_box" url="../search/search">
+<!-- 声明需要使用的模板文件 -->
+<import src ="../bottom/bottom.wxml"/>
+<view>
+<navigator hover-class="btn-hover" id="search_box" url="../search/search">
   <view id="search">搜索</view>
 </navigator>
 <view>
@@ -33,7 +36,7 @@
 <!-- 分类 -->
 <view id='category_box'>
   <view class='category_box' wx:for="{{varClass}}" wx:key="this">
-    <navigator url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
+    <navigator hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
       <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
       <view class='category_name'>{{item.NAME}}</view>
     </navigator>
@@ -48,7 +51,7 @@
 <view id='new_box'>
   <image id='new_box_img' src='../../images/category.png'></image>
   <swiper class="swiper_container" style='width:{{swiper_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
-    <navigator wx:for="{{newlist}}" wx:key="this" open-type="navigate" url="../news/news">
+    <navigator hover-class="btn-hover" wx:for="{{newlist}}" wx:key="this" open-type="navigate" url="../news/news">
       <swiper-item>
         <!-- <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
         <view class="swiper_item">
@@ -63,11 +66,11 @@
 <!-- 分类商品 -->
 <view wx:for="{{varClass}}" id='category_commodity'>
 <view wx:if="{{item.goodList.length==9}}">
-  <navigator id='category_commodity_title' url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
+  <navigator id='category_commodity_title' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
     <image src='../../images/category_title.jpg' mode="widthFix"></image>
   </navigator>
   <view id='category_commodity_list'>
-    <navigator wx:for="{{item.goodList}}" wx:for-item="good" wx:key="this" class='category_commodity_container' data-goods_id='{{good.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{good.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
+    <navigator wx:for="{{item.goodList}}" hover-class="btn-hover" wx:for-item="good" wx:key="this" class='category_commodity_container' data-goods_id='{{good.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{good.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
       <image src='{{appIP}}{{good.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
       <view class='category_commodity_container_title'>{{good.goods_name}}</view>
       <view class='category_commodity_container_price'>
@@ -78,3 +81,6 @@
   </view>
   </view>
 </view>
+</view>
+　　<view>This is index.wxml</view>
+ <template is="msgItem"/> 

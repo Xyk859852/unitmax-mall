@@ -32,3 +32,4 @@
   </block>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
+<include src="../bottom/bottom.wxml"/>

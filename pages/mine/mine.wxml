@@ -5,7 +5,7 @@
 <!-- <button open-type="getUserInfo"  bindgetuserinfo="updateUser">123<image class='refresh' src='../../images/refresh.png'/></button> -->
   
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+    <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
       获取用户信息
     </button>
      <block wx:else>
@@ -16,33 +16,37 @@
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
-    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=1">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=1">
       <view>待付款</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=2">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=2">
       <view>待发货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=3">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=3">
       <view>待收货</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=4">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=4">
       <view>待评价</view>
       <image src='../../images/category.png'></image>
     </navigator>
-    <navigator class='mine_order' url="../myOrder/myOrder_list">
+    <navigator hover-class="btn-hover" class='mine_order' url="../myOrder/myOrder_list">
         全部订单
       <image src='../../images/category.png'></image>
     </navigator>
   </view>
   <view class='mine_menu'>
-    <navigator class='mine_order_state_container' bindtap='goAddRess' url="../address_management/address_management">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' bindtap='goAddRess' url="../address_management/address_management">
       <image src='../../images/category.png'></image>
       <view>地址管理</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' bindtap='goAddRess' url="../enshrine/enshrine">
+      <image src='../../images/category.png'></image>
+      <view>我的收藏</view>
+    </navigator>
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>绑定手机</view>
     </navigator>
@@ -62,21 +66,26 @@
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
     </navigator> -->
-    <navigator class='mine_order_state_container' url="../about/about">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../about/about">
       <image src='../../images/category.png'></image>
       <view>关于我们</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../after_service_management/after_service_management">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_management/after_service_management">
       <image src='../../images/category.png'></image>
       <view>售后管理</view>
     </navigator>
-    <navigator class='mine_order_state_container' url="../evaluate_management/evaluate_management">
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../evaluate_management/evaluate_management">
       <image src='../../images/category.png'></image>
       <view>我的评价</view>
     </navigator>
-    <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
+     <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
-      <view bindtap='openToastPannel'>测弹窗</view>
-    </button>  -->
+      <view>微信支付</view>
+    </button>  
+    <button bindtap='refund' class='mine_order_state_container'>
+      <image src='../../images/category.png'></image>
+      <view>微信退款</view>
+    </button>  
   </view>
 </view>
+<include src="../bottom/bottom.wxml"/>

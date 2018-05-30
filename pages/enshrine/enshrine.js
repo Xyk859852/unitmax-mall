@@ -1,4 +1,4 @@
-// pages/bottom/bottom.js
+// pages/enshrine/enshrine.js
 Page({
 
   /**
@@ -62,6 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  
+  }
 })

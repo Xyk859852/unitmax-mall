@@ -30,7 +30,8 @@
     "pages/after_service_management/after_service_management",
     "pages/evaluate_management/evaluate_management",
     "pages/myOrder/myOrder_list",
-    "pages/bottom/bottom"
+    "pages/bottom/bottom",
+    "pages/enshrine/enshrine"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,37 +39,6 @@
     "navigationBarTitleText": "小事海淘",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f0145a"
-  },
-  "tabBar": {
-    "color": "#8a8a8a",
-    "selectedColor": "#FF9C35",
-    "borderStyle": "black",
-    "list": [
-      {
-        "selectedIconPath": "images/home_s.png",
-        "iconPath": "images/home.png",
-        "pagePath": "pages/home/home",
-        "text": "首页"
-      },
-      {
-        "selectedIconPath": "images/order_s.png",
-        "iconPath": "images/order.png",
-        "pagePath": "pages/category/category",
-        "text": "分类"
-      },
-      {
-        "selectedIconPath": "images/shopping_s.png",
-        "iconPath": "images/shopping.png",
-        "pagePath": "pages/shopping_cart/shopping_cart",
-        "text": "购物车"
-      },
-      {
-        "selectedIconPath": "images/mine_s.png",
-        "iconPath": "images/mine.png",
-        "pagePath": "pages/mine/mine",
-        "text": "我的"
-      }
-    ]
   },
   "enablePullDownRefresh": true
 }

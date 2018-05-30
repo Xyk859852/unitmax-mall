@@ -20,7 +20,7 @@ Page({
   data: {
     appIP: app.IP,
     Delivery: "第三方物流",
-    payment: "余额",
+    payment: "微信",
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
