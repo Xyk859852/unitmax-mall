@@ -49,7 +49,7 @@
     <image src='../../images/shopping_cart.png'/>
     <view>购物车</view>
   </view>
-  <view class='shopping_cart' bindtap='enshrine'>
+  <view class='shopping_cart' data-goods_id='{{good.GOODS_ID}}' bindtap='enshrine'>
     <image src='{{enshrineimg}}'/>
     <view>收藏</view>
   </view>

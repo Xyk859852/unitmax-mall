@@ -220,16 +220,38 @@ Page({
       url: '../shopping_cart/shopping_cart',
     })
   },
-  enshrine:function(){
-    if (this.data.enshrineimg =="../../images/enshrine.png"){
-      this.setData({
-        enshrineimg: "../../images/owned.png"
-      })
-    }else{
-      this.setData({
-        enshrineimg:"../../images/enshrine.png"
-      })
-    }
+  enshrine:function(e){
+    console.log(e);
+    var that = this;
+    var goods_id = e.currentTarget.dataset.goods_id;
+    wx.request({
+      url: app.IP +'chatSupplier/addfavorite',
+      data: { GOODS_ID:goods_id},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        if (res.data.result=="true"){
+          wx.navigateTo({
+            url: '../enshrine/enshrine',
+          })
+          that.setData({
+            enshrineimg: "../../images/owned.png"
+          })
+        }
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    // if (this.data.enshrineimg =="../../images/enshrine.png"){
+    //   this.setData({
+    //     enshrineimg: "../../images/owned.png"
+    //   })
+    // }else{
+    //   this.setData({
+    //     enshrineimg:"../../images/enshrine.png"
+    //   })
+    // }
   },
   callmobile: function () {
     wx.makePhoneCall({
