@@ -11,6 +11,7 @@ Page({
     totalPrice: '0.00',
     totalCount: 0,
     isAll: false,
+    isOperating: false,
     commodity_li_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84 - 110
   },

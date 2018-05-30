@@ -11,6 +11,7 @@ Page({
       '../../images/2.png',
       '../../images/3.png'
     ],
+    enshrineimg:"../../images/enshrine.png",
     appIP: app.IP,
     indicatorDots: true,
     autoplay: true,
@@ -20,6 +21,8 @@ Page({
     selected1: false,
     selected2: false,
     goodsCartCount: 0,
+    service_phone:"18361296775",
+    swiper_height: wx.getSystemInfoSync().windowWidth,
     evaluate_img_width: wx.getSystemInfoSync().windowWidth*0.292,
     commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.85-30,
     evaluate_right_width: wx.getSystemInfoSync().windowWidth*0.88-30
@@ -207,5 +210,21 @@ Page({
     wx.switchTab({
       url: '../shopping_cart/shopping_cart',
     })
-  } 
+  },
+  enshrine:function(){
+    if (this.data.enshrineimg =="../../images/enshrine.png"){
+      this.setData({
+        enshrineimg: "../../images/owned.png"
+      })
+    }else{
+      this.setData({
+        enshrineimg:"../../images/enshrine.png"
+      })
+    }
+  },
+  callmobile: function () {
+    wx.makePhoneCall({
+      phoneNumber: this.data.service_phone
+    })
+  }
 })

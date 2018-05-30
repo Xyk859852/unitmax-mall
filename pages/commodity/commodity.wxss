@@ -60,6 +60,7 @@
 }
 .commodity_li_title{
   font-size: 14px;
+  height: 40px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;

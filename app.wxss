@@ -16,3 +16,6 @@ page{
   font-size: 14px;
   text-align: center;
 }
+.btn-hover{
+  opacity: 1
+}

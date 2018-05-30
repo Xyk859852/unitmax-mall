@@ -39,26 +39,28 @@
       </view>
     </block>
   </view>
-  <view class='other'>
+  <!-- <view class='other'>
     <label>到店自取</label>
     <switch class='other_right'></switch>
-  </view>
-  <view class='other' bindtap='showDelivery'>
+  </view> -->
+  <view class='other'>
+   <!-- bindtap='showDelivery' -->
     <label>配送方式</label>
     <label class='other_right'>{{Delivery}}￥{{TRANS_FEE}}元</label>
   </view>
-  <view class='other' bindtap='showpayment'>
+  <view class='other'>
+   <!-- bindtap='showpayment' -->
     <label>支付方式</label>
     <label class='other_right'>{{payment}}支付</label>
   </view>
-  <view class="section">
+  <!-- <view class="section">
     <picker mode="multiSelector" bindchange="pkIndex" bindcolumnchange="pkCol" value="{{pcIndex}}" range="{{p_c}}">
       <view class="picker">
         送达时间
         <label class='other_right'>{{p_c[0][pcIndex[0]]}} {{p_c[1][pcIndex[1]]}}</label>
       </view>
     </picker>
-  </view>
+  </view> -->
   <view class='other'>
     <label>买家留言</label>
     <input class='other_input' style='width:{{other_input_width}}px;' bindblur='msgBlur' value='{{MSG}}' placeholder='请输入留言内容' />

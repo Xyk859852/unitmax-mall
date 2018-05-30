@@ -16,7 +16,8 @@ Page({
     page: 2,
     hasMoreData: true,
     orderList: [],
-    isShow:true
+    isShow:true,
+    isOperating: false
   },
 
   /**
@@ -277,12 +278,18 @@ Page({
   },
   cancelOrder: function (e) {
     var that = this;
+    //判断是否重复提交
+    if (that.data.isOperating) {
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    } 
     var ORDERFORM_ID = e.target.dataset.orderform_id;
     wx.showModal({
       title: '提示',
       content: '确定要取消吗？',
       success: function (sm) {
         if (sm.confirm) {
+          that.data.isOperating = true;
           // 用户点击了确定        
           wx.request({
             url: getApp().IP + 'chatOrder/cancelOrder?ORDERFORM_ID=' + ORDERFORM_ID,
@@ -290,6 +297,7 @@ Page({
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: header, // 设置请求的 header
             success: function (res) {
+              that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
                 wx.navigateTo({
@@ -327,12 +335,18 @@ Page({
 
   delOrder: function (e) {
     var that = this;
+    //判断是否重复提交
+    if (that.data.isOperating) {
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    }
     var ORDERFORM_ID = e.target.dataset.orderform_id;
     wx.showModal({
       title: '提示',
       content: '确定要删除吗？',
       success: function (sm) {
         if (sm.confirm) {
+          that.data.isOperating = true;
           // 用户点击了确定        
           wx.request({
             url: getApp().IP + 'chatOrder/delOrder?ORDERFORM_ID=' + ORDERFORM_ID,
@@ -340,6 +354,7 @@ Page({
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: header, // 设置请求的 header
             success: function (res) {
+              that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
                 if (that.data.selected1){
@@ -383,12 +398,18 @@ Page({
   },
   confirmReceiveGoods: function(e){
     var that = this;
+    //判断是否重复提交
+    if (that.data.isOperating) {
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    }
     var ORDERFORM_ID = e.target.dataset.orderform_id;
     wx.showModal({
       title: '提示',
       content: '确认您已经收到货物？',
       success: function (sm) {
         if (sm.confirm) {
+          that.data.isOperating = true;
           // 用户点击了确定        
           wx.request({
             url: getApp().IP + 'chatOrder/confirmReceiveGoods?ORDERFORM_ID=' + ORDERFORM_ID,
@@ -396,6 +417,7 @@ Page({
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: header, // 设置请求的 header
             success: function (res) {
+              that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
                 wx.navigateTo({
@@ -434,61 +456,162 @@ Page({
   payOrder: function(e){
     var that = this;
     var ORDERFORM_ID = e.target.dataset.orderform_id;
-    that.verifycode.showView({
-      phone: '',
-      inputSuccess: function (phoneCode) {
-        var code = that.verifycode.data.codes;
-        code = code.join("");
-        that.setData({ ORDERFORM_ID: ORDERFORM_ID });
-        wx.request({
-          url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + ORDERFORM_ID + '&PAY_PASSWORD=' + code,
-          data: {
-            PHONE: '',
-            CODE: code
+    wx.request({
+      url: app.IP + 'WxPay/WxXiaoPayS',
+      data: { ZHIFUJINE: '0.01' },
+      // data: { ZHIFUJINE: that.data.order.TOTALPRICE },
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        that.data.PAY_NO = res.data.nonceStr;
+        wx.requestPayment({
+          timeStamp: res.data.timeStamp,
+          nonceStr: res.data.nonceStr,
+          package: res.data.prepay_id,
+          signType: res.data.signType,
+          paySign: res.data.paySign,
+          success: function (res) {//支付成功
+            // success  
+            console.log(res)
+            wx.navigateBack({
+              delta: 1, // 回退前 delta(默认为1) 页面  
+              success: function (res) {
+                // wx.showToast({
+                //   title: '支付成功',
+                //   icon: 'success',
+                //   duration: 2000
+                // });
+
+                //再次调用接口查询支付是否成功
+                wx.request({
+                  url: app.IP + 'WxPay/wxPubNumIsPaySuccess',
+                  data: {
+                    pay_no: that.data.PAY_NO,
+                  },
+                  header: header,
+                  method: 'GET',
+                  dataType: 'json',
+                  success: function (res) {
+                    if (res.data.result == "true") {//验证支付成功
+                      wx.request({
+                        url: app.IP + 'chatOrder/wxPayMoneySuccess.do',
+                        data: {
+                          ORDERFORM_ID: ORDERFORM_ID,
+                          PAY_TYPE: "1",//支付方式 1：微信支付 2：支付宝支付 3：余额支付 4：线下支付 5：苹果内购',
+                          PAY_NO: that.data.PAY_NO
+                        },
+                        header: header,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (res) {
+                          if (res.data.result == "true") {
+                            wx.navigateTo({
+                              url: '../place_success/place_success?ORDERFORM_ID=' + ORDERFORM_ID,
+                            })
+                          }
+                        },
+                        fail: function (res) { },
+                        complete: function (res) { },
+                      })
+                    } else {
+
+                    }
+                  },
+                  fail: function (res) {
+                    wx.showToast({
+                      title: '支付失败',
+                      icon: 'success',
+                      duration: 2000
+                    });
+                  },
+                  complete: function (res) { },
+                })
+              },
+              fail: function () {
+                // fail  
+              },
+              complete: function () {
+                // complete  
+              }
+            })
           },
-          header: header,
-          method: 'GET',
-          dataType: 'json',
-          success: function (res) {
-            that.verifycode.closeView('');
-            if (res.data.result == "true") {
-              wx.navigateTo({
-                url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-              });
-              that.data.isFresh = true;
-            }
-            if (res.data.result == "1002") {//未登录
-              wx.switchTab({
-                url: '../mine/mine',
-              })
-            }
-
-            if (res.data.result == "10002") {
-              that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
-            }
-
-
-            if (res.data.result == "1003") {
-              that.toast.showView("您的余额不足");
-            }
-
-
-            if (res.data.result == "1004") {
-              that.toast.showView("支付密码错误");
-            }
+          fail: function () {
+            // fail  
+            // wx.showToast({
+            //   title: '支付失败',
+            //   icon: 'success',
+            //   duration: 2000
+            // });
           },
-          fail: function (res) { },
-          complete: function (res) { },
+          complete: function () {
+            // complete  
+            console.log("pay complete")
+          }
         })
-        //调用组件关闭方法
+      },
+      fail: function (res) {
 
-        //设置数据
-        that.setData({
-          code: phoneCode
-        });
+      },
+      complete: function (res) {
 
-      }
-    });
+      },
+    });  
+    // that.verifycode.showView({
+    //   phone: '',
+    //   inputSuccess: function (phoneCode) {
+    //     var code = that.verifycode.data.codes;
+    //     code = code.join("");
+    //     that.setData({ ORDERFORM_ID: ORDERFORM_ID });
+    //     wx.request({
+    //       url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + ORDERFORM_ID + '&PAY_PASSWORD=' + code,
+    //       data: {
+    //         PHONE: '',
+    //         CODE: code
+    //       },
+    //       header: header,
+    //       method: 'GET',
+    //       dataType: 'json',
+    //       success: function (res) {
+    //         that.verifycode.closeView('');
+    //         if (res.data.result == "true") {
+    //           wx.navigateTo({
+    //             url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+    //           });
+    //           that.data.isFresh = true;
+    //         }
+    //         if (res.data.result == "1002") {//未登录
+    //           wx.switchTab({
+    //             url: '../mine/mine',
+    //           })
+    //         }
+
+    //         if (res.data.result == "10002") {
+    //           that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
+    //         }
+
+
+    //         if (res.data.result == "1003") {
+    //           that.toast.showView("您的余额不足");
+    //         }
+
+
+    //         if (res.data.result == "1004") {
+    //           that.toast.showView("支付密码错误");
+    //         }
+    //       },
+    //       fail: function (res) { },
+    //       complete: function (res) { },
+    //     })
+    //     //调用组件关闭方法
+
+    //     //设置数据
+    //     that.setData({
+    //       code: phoneCode
+    //     });
+
+    //   }
+    // });
 
 	},
   //查看订单详情
