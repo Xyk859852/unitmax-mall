@@ -54,6 +54,7 @@
   width:21%;
   float: left;
   padding: 20px 2%;
+  position: relative;
 }
 .mine_order_state_container view{
   text-align:center;
@@ -93,4 +94,17 @@
 }
 .mine_menu .mine_order_state_container view{
   padding-top:10px;
+}
+.number{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  background-color: #fe6500;
+  color: #ffffff;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px!important;
+  border-radius: 10px;
 }
