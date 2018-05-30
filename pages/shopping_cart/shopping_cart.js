@@ -1,6 +1,7 @@
 //shopping_cart.js
 var util = require("../../utils/util.js");
 var header = getApp().globalData.header;
+var tempObj = require("../../utils/bottom.js");
 //获取应用实例
 const app = getApp()
 
@@ -341,5 +342,17 @@ Page({
     this.setData({
       cartlist: cartlist
     })
+  },
+  gohome: function (e) {
+    tempObj.gohome(e);
+  },
+  gocategory: function (e) {
+    tempObj.gocategory(e);
+  },
+  goshoppingcart: function (e) {
+    tempObj.goshoppingcart(e);
+  },
+  getUserInfo: function (e) {
+    tempObj.getUserInfo(e)
   }
 })

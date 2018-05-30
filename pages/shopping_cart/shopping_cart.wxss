@@ -1,7 +1,7 @@
 @import "../bottom/bottom.wxss";
 /* shopping_cart.wxss */
 page{
-  padding-bottom: 70px;
+  padding-bottom: 122px;
 }
 .checkbox{
   background-color: #ffffff;
