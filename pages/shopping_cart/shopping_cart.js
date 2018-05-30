@@ -45,20 +45,9 @@ Page({
             isAll: false,            
           });
         } else if (res.data.result == "noLogin") {//未登录
-          wx.showModal({
-            title: '提示',
-            content: '用户是否去登陆？',
-            success: function (sm) {
-              if (sm.confirm) {
-                wx.switchTab({
-                  url: '../mine/mine',
-                })
-              }
-            }
+          wx.switchTab({
+            url: '../mine/mine',
           })
-          // wx.switchTab({
-          //   url: '../mine/mine',
-          // })
         }
       },
       fail: function () {

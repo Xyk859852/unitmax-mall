@@ -12,8 +12,19 @@ page{
 }
 .category1_box{
   width: 25%;
-  float: left;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   background-color: #ffffff;
+}
+.category2_box{
+  left: 25%;
+}
+.category3_box{
+  left: 50%;
+}
+.category4_box{
+  left: 75%;
 }
 .category1_box image{
   width: 30px;
@@ -32,4 +43,5 @@ button{
   margin: 0;
   line-height: 12px;
   position:static;
+  border-radius: 0;
 }
