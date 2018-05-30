@@ -1,0 +1,43 @@
+/* pages/enshrine/enshrine.wxss */
+.commodity_list{
+  background-color: #ffffff;
+  width: 92%;
+  padding: 0 4%;
+  margin-top: 10px;
+}
+.commodity_li{
+  padding: 10px 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100px;
+}
+.commodity_li image{
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+.commodity_li_right{
+  height: 99px;
+  width: 50%;
+  float: left;
+  margin-left: 4%;
+}
+.commodity_li_title{
+  font-size: 14px;
+  height: 40px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.commodity_li_price{
+  color: #ff6692;
+  font-size: 16px;
+  margin-top:15px;
+}
+.commodity_li_tip{
+  font-size: 12px;
+  color: #cccccc;
+  margin-top: 5px;
+}

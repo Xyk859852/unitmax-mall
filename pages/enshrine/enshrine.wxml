@@ -1,0 +1,25 @@
+<!--pages/enshrine/enshrine.wxml-->
+<view class='commodity_list'>
+  <scroll-view scroll-y="true" class="list">
+    <navigator url="../commodity_detail/commodity_detail?goods_id={{item.GOODS_ID}}" class='commodity_li'>
+      <image src='../../images/category.png'></image>
+      <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+        <view class='commodity_li_title'>商品名</view>
+        <view class='commodity_li_price'>￥10.00</view>
+        <view class='commodity_li_tip'>0条评价 好评100%</view>
+      </view>
+    </navigator>
+  </scroll-view>
+</view>
+<view class='commodity_list'>
+  <scroll-view scroll-y="true" class="list">
+    <navigator url="../commodity_detail/commodity_detail?goods_id={{item.GOODS_ID}}" class='commodity_li'>
+      <image src='../../images/category.png'></image>
+      <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
+        <view class='commodity_li_title'>商品名</view>
+        <view class='commodity_li_price'>￥10.00</view>
+        <view class='commodity_li_tip'>0条评价 好评100%</view>
+      </view>
+    </navigator>
+  </scroll-view>
+</view>

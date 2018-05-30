@@ -77,9 +77,10 @@ Page({
     var that = this;
     myAmapFun.getRegeo({
       success: function (data) {
+        console.log(data[0])
         that.setData({
           address: data[0].desc,
-          address_detail: data[0].name,
+          address_detail: data[0].regeocodeData.addressComponent.province + data[0].regeocodeData.addressComponent.city + data[0].regeocodeData.addressComponent.district+" "+data[0].name,
           location: data[0].longitude + "," + data[0].latitude
         });
         myAmapFun.getPoiAround({
@@ -94,6 +95,7 @@ Page({
                   nearby.push(data.poisData[i]);
                 }
               }
+              console.log(nearby)
               that.setData({
                 nearby: nearby,
                 content: true,

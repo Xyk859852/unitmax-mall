@@ -1,4 +1,5 @@
 /* pages/advertising_detail/advertising_detail.wxss */
+@import "../wxParse/wxParse.wxss";
 page{
   background-color: #ffffff;
 }
@@ -9,6 +10,7 @@ page{
   font-size: 16px;
   line-height: 25px;
   padding: 10px 0;
+  word-break:break-all;
 }
 .news_time{
   color: #cccccc;
@@ -21,4 +23,7 @@ page{
   padding: 10px 0;
   font-size: 14px;
   line-height: 20px;
+}
+.news_content image{
+  max-width: 100%;
 }
