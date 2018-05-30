@@ -139,7 +139,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.switchTab({
+                wx.navigateTo({
                   url: '../mine/mine',
                 })
               }
@@ -193,7 +193,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.switchTab({
+                wx.navigateTo({
                   url: '../mine/mine',
                 })
               }
@@ -246,7 +246,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.switchTab({
+                wx.navigateTo({
                   url: '../mine/mine',
                 })
               }
@@ -401,7 +401,7 @@ Page({
     //           })
     //         }
     //         if (res.data.result == "1002") {//未登录
-    //           wx.switchTab({
+    //           wx.navigateTo({
     //             url: '../mine/mine',
     //           })
     //         }

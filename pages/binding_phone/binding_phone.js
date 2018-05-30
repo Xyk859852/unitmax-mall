@@ -280,7 +280,7 @@ Page({
       success: function(res) {
         if(res.data.result=="true"){
           wx.setStorageSync("user", res.data.user);
-          wx.switchTab({
+          wx.navigateTo({
             url: '../mine/mine',
           })
         }

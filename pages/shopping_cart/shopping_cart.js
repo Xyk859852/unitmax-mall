@@ -45,7 +45,7 @@ Page({
             isAll: false,            
           });
         } else if (res.data.result == "noLogin") {//未登录
-          wx.switchTab({
+          wx.navigateTo({
             url: '../mine/mine',
           })
         }
@@ -272,7 +272,7 @@ Page({
             url: '../place_order/place_order?IDS=' + IDS
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.switchTab({
+          wx.navigateTo({
             url: '../mine/mine',
           })
         } else if (res.data.result == "10001") {//未设置支付密码
