@@ -20,7 +20,8 @@ Page({
     image_box_width: wx.getSystemInfoSync().windowWidth * 0.92 * 0.32,
     ORDERFORM_ID: "",
     orderDetailList: [],
-    order: {}
+    order: {},
+    isOperating: false,
   },
 
   /**
@@ -252,7 +253,11 @@ Page({
   ,
   AddSellafter: function () {
     var that = this;
-    console.log(that);
+    //判断是否重复提交
+    if (that.data.isOperating) {
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    } 
     if (that.data.cause == '' || that.data.cause == null || that.data.cause==undefined){
       this.toast.showView('请选择退款原因');
       return false;
@@ -274,13 +279,14 @@ Page({
       SELLAFTER_IMG2: that.data.image2_src,
       SELLAFTER_IMG3: that.data.image3_src
     };
-
+    that.data.isOperating = true;
     wx.request({
       url: app.IP + 'chatOrder/buyerAddSellafter',
       data: data,
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header,  // 设置请求的 
       success: function (res) {
+        that.data.isOperating = false;
         // success
         if (res.data.result == "true") {
           wx.redirectTo({
