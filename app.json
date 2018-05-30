@@ -29,7 +29,8 @@
     "pages/after_service_detail/after_service_detail",
     "pages/after_service_management/after_service_management",
     "pages/evaluate_management/evaluate_management",
-    "pages/myOrder/myOrder_list"
+    "pages/myOrder/myOrder_list",
+    "pages/bottom/bottom"
   ],
   "window": {
     "backgroundTextStyle": "light",

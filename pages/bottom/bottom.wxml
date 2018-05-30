@@ -1,0 +1,19 @@
+<!--pages/bottom/bottom.wxml-->
+<view id='category_box'>
+  <button class='category_box'>
+      <image src='../../images/home.png'></image>
+      <view class='category_name'>首页</view>
+  </button>
+  <button class='category_box'>
+      <image src='../../images/home.png'></image>
+      <view class='category_name'>分类</view>
+  </button>
+  <button class='category_box'>
+      <image src='../../images/home.png'></image>
+      <view class='category_name'>购物车</view>
+  </button>
+  <button class='category_box'>
+      <image src='../../images/home.png'></image>
+      <view class='category_name'>我的</view>
+  </button>
+</view>
