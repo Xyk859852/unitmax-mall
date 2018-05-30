@@ -9,6 +9,8 @@
       <view class='address_detail'>收件地址：{{item.PROVINCE}}{{item.CITY}}{{item.DISTRICT}} {{item.MOBLE}} {{item.ADDRESS_DTEAIL}}</view>
     </view>
     <view class='btn_box'>
+      <switch type='checkbox' id='{{item.ADDRESSBOOK_ID}}' />
+      <label for='{{item.ADDRESSBOOK_ID}}' class='check_label'>默认地址</label>
       <view data-CONSIGNEE='{{item.CONSIGNEE}}' data-TAKEPHONE='{{item.TAKEPHONE}}' data-MOBLE='{{item.MOBLE}}' data-ADDRESS_DTEAIL='{{item.ADDRESS_DTEAIL}}' data-ISDEFAULT='{{item.ISDEFAULT}}' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' bindtap='edit' class='small_btn'>编辑</view>
       <view bindtap='deleate' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' class='small_btn'>删除</view>
     </view>

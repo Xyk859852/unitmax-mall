@@ -16,9 +16,9 @@
   <input class='hide' name='ADCODE' value='{{adcode}}'/>
 </navigator>
   <input name="ADDRESS_DTEAIL" value='{{ADDRESS_DTEAIL}}' placeholder='详细地址' type='text'/>
-  <view class='default'>
+  <!-- <view class='default'>
   <switch name="set_default" checked='{{ISDEFAULT==1?true:false}}' type="checkbox" id='set_default' /><label for='set_default'>设为默认地址</label>
-  </view>
+  </view> -->
 </view>
 <view class='footer'>
 <button form-type='submit'>保存</button>
