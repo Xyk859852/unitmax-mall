@@ -40,7 +40,8 @@ Page({
       PROVINCE: "",
       CITY: "",
       DISTRICT: "",
-      ADDRESS_DTEAIL: ""
+      ADDRESS_DTEAIL: "", 
+      isOperating: false
     }
   },
 
@@ -204,6 +205,12 @@ Page({
   },
   submitOrder: function () {
     var that = this;
+    //判断是否重复提交
+    if (that.data.isOperating){
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    }
+
     //判断是否选择地址
     if (!util.isAvalible(that.data.defaultAddress)) {
       that.toast.showView("请选择地址");
@@ -242,81 +249,28 @@ Page({
     if (util.isAvalible(that.data.goodsCartId)) {
       data.IDS = that.data.goodsCartId;
     }
+    that.data.isOperating = true;
     wx.request({
       url: app.IP + 'chatOrder/saveOrder',
       data: data,
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: header,  // 设置请求的 header
       success: function (res) {
+        that.data.isOperating = false;
         // success
         if (res.data.result == "true") {
-          that.verifycode.showView({
-            phone: '',
-            inputSuccess: function (phoneCode) {
-              var code = that.verifycode.data.codes;
-              code = code.join("");
-              that.setData({ ORDERFORM_ID: res.data.ORDERFORM_ID });
-              wx.request({
-                url: app.IP + 'chatOrder/payMoney.do?ORDERFORM_ID=' + res.data.ORDERFORM_ID + '&PAY_PASSWORD=' + code,
-                data: {
-                  PHONE: '',
-                  CODE: code
-                },
-                header: header,
-                method: 'GET',
-                dataType: 'json',
-                success: function (res) {
-                  that.verifycode.closeView('');
-                  if (res.data.result == "true") {
-                    wx.navigateTo({
-                      url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-                    })
-                  }
-                  if (res.data.result == "1002") {//未登录
-                    wx.switchTab({
-                      url: '../mine/mine',
-                    })
-                  }
-
-                  if (res.data.result == "10002") {
-                    that.toast.showView("您的账号已被冻结，无法下单，请联系管理员！");
-                  }
-
-
-                  if (res.data.result == "1003") {
-                    that.toast.showView("您的余额不足");
-                  }
-
-
-                  if (res.data.result == "1004") {
-                    that.toast.showView("支付密码错误");
-                  }
-                },
-                fail: function (res) { },
-                complete: function (res) { },
-              })
-              //调用组件关闭方法
-
-              //设置数据
-              that.setData({
-                code: phoneCode
-              });
-
-            }
-          });
-
-          //关闭支付密码弹窗事件
-          that.verifycode.closeSuccessMe({
-            isUse:true,
-            closeSuccess: function(){
-              wx.redirectTo({
-                url: '../order_detail/order_detail?ORDERFORM_ID=' + res.data.ORDERFORM_ID,
-              })
-            }
-          });
-
+          wx.redirectTo({
+            url: '../order_detail/order_detail?ORDERFORM_ID=' + res.data.ORDERFORM_ID,
+          })
         } else {//未登录
-          that.toast.showView(res.data.result);
+          if (res.data.result == "1002") {//未登录
+            wx.switchTab({
+              url: '../mine/mine',
+            })
+          } else {
+            that.toast.showView(res.data.result);
+          }
+
         }
       },
       fail: function () {
@@ -366,7 +320,7 @@ Page({
           goodsList[i].buyGoodsCount = goodsList[i].buyGoodsCount - 1;
           TOTALPRICE = util.changeTwoDecimal_f(parseFloat(TOTALPRICE) - parseFloat(goodsList[i].GOODS_PRICE));
         } else {
-         // this.toast.showView("不能小于1");
+          // this.toast.showView("不能小于1");
         }
         break;
       }
@@ -393,7 +347,7 @@ Page({
         }
 
       }
-      
+
     }
     this.calculateFinalPrice();
     this.setData({
