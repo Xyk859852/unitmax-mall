@@ -108,9 +108,18 @@ Page({
             url: '../place_order/place_order?IDS='
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.switchTab({
-            url: '../mine/mine',
+          wx.showModal({
+            title: '提示',
+            content: '用户是否去登陆？',
+            success: function (sm) {
+              if (sm.confirm) {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            }
           })
+         
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");
         } else {
@@ -163,8 +172,16 @@ Page({
             duration: 1500
           })      
         } else if (res.data.result == "1002") {//未登录
-          wx.switchTab({
-            url: '../mine/mine',
+          wx.showModal({
+            title: '提示',
+            content: '用户是否去登陆？',
+            success: function (sm) {
+              if (sm.confirm) {
+                wx.switchTab({
+                  url: '../mine/mine',
+                })
+              }
+            }
           })
         } else if (res.data.result == "moreInventory") {//超过库存
           that.toast.showView("商品加购件数超过库存"); 

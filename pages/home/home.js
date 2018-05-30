@@ -3,6 +3,8 @@
 const app = getApp()
 var header = getApp().globalData.header;
 var util = require("../../utils/util.js");
+// import tempObj from '../bottom/bottom.js';
+var tempObj = require("../../utils/bottom.js");
 Page({
   data: {
     category:[
@@ -163,6 +165,18 @@ Page({
   },
   touchMove:function(){
     wx.stopPullDownRefresh();
+  },
+  gohome: function(e){
+    tempObj.gohome(e);
+  },
+  gocategory: function(e){
+    tempObj.gocategory(e);
+  },
+  goshoppingcart: function(e){
+    tempObj.goshoppingcart(e);
+  },
+  getUserInfo: function(e){
+    tempObj.getUserInfo(e)
   }
 
 })

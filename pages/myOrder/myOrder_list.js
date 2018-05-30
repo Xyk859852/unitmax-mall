@@ -59,8 +59,8 @@ Page({
    */
   onShow: function () {
     var that = this;
-    if (that.data.isFresh){
-      that.data.isFresh = false;
+    // if (that.data.isFresh){
+      // that.data.isFresh = false;
       if (that.data.selected1) {
         that.selected1();
       } else if (that.data.selected2) {
@@ -72,7 +72,7 @@ Page({
       } else {
         that.selected();
       }
-    }
+    // }
    // this.toast.showView("啦啦啦啦");
     // wx.showToast({
     //   title: "Loading...",
@@ -456,10 +456,10 @@ Page({
   payOrder: function(e){
     var that = this;
     var ORDERFORM_ID = e.target.dataset.orderform_id;
+    var totalprice = e.target.dataset.totalprice;
     wx.request({
       url: app.IP + 'WxPay/WxXiaoPayS',
-      data: { ZHIFUJINE: '0.01' },
-      // data: { ZHIFUJINE: that.data.order.TOTALPRICE },
+      data: { ZHIFUJINE: totalprice},
       header: header,
       method: 'GET',
       dataType: 'json',

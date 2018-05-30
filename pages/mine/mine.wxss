@@ -1,3 +1,4 @@
+@import "../bottom/bottom.wxss";
 /**mine.wxss**/
 .container {
   height: 300px;

@@ -252,6 +252,19 @@ Page({
   ,
   AddSellafter: function () {
     var that = this;
+    console.log(that);
+    if (that.data.cause == '' || that.data.cause == null || that.data.cause==undefined){
+      this.toast.showView('请选择退款原因');
+      return false;
+    }
+    if (that.data.remark == '' || that.data.remark == null || that.data.remark==undefined){
+      this.toast.showView('请输入留言内容');
+      return false;
+    }
+    if (that.data.image1 != true && that.data.image2 != true && that.data.image3 != true ){
+      this.toast.showView('请上传至少一张照片');
+      return false;
+    }
     var data = {
       PROBLEM_DESC: that.data.cause,
       REMARK: that.data.remark,
@@ -270,7 +283,7 @@ Page({
       success: function (res) {
         // success
         if (res.data.result == "true") {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../after_service_management/after_service_management',
           })
         } else {//未登录
