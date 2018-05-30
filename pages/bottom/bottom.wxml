@@ -13,9 +13,9 @@
       <image src='../../images/home.png'></image>
       <view class='category_name'>购物车</view>
   </button>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
+   <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
       <image src='../../images/home.png'></image>
       <view class='category_name'>我的</view>
-  </button>
+  </button> 
 </view>
 </template>

@@ -63,7 +63,7 @@ page{
 
 .footer{
   position: fixed;
-  bottom: 0;
+  bottom: 52px;
   left: 0;
   height: 40px;
   background-color: #ffffff;
@@ -90,6 +90,7 @@ page{
   width:100px;
   float: right;
   height: 40px;
+  line-height: 30px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;
