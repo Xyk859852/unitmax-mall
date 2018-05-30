@@ -1,4 +1,4 @@
-@import "../bottom/bottom.wxss";
+ @import "../bottom/bottom.wxss"; 
 /**home.wxss**/
 .slide-image{
   width:100%;
