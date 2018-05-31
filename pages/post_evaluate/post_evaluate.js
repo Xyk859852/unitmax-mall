@@ -158,10 +158,6 @@ Page({
   formBindsubmit: function(e){
     var that = this;
     var EVALUATE_INFO = this.data.EVALUATE_INFO;
-    if (this.data.EVALUATE_INFO.length!=this.data.list.length){
-      that.toast.showView("有商品未输入评价内容");
-      return false;
-    }
     var DESCRIPTION_EVALUATE = this.data.DESCRIPTION_EVALUATE;
     if (this.data.DESCRIPTION_EVALUATE.length != this.data.list.length) {
       that.toast.showView("有商品未评价");

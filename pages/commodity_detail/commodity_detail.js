@@ -24,7 +24,7 @@ Page({
     service_phone:"",//客服电话
     swiper_height: wx.getSystemInfoSync().windowWidth,
     evaluate_img_width: wx.getSystemInfoSync().windowWidth*0.292,
-    commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.85-30,
+    commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.88-32,
     evaluate_right_width: wx.getSystemInfoSync().windowWidth*0.88-30
   },
   onLoad: function (e) {
@@ -43,7 +43,8 @@ Page({
         that.setData({
           good: res.data.good,
           evaluate: res.data.evaluate,
-          service_phone: res.data.service_phone
+          service_phone: res.data.service_phone,
+          goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
         });
         if (res.data.favorite>0){
           that.setData({
