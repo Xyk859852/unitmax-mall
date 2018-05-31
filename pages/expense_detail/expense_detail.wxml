@@ -1,11 +1,10 @@
 <!--pages/expense_detail/expense_detail.wxml-->
-<view class='expense_list'>
-  <view class='expense'>订单-11855888878898
-    <view class='expense_time'>2018-05-30 15:26</view>
-    <text class='expense_price'>-25.80</text>
-  </view>
-  <view class='expense'>订单-11855888878898
-    <view class='expense_time'>2018-05-30 15:26</view>
-    <text class='expense_price'>-25.80</text>
+<view wx:if="{{list.length>0}}">
+<view  wx:for="{{list}}" class='expense_list'>
+  <view class='expense'>{{item.TYPE}}-{{item.ORDER_NO}}
+    <view class='expense_time'>{{item.ADDTIME}}</view>
+    <text class='expense_price'>{{item.MONEY}}</text>
   </view>
 </view>
+</view>
+<view wx:else class='no_data'>暂无数据</view>

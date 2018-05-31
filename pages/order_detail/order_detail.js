@@ -16,7 +16,7 @@ Page({
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
     contact_view_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     service_phone: "",//客服电话
-    isOperating:false
+    isOperating: false
   },
 
   /**
@@ -89,7 +89,37 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("刷新页面");
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatOrder/orderDetail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data: {},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.result == "true") {
+          var order = res.data.order;
+          order.SHIP_PRICE = util.changeTwoDecimal_f(order.SHIP_PRICE);
+          order.TOTALPRICE = util.changeTwoDecimal_f(order.TOTALPRICE);
+          order.GoodsAllPrice = util.changeTwoDecimal_f(order.TOTALPRICE - order.SHIP_PRICE);
+          for (var i = 0; i < order.detailList.length; i++) {
+            order.detailList[i].GOODS_PRICE = util.changeTwoDecimal_f(order.detailList[i].GOODS_PRICE);
+          }
+          that.setData({
+            order: order,
+            service_phone: res.data.service_phone
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -116,7 +146,7 @@ Page({
     if (that.data.isOperating) {
       that.toast.showView("正在提交，请稍候…");
       return;
-    }  
+    }
     var ORDERFORM_ID = that.data.ORDERFORM_ID;
     wx.showModal({
       title: '提示',
@@ -124,7 +154,7 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           // 用户点击了确定
-          that.data.isOperating = true;       
+          that.data.isOperating = true;
           wx.request({
             url: getApp().IP + 'chatOrder/cancelOrder?ORDERFORM_ID=' + ORDERFORM_ID,
             // data: {},
@@ -134,7 +164,8 @@ Page({
               that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
-                wx.navigateTo({ url: '../myOrder/myOrder_list' });
+                that.successTip(that, "取消成功");
+                //wx.navigateTo({ url: '../myOrder/myOrder_list' });
               }
 
               if (res.data.result == "1002") {
@@ -170,7 +201,7 @@ Page({
     if (that.data.isOperating) {
       that.toast.showView("正在提交，请稍候…");
       return;
-    }  
+    }
     var ORDERFORM_ID = that.data.ORDERFORM_ID;
     wx.showModal({
       title: '提示',
@@ -188,7 +219,11 @@ Page({
               that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
-                wx.navigateTo({ url: '../myOrder/myOrder_list' });
+                that.toast.showView("删除成功");
+                setTimeout(function () {
+                  wx.navigateTo({ url: '../myOrder/myOrder_list' });
+                }, 2000);
+
               }
 
               if (res.data.result == "1002") {
@@ -241,7 +276,8 @@ Page({
               that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
-                wx.navigateTo({ url: '../myOrder/myOrder_list' });
+                that.successTip(that, "确认收货成功");
+                //wx.navigateTo({ url: '../myOrder/myOrder_list' });
               }
 
               if (res.data.result == "1002") {
@@ -292,67 +328,17 @@ Page({
           success: function (res) {//支付成功
             // success  
             console.log(res)
-            wx.navigateBack({
-              delta: 1, // 回退前 delta(默认为1) 页面  
-              success: function (res) {
-                // wx.showToast({
-                //   title: '支付成功',
-                //   icon: 'success',
-                //   duration: 2000
-                // });
-
-                //再次调用接口查询支付是否成功
-                wx.request({
-                  url: app.IP + 'WxPay/wxPubNumIsPaySuccess',
-                  data: {
-                    pay_no: that.data.PAY_NO,
-                  },
-                  header: header,
-                  method: 'GET',
-                  dataType: 'json',
-                  success: function (res) {
-                    if (res.data.result == "true") {//验证支付成功
-                      wx.request({
-                        url: app.IP + 'chatOrder/wxPayMoneySuccess.do',
-                        data: {
-                          ORDERFORM_ID: ORDERFORM_ID,
-                          PAY_TYPE: "1",//支付方式 1：微信支付 2：支付宝支付 3：余额支付 4：线下支付 5：苹果内购',
-                          PAY_NO: that.data.PAY_NO
-                        },
-                        header: header,
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function (res) {
-                          if (res.data.result == "true") {
-                            wx.navigateTo({
-                              url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
-                            })
-                          }
-                        },
-                        fail: function (res) { },
-                        complete: function (res) { },
-                      })
-                    } else {
-
-                    }
-                  },
-                  fail: function (res) {
-                    wx.showToast({
-                      title: '支付失败',
-                      icon: 'success',
-                      duration: 2000
-                    });
-                  },
-                  complete: function (res) { },
-                })
-              },
-              fail: function () {
-                // fail  
-              },
-              complete: function () {
-                // complete  
-              }
-            })
+            // wx.navigateBack({
+            //   delta: 1, // 回退前 delta(默认为1) 页面  
+            //   success: function (res) {
+            //   },
+            //   fail: function () {
+            //     // fail  
+            //   },
+            //   complete: function () {
+            //     // complete  
+            //   }
+            // })
           },
           fail: function () {
             // fail  
@@ -363,8 +349,52 @@ Page({
             // });
           },
           complete: function () {
-            // complete  
-            console.log("pay complete")
+
+            //再次调用接口查询支付是否成功
+            wx.request({
+              url: app.IP + 'WxPay/wxPubNumIsPaySuccess',
+              data: {
+                pay_no: that.data.PAY_NO,
+              },
+              header: header,
+              method: 'GET',
+              dataType: 'json',
+              success: function (res) {
+                if (res.data.result == "true") {//验证支付成功
+                  wx.request({
+                    url: app.IP + 'chatOrder/wxPayMoneySuccess.do',
+                    data: {
+                      ORDERFORM_ID: ORDERFORM_ID,
+                      PAY_TYPE: "1",//支付方式 1：微信支付 2：支付宝支付 3：余额支付 4：线下支付 5：苹果内购',
+                      PAY_NO: that.data.PAY_NO
+                    },
+                    header: header,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (res) {
+                      if (res.data.result == "true") {
+                        that.successTip(that, "支付成功");
+                        // wx.navigateTo({
+                        //   url: '../place_success/place_success?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+                        // })
+                      }
+                    },
+                    fail: function (res) { },
+                    complete: function (res) { },
+                  })
+                } else {
+
+                }
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '支付失败',
+                  icon: 'success',
+                  duration: 2000
+                });
+              },
+              complete: function (res) { },
+            })
           }
         })
       },
@@ -449,13 +479,14 @@ Page({
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
     if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO ==null
       || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == ''){
+      this.toast.showView("请求错误");
+    }else{
       wx.navigateTo({
         url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
       })
-    }else{
-      this.toast.showView("请求错误");
+
     }
-    
+
   },
   afterServiceDetail: function (e) {
     console.log(e);
@@ -463,12 +494,28 @@ Page({
     var orderform_id = e.currentTarget.dataset.orderform_id;
     if (sellafterid == null || sellafterid == '' || sellafterid == undefined
       || orderform_id == null || orderform_id == undefined || orderform_id == ''){
+      this.toast.showView("请求错误");
+    } else {
       wx.navigateTo({
         url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
       })
-    } else {
-      this.toast.showView("请求错误");
+      
     }
-    
+
+
+  },
+  successTip: function (that, msg) {
+    that.onShow();
+    that.toast.showView(msg);
+    // that.toast.showView(msg);
+    // setTimeout(function(){
+    //   that.onShow();
+    // },2000);
+  },
+  goodsDetail:function(e){
+    var goods_id = e.currentTarget.dataset.goods_id;
+    wx.navigateTo({
+      url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
+    })
   }
 })

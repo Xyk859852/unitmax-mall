@@ -52,7 +52,7 @@
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
-      <view>绑定手机</view>
+      <view>换绑手机</view>
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../expense_detail/expense_detail">
       <image src='../../images/category.png'></image>

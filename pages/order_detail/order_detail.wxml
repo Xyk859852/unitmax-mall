@@ -45,7 +45,7 @@
       <image src='../../images/right.png' />
     </view>
     <block wx:for="{{order.detailList}}" wx:key="this">
-      <view class='commodity_li'>
+      <view bindtap='goodsDetail' data-goods_id='{{item.GOODS_ID}}' class='commodity_li'>
         <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
         <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
           <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
