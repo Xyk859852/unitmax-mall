@@ -42,7 +42,8 @@ Page({
         res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
         that.setData({
           good: res.data.good,
-          evaluate: res.data.evaluate
+          evaluate: res.data.evaluate,
+          goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
         });
         if (res.data.favorite>0){
           that.setData({

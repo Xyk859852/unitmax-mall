@@ -173,5 +173,25 @@ Page({
        delta: -1
      });
    }
+  },
+  dressdeful:function(e){
+    console.log(e.target.id);
+    var that = this;
+    wx.request({
+      url: app.IP +'chatAddRess/editDeful',
+      data: { ADDRESSBOOK_ID: e.target.id},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        if(res.data.result=="true"){
+          that.setData({
+            list:res.data.list
+          })
+        }
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

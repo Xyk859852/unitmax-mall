@@ -87,7 +87,7 @@
     <view class='small_btn2' bindtap='confirmReceiveGoods'>确认收货</view>
   </view>
   <view wx:if="{{order.ORDER_STATUS == '4'}}">
-    <view class='small_btn2'>评价</view>
+    <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-goods_id='{{order.ORDER_NO}}' class='small_btn2'>评价</view>
   </view>
   <view wx:if="{{order.ORDER_STATUS == '5' || order.ORDER_STATUS == '6'}}">
     <view class='small_btn' bindtap='delOrder'>删除订单</view>
