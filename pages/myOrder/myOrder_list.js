@@ -136,14 +136,28 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("刷新123");
+    var that = this;
+    // if (that.data.isFresh){
+    // that.data.isFresh = false;
+    if (that.data.selected1) {
+      that.selected1();
+    } else if (that.data.selected2) {
+      that.selected2();
+    } else if (that.data.selected3) {
+      that.selected3();
+    } else if (that.data.selected4) {
+      that.selected4();
+    } else {
+      that.selected();
+    }
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**
@@ -657,11 +671,11 @@ Page({
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
     if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO == null
       || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == '') {
+      this.toast.showView("请求错误");
+    } else {
       wx.navigateTo({
         url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
       })
-    } else {
-      this.toast.showView("请求错误");
     }
   },
 
@@ -671,11 +685,11 @@ Page({
     var orderform_id = e.currentTarget.dataset.orderform_id;
     if (sellafterid == null || sellafterid == '' || sellafterid == undefined
       || orderform_id == null || orderform_id == undefined || orderform_id == '') {
+      this.toast.showView("请求错误");
+    } else {
       wx.navigateTo({
         url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
       })
-    } else {
-      this.toast.showView("请求错误");
     }
   },
   /**

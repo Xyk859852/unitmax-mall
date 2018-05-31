@@ -23,7 +23,8 @@ var GetList = function (that) {
         l.push(res.data.evaluateList[i])
       }
       that.setData({
-        list: l
+        list: l,
+        goodsEvaCount: res.data.goodsEvaCount
       });
       page++;
       console.log(l.length);
