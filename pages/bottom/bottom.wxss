@@ -10,6 +10,7 @@ page{
   bottom:0;
   left:0;
   border-top: 1px #f5f5f5 solid;
+  z-index: 99
 }
 .category1_box{
   width: 25%;

@@ -1,4 +1,11 @@
 <!--index.wxml-->
+<view class="notice_popup,{{notice_popup?'show1':'hide'}}">
+  <view class='notice'>
+    <view class='notice_title'>公告</view>
+    <view class='notice_content'><view>{{text}}</view></view>
+  </view>
+  <image bindtap='hidenotice' src='../../images/close.png'/>
+</view>
 <!-- 搜索 -->
 <view>
 <navigator hover-class="btn-hover" id="search_box" url="../search/search">
@@ -17,7 +24,7 @@
   </swiper>
 </view>
 <!-- 公告 -->
-<view id='notice_box'>
+<view id='notice_box' bindtap='shownotice'>
   <image src='../../images/notice.png'></image>
   <scroll-view id='scrolltxt_box' style='width:{{scrolltxt_box_width}}px'>
     <view class="scrolltxt">
