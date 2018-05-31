@@ -8,7 +8,7 @@
   <view class='commodity_li_tip'>{{item.addTime}}</view>
   <view class='evaluate_content'>{{item.evaluate_info}}</view>
   <view class='commodity_li' data-goods_id='{{item.evaluate_goods_id}}' bindtap='goDetail'>
-    <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
+    <image src='{{IP}}{{item.GOODS_IMG}}'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
       <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>

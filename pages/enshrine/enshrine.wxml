@@ -1,4 +1,5 @@
 <!--pages/enshrine/enshrine.wxml-->
+<view wx:if="{{list.length>0}}">
 <view wx:for="{{list}}" class='commodity_list'>
   <scroll-view scroll-y="true" class="list">
     <navigator url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" class='commodity_li'>
@@ -11,3 +12,5 @@
     </navigator>
   </scroll-view>
 </view>
+</view>
+<view wx:else class='no_data'>暂无数据</view>

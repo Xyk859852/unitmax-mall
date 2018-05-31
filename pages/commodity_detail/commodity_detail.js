@@ -30,7 +30,7 @@ Page({
   onLoad: function (e) {
     var that = this;
     //选择组件对象
-    that.toast = this.selectComponent("#toast");
+    this.toast = this.selectComponent("#toast");
     
     wx.request({
       url: getApp().IP + 'chatGoods/goodDetail',
@@ -44,6 +44,11 @@ Page({
           good: res.data.good,
           evaluate: res.data.evaluate
         });
+        if (res.data.favorite>0){
+          that.setData({
+            enshrineimg: "../../images/owned.png"
+          })
+        }
 
         if (util.isAvalible(res.data.goodsCartCount)){
           that.setData({
@@ -224,25 +229,58 @@ Page({
     console.log(e);
     var that = this;
     var goods_id = e.currentTarget.dataset.goods_id;
-    wx.request({
-      url: app.IP +'chatSupplier/addfavorite',
-      data: { GOODS_ID:goods_id},
-      header: header,
-      method: 'GET',
-      dataType: 'json',
-      success: function(res) {
-        if (res.data.result=="true"){
-          wx.navigateTo({
-            url: '../enshrine/enshrine',
-          })
-          that.setData({
-            enshrineimg: "../../images/owned.png"
-          })
-        }
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    var img = that.data.enshrineimg;
+    if (img == "../../images/owned.png"){
+      wx.request({
+        url: app.IP + 'chatSupplier/addunFavorite',
+        data: { GOODS_ID:goods_id},
+        header: header,
+        method: 'GET',
+        dataType: 'json',
+        success: function(res) {
+          if(res.data.result=="true"){
+            that.toast.showView("取消成功");  
+            that.setData({
+              enshrineimg: "../../images/enshrine.png"
+            })
+          }
+        },
+        fail: function(res) {
+
+        },
+        complete: function(res) {
+
+        },
+      })
+    }else{
+      wx.request({
+        url: app.IP + 'chatSupplier/addfavorite',
+        data: { GOODS_ID: goods_id },
+        header: header,
+        method: 'GET',
+        dataType: 'json',
+        success: function (res) {
+          if (res.data.result == "true") {
+            that.setData({
+              enshrineimg: "../../images/owned.png"
+            })
+            wx.showModal({
+              title: '提示',
+              content: '收藏成功是否去列表查看',
+              success: function (sm) {
+                if (sm.confirm) {
+                  wx.navigateTo({
+                    url: '../enshrine/enshrine',
+                  })
+                }
+              }
+            })
+          }
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
     // if (this.data.enshrineimg =="../../images/enshrine.png"){
     //   this.setData({
     //     enshrineimg: "../../images/owned.png"
