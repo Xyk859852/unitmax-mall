@@ -36,13 +36,13 @@ Page({
         // success
         if (res.data.result == "true") {
           var cartlist = res.data.cartlist;
-          for (var i = 0; i < cartlist.length;i++){
+          for (var i = 0; i < cartlist.length; i++) {
             cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
           }
           that.setData({
             cartlist: cartlist,
             totalPrice: '0.00',
-            isAll: false,            
+            isAll: false,
           });
         } else if (res.data.result == "noLogin") {//未登录
           wx.navigateTo({
@@ -306,21 +306,18 @@ Page({
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
         if (count < cartlist[i].goods_inventory) {
-          // if (count == 0) {
-          //   count = 1;
-          // }
-          cartlist[i].count = Number(count);
-        }else{
+          cartlist[i].count = count;
+        } else {
           cartlist[i].count = Number(cartlist[i].goods_inventory);
         }
 
       }
-      this.updateNum(id, cartlist[i].count);
+      this.updateNum(id, Number(count));
     }
     this.setData({
       cartlist: cartlist
     });
-    
+
   },
   blurCount: function (e) {
     var id = e.target.dataset.id;
@@ -329,6 +326,9 @@ Page({
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
         if (count < cartlist[i].goods_inventory) {
+          if (!util.isAvalible(count)) {
+            count = 1;
+          }
           cartlist[i].count = Number(count);
         } else {
           count = cartlist[i].goods_inventory;

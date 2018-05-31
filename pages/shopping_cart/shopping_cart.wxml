@@ -1,5 +1,5 @@
 <!--shopping_cart.wxml-->
-<toast id='toast'/>
+<toast id='toast' />
 <view wx:if="{{cartlist.length>0}}">
   <block wx:for="{{cartlist}}" wx:key="this">
     <checkbox-group>
@@ -13,7 +13,8 @@
             <view class='commodity_li_price'>￥{{item.goods_price}}
               <view class="num_box">
                 <view class='minus smallbtn' catchtap='delNum' data-id="{{item.id}}">-</view>
-                <input class='smallbtn' value='{{item.count}}' bindblur='blurCount' type='number' bindinput='countInput' data-id="{{item.id}}" />
+                <input class='smallbtn' wx:if="{{item.goods_inventory > item.count}}" value='{{item.count}}' bindblur='blurCount' type='number' bindinput='countInput' data-id="{{item.id}}" />
+                <input class='smallbtn' wx:else  value='{{item.goods_inventory}}' bindblur='blurCount' type='number' bindinput='countInput' data-id="{{item.id}}" />
                 <view class='add smallbtn' catchtap="addNum" data-id="{{item.id}}">+</view>
               </view>
             </view>
@@ -33,5 +34,5 @@
 </view>
 <view wx:else class='no_data'>暂无数据</view>
 <!-- 声明需要使用的模板文件 -->
-<import src ="../bottom/bottom.wxml"/>
- <template is="msgItem"/> 
+<import src="../bottom/bottom.wxml" />
+<template is="msgItem" />
