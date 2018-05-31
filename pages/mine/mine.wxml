@@ -86,7 +86,7 @@
       <image src='../../images/category.png'></image>
       <view>我的评价</view>
     </navigator>
-     <button bindtap='openToastPannel' class='mine_order_state_container'>
+     <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>
     </button>  
@@ -97,7 +97,7 @@
     <button bindtap='share' open-type="share" class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信分享</view>
-    </button>  
+    </button>   -->
   </view>
 </view>
 <!-- 声明需要使用的模板文件 -->
