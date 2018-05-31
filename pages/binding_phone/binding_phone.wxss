@@ -29,7 +29,7 @@ page{
   text-align: center;
   background-color: #fe6500;
   color: #ffffff;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 .sendmsgafter{
   font-size: 14px;
@@ -37,7 +37,7 @@ page{
   text-align: center;
   background-color: #cccccc;
   color: #ffffff;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 .submit{
   border-radius: 5px;

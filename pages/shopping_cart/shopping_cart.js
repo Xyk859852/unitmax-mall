@@ -306,9 +306,9 @@ Page({
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
         if (count < cartlist[i].goods_inventory) {
-          if (count == 0) {
-            count = 1;
-          }
+          // if (count == 0) {
+          //   count = 1;
+          // }
           cartlist[i].count = Number(count);
         }else{
           cartlist[i].count = Number(cartlist[i].goods_inventory);
