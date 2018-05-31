@@ -2,6 +2,7 @@
 <view class='address_border' style='background-image: url(../../images/address_border.png);'></view>
 <view class='body'>
 <view wx:if="{{list.length>0}}">
+<radio-group>
   <view wx:for="{{list}}" class='address_box'>
     <view class='address' bindtap='selectAddress' data-consignee='{{item.CONSIGNEE}}' data-takephone='{{item.TAKEPHONE}}'  data-address_dteail='{{item.ADDRESS_DTEAIL}}'  data-addressbook_id='{{item.ADDRESSBOOK_ID}}' data-province='{{item.PROVINCE}}'  data-city='{{item.CITY}}' data-district='{{item.DISTRICT}}'>
       <view>收货人：{{item.CONSIGNEE}}<text wx:if="{{item.ISDEFAULT==1}}">默认</text><label>{{item.TAKEPHONE}}</label></view>
@@ -9,19 +10,14 @@
       <view class='address_detail'>收件地址：{{item.PROVINCE}}{{item.CITY}}{{item.DISTRICT}} {{item.MOBLE}} {{item.ADDRESS_DTEAIL}}</view>
     </view>
     <view class='btn_box'>
-      <!-- <switch type='checkbox' id='{{item.ADDRESSBOOK_ID}}' /> -->
+       <radio type='checkbox' id='{{item.ADDRESSBOOK_ID}}' /> 
        <!-- <radio value="1"></radio> -->
-       <radio-group class="radio-group" bindchange="radioChange">
-          <label class="radio" >
-            <radio value="{{item.ADDRESSBOOK_ID}}" />
-          </label>
-        </radio-group>
       <label for='{{item.ADDRESSBOOK_ID}}' class='check_label'>默认地址</label>
       <view data-CONSIGNEE='{{item.CONSIGNEE}}' data-TAKEPHONE='{{item.TAKEPHONE}}' data-MOBLE='{{item.MOBLE}}' data-ADDRESS_DTEAIL='{{item.ADDRESS_DTEAIL}}' data-ISDEFAULT='{{item.ISDEFAULT}}' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' bindtap='edit' class='small_btn'>编辑</view>
       <view bindtap='deleate' data-ADDRESSBOOK_ID='{{item.ADDRESSBOOK_ID}}' class='small_btn'>删除</view>
     </view>
   </view>
-
+</radio-group>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
 

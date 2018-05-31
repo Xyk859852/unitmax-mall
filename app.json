@@ -31,7 +31,8 @@
     "pages/evaluate_management/evaluate_management",
     "pages/myOrder/myOrder_list",
     "pages/bottom/bottom",
-    "pages/enshrine/enshrine"
+    "pages/enshrine/enshrine",
+    "pages/expense_detail/expense_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

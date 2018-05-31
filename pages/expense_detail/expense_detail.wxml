@@ -1,0 +1,11 @@
+<!--pages/expense_detail/expense_detail.wxml-->
+<view class='expense_list'>
+  <view class='expense'>订单-11855888878898
+    <view class='expense_time'>2018-05-30 15:26</view>
+    <text class='expense_price'>-25.80</text>
+  </view>
+  <view class='expense'>订单-11855888878898
+    <view class='expense_time'>2018-05-30 15:26</view>
+    <text class='expense_price'>-25.80</text>
+  </view>
+</view>

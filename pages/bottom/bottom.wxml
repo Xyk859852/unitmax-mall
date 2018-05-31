@@ -5,15 +5,15 @@
       <image src='../../images/home.png'></image>
       <view class='category_name'>首页</view>
   </button>
-  <button bindtap='gocategory' class='category1_box,category2_box'>
+  <button bindtap='gocategory' class='category1_box'>
       <image src='../../images/home.png'></image>
       <view class='category_name'>分类</view>
   </button>
-  <button open-type="getUserInfo" bindgetuserinfo="goshoppingcart"  bindtap='goshoppingcart' class='category1_box,category3_box'>
+  <button open-type="getUserInfo" bindgetuserinfo="goshoppingcart"  bindtap='goshoppingcart' class='category1_box'>
       <image src='../../images/home.png'></image>
       <view class='category_name'>购物车</view>
   </button>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box,category4_box'>
+   <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
       <image src='../../images/home.png'></image>
       <view class='category_name'>我的</view>
   </button> 
