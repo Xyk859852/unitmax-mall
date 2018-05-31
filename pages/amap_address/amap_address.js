@@ -182,14 +182,14 @@ Page({
   },
   bindSearch: function (e) {
     console.log(e);
-    var keywords = e.target.dataset.keywords;
-    var location = e.target.dataset.location;
-    var moble = e.target.dataset.district;
+    var keywords = e.currentTarget.dataset.keywords;
+    var location = e.currentTarget.dataset.location;
+    var moble = e.currentTarget.dataset.district;
 
-    var cityname = e.target.dataset.cityname;
-    var adname = e.target.dataset.adname;
-    var pname = e.target.dataset.pname;
-    var adcode = e.target.dataset.adcode;
+    var cityname = e.currentTarget.dataset.cityname;
+    var adname = e.currentTarget.dataset.adname;
+    var pname = e.currentTarget.dataset.pname;
+    var adcode = e.currentTarget.dataset.adcode;
     console.log(adcode);
     
     if (keywords==undefined){
@@ -214,9 +214,9 @@ Page({
   },
   bindSearch1: function (e) {
     console.log(e);
-    var location = e.target.dataset.location;
-    var keywords = e.target.dataset.keywords;
-    var moble = e.target.dataset.district;
+    var location = e.currentTarget.dataset.location;
+    var keywords = e.currentTarget.dataset.keywords;
+    var moble = e.currentTarget.dataset.district;
     var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面

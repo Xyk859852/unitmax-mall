@@ -655,18 +655,28 @@ Page({
     console.log(e);
     var ORDER_NO = e.currentTarget.dataset.order_no;
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
+    if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO == null
+      || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == '') {
       wx.navigateTo({
         url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
       })
+    } else {
+      this.toast.showView("请求错误");
+    }
   },
 
   afterServiceDetail: function(e){
     console.log(e);
     var sellafterid = e.currentTarget.dataset.sellafterid;
     var orderform_id = e.currentTarget.dataset.orderform_id;
-    wx.navigateTo({
-      url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid+'&orderform_id=' + orderform_id,
-    })
+    if (sellafterid == null || sellafterid == '' || sellafterid == undefined
+      || orderform_id == null || orderform_id == undefined || orderform_id == '') {
+      wx.navigateTo({
+        url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
+      })
+    } else {
+      this.toast.showView("请求错误");
+    }
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
