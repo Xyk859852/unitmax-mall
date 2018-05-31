@@ -15,7 +15,7 @@ Page({
     address_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,
     contact_view_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
-    service_phone: "",
+    service_phone: "",//客服电话
     isOperating:false
   },
 
