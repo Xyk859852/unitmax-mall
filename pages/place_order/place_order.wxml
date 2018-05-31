@@ -63,7 +63,7 @@
   </view> -->
   <view class='other'>
     <label>买家留言</label>
-    <input class='other_input' style='width:{{other_input_width}}px;' bindblur='msgBlur' value='{{MSG}}' placeholder='请输入留言内容' />
+    <input class='other_input' maxlength='100' style='width:{{other_input_width}}px;' bindblur='msgBlur' value='{{MSG}}' placeholder='请输入留言内容' />
   </view>
   <!-- 验证码组件 -->
   <verifycode id='verifycode' title="请输入支付密码" content="" />
