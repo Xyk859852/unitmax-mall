@@ -63,7 +63,7 @@ page{
 
 .footer{
   position: fixed;
-  bottom: 52px;
+  bottom: 53px;
   left: 0;
   height: 40px;
   background-color: #ffffff;

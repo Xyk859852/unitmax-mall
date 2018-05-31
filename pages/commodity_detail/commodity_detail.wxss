@@ -17,7 +17,6 @@ page{
 .commodity_detail_title_right{
   width: 30px;
   float: left;
-  position: static;
   padding: 0;
   margin: 0 0 0 4%;
   line-height: 16px;
