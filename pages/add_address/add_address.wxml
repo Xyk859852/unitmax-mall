@@ -2,7 +2,7 @@
 <form bindsubmit="formBindsubmit" >
 <view class='body'>
   <input name="CONSIGNEE" placeholder='姓名' value='{{CONSIGNEE}}' type='text'/>
-  <input name="TAKEPHONE" placeholder='手机号码' value='{{TAKEPHONE}}' type='tel'/>
+  <input name="TAKEPHONE" placeholder='手机号码' value='{{TAKEPHONE}}' maxlength='11' type='number'/>
  <navigator url="../amap_address/amap_address">
   <input name='address' placeholder='选择地址' disabled='true' value='{{address}}'/>
   <input class='hide' name="addRessLocation" placeholder='选择地址' disabled='true' value='{{location}}'/>
