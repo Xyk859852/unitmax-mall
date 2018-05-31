@@ -1,0 +1,25 @@
+/* pages/expense_detail/expense_detail.wxss */
+.expense_list{
+  padding: 10px 0;
+}
+.expense{
+  background-color:#ffffff;
+  padding:10px 4%;
+  font-size:16px;
+  position:relative;
+  border-bottom: #f5f5f5 1px solid;
+}
+.expense_time{
+  font-size:14px;
+  color:#aaaaaa;
+  margin-top: 5px;
+}
+.expense_price{
+  position: absolute;
+  color: #fe6500;
+  font-size: 16px;
+  line-height: 16px;
+  top: 50%;
+  margin-top: -8px;
+  right: 4%;
+}

@@ -54,6 +54,10 @@
       <image src='../../images/category.png'></image>
       <view>绑定手机</view>
     </navigator>
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../expense_detail/expense_detail">
+      <image src='../../images/category.png'></image>
+      <view>消费明细</view>
+    </navigator>
     <!-- <navigator class='mine_order_state_container' url="../order_detail/order_detail">
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
