@@ -225,9 +225,11 @@
 }
 .swiper_item .view1{
   float: left;
-  height: 30px;
+  height: 60px;
 }
 .swiper_item .view1 view{
+  height: 30px;
+  line-height: 30px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
