@@ -10,9 +10,9 @@
 }
 .toast_content{
   width: 50%;
-  padding: 30rpx;
+  padding: 30px;
   background: rgba(0,0,0,0.8);
-  border-radius: 20rpx;
+  border-radius: 5px;
 }
 .toast_content_text{
   height: 100%;

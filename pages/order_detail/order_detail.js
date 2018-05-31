@@ -89,7 +89,37 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("刷新页面");
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatOrder/orderDetail?ORDERFORM_ID=' + that.data.ORDERFORM_ID,
+      data: {},
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.result == "true") {
+          var order = res.data.order;
+          order.SHIP_PRICE = util.changeTwoDecimal_f(order.SHIP_PRICE);
+          order.TOTALPRICE = util.changeTwoDecimal_f(order.TOTALPRICE);
+          order.GoodsAllPrice = util.changeTwoDecimal_f(order.TOTALPRICE - order.SHIP_PRICE);
+          for (var i = 0; i < order.detailList.length; i++) {
+            order.detailList[i].GOODS_PRICE = util.changeTwoDecimal_f(order.detailList[i].GOODS_PRICE);
+          }
+          that.setData({
+            order: order,
+            service_phone: res.data.service_phone
+          });
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -447,13 +477,14 @@ Page({
     console.log(e);
     var ORDER_NO = e.currentTarget.dataset.order_no;
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
-    if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO == null
-      || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == '') {
+    if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO ==null
+      || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == ''){
+      this.toast.showView("请求错误");
+    }else{
       wx.navigateTo({
         url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
       })
-    } else {
-      this.toast.showView("请求错误");
+
     }
 
   },
@@ -462,13 +493,15 @@ Page({
     var sellafterid = e.currentTarget.dataset.sellafterid;
     var orderform_id = e.currentTarget.dataset.orderform_id;
     if (sellafterid == null || sellafterid == '' || sellafterid == undefined
-      || orderform_id == null || orderform_id == undefined || orderform_id == '') {
+      || orderform_id == null || orderform_id == undefined || orderform_id == ''){
+      this.toast.showView("请求错误");
+    } else {
       wx.navigateTo({
         url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
       })
-    } else {
-      this.toast.showView("请求错误");
+      
     }
+
 
   },
   successTip: function (that, msg) {
@@ -478,5 +511,11 @@ Page({
     // setTimeout(function(){
     //   that.onShow();
     // },2000);
+  },
+  goodsDetail:function(e){
+    var goods_id = e.currentTarget.dataset.goods_id;
+    wx.navigateTo({
+      url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
+    })
   }
 })

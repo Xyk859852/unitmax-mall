@@ -1,9 +1,9 @@
 <!--pages/evaluate/evaluate.wxml-->
 <view class="nav">
-  <view class="{{selected?'red':'default'}}" bindtap="selected">全部评价</view>
-  <view class="{{selected1?'red':'default'}}" bindtap="selected1">好评</view>
-  <view class="{{selected2?'red':'default'}}" bindtap="selected2">中评</view>
-  <view class="{{selected3?'red':'default'}}" bindtap="selected3">差评</view>
+  <view class="{{selected?'red':'default'}}" bindtap="selected">全部评价{{goodsEvaCount[0].evaluateCount}}</view>
+  <view class="{{selected1?'red':'default'}}" bindtap="selected1">好评{{goodsEvaCount[1].evaluateCount}}</view>
+  <view class="{{selected2?'red':'default'}}" bindtap="selected2">中评{{goodsEvaCount[2].evaluateCount}}</view>
+  <view class="{{selected3?'red':'default'}}" bindtap="selected3">差评{{goodsEvaCount[3].evaluateCount}}</view>
 </view>
 <view class='evaluate_list'>
 <view wx:if="{{list.length>0}}">

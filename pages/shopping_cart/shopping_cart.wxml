@@ -5,7 +5,7 @@
     <checkbox-group>
       <view class="checkbox">
         <switch type='checkbox' class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
-        <view class='commodity_li' style='width:{{commodity_li_width}}px;'>
+        <view  bindtap='goodsDetail' data-goods_id='{{item.goods_id}}' class='commodity_li' style='width:{{commodity_li_width}}px;'>
           <image src='{{appIP}}{{item.path}}'></image>
           <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
             <view class='commodity_li_title' data-id="{{item.goods_id}}">{{item.spec_info}}</view>

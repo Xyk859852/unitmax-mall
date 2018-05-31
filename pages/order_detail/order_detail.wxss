@@ -224,7 +224,7 @@
   width: 80px;
   height: 30px;
   line-height: 30px;
-  border-radius: 3px;
+  border-radius: 5px;
   text-align: center;
   margin-right: 4%;
   float: right;
@@ -243,5 +243,5 @@
   line-height: 25px;
   height: 25px;
   font-size: 14px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
