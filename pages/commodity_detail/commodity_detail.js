@@ -24,7 +24,7 @@ Page({
     service_phone:"18361296775",
     swiper_height: wx.getSystemInfoSync().windowWidth,
     evaluate_img_width: wx.getSystemInfoSync().windowWidth*0.292,
-    commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.85-30,
+    commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.88-32,
     evaluate_right_width: wx.getSystemInfoSync().windowWidth*0.88-30
   },
   onLoad: function (e) {

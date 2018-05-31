@@ -19,3 +19,12 @@ page{
 .btn-hover{
   opacity: 1
 }
+button{
+  background: none;
+  border: none;  
+  padding: 0;
+  margin: 0;
+}
+button:after {
+  border: none;
+}
