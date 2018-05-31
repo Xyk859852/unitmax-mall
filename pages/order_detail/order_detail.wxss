@@ -1,4 +1,18 @@
 /* pages/order_detail/order_detail.wxss */
+.noOrderData{
+  padding-top: 60%;
+}
+.noOrderData image{
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto;
+}
+.noOrderData view{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
 .body{
   padding-bottom: 60px;
 }

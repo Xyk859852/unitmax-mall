@@ -7,6 +7,7 @@ var util = require("../../utils/util.js");
 var tempObj = require("../../utils/bottom.js");
 Page({
   data: {
+    notice_popup:false,
     category:[
       '../../images/category.png'
     ],
@@ -177,6 +178,16 @@ Page({
   },
   getUserInfo: function(e){
     tempObj.getUserInfo(e)
+  },
+  shownotice:function(){
+    this.setData({
+      notice_popup:true
+    })
+  },
+  hidenotice: function () {
+    this.setData({
+      notice_popup: false
+    })
   }
 
 })
