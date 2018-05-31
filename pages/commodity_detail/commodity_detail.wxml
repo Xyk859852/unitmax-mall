@@ -60,9 +60,21 @@
     <view>收藏</view>
   </view>
   <view class='shopping_cart'>
-    <!-- <image src='../../images/service.png'/> -->
-    <contact-button  size="20" session-from="weapp">
-    </contact-button>
+    <view class='contact-button-box'>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+      <contact-button type="default-light" session-from="weapp"></contact-button>
+    </view>
+    <view class='service'>
+      <image src='../../images/service.png' />
+      <view>客服</view>
+    </view>
   </view>
   <button class='buy' bindtap='submitOrder' hover-class="btn-hover">立即购买</button>
   <view class='add_cart' bindtap='addGoods'>加入购物车</view>

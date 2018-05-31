@@ -77,7 +77,6 @@ Page({
     var that = this;
     myAmapFun.getRegeo({
       success: function (data) {
-        console.log(data[0])
         that.setData({
           address: data[0].desc,
           address_detail: data[0].regeocodeData.addressComponent.province + data[0].regeocodeData.addressComponent.city + data[0].regeocodeData.addressComponent.district+" "+data[0].name,
@@ -95,7 +94,6 @@ Page({
                   nearby.push(data.poisData[i]);
                 }
               }
-              console.log(nearby)
               that.setData({
                 nearby: nearby,
                 content: true,
@@ -129,7 +127,7 @@ Page({
     }else{
     myAmapFun.getInputtips({
       keywords: keywords,
-      location: this.data.location,
+      location: that.data.location,
       success: function (data) {
         if (data && data.tips) {
           var tips = [];
@@ -138,7 +136,6 @@ Page({
               tips.push(data.tips[i]);
             }
           }
-          console.log(tips);
           that.setData({
             tips: tips,
             content1: true,
@@ -181,7 +178,6 @@ Page({
     }
   },
   bindSearch: function (e) {
-    console.log(e);
     var keywords = e.currentTarget.dataset.keywords;
     var location = e.currentTarget.dataset.location;
     var moble = e.currentTarget.dataset.district;
@@ -213,7 +209,6 @@ Page({
     }
   },
   bindSearch1: function (e) {
-    console.log(e);
     var location = e.currentTarget.dataset.location;
     var keywords = e.currentTarget.dataset.keywords;
     var moble = e.currentTarget.dataset.district;

@@ -16,9 +16,9 @@ page{
 }
 .commodity_detail_title_right{
   width: 30px;
-  float: left;
+  float: right;
   padding: 0;
-  margin: 0 0 0 4%;
+  margin: 0;
   line-height: 16px;
   background-color: #ffffff;
 }
@@ -163,6 +163,12 @@ page{
   font-size: 12px;
   text-align: center;
   margin-top: 5px;
+}
+.contact-button-box,.service{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: -5px;
 }
 .number{
   width: 20px;

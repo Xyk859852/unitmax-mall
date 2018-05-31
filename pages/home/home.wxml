@@ -60,7 +60,7 @@
       <swiper-item>
         <!-- <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
         <view class="swiper_item">
-          <view class='view1' style='width:{{swiper_container_width}}px;padding:10px 0;'>
+          <view class='view1' style='width:{{swiper_container_width}}px;'>
           <view>{{item.AD_TITLE}}</view>
           <view wx:if="{{newlist[idx+1].AD_TITLE != '' && newlist[idx+1].AD_TITLE!= undefined}}">{{newlist[idx+1].AD_TITLE}}</view>
           </view>
