@@ -219,10 +219,11 @@ Page({
               that.data.isOperating = false;
               // success
               if (res.data.result == "true") {
-                that.toast.showView("删除成功");
-                setTimeout(function () {
-                  wx.navigateTo({ url: '../myOrder/myOrder_list' });
-                }, 2000);
+                that.onShow();
+                // that.toast.showView("删除成功");
+                // setTimeout(function () {
+                //   wx.navigateTo({ url: '../myOrder/myOrder_list' });
+                // }, 2000);
 
               }
 
