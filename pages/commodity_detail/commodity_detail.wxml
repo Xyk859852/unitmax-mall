@@ -21,9 +21,8 @@
     <text>库存：{{good.GOODS_INVENTORY}} 销量：{{good.GOODS_SALENUM}}</text>
   </view>
 </view>
-<view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
-  <view class='number'>{{goodsEvaCount}}</view>
-  <view>商品评价</view>
+<view class="nav">
+  <view>商品评价({{goodsEvaCount}})</view>
 </view>
 <view wx:if="{{evaluate!=null || evaluate!= undefined}}" class='evaluate'>
   <image src='{{evaluate.HEADIMGURL}}' />
@@ -37,7 +36,7 @@
   <navigator hover-class="btn-hover" class='evaluate_more' open-type="navigate" url="../evaluate/evaluate?goods_id={{good.GOODS_ID}}">更多评价</navigator>
 </view>
 <view wx:else class='no_evaluate'>暂无评价</view>
-<view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
+<view class="nav">
   <view>规格参数</view>
 </view>
 <view class='specification_box'>

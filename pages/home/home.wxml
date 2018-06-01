@@ -47,11 +47,11 @@
     </navigator>
   </view>
 </view>
-<view class='classify_box'>
+<!-- <view class='classify_box'>
   <image class='classify_left' src='../../images/category_title.jpg'></image>
   <image class='classify_right' src='../../images/category_title.jpg'></image>
   <image class='classify_right' style='margin-top:10px;' src='../../images/category_title.jpg'></image>
-</view>
+</view> -->
 <!-- 新闻 -->
 <view id='new_box'>
   <image id='new_box_img' src='../../images/category.png'></image>

@@ -28,3 +28,6 @@ button{
 button:after {
   border: none;
 }
+/* .input-placeholder{
+  font-size: 14px;
+} */

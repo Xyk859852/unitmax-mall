@@ -181,15 +181,12 @@ Page({
         // success
         console.log(JSON.stringify(res));
         console.log(JSON.stringify(res.data));
-        if (res.data.result == "true") {//跳转到订单页 
-          setTimeout(function () {
-            wx.showToast({
-              title: "添加成功",
-              duration: 1500
-            });
-          }, 100)
-          // that.toast.showView("添加成功"); 
-          that.setData({ goodsCartCount: Number(that.data.goodsCartCount)+1});  
+        if (res.data.result == "true") {//跳转到订单页  
+          that.setData({ goodsCartCount: Number(that.data.goodsCartCount)+1});
+          wx.showToast({
+            title: "添加成功",
+            duration: 1500
+          })      
         } else if (res.data.result == "1002") {//未登录
           wx.showModal({
             title: '提示',

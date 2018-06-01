@@ -2,7 +2,7 @@
 .section{
   height: 30px;
   width: 92%;
-  background-color: #ffffff;
+  background-color: #fe6500;
   padding:10px 4%;
 }
 .section input{
@@ -26,12 +26,12 @@
   color: #fe6500;
 }
 .address image{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   right: 4%;
   top: 50%;
-  margin-top: -10px;
+  margin-top: -15px;
 }
 .text_box{
   background-color: #ffffff;
@@ -41,4 +41,5 @@
 }
 .text_box view{
   font-size: 14px;
+  color: #aaaaaa;
 }

@@ -39,7 +39,7 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "小事海淘",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f0145a"
+    "backgroundColor": "#f5f5f5"
   },
   "enablePullDownRefresh": true
 }

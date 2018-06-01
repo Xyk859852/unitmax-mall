@@ -15,7 +15,7 @@ Page({
     address_detail:"",
     content: false,
     content1: false,
-    address_label_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
+    address_label_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30,
   },
 
   /**
