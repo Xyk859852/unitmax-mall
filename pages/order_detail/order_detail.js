@@ -327,7 +327,6 @@ Page({
           paySign: res.data.paySign,
           success: function (res) {//支付成功
             // success  
-            console.log(res)
             // wx.navigateBack({
             //   delta: 1, // 回退前 delta(默认为1) 页面  
             //   success: function (res) {
@@ -340,16 +339,10 @@ Page({
             //   }
             // })
           },
-          fail: function () {
-            // fail  
-            // wx.showToast({
-            //   title: '支付失败',
-            //   icon: 'success',
-            //   duration: 2000
-            // });
+          fail: function (res) {
+         
           },
-          complete: function () {
-
+          complete: function (res) {//失败 errMsg:"requestPayment:fail cancel" 成功：errMsg:"requestPayment:ok"
             //再次调用接口查询支付是否成功
             wx.request({
               url: app.IP + 'WxPay/wxPubNumIsPaySuccess',
@@ -477,10 +470,10 @@ Page({
     console.log(e);
     var ORDER_NO = e.currentTarget.dataset.order_no;
     var ORDERFORM_ID = e.currentTarget.dataset.orderform_id;
-    if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO ==null
-      || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == ''){
+    if (ORDER_NO == undefined || ORDER_NO == '' || ORDER_NO == null
+      || ORDERFORM_ID == null || ORDERFORM_ID == '' || ORDERFORM_ID == '') {
       this.toast.showView("请求错误");
-    }else{
+    } else {
       wx.navigateTo({
         url: '../post_evaluate/post_evaluate?ORDER_NO=' + ORDER_NO + '&ORDERFORM_ID=' + ORDERFORM_ID,
       })
@@ -493,13 +486,13 @@ Page({
     var sellafterid = e.currentTarget.dataset.sellafterid;
     var orderform_id = e.currentTarget.dataset.orderform_id;
     if (sellafterid == null || sellafterid == '' || sellafterid == undefined
-      || orderform_id == null || orderform_id == undefined || orderform_id == ''){
+      || orderform_id == null || orderform_id == undefined || orderform_id == '') {
       this.toast.showView("请求错误");
     } else {
       wx.navigateTo({
         url: '../after_service_detail/after_service_detail?sellafterid=' + sellafterid + '&orderform_id=' + orderform_id,
       })
-      
+
     }
 
 
@@ -512,7 +505,7 @@ Page({
     //   that.onShow();
     // },2000);
   },
-  goodsDetail:function(e){
+  goodsDetail: function (e) {
     var goods_id = e.currentTarget.dataset.goods_id;
     wx.navigateTo({
       url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
