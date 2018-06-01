@@ -32,7 +32,8 @@
     "pages/myOrder/myOrder_list",
     "pages/bottom/bottom",
     "pages/enshrine/enshrine",
-    "pages/expense_detail/expense_detail"
+    "pages/expense_detail/expense_detail",
+    "pages/usercenter/usercenter"
   ],
   "window": {
     "backgroundTextStyle": "light",
