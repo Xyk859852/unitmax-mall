@@ -1,6 +1,7 @@
 /* pages/question_detail/question_detail.wxss */
 page{
   background-color: #ffffff;
+  padding-bottom: 40px;
 }
 .body{
   padding: 10px 4%;
@@ -26,3 +27,29 @@ page{
 .news_content image{
   max-width: 100%;
 }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    background-color: #cccccc;
+  }
+  .footer button{
+    width: 50%;
+    float: left;
+    color: #ffffff;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  .btn1{
+    border-right: 1px #ffffff solid;
+  }
+  .footer image{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -2px;
+  }

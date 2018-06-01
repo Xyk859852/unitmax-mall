@@ -92,5 +92,5 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.service_phone
     })
-  },
+  }
 })
