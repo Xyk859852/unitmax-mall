@@ -1,10 +1,19 @@
 <!--pages/binding_phone/binding_phone.wxml-->
 <view wx:if="{{update==2}}" class='body'>
-<view class='phone'><text>手机号：</text><input style='width:{{input_width}}px;' type='tel' bindblur='savePhone' placeholder='输入手机号码'/></view>
-<view class='code'><text>验证码：</text><input style='width:{{input_width}}px;' type='tel' bindblur='saveCode' placeholder='输入短信验证码'/><button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button> </view>
-<button class='submit' bindtap='bindUserName'>提交</button>
+  <image class='logo' src='../../images/mine_s.png'/>
+  <view class='phone'>
+    <text>手机号：</text>
+    <input style='width:{{phone_input_width}}px;' type='tel' bindblur='savePhone' placeholder='输入手机号码' />
+  </view>
+  <view class='code'>
+    <text>验证码：</text>
+    <input style='width:{{input_width}}px;' type='tel' bindblur='saveCode' placeholder='输入验证码' />
+    <button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button>
+  </view>
+  <button class='submit' bindtap='bindUserName'>提交</button>
+  <button class='submitwechat'><image src='../../images/WeChat.png'/>微信手机号一键绑定</button>
 </view>
-<button wx:else class='bingding' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >微信一键登录</button>
+<button wx:else class='bingding' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
 <!-- 验证码组件 -->
 <verifycode id='verifycode' title="请输入验证码哈" content="已发送到手机:" />
-<toast id='toast'/>
+<toast id='toast' />

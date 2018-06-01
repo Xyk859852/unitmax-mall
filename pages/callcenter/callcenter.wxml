@@ -1,0 +1,16 @@
+<!--pages/callcenter/callcenter.wxml-->
+  <view class="nav">
+    <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">基础问题</view>
+    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">订单问题</view>
+    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">优惠问题</view>
+  </view>
+  <!-- <view class='no_data'>暂无基础问题</view> -->
+  <view class='content'>
+  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
+  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
+  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
+  </view>
+  <view class='footer'>
+  <button class='btn1'><image src='../../images/callcenter1.png'/>在线客服</button>
+  <button bindtap='callmobile'><image src='../../images/callcenter2.png'/>平台热线</button>
+  </view>
