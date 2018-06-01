@@ -70,7 +70,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     });
   },
@@ -154,7 +154,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
 
@@ -185,7 +185,7 @@ Page({
           that.setData({ goodsCartCount: Number(that.data.goodsCartCount)+1});
           wx.showToast({
             title: "添加成功",
-            duration: 2000
+            duration: 1500
           })      
         } else if (res.data.result == "1002") {//未登录
           wx.showModal({
@@ -204,7 +204,7 @@ Page({
         } else if (res.data.result == "addCountSuccess"){
           wx.showToast({
             title: "添加成功",
-            duration: 2000
+            duration: 1500
           })
         }else{
           that.toast.showView(res.data.result);      
@@ -221,7 +221,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     }); 
   },

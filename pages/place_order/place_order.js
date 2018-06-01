@@ -438,7 +438,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
   },
@@ -575,7 +575,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
   },

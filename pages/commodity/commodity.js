@@ -67,7 +67,7 @@ var GetList = function (that) {
           },
           complete: function () {
             // complete
-            wx.hideToast();
+            //wx.hideToast();
           }
         });
       }
@@ -85,7 +85,7 @@ var GetList = function (that) {
     },
     complete: function () {
       // complete
-      wx.hideToast();
+      //wx.hideToast();
     }
   });
   wx.hideNavigationBarLoading()
@@ -142,7 +142,7 @@ Page({
       scrollTop: 0
     });
     GetList(that);
-    wx.hideToast();
+    //wx.hideToast();
     
   }, 
   onShow: function () {
@@ -310,7 +310,7 @@ Page({
         },
         complete: function () {
           // complete
-          wx.hideToast();
+          //wx.hideToast();
         }
       });
     } else if(e.currentTarget.dataset.index==-1){

@@ -65,7 +65,7 @@ Page({
       user: user
     })
     GetList(that);
-    wx.hideToast();
+    //wx.hideToast();
   },
 
   /**
