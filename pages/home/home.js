@@ -34,7 +34,7 @@ Page({
     this.toast = this.selectComponent("#toast");
     var that = this;
     wx.showToast({
-      title: "Loading...",
+      title: "加载中...",
       icon: "loading"
     })   
     wx.request({
@@ -123,7 +123,7 @@ Page({
    */
   onPullDownRefresh: function () {
     // 显示顶部刷新图标  
-    wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 })
+    wx.showToast({ title: "加载中...", icon: "loading"})
     var that = this;
     wx.request({
       url: getApp().IP + 'chatIndex/index',
@@ -156,7 +156,7 @@ Page({
       },
       complete: function () {
         // complete
-        // wx.hideToast();
+        wx.hideToast();
       }
     })
     // 隐藏导航栏加载框  

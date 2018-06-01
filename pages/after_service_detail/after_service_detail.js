@@ -25,9 +25,8 @@ Page({
     if (ORDERFORM_ID != '' && ORDERFORM_ID!=undefined
       && SELLAFTERID != '' && SELLAFTERID!=undefined){
       wx.showToast({
-        title: "Loading...",
-        icon: "loading",
-        duration: 2000
+        title: "加载中...",
+        icon: "loading"
       })
       wx.request({
         url: app.IP + 'chatSellafter/goRecord',
@@ -56,7 +55,7 @@ Page({
         },
         complete: function (res) { 
           // complete
-          //wx.hideToast();
+          wx.hideToast();
         },
       })
     }

@@ -5,7 +5,7 @@ var header = getApp().globalData.header;
 var url = app.IP + "chatNews/listNews";
 var page = 1;
 var GetList = function (that) {
-  wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 })
+  wx.showToast({ title: "加载中...", icon: "loading"})
   that.setData({
     hidden: false
   });
@@ -36,7 +36,7 @@ var GetList = function (that) {
     },
     complete: function () {
       // complete
-      //wx.hideToast();
+      wx.hideToast();
     }
   });
   wx.hideNavigationBarLoading()
@@ -101,7 +101,6 @@ Page({
    */
   onPullDownRefresh: function () {
     // 显示顶部刷新图标  
-    wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 });
     page = 1;
     this.setData({
       list: [],

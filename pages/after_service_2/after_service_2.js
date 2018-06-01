@@ -48,9 +48,8 @@ Page({
    */
   onShow: function () {
     wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
+      title: "加载中...",
+      icon: "loading"
     })
     // 页面显示
     var that = this;
@@ -74,7 +73,7 @@ Page({
       },
       complete: function () {
         // complete
-        //wx.hideToast();
+        wx.hideToast();
       }
     })
   },

@@ -8,9 +8,8 @@ var url = app.IP + "chatSupplier/favoriteList";
 var page = 1;
 var GetList = function (that) {
   wx.showToast({
-    title: "Loading...",
-    icon: "loading",
-    duration: 2000
+    title: "加载中...",
+    icon: "loading"
   })
   //wx.showNavigationBarLoading();
   wx.request({
@@ -40,7 +39,7 @@ var GetList = function (that) {
     },
     complete: function () {
       // complete
-      //wx.hideToast();
+      wx.hideToast();
     }
   });
   wx.hideNavigationBarLoading();
@@ -102,12 +101,7 @@ Page({
    */
   onPullDownRefresh: function () {
     console.log("上拉刷新");
-    // 显示顶部刷新图标
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })     
+    // 显示顶部刷新图标   
     //wx.showNavigationBarLoading();
     page = 1;
     this.setData({

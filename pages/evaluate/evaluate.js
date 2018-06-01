@@ -5,6 +5,10 @@ var goods_id = '';
 var page = 1;
 var EVALUATE_BUYER_VAL = '';
 var GetList = function (that) {
+  wx.showToast({
+    title: "加载中...",
+    icon: "loading"
+  });
   wx.request({
     url: app.IP + 'chatEvaluate/findEvaluateList',
     data: {
@@ -43,7 +47,9 @@ var GetList = function (that) {
       console.log(l.length);
     },
     fail: function (res) { },
-    complete: function (res) { },
+    complete: function (res) { 
+      wx.hideToast();
+    },
   })
 }
 Page({
@@ -62,11 +68,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    });
     var that = this;
     var user = wx.getStorageSync("user");
     goods_id = options.goods_id;
