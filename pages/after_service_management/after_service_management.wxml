@@ -7,7 +7,7 @@
       <!-- <label>配送单</label> -->
       <!-- <text class='order_state'>等待门店接单</text> -->
     </view>
-    <view wx:for="{{item.goods}}" wx:for-item="good" class='commodity_li'>
+    <view wx:for="{{item.goods}}" bindtap='goodsDetail' data-goods_id='{{good.GOODS_ID}}' wx:for-item="good" class='commodity_li'>
       <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{good.GOODS_IMG}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{good.GOODS_NAME}}</view>
@@ -18,7 +18,7 @@
     <view class='order_total_money'>{{item.problem_desc}}
       <navigator wx:if="{{item.state==0}}" class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
       <navigator wx:else class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
-      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>订单详情</navigator>
+      <navigator class='small_btn' url='../order_detail/order_detail?ORDERFORM_ID={{item.orderform_id}}'>订单详情</navigator>
     </view>
   </view>
 </view>

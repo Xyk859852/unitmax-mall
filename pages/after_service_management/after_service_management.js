@@ -54,7 +54,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    });
+    var that = this;
+    page = 1;
+    that.setData({
+      list: []
+    })
+    GetList(that);
   },
 
   /**
@@ -68,17 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    });
-    var that = this;
-    page=1;
-    that.setData({
-      list:[]
-    })
-    GetList(that);
+  
   },
 
   /**
@@ -125,5 +125,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  goodsDetail:function(e){
+    console.log(e);
+    var goods_id = e.currentTarget.dataset.goods_id;
+    wx.navigateTo({
+      url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
+    });
   }
 })
