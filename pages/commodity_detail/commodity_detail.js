@@ -109,7 +109,7 @@ Page({
     return {
       title: good.GOODS_NAME,
       desc: '小事海淘',
-      path: '/page/commodity_detail/commodity_detail'
+      path: '/pages/commodity_detail/commodity_detail?goods_id='+good.GOODS_ID
     }
   },
   submitOrder: function (){
