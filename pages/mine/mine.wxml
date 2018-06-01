@@ -42,26 +42,38 @@
     </navigator>
   </view>
   <view class='mine_menu'>
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../evaluate_management/evaluate_management">
+      <image src='../../images/evaluate_management.png'></image>
+      <view>我的评价</view>
+    </navigator>
+    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_management/after_service_management">
+      <image src='../../images/after_service_management.png'></image>
+      <view>我的售后</view>
+    </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' bindtap='goAddRess' url="../address_management/address_management">
       <image src='../../images/address_management.png'></image>
-      <view>地址管理</view>
+      <view>我的地址</view>
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' bindtap='goAddRess' url="../enshrine/enshrine">
       <image src='../../images/my_enshrine.png'></image>
       <view>我的收藏</view>
     </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
+    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>换绑手机</view>
-    </navigator>
+    </navigator> -->
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../expense_detail/expense_detail">
       <image src='../../images/expense_detail.png'></image>
       <view>消费明细</view>
     </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
+         <navigator hover-class="btn-hover" class='mine_order_state_container' url="../about/about">
+      <image src='../../images/category.png'></image>
+      <view>关于我们</view>
+    </navigator> 
+    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
       <image src='../../images/category.png'></image>
       <view>个人信息</view>
-    </navigator>
+    </navigator> -->
     <!-- <navigator class='mine_order_state_container' url="../order_detail/order_detail">
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
@@ -78,18 +90,6 @@
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
     </navigator> -->
-    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../about/about">
-      <image src='../../images/category.png'></image>
-      <view>关于我们</view>
-    </navigator> -->
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_management/after_service_management">
-      <image src='../../images/after_service_management.png'></image>
-      <view>售后管理</view>
-    </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../evaluate_management/evaluate_management">
-      <image src='../../images/evaluate_management.png'></image>
-      <view>我的评价</view>
-    </navigator>
      <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>
