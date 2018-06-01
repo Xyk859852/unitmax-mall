@@ -59,10 +59,7 @@ var GetList = function (that) {
           fail: function () {
             // fail
             setTimeout(function () {
-              wx.showToast({
-                title: "加载失败",
-                duration: 1500
-              })
+              that.toast.showView("加载失败");
             }, 100)
           },
           complete: function () {
@@ -77,10 +74,7 @@ var GetList = function (that) {
     fail: function () {
       // fail
       setTimeout(function () {
-        wx.showToast({
-          title: "加载失败",
-          duration: 1500
-        })
+        that.toast.showView("加载失败");
       }, 100)
     },
     complete: function () {
@@ -117,6 +111,7 @@ Page({
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
   },
   onLoad: function (e) {
+    this.toast = this.selectComponent("#toast");
     //接收参数
     if (util.isAvalible(e.GOODSTYPE_ID)){
       GOODSTYPE = e.GOODSTYPE_ID;
@@ -302,10 +297,7 @@ Page({
         fail: function () {
           // fail
           setTimeout(function () {
-            wx.showToast({
-              title: "加载失败",
-              duration: 1500
-            })
+            that.toast.showView("加载失败");
           }, 100)
         },
         complete: function () {

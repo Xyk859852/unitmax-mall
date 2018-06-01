@@ -1,4 +1,7 @@
 {
+    "usingComponents": {
+      "toast": "/components/toast/toast"
+    },
   "enablePullDownRefresh": true,
   "onReachBottomDisance": 50,
   "navigationBarTitleText": "商品列表"

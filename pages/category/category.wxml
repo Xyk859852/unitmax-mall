@@ -1,4 +1,5 @@
 <!--category.wxml-->
+ <toast id='toast' />
 <navigator id="search_box" url="../search/search">
 <view id="search">搜索</view>
 </navigator>

@@ -7,8 +7,8 @@ var util = require("../../utils/util.js");
 var tempObj = require("../../utils/bottom.js");
 Page({
   data: {
-    notice_popup:false,
-    category:[
+    notice_popup: false,
+    category: [
       '../../images/category.png'
     ],
     appIP: app.IP,
@@ -22,16 +22,21 @@ Page({
     marquee_margin: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
     duration1: 30,
     size: 14,
-    newsinterval:300,
+    newsinterval: 300,
     scrolltxt_box_width: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
-    category_img_width: wx.getSystemInfoSync().windowWidth * 0.92*0.158,
-    category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29*0.96,
+    category_img_width: wx.getSystemInfoSync().windowWidth * 0.92 * 0.158,
+    category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29 * 0.96,
     swiper_width: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
     swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     category_commodity_container_width: wx.getSystemInfoSync().windowWidth * 0.28 - 2
   },
   onLoad: function () {
+    this.toast = this.selectComponent("#toast");
     var that = this;
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading"
+    })   
     wx.request({
       url: getApp().IP + 'chatIndex/index',
       // data: {},
@@ -42,7 +47,7 @@ Page({
         // success
         var goodlist = res.data.varClass;
         console.log(goodlist);
-        for (var i = 0; i < goodlist.length;i++){
+        for (var i = 0; i < goodlist.length; i++) {
           for (var j = 0; j < goodlist[i].goodList.length; j++) {
             goodlist[i].goodList[j].goods_price = util.changeTwoDecimal_f(goodlist[i].goodList[j].goods_price);
           }
@@ -65,15 +70,12 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
         // complete
-       // wx.hideToast();
+        wx.hideToast();
       }
     })
   },
@@ -102,7 +104,7 @@ Page({
       that.setData({ marquee_margin: "1000" });//只显示一条不滚动右边间距加大，防止重复显示
     }
   },
-  goAdvertising:function (e){
+  goAdvertising: function (e) {
     console.log(e);
     var types = e.currentTarget.dataset.type;
     if (types == 1) {
@@ -121,7 +123,7 @@ Page({
    */
   onPullDownRefresh: function () {
     // 显示顶部刷新图标  
-    wx.showNavigationBarLoading();
+    wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 })
     var that = this;
     wx.request({
       url: getApp().IP + 'chatIndex/index',
@@ -149,39 +151,36 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
         // complete
-       // wx.hideToast();
+        // wx.hideToast();
       }
     })
     // 隐藏导航栏加载框  
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
-  touchMove:function(){
+  touchMove: function () {
     wx.stopPullDownRefresh();
   },
-  gohome: function(e){
+  gohome: function (e) {
     tempObj.gohome(e);
   },
-  gocategory: function(e){
+  gocategory: function (e) {
     tempObj.gocategory(e);
   },
-  goshoppingcart: function(e){
+  goshoppingcart: function (e) {
     tempObj.goshoppingcart(e);
   },
-  getUserInfo: function(e){
+  getUserInfo: function (e) {
     tempObj.getUserInfo(e)
   },
-  shownotice:function(){
+  shownotice: function () {
     this.setData({
-      notice_popup:true
+      notice_popup: true
     })
   },
   hidenotice: function () {

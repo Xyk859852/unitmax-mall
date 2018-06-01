@@ -20,6 +20,19 @@ var GetList = function (that) {
       console.log(res.data);
       var l = that.data.list
       for (var i = 0; i < res.data.evaluateList.length; i++) {
+        console.log(res.data.evaluateList[i])
+        if (res.data.evaluateList[i].NAME != '' && res.data.evaluateList[i].NAME!=undefined){
+          if (res.data.evaluateList[i].NAME.length == 1) {
+            res.data.evaluateList[i].NAME = res.data.evaluateList[i].NAME + "***" + res.data.evaluateList[i].NAME
+          } else if (res.data.evaluateList[i].NAME.length == 2) {
+            res.data.evaluateList[i].NAME = res.data.evaluateList[i].NAME + "***" + res.data.evaluateList[i].NAME.slice(res.data.evaluateList[i].NAME.length - 1, res.data.evaluateList[i].NAME.length)
+          } else {
+            res.data.evaluateList[i].NAME = res.data.evaluateList[i].NAME.slice(0, 2) + "***" + res.data.evaluateList[i].NAME.slice(res.data.evaluateList[i].NAME.length - 1, res.data.evaluateList[i].length)
+          }
+        }else{
+          res.data.evaluateList[i].NAME = "匿名";
+        }
+        
         l.push(res.data.evaluateList[i])
       }
       that.setData({

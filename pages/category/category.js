@@ -31,7 +31,7 @@ Page({
     })
   },
   onLoad: function () {
-    var that = this;
+    this.toast = this.selectComponent("#toast");
   },
   onShow: function () {
     wx.showToast({
@@ -56,10 +56,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {

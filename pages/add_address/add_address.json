@@ -1,3 +1,6 @@
 {
+  "usingComponents": {
+    "toast": "/components/toast/toast"
+  },
   "navigationBarTitleText": "新增地址"
 }

@@ -29,13 +29,13 @@ Page({
       that.setData({
         hasUserInfo: true,
         user:user,
-        nickName: user.NICKNAME,
+        nickName: user.USERNAME,
         avatarUrl: user.HEADIMGURL
       })
     }
   },
   onLoad: function () {
-    
+    this.toast = this.selectComponent("#toast");
   },
   getUserInfo: function (e) {
     console.log(e);

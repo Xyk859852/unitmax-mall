@@ -1,4 +1,5 @@
 <!--commodity.wxml-->
+<toast id='toast' />
 <view class="search_box,{{search?'show1':'hide'}} ">
   <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
     <image src='../../images/search.png'></image>

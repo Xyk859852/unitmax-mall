@@ -342,11 +342,7 @@ Page({
                       }
                     },
                     fail: function (res) {
-                      wx.showToast({
-                        title: '支付失败',
-                        icon: 'success',
-                        duration: 2000
-                      });
+                      that.toast.showView("支付失败");
                     },
                     complete: function (res) { },
                   })
@@ -430,10 +426,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -453,7 +446,7 @@ Page({
           goodsList[i].buyGoodsCount = goodsList[i].buyGoodsCount + 1;
           TOTALPRICE = util.changeTwoDecimal_f(parseFloat(TOTALPRICE) + parseFloat(goodsList[i].GOODS_PRICE));
         } else {
-          this.toast.showView("不能大于库存");
+          this.toast.showView("不能再加了");
         }
         break;
       }
@@ -567,10 +560,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
