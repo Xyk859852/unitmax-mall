@@ -1,13 +1,13 @@
 <!--pages/order_detail/order_detail.wxml-->
-<toast id='toast'/>
-<!-- <view class='noOrderData'>
-<image src='../../images/null.png'/>
-<view>您已删除该订单</view>
-</view> -->
-<view class='body'>
+ <toast id='toast' /> 
+<view class='noOrderData' wx:if="{{order.DELETESTATUS == '1'}}">
+  <image src='../../images/null.png' />
+  <view>您已删除该订单</view>
+</view>
+<view class='body' wx:if="{{order.DELETESTATUS == '0'}}">
   <view class='top'>
     <image src='../../images/IMG_214.png' />
-    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking"> 
+    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking">
       <view wx:if="{{order.ORDER_STATUS == '1'}}">待付款</view>
       <view wx:if="{{order.ORDER_STATUS == '2'}}">待发货</view>
       <view wx:if="{{order.ORDER_STATUS == '3'}}">待收货</view>
@@ -79,33 +79,33 @@
     <!-- <view class='other'>发货时间：{{order.SHIPTIME}}</view> -->
   </view>
   <view class='footer'>
-  <view wx:if="{{order.ORDER_STATUS == '1'}}">
-    <view class='small_btn2' bindtap='payOrder'>支付</view>
-  </view>
-  <view wx:if="{{order.ORDER_STATUS == '2' || order.ORDER_STATUS == '1'}}">
-    <view class='small_btn' bindtap='cancelOrder'>取消</view>
-  </view>
-  <view wx:if="{{order.ORDER_STATUS == '3'}}">
-    <view class='small_btn2' bindtap='confirmReceiveGoods'>确认收货</view>
-  </view>
-  <view wx:if="{{order.ORDER_STATUS == '4'}}">
-    <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-order_no='{{order.ORDER_NO}}' class='small_btn2'>评价</view>
-  </view>
-  <view wx:if="{{order.ORDER_STATUS == '5' || order.ORDER_STATUS == '6'}}">
-    <view class='small_btn' bindtap='delOrder'>删除订单</view>
-  </view>
+    <view wx:if="{{order.ORDER_STATUS == '1'}}">
+      <view class='small_btn2' bindtap='payOrder'>支付</view>
+    </view>
+    <view wx:if="{{order.ORDER_STATUS == '2' || order.ORDER_STATUS == '1'}}">
+      <view class='small_btn' bindtap='cancelOrder'>取消</view>
+    </view>
+    <view wx:if="{{order.ORDER_STATUS == '3'}}">
+      <view class='small_btn2' bindtap='confirmReceiveGoods'>确认收货</view>
+    </view>
+    <view wx:if="{{order.ORDER_STATUS == '4'}}">
+      <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-order_no='{{order.ORDER_NO}}' class='small_btn2'>评价</view>
+    </view>
+    <view wx:if="{{order.ORDER_STATUS == '5' || order.ORDER_STATUS == '6'}}">
+      <view class='small_btn' bindtap='delOrder'>删除订单</view>
+    </view>
     <view wx:if="{{order.ORDER_STATUS == '3' || order.ORDER_STATUS == '4' || order.ORDER_STATUS == '5'}}">
-    <view wx:if="{{order.sellafter == null}}">
-      <view class='small_btn' bindtap='addAfterService'>发起售后</view>
+      <view wx:if="{{order.sellafter == null}}">
+        <view class='small_btn' bindtap='addAfterService'>发起售后</view>
+      </view>
+      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='1'}}">
+        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后成功</view>
+      </view>
+      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='0'}}">
+        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后中</view>
+      </view>
     </view>
-    <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='1'}}">
-      <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后成功</view>
-    </view>
-    <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='0'}}">
-      <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后中</view>
-    </view>
-  </view>
     <!-- 验证码组件 -->
-  <verifycode id='verifycode' title="请输入支付密码" content="" />
-</view>
+    <verifycode id='verifycode' title="请输入支付密码" content="" />
+  </view>
 </view>

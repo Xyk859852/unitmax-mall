@@ -185,7 +185,7 @@ Page({
           that.setData({ goodsCartCount: Number(that.data.goodsCartCount)+1});
           wx.showToast({
             title: "添加成功",
-            duration: 1500
+            duration: 2000
           })      
         } else if (res.data.result == "1002") {//未登录
           wx.showModal({
@@ -200,9 +200,12 @@ Page({
             }
           })
         } else if (res.data.result == "moreInventory") {//超过库存
-          that.toast.showView("商品加购件数超过库存"); 
-        } else if (res.data.result == "exist"){
-          that.toast.showView("商品已在您的购物车中");      
+          that.toast.showView("不能再加了"); 
+        } else if (res.data.result == "addCountSuccess"){
+          wx.showToast({
+            title: "添加成功",
+            duration: 2000
+          })
         }else{
           that.toast.showView(res.data.result);      
         }

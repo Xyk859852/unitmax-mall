@@ -307,7 +307,7 @@ Page({
     var cartlist = this.data.cartlist;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
-        if (count < cartlist[i].goods_inventory) {
+        if (Number(count) < cartlist[i].goods_inventory) {
           cartlist[i].count = count;
         } else {
           cartlist[i].count = Number(cartlist[i].goods_inventory);
