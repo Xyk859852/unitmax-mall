@@ -125,15 +125,49 @@ Page({
         content1: false,
       });
     }else{
-    myAmapFun.getInputtips({
-      keywords: keywords,
+    // myAmapFun.getInputtips({
+    //   keywords: keywords,
+    //   location: that.data.location,
+    //   success: function (data) {
+    //     if (data && data.tips) {
+    //       var tips = [];
+    //       for (var i = 0; i < data.tips.length; i++) {
+    //         if (data.tips[i].adcode != "" && data.tips[i].location!="") {
+    //           tips.push(data.tips[i]);
+    //         }
+    //       }
+    //       that.setData({
+    //         tips: tips,
+    //         content1: true,
+    //         content: false,
+    //       });
+    //     } else {
+    //       that.setData({
+    //         content: true,
+    //         content1: false,
+    //       });
+    //     }
+    //   },
+    //   fail: function (info) {
+    //     //失败回调
+    //     that.setData({
+    //       content: true,
+    //       content1: false,
+    //     });
+    //   }
+    // })
+
+    myAmapFun.getPoiAround({
+      querytypes: "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务 | 风景名胜 | 商务住宅 | 政府机构及社会团体 | 科教文化服务 |交通设施服务 | 金融保险服务 | 公司企业 | 道路附属设施 | 地名地址信息 | 公共设施",
       location: that.data.location,
+      querykeywords: keywords,
       success: function (data) {
-        if (data && data.tips) {
+        //成功回调
+        if (data && data.poisData) {
           var tips = [];
-          for (var i = 0; i < data.tips.length; i++) {
-            if (data.tips[i].adcode != "" && data.tips[i].location!="") {
-              tips.push(data.tips[i]);
+          for (var i = 0; i < data.poisData.length; i++) {
+            if (data.poisData[i].pname != "" && data.poisData[i].location != "") {
+              tips.push(data.poisData[i]);
             }
           }
           that.setData({
@@ -150,31 +184,9 @@ Page({
       },
       fail: function (info) {
         //失败回调
-        that.setData({
-          content: true,
-          content1: false,
-        });
+        console.log(info)
       }
     })
-
-    // myAmapFun.getPoiAround({
-    //   querytypes: "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务 | 风景名胜 | 商务住宅 | 政府机构及社会团体 | 科教文化服务 |交通设施服务 | 金融保险服务 | 公司企业 | 道路附属设施 | 地名地址信息 | 公共设施",
-    //   location: "117.186361,34.260681",
-    //   querykeywords: keywords,
-    //   success: function (data) {
-    //     console.log(JSON.stringify(data))
-    //     //成功回调
-    //     if (data && data.poisData) {
-    //       that.setData({
-    //         tips: data.poisData
-    //       });
-    //     }
-    //   },
-    //   fail: function (info) {
-    //     //失败回调
-    //     console.log(info)
-    //   }
-    // })
     }
   },
   bindSearch: function (e) {

@@ -12,5 +12,6 @@
   <view>{{j.pname}}{{j.cityname}}{{j.adname}} {{j.address}}</view>
 </view>
 <view bindtap="bindSearch" data-district='{{i.name}}' data-adcode='{{i.adcode}}' data-location='{{i.location}}' data-keywords="{{i.name}}" wx:key="this" class="text_box,{{content1?'show1':'hide'}}" wx:for="{{tips}}" wx:for-item="i">{{i.name}}
-  <view>{{i.district}} {{i.address}}</view>
+  <!-- <view>{{i.district}} {{i.address}}</view> -->
+  <view>{{i.pname}}{{i.cityname}}{{i.adname}} {{i.address}}</view>
 </view>

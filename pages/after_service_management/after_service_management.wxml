@@ -15,11 +15,10 @@
       </view>
     </view>
 
-    <view wx:if="{{item.state==0}}" class='order_total_money'>{{item.problem_desc}}
-      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
-    </view>
-    <view wx:else class='order_total_money'>
-      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
+    <view class='order_total_money'>{{item.problem_desc}}
+      <navigator wx:if="{{item.state==0}}" class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
+      <navigator wx:else class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
+      <navigator class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>订单详情</navigator>
     </view>
   </view>
 </view>
