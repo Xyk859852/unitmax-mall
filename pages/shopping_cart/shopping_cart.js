@@ -18,8 +18,7 @@ Page({
   onLoad: function () {
     //选择组件对象
     this.toast = this.selectComponent("#toast");
-  },
-  onShow: function () {
+
     wx.showToast({
       title: "Loading...",
       icon: "loading",
@@ -65,6 +64,9 @@ Page({
       }
     });
 
+  },
+  onShow: function () {
+    
   },
   addNum: function (e) {
     var id = e.target.dataset.id;

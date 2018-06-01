@@ -118,7 +118,7 @@
         <view class='order_total_money'>共{{item.allGoodsCount}}件商品 合计：￥{{order.TOTALPRICE}}（含运费￥{{order.SHIP_PRICE}}）</view>
       </view>
       <view class='order_btn'>
-        <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-goods_id='{{order.ORDER_NO}}' class='small_btn2'>评价</view>
+        <view bindtap='goEvaluate' data-orderform_id="{{order.ORDERFORM_ID}}" data-order_no='{{order.ORDER_NO}}' class='small_btn2'>评价</view>
         <view wx:if="{{order.sellafter==null}}">
           <view class='small_btn' bindtap='addAfterService' data-orderform_id="{{order.ORDERFORM_ID}}">发起售后</view>
         </view>

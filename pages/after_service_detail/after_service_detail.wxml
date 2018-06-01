@@ -9,7 +9,7 @@
 <view wx:if="{{sellafter.STATE==1}}" class='deal'>
   <view class='other' bindtap='showpayment'>
     <label>处理结果:</label>
-    <label wx:if="{{order.HANDLE_ORDER_TYPE==1}}" class='other_right'>交易正常进行</label>
+    <label wx:if="{{sellafter.HANDLE_ORDER_TYPE==1}}" class='other_right'>交易正常</label>
     <label wx:else class='other_right'>交易关闭</label>
   </view>
   <view class='other'>
