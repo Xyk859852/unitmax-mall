@@ -2,20 +2,20 @@
 <!--pages/bottom/bottom.wxml-->
 <view id='category1_box'>
   <button bindtap='gohome' class='category1_box'>
-      <image src='../../images/home.png'></image>
-      <view class='category_name'>首页</view>
+      <image src='{{bottom_img1}}'></image>
+      <view class='category_name,category1_name'>首页</view>
   </button>
   <button bindtap='gocategory' class='category1_box'>
-      <image src='../../images/order.png'></image>
-      <view class='category_name'>分类</view>
+      <image src='{{bottom_img2}}'></image>
+      <view class='category_name,category2_name'>分类</view>
   </button>
   <button open-type="getUserInfo" bindgetuserinfo="goshoppingcart"  bindtap='goshoppingcart' class='category1_box'>
-      <image src='../../images/shopping.png'></image>
-      <view class='category_name'>购物车</view>
+      <image src='{{bottom_img3}}'></image>
+      <view class='category_name,category3_name'>购物车</view>
   </button>
    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
-      <image src='../../images/mine.png'></image>
-      <view class='category_name'>我的</view>
+      <image src='{{bottom_img4}}'></image>
+      <view class='category_name,category4_name'>我的</view>
   </button> 
 </view>
 </template>

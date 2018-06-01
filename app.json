@@ -33,7 +33,9 @@
     "pages/bottom/bottom",
     "pages/enshrine/enshrine",
     "pages/expense_detail/expense_detail",
-    "pages/usercenter/usercenter"
+    "pages/usercenter/usercenter",
+    "pages/callcenter/callcenter",
+    "pages/question_detail/question_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

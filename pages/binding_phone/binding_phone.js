@@ -13,7 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    input_width: wx.getSystemInfoSync().windowWidth * 0.92 - 186,
+    phone_input_width: wx.getSystemInfoSync().windowWidth * 0.92 - 56,
+    input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 186,
     sendmsg: "sendmsg", 
     getmsg: "获取验证码", 
     update:1

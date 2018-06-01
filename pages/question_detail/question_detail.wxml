@@ -1,0 +1,14 @@
+<!--pages/question_detail/question_detail.wxml-->
+<view class='body'>
+  <view class='news_title'>
+   问题标题 
+  </view>
+  <view class='news_time'>2018-06-01 15:45</view>
+  <view class='news_content'>
+    问题详情
+  </view>
+</view>
+  <view class='footer'>
+  <button class='btn1'><image src='../../images/callcenter1.png'/>在线客服</button>
+  <button bindtap='callmobile'><image src='../../images/callcenter2.png'/>平台热线</button>
+  </view>

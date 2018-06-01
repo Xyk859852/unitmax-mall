@@ -1,4 +1,7 @@
  @import "../bottom/bottom.wxss"; 
+  .category4_name{
+   color: #ff9c35!important;
+ }
 /**mine.wxss**/
 .container {
   height: 300px;
@@ -68,6 +71,10 @@
   margin:0 auto;
   display:block;
 }
+.mine_order_state_container .mine_order_state_img{
+  width:30px;
+  height:30px;
+}
 .mine_order{
   float: left;
   width: 100%;
@@ -75,13 +82,13 @@
   line-height: 40px;
   border-top: #eee 1px solid;
   font-size: 12px;
-  color: #999;
+  color: #666;
 }
 .mine_order image{
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   vertical-align: middle;
-  margin-top:-4px;
+  margin-top:-2px;
 }
 .mine_menu{
   overflow: hidden;
@@ -100,12 +107,19 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 5px;
-  top: 10px;
+  right: 15px;
+  bottom: 35px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;
   line-height: 20px;
   font-size: 10px!important;
   border-radius: 10px;
+}
+.copyright{
+  text-align: center;
+  background-color: #f5f5f5;
+  line-height: 40px;
+  font-size: 12px;
+  color: #aaaaaa;
 }

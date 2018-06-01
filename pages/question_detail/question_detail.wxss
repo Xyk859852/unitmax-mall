@@ -1,0 +1,55 @@
+/* pages/question_detail/question_detail.wxss */
+page{
+  background-color: #ffffff;
+  padding-bottom: 40px;
+}
+.body{
+  padding: 10px 4%;
+}
+.news_title{
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  word-break:break-all;
+}
+.news_time{
+  color: #cccccc;
+  font-size: 12px;
+  text-align: right;
+  padding-bottom: 10px;
+  border-bottom: 1px #f5f5f5 solid;
+}
+.news_content{
+  padding: 10px 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+.news_content image{
+  max-width: 100%;
+}
+  .footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    background-color: #cccccc;
+  }
+  .footer button{
+    width: 50%;
+    float: left;
+    color: #ffffff;
+    line-height: 40px;
+    font-size: 14px;
+  }
+  .btn1{
+    border-right: 1px #ffffff solid;
+  }
+  .footer image{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -2px;
+  }

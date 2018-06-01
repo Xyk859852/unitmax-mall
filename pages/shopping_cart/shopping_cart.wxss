@@ -1,4 +1,7 @@
 @import "../bottom/bottom.wxss";
+ .category3_name{
+   color: #ff9c35!important;
+ }
 /* shopping_cart.wxss */
 page{
   padding-bottom: 122px;
