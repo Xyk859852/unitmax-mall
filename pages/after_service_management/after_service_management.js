@@ -33,7 +33,7 @@ var GetList = function (that) {
      },
     complete: function (res) { 
       // complete
-      wx.hideToast();
+      //wx.hideToast();
     },
   })
 

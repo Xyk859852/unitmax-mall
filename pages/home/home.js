@@ -73,7 +73,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     })
   },
@@ -157,7 +157,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     })
     // 隐藏导航栏加载框  

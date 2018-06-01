@@ -70,7 +70,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     });
   },
@@ -154,7 +154,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
 
@@ -183,10 +183,12 @@ Page({
         console.log(JSON.stringify(res.data));
         if (res.data.result == "true") {//跳转到订单页  
           that.setData({ goodsCartCount: Number(that.data.goodsCartCount)+1});
-          wx.showToast({
-            title: "添加成功",
-            duration: 2000
-          })      
+          setTimeout(function () {
+            wx.showToast({
+              title: "添加成功",
+              duration: 1500
+            });
+          }, 100)    
         } else if (res.data.result == "1002") {//未登录
           wx.showModal({
             title: '提示',
@@ -204,7 +206,7 @@ Page({
         } else if (res.data.result == "addCountSuccess"){
           wx.showToast({
             title: "添加成功",
-            duration: 2000
+            duration: 1500
           })
         }else{
           that.toast.showView(res.data.result);      
@@ -221,7 +223,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     }); 
   },

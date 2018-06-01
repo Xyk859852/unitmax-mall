@@ -60,7 +60,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       //wx.hideToast();
       }
     });
 
@@ -228,7 +228,7 @@ Page({
         },
         complete: function () {
           // complete
-          wx.hideToast();
+         //wx.hideToast();
         }
 
       });
@@ -294,7 +294,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       //wx.hideToast();
       }
     });
 
@@ -362,5 +362,86 @@ Page({
     wx.navigateTo({
       url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
     })
+  },
+  deleateAll: function(e){
+    var that = this;
+    //检查是否选择
+    var cartlist = that.data.cartlist;
+    var IDS = "";
+    for (var i = 0; i < cartlist.length; i++) {
+      if (cartlist[i].checked) {
+        //购物车id
+        if (IDS == "") {
+          IDS += cartlist[i].id;
+        } else {
+          IDS += "," + cartlist[i].id;
+        }
+    }
+    }
+    if (IDS=="") {
+      wx.showToast({
+        title: "请勾选宝贝",
+        duration: 1500
+      });
+      return;
+    }else{
+      wx.request({
+        url: app.IP +'chatGoodscart/deleteAll',
+        data: { DATA_IDS: IDS},
+        header: header,
+        method: 'GET',
+        dataType: 'json',
+        success: function(res) {
+          console.log(res);
+          if(res.data.result=="true"){
+            setTimeout(function () {
+              wx.showToast({
+                title: "删除成功",
+                duration: 1500
+              });
+            }, 100) 
+            wx.request({
+              url: app.IP + 'chatGoodscart/toList',
+              // data: {},
+              method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+              header: header, // 设置请求的 header
+              success: function (res) {
+                // success
+                if (res.data.result == "true") {
+                  var cartlist = res.data.cartlist;
+                  for (var i = 0; i < cartlist.length; i++) {
+                    cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
+                  }
+                  that.setData({
+                    cartlist: cartlist,
+                    totalPrice: '0.00',
+                    isAll: false,
+                  });
+                } else if (res.data.result == "noLogin") {//未登录
+                  wx.navigateTo({
+                    url: '../mine/mine',
+                  })
+                }
+              },
+              fail: function () {
+                // fail
+                setTimeout(function () {
+                  wx.showToast({
+                    title: "加载失败",
+                    duration: 1500
+                  })
+                }, 100)
+              },
+              complete: function () {
+                // complete
+                wx.hideToast();
+              }
+            });
+          }
+        },
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
   }
 })
