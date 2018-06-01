@@ -40,6 +40,14 @@ Page({
       success: function (res) {
         // success
         res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
+        console.log(res.data.evaluate.NAME.length);
+        if (res.data.evaluate.NAME.length==1){
+          res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.length
+        } else if (res.data.evaluate.NAME.length == 2){
+          res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+        }else{
+          res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+        }
         that.setData({
           good: res.data.good,
           evaluate: res.data.evaluate,
@@ -98,7 +106,7 @@ Page({
     return {
       title: good.GOODS_NAME,
       desc: '小事海淘',
-      path: '/page/commodity_detail/commodity_detail'
+      path: '/pages/commodity_detail/commodity_detail?goods_id='+good.GOODS_ID
     }
   },
   submitOrder: function (){
