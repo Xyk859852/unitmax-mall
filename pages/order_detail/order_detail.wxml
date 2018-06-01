@@ -7,8 +7,7 @@
 <view class='body'>
   <view class='top'>
     <image src='../../images/IMG_214.png' />
-    <!-- url="../logistics_tracking/logistics_tracking" -->
-    <navigator style='width:{{contact_view_width}}px;' > 
+    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking"> 
       <view wx:if="{{order.ORDER_STATUS == '1'}}">待付款</view>
       <view wx:if="{{order.ORDER_STATUS == '2'}}">待发货</view>
       <view wx:if="{{order.ORDER_STATUS == '3'}}">待收货</view>
@@ -17,7 +16,7 @@
       <view wx:if="{{order.ORDER_STATUS == '6'}}">交易关闭 </view>
       <!-- <view class='time'>2018-05-18 15:00</view> -->
     </navigator>
-    <!-- <image class="right" src="../../images/right_fff.png"></image> -->
+     <image class="right" src="../../images/right_fff.png"></image> 
   </view>
 
   <view class='address_box'>
