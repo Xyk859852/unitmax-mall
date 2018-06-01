@@ -375,7 +375,6 @@ Page({
         method: 'GET',
         dataType: 'json',
         success: function(res) {
-          console.log(res);
           if(res.data.result=="true"){
             setTimeout(function () {
               wx.showToast({

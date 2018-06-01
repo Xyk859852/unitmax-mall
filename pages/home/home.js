@@ -35,8 +35,7 @@ Page({
     var that = this;
     wx.showToast({
       title: "Loading...",
-      icon: "loading",
-      duration: 2000
+      icon: "loading"
     })   
     wx.request({
       url: getApp().IP + 'chatIndex/index',
@@ -76,7 +75,7 @@ Page({
       },
       complete: function () {
         // complete
-        // wx.hideToast();
+        wx.hideToast();
       }
     })
   },
