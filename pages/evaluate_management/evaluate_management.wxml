@@ -3,11 +3,10 @@
 <view wx:for="{{list}}" class='evaluate_list'>
   <view class='nickname'>
     <image src='{{user.HEADIMGURL}}'/>
-    <label>{{user.NAME}}</label>
+    <label>{{user.USERNAME}}</label>
   </view>
   <view class='commodity_li_tip'>{{item.addTime}}</view>
   <view wx:if="{{item.evaluate_info!=''}}" class='evaluate_content'>{{item.evaluate_info}}</view>
-  <view wx:else class='evaluate_content'>暂无评价内容</view>
   <view class='commodity_li' data-goods_id='{{item.evaluate_goods_id}}' bindtap='goDetail'>
     <image src='{{IP}}{{item.GOODS_IMG}}'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>

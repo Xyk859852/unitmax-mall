@@ -29,7 +29,7 @@ Page({
       that.setData({
         hasUserInfo: true,
         user:user,
-        nickName: user.NICKNAME,
+        nickName: user.USERNAME,
         avatarUrl: user.HEADIMGURL
       })
     }
