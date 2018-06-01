@@ -1,4 +1,5 @@
 <!--mine.wxml-->
+<toast id='toast' />
 <import src="../../components/toast/toast.wxml"/>
 <template is="toast" data="{{..._toast_}}"/>
 <view class="container" style='background-image: url(../../images/1.png);'>

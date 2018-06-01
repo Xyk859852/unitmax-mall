@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "toast": "/components/toast/toast"
+  },
   "navigationBarTitleText": "我的",
   "enablePullDownRefresh": true
 }

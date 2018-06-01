@@ -1,4 +1,5 @@
 <!--pages/after_service_management/after_service_management.wxml-->
+<toast id='toast' />
 <view wx:if="{{list.length>0}}">
   <view wx:for="{{list}}" class='commodity_list'>
     <view class='other'>

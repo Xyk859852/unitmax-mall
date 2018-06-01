@@ -278,10 +278,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -329,10 +326,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");                    
               }, 100)
             },
             complete: function () {
@@ -393,10 +387,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");
               }, 100)
             },
             complete: function () {
@@ -449,10 +440,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");
               }, 100)
             },
             complete: function () {
@@ -548,11 +536,7 @@ Page({
                 }
               },
               fail: function (res) {
-                wx.showToast({
-                  title: '支付失败',
-                  icon: 'success',
-                  duration: 2000
-                });
+                that.toast.showView("支付失败");
               },
               complete: function (res) { },
             })
@@ -651,9 +635,7 @@ Page({
     if (this.data.hasMoreData) {
       this.getMyOrderList('加载更多数据')
     } else {
-      wx.showToast({
-        title: '没有更多数据',
-      })
+      that.toast.showView("没有更多数据");  
     }
   },
 

@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.toast = this.selectComponent("#toast");
     console.log(options);
     type = options.TYPE;
     if(type == "edit"){
@@ -85,21 +86,13 @@ Page({
       console.log(e.detail.value);
       var phone = e.detail.value.TAKEPHONE;
       if (!(/^1[34578]\d{9}$/.test(phone))) {
-        wx.showToast({
-          title: '手机号有误',
-          icon: 'success',
-          duration: 2000
-        })
+        this.toast.showView("手机号有误");
         return false;
-        if (phone.length >= 11) {
-          wx.showToast({
-            title: '手机号有误',
-            icon: 'success',
-            duration: 2000
-          })
-          return false;
-        }
       }
+      if(phone.length >= 11) {
+        this.toast.showView("手机号有误");
+        return false;
+      }     
       if(type=="save"){
         wx.request({
           url: app.IP + 'chatAddRess/save',

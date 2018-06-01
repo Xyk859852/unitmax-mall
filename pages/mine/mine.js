@@ -35,7 +35,7 @@ Page({
     }
   },
   onLoad: function () {
-    
+    this.toast = this.selectComponent("#toast");
   },
   getUserInfo: function (e) {
     console.log(e);

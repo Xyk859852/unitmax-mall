@@ -62,10 +62,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -146,10 +143,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -215,10 +209,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -246,7 +237,10 @@ Page({
         dataType: 'json',
         success: function(res) {
           if(res.data.result=="true"){
-            that.toast.showView("取消成功");  
+            wx.showToast({
+              title: "取消成功",
+              duration: 1500
+            });
             that.setData({
               enshrineimg: "../../images/enshrine.png"
             })

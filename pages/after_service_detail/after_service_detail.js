@@ -18,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.toast = this.selectComponent("#toast");
     var that = this;
     var ORDERFORM_ID = options.orderform_id;
     var SELLAFTERID = options.sellafterid;
@@ -50,10 +51,7 @@ Page({
         fail: function (res) { 
           // fail
           setTimeout(function () {
-            wx.showToast({
-              title: "加载失败",
-              duration: 1500
-            })
+            that.toast.showView("加载失败");
           }, 100)
         },
         complete: function (res) { 

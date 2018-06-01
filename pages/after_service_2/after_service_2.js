@@ -69,10 +69,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("请求失败");
         }, 100)
       },
       complete: function () {
@@ -242,10 +239,7 @@ Page({
        }
       },
       fail: function (res) {
-        wx.showToast({
-          title: '上传失败',
-          duration:1500
-        })
+        that.toast.showView("上传失败");
       }
 
     });
@@ -299,10 +293,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {

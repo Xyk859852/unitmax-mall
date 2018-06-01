@@ -5,13 +5,13 @@ var header = getApp().globalData.header;
 var url = app.IP + "chatNews/listNews";
 var page = 1;
 var GetList = function (that) {
-  wx.showNavigationBarLoading()
+  wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 })
   that.setData({
     hidden: false
   });
   wx.request({
     url: url,
-    header:header,
+    header: header,
     data: {
       pageSize: 10,
       pageNo: page
@@ -31,10 +31,7 @@ var GetList = function (that) {
     fail: function () {
       // fail
       setTimeout(function () {
-        wx.showToast({
-          title: "加载失败",
-          duration: 1500
-        })
+        that.toast.showView("加载失败");
       }, 100)
     },
     complete: function () {
@@ -46,7 +43,7 @@ var GetList = function (that) {
   that.setData({
     hidden: true
   });
-} 
+}
 
 // pages/news/news.js
 Page({
@@ -75,28 +72,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -104,7 +101,7 @@ Page({
    */
   onPullDownRefresh: function () {
     // 显示顶部刷新图标  
-    wx.showNavigationBarLoading();
+    wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 });
     page = 1;
     this.setData({
       list: [],
@@ -128,16 +125,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  openDetail: function(e) {
+  openDetail: function (e) {
     console.log(e);
     var types = e.currentTarget.dataset.type;
-    if(types==1){
+    if (types == 1) {
       wx.navigateTo({
         url: '../news_detail_url/news_detail_url?url=' + e.currentTarget.dataset.url
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: "../news_detail/news_detail?ID=" + e.currentTarget.dataset.id
       })

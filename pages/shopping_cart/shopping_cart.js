@@ -52,10 +52,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -69,6 +66,7 @@ Page({
     
   },
   addNum: function (e) {
+    var that = this;
     var id = e.target.dataset.id;
     var cartlist = this.data.cartlist;
     var tc = e.detail.value;
@@ -80,9 +78,7 @@ Page({
           cartlist[i].price = util.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(cartlist[i].count));
           this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, cartlist[i].count);
         } else {
-          wx.showToast({
-            title: "不能再加了"
-          })
+          that.toast.showView("不能再加了");          
         }
         cartlist[i].count - 1;
         break;
@@ -93,6 +89,7 @@ Page({
     })
   },
   delNum: function (e) {
+    var that = this;
     var id = e.target.dataset.id;
     var cartlist = this.data.cartlist;
     var tc = e.detail.value;
@@ -104,9 +101,7 @@ Page({
           cartlist[i].price = util.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(cartlist[i].count));
           this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, cartlist[i].count);
         } else {
-          wx.showToast({
-            title: "不能再减了"
-          })
+          that.toast.showView("不能再减了");
         }
         cartlist[i].count - 1;
         break;
@@ -220,10 +215,7 @@ Page({
         fail: function () {
           // fail
           setTimeout(function () {
-            wx.showToast({
-              title: "加载失败",
-              duration: 1500
-            })
+            that.toast.showView("加载失败");
           }, 100)
         },
         complete: function () {
@@ -254,10 +246,7 @@ Page({
       }
     }
     if (goodsArray.length == 0) {
-      wx.showToast({
-        title: "请勾选宝贝",
-        duration: 1500
-      });
+      that.toast.showView("请勾选宝贝");
       return;
     }
 
@@ -286,10 +275,7 @@ Page({
       fail: function () {
         // fail
         setTimeout(function () {
-          wx.showToast({
-            title: "加载失败",
-            duration: 1500
-          })
+          that.toast.showView("加载失败");
         }, 100)
       },
       complete: function () {
@@ -379,10 +365,7 @@ Page({
     }
     }
     if (IDS=="") {
-      wx.showToast({
-        title: "请勾选宝贝",
-        duration: 1500
-      });
+      that.toast.showView("请勾选宝贝");
       return;
     }else{
       wx.request({
@@ -426,10 +409,7 @@ Page({
               fail: function () {
                 // fail
                 setTimeout(function () {
-                  wx.showToast({
-                    title: "加载失败",
-                    duration: 1500
-                  })
+                  that.toast.showView("加载失败");
                 }, 100)
               },
               complete: function () {

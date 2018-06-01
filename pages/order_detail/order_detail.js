@@ -177,10 +177,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");
               }, 100)
             },
             complete: function () {
@@ -236,10 +233,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");
               }, 100)
             },
             complete: function () {
@@ -290,10 +284,7 @@ Page({
             fail: function () {
               // fail
               setTimeout(function () {
-                wx.showToast({
-                  title: "请求失败",
-                  duration: 1500
-                })
+                that.toast.showView("请求失败");
               }, 100)
             },
             complete: function () {
@@ -381,11 +372,7 @@ Page({
                 }
               },
               fail: function (res) {
-                wx.showToast({
-                  title: '支付失败',
-                  icon: 'success',
-                  duration: 2000
-                });
+                that.toast.showView("支付失败");
               },
               complete: function (res) { },
             })

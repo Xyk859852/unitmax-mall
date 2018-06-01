@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<toast id='toast' />
 <view class="notice_popup,{{notice_popup?'show1':'hide'}}">
   <view class='notice'>
     <view class='notice_title'>公告</view>

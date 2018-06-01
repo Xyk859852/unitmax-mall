@@ -1,4 +1,5 @@
 <!--pages/add_address/add_address.wxml-->
+<toast id='toast' />
 <form bindsubmit="formBindsubmit" >
 <view class='body'>
   <input name="CONSIGNEE" placeholder='姓名' value='{{CONSIGNEE}}' type='text'/>

@@ -7,7 +7,12 @@ const app = getApp()
 var url = app.IP + "chatSupplier/favoriteList";
 var page = 1;
 var GetList = function (that) {
-  wx.showNavigationBarLoading()
+  wx.showToast({
+    title: "Loading...",
+    icon: "loading",
+    duration: 2000
+  })
+  //wx.showNavigationBarLoading();
   wx.request({
     url: url,
     header: header,
@@ -30,10 +35,7 @@ var GetList = function (that) {
     fail: function () {
       // fail
       setTimeout(function () {
-        wx.showToast({
-          title: "加载失败",
-          duration: 1500
-        })
+        that.toast.showView("加载失败");
       }, 100)
     },
     complete: function () {
@@ -57,7 +59,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.toast = this.selectComponent("#toast");
   },
 
   /**
@@ -100,8 +102,13 @@ Page({
    */
   onPullDownRefresh: function () {
     console.log("上拉刷新");
-    // 显示顶部刷新图标  
-    wx.showNavigationBarLoading();
+    // 显示顶部刷新图标
+    wx.showToast({
+      title: "Loading...",
+      icon: "loading",
+      duration: 2000
+    })     
+    //wx.showNavigationBarLoading();
     page = 1;
     this.setData({
       list: [],
