@@ -37,4 +37,4 @@
 <view wx:else class='no_data'>暂无数据</view>
 <!-- 声明需要使用的模板文件 -->
 <import src="../bottom/bottom.wxml" />
-<template is="msgItem" />
+<template is="msgItem" data="{{bottom_img1:'../../images/home.png',bottom_img2:'../../images/order.png',bottom_img3:'../../images/shopping_s.png',bottom_img4:'../../images/mine.png'}}" />

@@ -1,4 +1,7 @@
  @import "../bottom/bottom.wxss"; 
+  .category4_name{
+   color: #ff9c35!important;
+ }
 /**mine.wxss**/
 .container {
   height: 300px;

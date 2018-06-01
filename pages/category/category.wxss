@@ -1,4 +1,7 @@
 @import "../bottom/bottom.wxss";
+ .category2_name{
+   color: #ff9c35!important;
+ }
 /**category.wxss**/  
 page{
   height: 100%;

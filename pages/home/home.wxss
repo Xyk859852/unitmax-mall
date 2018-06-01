@@ -1,4 +1,7 @@
  @import "../bottom/bottom.wxss"; 
+ .category1_name{
+   color: #ff9c35!important;
+ }
  .notice_popup{
    width: 100%;
    height: 100%;
