@@ -1,0 +1,15 @@
+<!--pages/usercenter/usercenter.wxml-->
+<view class='usercenter'>
+  <view class='head_img'>
+    头像
+    <image src='../../images/category.png' />
+  </view>
+  <view>
+    昵称
+    <input value='昵称' placeholder='请输入昵称' maxlength='12'/>
+  </view>
+</view>
+<view class='btn_box'>
+<button>同步微信</button>
+<button>保存</button>
+</view>

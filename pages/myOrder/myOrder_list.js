@@ -112,7 +112,7 @@ Page({
     //   },
     //   complete: function () {
     //     // complete
-    //     wx.hideToast();
+    //    // wx.hideToast();
     //   }
     // })
 
@@ -286,7 +286,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     })
   },
@@ -337,7 +337,7 @@ Page({
             },
             complete: function () {
               // complete
-              wx.hideToast();
+             // wx.hideToast();
             }
           })
         } else if (sm.cancel) {
@@ -401,7 +401,7 @@ Page({
             },
             complete: function () {
               // complete
-              wx.hideToast();
+             // wx.hideToast();
             }
           })
         } else if (sm.cancel) {
@@ -457,7 +457,7 @@ Page({
             },
             complete: function () {
               // complete
-              wx.hideToast();
+             // wx.hideToast();
             }
           })
         } else if (sm.cancel) {

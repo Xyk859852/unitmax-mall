@@ -188,7 +188,11 @@ Page({
     var TRANS_FEE = 0;
     var goodsList = this.data.goodsList;
     for (var i = 0; i < goodsList.length; i++) {
-      TOTALPRICE += goodsList[i].GOODS_PRICE * goodsList[i].buyGoodsCount;
+      var buyGoodsCount = 0;
+      if (util.isAvalible(goodsList[i].buyGoodsCount)){
+        buyGoodsCount = goodsList[i].buyGoodsCount;
+      }
+      TOTALPRICE += goodsList[i].GOODS_PRICE * buyGoodsCount;
       TRANS_FEE += goodsList[i].TRANS_FEE;
     }
     TOTALPRICE += TRANS_FEE;
@@ -434,7 +438,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
   },
@@ -486,12 +490,9 @@ Page({
     var id = e.target.dataset.id;
     var goodsList = this.data.goodsList;
     for (var i = 0; i < goodsList.length; i++) {
-      if (goodsList[i].id == id) {
-        if (count < goodsList[i].GOODS_INVENTORY) {
-          if (count == 0) {
-            count = 1;
-          }
-          goodsList[i].buyGoodsCount = Number(count);
+      if (goodsList[i].GOODS_ID == id) {
+        if (Number(count) < goodsList[i].GOODS_INVENTORY) {
+          goodsList[i].buyGoodsCount = count;
         } else {
           goodsList[i].buyGoodsCount = Number(goodsList[i].GOODS_INVENTORY);
         }
@@ -506,24 +507,27 @@ Page({
 
   },
   blurCount: function (e) {
-    // var id = e.target.dataset.id;
-    // var count = e.detail.value;
-    // var goodsList = this.data.goodsList;
-    // for (var i = 0; i < goodsList.length; i++) {
-    //   if (goodsList[i].id == id) {
-    //     if (count < goodsList[i].GOODS_INVENTORY) {
-    //       goodsList[i].buyGoodsCount = Number(count);
-    //     } else {
-    //       count = goodsList[i].GOODS_INVENTORY;
-    //       goodsList[i].buyGoodsCount = Number(count);
-    //     }
+    var id = e.target.dataset.id;
+    var count = e.detail.value;
+    var goodsList = this.data.goodsList;
+    for (var i = 0; i < goodsList.length; i++) {
+      if (goodsList[i].GOODS_ID == id) {
+        if (count < goodsList[i].GOODS_INVENTORY) {
+          if (!util.isAvalible(count)) {
+            count = 1;
+          }
+          goodsList[i].buyGoodsCount = Number(count);
+        } else {
+          count = goodsList[i].GOODS_INVENTORY;
+          goodsList[i].buyGoodsCount = Number(count);
+        }
 
-    //   }
-    // }
-    // this.calculateFinalPrice();
-    // this.setData({
-    //   goodsList: goodsList
-    // })
+      }
+    }
+    this.calculateFinalPrice();
+    this.setData({
+      goodsList: goodsList
+    })
   },
   /**
   * 生命周期函数--监听页面显示
@@ -571,7 +575,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
   },

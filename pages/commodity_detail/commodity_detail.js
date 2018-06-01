@@ -70,7 +70,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     });
   },
@@ -154,7 +154,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+        //wx.hideToast();
       }
     });
 
@@ -202,9 +202,12 @@ Page({
             }
           })
         } else if (res.data.result == "moreInventory") {//超过库存
-          that.toast.showView("商品加购件数超过库存"); 
-        } else if (res.data.result == "exist"){
-          that.toast.showView("商品已在您的购物车中");      
+          that.toast.showView("不能再加了"); 
+        } else if (res.data.result == "addCountSuccess"){
+          wx.showToast({
+            title: "添加成功",
+            duration: 1500
+          })
         }else{
           that.toast.showView(res.data.result);      
         }
@@ -220,7 +223,7 @@ Page({
       },
       complete: function () {
         // complete
-        wx.hideToast();
+       // wx.hideToast();
       }
     }); 
   },

@@ -58,7 +58,7 @@ Page({
         },
         complete: function (res) { 
           // complete
-          wx.hideToast();
+          //wx.hideToast();
         },
       })
     }

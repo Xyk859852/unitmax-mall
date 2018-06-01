@@ -38,7 +38,7 @@ var GetList = function (that) {
     },
     complete: function () {
       // complete
-      wx.hideToast();
+      //wx.hideToast();
     }
   });
   wx.hideNavigationBarLoading();
@@ -71,7 +71,7 @@ Page({
       scrollTop: 0
     });
     GetList(that);
-    wx.hideToast();
+    //wx.hideToast();
   },
 
   /**
