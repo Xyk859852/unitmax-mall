@@ -85,14 +85,14 @@
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator> -->
-    <!-- <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
+     <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
-    </navigator> -->
-    <!-- <navigator class='mine_order_state_container' url="../after_service/after_service">
+    </navigator> 
+     <!-- <navigator class='mine_order_state_container' url="../after_service_2/after_service_2">
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
-    </navigator> -->
+    </navigator>  -->
     <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>

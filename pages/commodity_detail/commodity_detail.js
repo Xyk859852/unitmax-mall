@@ -25,7 +25,7 @@ Page({
     swiper_height: wx.getSystemInfoSync().windowWidth,
     evaluate_img_width: wx.getSystemInfoSync().windowWidth * 0.292,
     commodity_detail_title_left_width: wx.getSystemInfoSync().windowWidth * 0.88 - 32,
-    evaluate_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30
+    evaluate_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20
   },
   onLoad: function (e) {
     var that = this;

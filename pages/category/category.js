@@ -2,7 +2,7 @@
 //获取应用实例  
 var app = getApp();
 var header = getApp().globalData.header;
-var tempObj = require("../../utils/bottom.js");
+// var tempObj = require("../../utils/bottom.js");
 Page({
   data: {
     appIP: app.IP,
@@ -63,20 +63,20 @@ Page({
         wx.hideToast();
       }
     })
-  },
-  gohome: function (e) {
-    tempObj.gohome(e);
-  },
-  gocategory: function (e) {
-    tempObj.gocategory(e);
-  },
-  gocommodity: function (e) {
-    tempObj.gocommodity(e);
-  },
-  goshoppingcart: function (e) {
-    tempObj.goshoppingcart(e);
-  },
-  getUserInfo: function (e) {
-    tempObj.getUserInfo(e)
   }
+  // gohome: function (e) {
+  //   tempObj.gohome(e);
+  // },
+  // gocategory: function (e) {
+  //   tempObj.gocategory(e);
+  // },
+  // gocommodity: function (e) {
+  //   tempObj.gocommodity(e);
+  // },
+  // goshoppingcart: function (e) {
+  //   tempObj.goshoppingcart(e);
+  // },
+  // getUserInfo: function (e) {
+  //   tempObj.getUserInfo(e)
+  // }
 })  

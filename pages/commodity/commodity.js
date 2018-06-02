@@ -28,7 +28,7 @@ var GetList = function (that) {
       jiage: jiage,
       GOODSTYPE_ID: GOODSTYPE,
       GOODSLEVEL_ID: GOODSLEVEL,
-      keywords, keywords
+      keywords: keywords
     },
     success: function (res) {
       console.log(res.data);

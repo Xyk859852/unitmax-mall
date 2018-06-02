@@ -7,28 +7,29 @@
   padding: 10px 4%;
   margin-top: 10px;
   overflow: hidden;
+  border-radius: 5px;
 }
 .news_img{
-  width: 100px;
-  height: 50px;
+  width: 120px;
+  height: 60px;
   float: left;
 }
 .news_right{
   float: left;
-  margin-left: 4%;
-  height: 50px;
+  margin-right: 4%;
+  height: 60px;
   position: relative;
 }
 .news_title{
   font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   word-break: break-all
 }
 .news_time{
-  color: #cccccc;
+  color: #aaa;
   font-size: 12px;
   position: absolute;
   left: 0;

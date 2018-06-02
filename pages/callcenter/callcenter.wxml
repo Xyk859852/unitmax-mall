@@ -11,6 +11,6 @@
   <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
   </view>
   <view class='footer'>
-  <button class='btn1'><image src='../../images/callcenter1.png'/>在线客服</button>
-  <button bindtap='callmobile'><image src='../../images/callcenter2.png'/>平台热线</button>
+  <button class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
+  <button bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</button>
   </view>

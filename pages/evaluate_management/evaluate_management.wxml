@@ -11,7 +11,8 @@
     <image src='{{IP}}{{item.GOODS_IMG}}'></image>
     <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
       <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-      <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+      <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}}</view>
+      <view class='commodity_li_tip'>等级：{{item.GOODSLEVEL_NAME}}</view>
     </view>
   </view>
 </view>

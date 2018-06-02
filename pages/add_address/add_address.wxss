@@ -62,4 +62,5 @@ navigator{
   text-align: center;
   border-radius: 5px;
   color: #ffffff;
+  font-size: 14px;
 }

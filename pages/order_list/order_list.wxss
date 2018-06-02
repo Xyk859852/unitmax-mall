@@ -93,7 +93,7 @@
   text-align: center;
   margin-right: 4%;
   float: right;
-  font-size: 12px;
+  font-size: 14px;
 }
 .small_btn{
   color: #333;

@@ -9,44 +9,41 @@
   </block>
 </swiper>
 <view class='commodity_detail_title'>
+<view class='commodity_detail_title_box'>
   <view class='commodity_detail_title_left' style='width:{{commodity_detail_title_left_width}}px;'>
     <view class='commodity_title'>{{good.GOODS_NAME}}</view>
   </view>
-  <button open-type="share" class='commodity_detail_title_right'>
-    <image src='../../images/share.png'></image>
-    <view>分享</view>
-  </button>
+    <button open-type="share" class='commodity_detail_title_right'>
+      <image src='../../images/share.png'></image>
+      <!-- <view>分享</view> -->
+    </button>
+    </view>
   <view class='commodity_price'>￥{{good.GOODS_PRICE}}</view>
-  <view class='commodity_tip'>运费：￥10.00元
-    <text>库存：{{good.GOODS_INVENTORY}} 销量：{{good.GOODS_SALENUM}}</text>
+  <view class='commodity_tip'>运费：10.00元
+    <text>库存：{{good.GOODS_INVENTORY}}</text><text>销量：{{good.GOODS_SALENUM}}</text>
   </view>
 </view>
-<view class="nav">
-  <view>商品评价({{goodsEvaCount}})</view>
-</view>
+<navigator hover-class="btn-hover" open-type="navigate" url="../evaluate/evaluate?goods_id={{good.GOODS_ID}}">
+<view class="nav">商品评价({{goodsEvaCount}})  <text class='evaluate_more'>查看全部 ></text></view>
 <view wx:if="{{evaluate!=null || evaluate!= undefined}}" class='evaluate'>
   <image src='{{evaluate.HEADIMGURL}}' />
   <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
     <view class='evaluate_nickname'>{{evaluate.NAME}}
       <text>{{evaluate.addTime}}</text>
     </view>
+  </view>
     <view wx:if="{{evaluate.evaluate_info != ''}}" class='evaluate_container'>{{evaluate.evaluate_info}}</view>
     <view wx:else class='evaluate_container'>暂无评价内容</view>
-  </view>
-  <navigator hover-class="btn-hover" class='evaluate_more' open-type="navigate" url="../evaluate/evaluate?goods_id={{good.GOODS_ID}}">更多评价</navigator>
 </view>
 <view wx:else class='no_evaluate'>暂无评价</view>
-<view class="nav">
-  <view>规格参数</view>
-</view>
+</navigator>
+<view class="nav">规格参数</view>
 <view class='specification_box'>
   <view class='specification'>
     <text class='specification_left'>{{good.SPECIFICATION}}</text>
   </view>
 </view>
-<view class="nav" style='margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;'>
-  <view>商品详情</view>
-</view>
+<view class="nav">商品详情</view>
 <image wx:for="{{good.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart' bindtap='go_shopping_cart'>
@@ -75,6 +72,6 @@
       <view>客服</view>
     </view>
   </view>
-  <view class='add_cart' bindtap='addGoods'>加入购物车</view>
-  <button class='buy' bindtap='submitOrder' hover-class="btn-hover">立即购买</button>
+  <view class='buy' bindtap='addGoods'>加入购物车</view>
+  <button class='add_cart' bindtap='submitOrder' hover-class="btn-hover">立即购买</button>
 </view>

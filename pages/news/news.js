@@ -52,7 +52,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    news_img_width: wx.getSystemInfoSync().windowWidth * 0.8 - 100,
+    news_img_width: wx.getSystemInfoSync().windowWidth * 0.8 - 120,
     appIP: app.IP
   },
 

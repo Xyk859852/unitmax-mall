@@ -19,11 +19,11 @@
 <view wx:if="{{list.length>0}}" class='news_list'>
   <scroll-view scroll-y="true">
     <view class="list" wx:for="{{list}}" wx:key="unique" data-url='{{item.AD_URL}}' data-type='{{item.AD_TYPE}}' data-id='{{item.ID}}' bindtap='openDetail' >
-      <image class='news_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'/>
       <view class='news_right' style='width:{{news_img_width}}px;'>
         <view class='news_title' >{{item.AD_TITLE}}</view>
         <view class='news_time'>{{item.ADDTIME}}</view>
       </view>
+      <image class='news_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'/>
     </view>
   </scroll-view>
 </view>

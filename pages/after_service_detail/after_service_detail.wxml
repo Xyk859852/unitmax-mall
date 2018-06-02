@@ -1,25 +1,38 @@
 <!--pages/after_service_detail/after_service_detail.wxml-->
+
 <toast id='toast' />
 <view wx:for="{{orderDetailList}}" class='commodity_li'>
   <image src='{{IP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
   <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
     <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-    <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+    <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}}</view>
+    <view class='commodity_li_tip'>等级：{{item.GOODSLEVEL_NAME}}</view>
+    <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
+      <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
+    </view>
   </view>
 </view>
 <view wx:if="{{sellafter.STATE==1}}" class='deal'>
   <view class='other' bindtap='showpayment'>
-    <label>处理结果:</label>
+    <label>处理结果：</label>
     <label wx:if="{{sellafter.HANDLE_ORDER_TYPE==1}}" class='other_right'>交易正常</label>
     <label wx:else class='other_right'>交易关闭</label>
   </view>
+<view class='other'>
+  <label>处理时间：</label>
+  <label class="other_right">2018-05-25 15:00</label>
+</view>
+<view class='other'>
+  <label>退款金额：</label>
+  <label class="other_right">25.00元</label>
+</view>
   <view class='other'>
-    <label>处理说明:</label>
-    <view class="explain">{{sellafter.RESULT_DESC_BUYER}}</view>
+    <label>处理内容：</label>
+    <label class="explain">{{sellafter.RESULT_DESC_BUYER}}</label>
   </view>
 </view>
 <view class='other' bindtap='showpayment'>
-  <label>售后原因:</label>
+  <label>售后原因：</label>
   <label class='other_right'>{{sellafter.PROBLEM_DESC}}</label>
 </view>
 <!-- <view class='other'>
@@ -27,15 +40,19 @@
   <label class='other_right'>￥16.00</label>
 </view> -->
 <view class='other'>
-  <label>售后说明:</label>
-  <view wx:if="{{sellafter.REMARK!=''}}" class="explain">{{sellafter.REMARK}}</view>
-  <view wx:else class="explain">无</view>
+  <label>售后说明：</label>
+  <label wx:if="{{sellafter.REMARK!=''}}" class="explain">{{sellafter.REMARK}}</label>
+  <label wx:else class="explain">无</label>
 </view>
 <view class='other'>
-  <view>售后凭证</view>
+  <view>售后凭证：</view>
   <view class='image_box'>
     <image wx:if="{{sellafter.SELLAFTER_IMG1!=''&&sellafter.SELLAFTER_IMG1!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG1}}' />
-     <image wx:if="{{sellafter.SELLAFTER_IMG2!=''&&sellafter.SELLAFTER_IMG2!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG2}}' />
-    <image wx:if="{{sellafter.SELLAFTER_IMG3!=''&&sellafter.SELLAFTER_IMG3!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG3}}' /> 
+    <image wx:if="{{sellafter.SELLAFTER_IMG2!=''&&sellafter.SELLAFTER_IMG2!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG2}}' />
+    <image wx:if="{{sellafter.SELLAFTER_IMG3!=''&&sellafter.SELLAFTER_IMG3!=null}}" style='height:{{image_box_width}}px;' src='{{IP}}static/uploadImgs/order/sellafterImg/{{sellafter.SELLAFTER_IMG3}}' />
   </view>
+</view>
+<view class='other'>
+  <label>提交时间：</label>
+  <label class="other_right">2018-05-25 15:00</label>
 </view>

@@ -53,3 +53,22 @@ navigator{
 input::placeholder{
   color: #aaaaaa;
 }
+.small_btn,.small_btn2{
+  padding: 0 15px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 4%;
+  float: right;
+  font-size: 14px;
+  margin-top: 1px;
+}
+.small_btn{
+  color: #333;
+  border: #333 1px solid;
+}
+.small_btn2{
+  color: #fe6500;
+  border: #fe6500 1px solid;
+}

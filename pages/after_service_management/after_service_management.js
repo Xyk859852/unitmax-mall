@@ -46,7 +46,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     list:[],
     IP: app.IP
   },

@@ -31,7 +31,7 @@
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>买家留言</view>
-      <view>{{order.MSG}}</view>
+      <view class='address_detail'>{{order.MSG}}</view>
     </view>
   </view>
   <view class='commodity_list'>
@@ -46,7 +46,8 @@
         <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
         <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
           <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-          <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+          <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}}</view>
+          <view class='commodity_li_tip'>等级：{{item.GOODSLEVEL_NAME}}</view>
           <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
             <view class="num_box">x{{item.GOODS_AMOUNT}}</view>
           </view>
@@ -80,6 +81,17 @@
     <!-- <view class='other'>发货时间：{{order.SHIPTIME}}</view> -->
   </view>
   <view class='footer'>
+      <view wx:if="{{order.ORDER_STATUS == '3' || order.ORDER_STATUS == '4' || order.ORDER_STATUS == '5'}}">
+      <view wx:if="{{order.sellafter == null}}">
+        <view class='small_btn' bindtap='addAfterService'>发起售后</view>
+      </view>
+      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='1'}}">
+        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后成功</view>
+      </view>
+      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='0'}}">
+        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后中</view>
+      </view>
+    </view>
     <view wx:if="{{order.ORDER_STATUS == '1'}}">
       <view class='small_btn2' bindtap='payOrder'>支付</view>
     </view>
@@ -94,17 +106,6 @@
     </view>
     <view wx:if="{{order.ORDER_STATUS == '5' || order.ORDER_STATUS == '6'}}">
       <view class='small_btn' bindtap='delOrder'>删除订单</view>
-    </view>
-    <view wx:if="{{order.ORDER_STATUS == '3' || order.ORDER_STATUS == '4' || order.ORDER_STATUS == '5'}}">
-      <view wx:if="{{order.sellafter == null}}">
-        <view class='small_btn' bindtap='addAfterService'>发起售后</view>
-      </view>
-      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='1'}}">
-        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后成功</view>
-      </view>
-      <view wx:if="{{order.sellafter != null && order.sellafter.STATE=='0'}}">
-        <view data-sellafterid='{{order.sellafter.SELLAFTERID}}' data-orderform_id="{{order.ORDERFORM_ID}}" bindtap='afterServiceDetail' class='small_btn'>售后中</view>
-      </view>
     </view>
     <!-- 验证码组件 -->
     <verifycode id='verifycode' title="请输入支付密码" content="" />

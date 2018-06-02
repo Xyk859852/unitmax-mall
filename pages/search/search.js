@@ -5,8 +5,8 @@ var header = getApp().globalData.header;
 var souList = [];
 Page({
   data: {
-    search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.84 - 32,
-    search_width: (wx.getSystemInfoSync().windowWidth * 0.84 - 32)*0.96-20,
+    search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88*0.92 - 32,
+    search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.88 - 47,
     souList:[]
   },
   onLoad: function () {

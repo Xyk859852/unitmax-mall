@@ -20,14 +20,15 @@
   <view class='commodity_list'>
     <view class='other'>
       <image src='../../images/seller.png' />
-      <label>聚脉商城</label>
+      <label>商品信息</label>
     </view>
     <block wx:for="{{goodsList}}" wx:key="this">
       <view class='commodity_li'>
         <image src='{{appIP}}{{item.IMGSRC}}'></image>
         <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
           <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-          <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}} 等级：{{item.GOODSLEVEL_NAME}}</view>
+          <view class='commodity_li_tip'>品类：{{item.GOODSTYPE_NAME}}</view>
+          <view class='commodity_li_tip'>等级：{{item.GOODSLEVEL_NAME}}</view>
           <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}
             <view class="num_box">
               <view class='minus smallbtn' catchtap='delNum' data-id="{{item.GOODS_ID}}">-</view>

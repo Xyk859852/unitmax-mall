@@ -6,7 +6,7 @@
   </view>
   <view>
     昵称
-    <input value='昵称' placeholder='请输入昵称' maxlength='12'/>
+    <input value='昵称' placeholder='请输入昵称' maxlength='11'/>
   </view>
 </view>
 <view class='btn_box'>

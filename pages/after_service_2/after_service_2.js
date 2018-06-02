@@ -13,7 +13,7 @@ Page({
     image3_src: "",
     cause: "",
     remark: "",
-    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 60,
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     address_width: wx.getSystemInfoSync().windowWidth * 0.84 - 40,
     other_input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
     address_left: wx.getSystemInfoSync().windowWidth * 0.08 + 20,

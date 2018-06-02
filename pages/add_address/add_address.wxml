@@ -3,7 +3,7 @@
 <toast id='toast' />
 <form bindsubmit="formBindsubmit" >
 <view class='body'>
-  <view>联系人：<input style='width:{{input_width}}px;' maxlength='10' name="CONSIGNEE" placeholder='请填写收货人的姓名' value='{{CONSIGNEE}}' type='text'/></view>
+  <view>联系人：<input style='width:{{input_width}}px;' maxlength='11' name="CONSIGNEE" placeholder='请填写收货人的姓名' value='{{CONSIGNEE}}' type='text'/></view>
   <view>手机号：<input style='width:{{input_width}}px;' name="TAKEPHONE" placeholder='请填写收货人的手机号码' value='{{TAKEPHONE}}' maxlength='11' type='number'/></view>
  <navigator hover-class="btn-hover" url="../amap_address/amap_address">
   <view>收货地址：<image class='img1' src='../../images/address_aaa.png'/><image class='img2' src='../../images/right.png'/><input style='width:{{input_width2}}px;' name='address' placeholder='点击选择' disabled='true' value='{{address}}'/>

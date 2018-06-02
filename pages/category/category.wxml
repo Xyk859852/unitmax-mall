@@ -3,6 +3,7 @@
 <navigator id="search_box" url="../search/search">
 <view id="search">搜索</view>
 </navigator>
+<view class='f5f5f5'></view>
 <view class='category_box'>
   <!-- <scroll-view class='category_left' bindtap='getchildren'>
     <view data-id='1' class="{{tabArr.curHdIndex=='1' || tabdefault=='1'? 'on' : ''}}">分类1</view>
@@ -33,5 +34,5 @@
   </view>
 </view>
 <!-- 声明需要使用的模板文件 -->
-<import src ="../bottom/bottom.wxml"/>
-<template is="msgItem" data="{{bottom_img1:'../../images/home.png',bottom_img2:'../../images/order_s.png',bottom_img3:'../../images/shopping.png',bottom_img4:'../../images/mine.png'}}"/> 
+<!-- <import src ="../bottom/bottom.wxml"/>
+<template is="msgItem" data="{{bottom_img1:'../../images/home.png',bottom_img2:'../../images/order_s.png',bottom_img3:'../../images/shopping.png',bottom_img4:'../../images/mine.png'}}"/>  -->

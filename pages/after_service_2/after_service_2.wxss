@@ -9,8 +9,8 @@ page{
   background-color: #ffffff;
 }
 .commodity_li image{
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   float: left;
 }
 .commodity_li_right{
@@ -21,21 +21,27 @@ page{
   font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   word-break: break-all;
 }
 .commodity_li_price{
   color: #ff6692;
-  font-size: 16px;
-  margin-top:10px;
+  font-size: 14px;
+  margin-top:5px;
   height: 27px;
   line-height: 27px;
 }
 .commodity_li_tip{
   font-size: 12px;
-  color: #cccccc;
-  margin-top: 5px;
+  color: #aaaaaa;
+  margin-top: 2px;
+}
+.num_box{
+  float: right;
+  overflow: hidden;
+  color: #666;
+  font-weight: bold;
 }
 .after_service{
   margin-top: 10px;
@@ -75,15 +81,16 @@ page{
   font-size: 14px;
   padding:10px 4%;
   width: 92%;
-  margin-top: 10px;
+  line-height: 1.4rem;
+  /* margin-top: 10px; */
 }
 .other_right,.other_input{
   float: right;
 }
 .other_right_img{
   float: right;
-  width: 20px;
-  height: 20px;
+  width: 1.4rem;
+  height: 1.4rem;
   margin-left:5px;
 }
 .other_input_price{

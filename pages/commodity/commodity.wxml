@@ -1,11 +1,14 @@
 <!--commodity.wxml-->
 <toast id='toast' />
-<view class="search_box,{{search?'show1':'hide'}} ">
+<!-- <view class="search_box">
   <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
     <image src='../../images/search.png'></image>
     <input bindtap='back' type='text' confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="color:#cccccc;" disabled='true' placeholder='{{keywords}}'></input>
   </view>
-</view>
+</view> -->
+<view hover-class="btn-hover" id="search_box" bindtap='back'>
+    <view id="search"><image src='../../images/search.png'></image>{{keywords}}</view>
+  </view>
 <view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">
     <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">最新</view>

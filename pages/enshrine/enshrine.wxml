@@ -7,8 +7,8 @@
       <image src='{{IP}}{{item.path}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.goods_name}}</view>
-        <view class='commodity_li_price'>￥{{item.goods_price}}</view>
-        <view class='commodity_li_tip'>{{item.GOODEVARATECOUNT}}条评价 好评{{item.GOODEVARATE}}%</view>
+        <view class='commodity_li_price'>￥{{item.goods_price}}<text>包邮</text></view>
+        <view class='commodity_li_tip'>销量{{item.goods_salenum}}</view>
       </view>
     </navigator>
   </scroll-view>

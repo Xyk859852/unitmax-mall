@@ -1,204 +1,294 @@
 /**commodity_detail.wxss**/
-page{
+
+page {
   padding-bottom: 53px;
 }
-.slide-image{
-  width:100%;
+
+.slide-image {
+  width: 100%;
 }
-.commodity_detail_title{
-  background-color: #ffffff;
-  padding: 10px 4%;
+
+.commodity_detail_title {
+  background-color: #fff;
+  padding: 0 4% 10px 4%;
   border: #f5f5f5 1px solid;
   overflow: hidden;
 }
-.commodity_detail_title_left{
+
+.commodity_detail_title_left {
   float: left;
 }
-.commodity_detail_title_right{
+
+.commodity_detail_title_box {
+  overflow: hidden;
+  position: relative;
+}
+
+.commodity_detail_title_right {
   width: 30px;
-  float: right;
+  /* float: right; */
   padding: 0;
   margin: 0;
   line-height: 16px;
-  background-color: #ffffff;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -15px;
 }
-.commodity_detail_title_right image{
+
+.commodity_detail_title_right image {
   width: 30px;
   height: 30px;
 }
-.commodity_detail_title_right view{
-  color: #cccccc;
+
+.commodity_detail_title_right view {
+  color: #ccc;
   text-align: center;
   font-size: 12px;
 }
-.commodity_title{
-  font-size: 16px;
+
+.commodity_title {
+  font-size: 14px;
+  padding: 10px 0;
 }
-.commodity_price{
+
+.commodity_price {
   color: #ff6692;
   font-size: 16px;
-  margin-top:10px;
+  font-weight: bold;
 }
-.commodity_tip{
+
+.commodity_tip {
   font-size: 12px;
-  color: #aaaaaa;
+  color: #aaa;
   margin-top: 5px;
 }
-.commodity_tip text{
+
+.commodity_tip text {
   float: right;
+  margin-left: 4%;
 }
-.body{
+
+.body {
   margin-top: 10px;
 }
-.nav{width:92%;height:40px;line-height:40px;display:flex;flex-direction:row;background-color: #ffffff;margin-top:10px;border-bottom:1px solid #f5f5f5;padding:0 4%;}
-.default{
-  line-height:40px;text-align:center;flex:1;border-right:1px solid #f5f5f5;color:#000;font-size:14px;border-bottom:1px solid #f5f5f5;
+
+.nav {
+  width: 92%;
+  /* height: 40px; */
+  /* line-height: 40px; */
+  /* display: flex; */
+  flex-direction: row;
+  background-color: #fff;
+  margin-top: 10px;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 10px 4%;
+  color:#666;
+  font-size: 12px;
 }
-.red{color:#ff6692;
-  line-height:40px;text-align:center;flex:1;border-right:1px solid #f5f5f5;font-size:14px;border-bottom:1px solid #ff6692;
-  }
-.show{display:block;font-size:0;}
-.hidden{display:none;}
-.detail_img{width: 100%;display: block;}
-.specification_box{
-  background-color: #ffffff;
+
+/* .default {
+  line-height: 40px;
+  text-align: center;
+  flex: 1;
+  border-right: 1px solid #f5f5f5;
+  color: #000;
+  font-size: 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.red {
+  color: #ff6692;
+  line-height: 40px;
+  text-align: center;
+  flex: 1;
+  border-right: 1px solid #f5f5f5;
+  font-size: 14px;
+  border-bottom: 1px solid #ff6692;
+} */
+
+.show {
+  display: block;
+  font-size: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.detail_img {
+  width: 100%;
+  display: block;
+}
+
+.specification_box {
+  background-color: #fff;
   padding: 10px 4%;
 }
-.specification{
+
+.specification {
   overflow: hidden;
 }
-.specification_left{
+
+.specification_left {
   /* float: left;
   width: 30%; */
-  color: #aaaaaa;
-  line-height: 30px;
+  color: #333;
+  /* line-height: 30px; */
   font-size: 14px;
 }
-.specification_right{
+
+.specification_right {
   float: left;
   width: 70%;
-  color: #aaaaaa;
+  color: #aaa;
   line-height: 30px;
   font-size: 14px;
 }
-.evaluate{
-  background-color: #ffffff;
+
+.evaluate {
+  background-color: #fff;
   padding: 10px 4%;
   border-bottom: #f5f5f5 1px solid;
   overflow: hidden;
 }
-.evaluate_nickname{
+
+.evaluate_nickname {
   font-size: 14px;
-  color: #aaaaaa;
+  color: #aaa;
 }
-.evaluate_nickname text{
+
+.evaluate_nickname text {
   float: right;
   font-size: 12px;
   margin-top: 2px;
 }
-.evaluate_container{
-  font-size: 16px;
-  margin-top: 5px;
+
+.evaluate_container {
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  padding-top: 10px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-all
+  word-break: break-all;
 }
-.evaluate_img_box{
+
+.evaluate_img_box {
   overflow: hidden;
 }
-.evaluate_img_box image{
+
+.evaluate_img_box image {
   width: 29.2%;
   margin: 2%;
   float: left;
 }
-.evaluate image{
-  width: 30px;
-  height: 30px;
+
+.evaluate image {
+  width: 20px;
+  height: 20px;
   float: left;
   border-radius: 15px;
 }
-.evaluate_right{
+
+.evaluate_right {
   float: left;
   margin-left: 4%;
 }
-.evaluate_more{
-  background-color: #ffffff;
+
+.evaluate_more {
+  background-color: #fff;
   font-size: 12px;
-  text-align: center;
-  line-height: 30px;
+  /* text-align: center; */
+  /* line-height: 30px; */
+  text-align: right;
+  float: right;
+  color: #fe6500;
+  margin-top: 2px;
 }
-.no_evaluate{
+
+.no_evaluate {
   font-size: 14px;
   text-align: center;
   padding: 10px 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
-.footer{
+
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
   height: 53px;
   overflow: hidden;
   width: 100%;
-
+  color:#333;
 }
-.shopping_cart{
-  background-color: #ffffff;
+
+.shopping_cart {
+  background-color: #fff;
   width: 16%;
   float: left;
   height: 52px;
   border-top: #f5f5f5 1px solid;
   position: relative;
 }
-.shopping_cart image{
+
+.shopping_cart image {
   width: 20px;
   height: 20px;
   display: block;
   margin: 0 auto;
-  margin-top: 5px; 
+  margin-top: 5px;
 }
-.shopping_cart view{
+
+.shopping_cart view {
   font-size: 12px;
   text-align: center;
   margin-top: 5px;
 }
-.contact-button-box,.service{
+
+.contact-button-box, .service {
   width: 100%;
   position: absolute;
   left: 0;
   top: -5px;
 }
-.number{
+
+.number {
   width: 16px;
   height: 16px;
   position: absolute;
   right: 3px;
   top: -2px;
   background-color: #fe6500;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   line-height: 16px;
-  font-size: 8px!important;
+  font-size: 8px !important;
   border-radius: 8px;
 }
-.buy{
-  width:26%;
+
+.buy {
+  width: 26%;
   float: left;
   line-height: 53px;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   background-color: #fea900;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 0px;
 }
-.add_cart{
-  width:26%;
+
+.add_cart {
+  width: 26%;
   float: left;
   line-height: 53px;
   background-color: #fe6500;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
+  border-radius: 0;
 }

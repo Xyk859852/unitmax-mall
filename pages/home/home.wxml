@@ -49,6 +49,12 @@
         <view class='category_name'>{{item.NAME}}</view>
       </navigator>
     </view>
+    <view class='category_box'>
+      <navigator hover-class="btn-hover" url='../category/category'>
+        <image src='../../images/index_news.png' style='height:{{category_img_width}}px'></image>
+        <view class='category_name'>全部品类</view>
+      </navigator>
+    </view>
   </view>
   <!-- <view class='classify_box'>
   <image class='classify_left' src='../../images/category_title.jpg'></image>

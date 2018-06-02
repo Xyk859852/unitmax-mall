@@ -51,7 +51,8 @@ Page({
    */
   data: {
     list:[],
-    IP:app.IP
+    IP:app.IP,
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
   },
 
   /**
