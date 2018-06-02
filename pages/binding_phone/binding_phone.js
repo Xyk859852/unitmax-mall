@@ -281,7 +281,7 @@ Page({
       success: function(res) {
         if(res.data.result=="true"){
           wx.setStorageSync("user", res.data.user);
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../mine/mine',
           })
         }

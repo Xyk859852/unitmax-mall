@@ -41,17 +41,23 @@ page{
 }
 .commodity_li_price{
   color: #ff6692;
-  font-size: 16px;
-  margin-top:10px;
+  font-size: 14px;
+  margin-top:3px;
   height: 27px;
   line-height: 27px;
 }
 .commodity_li_tip{
   font-size: 12px;
   color: #cccccc;
-  margin-top: 5px;
+  margin-top: 2px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 .num_box{
+  font-size: 14px;
   float: right;
   overflow: hidden;
 }
@@ -63,40 +69,53 @@ page{
   border: #f5f5f5 1px solid;
   float: left;
 }
-
+.smallbtn1{
+  border-left: none;
+  border-right: none;
+}
 .footer{
   position: fixed;
   bottom: 53px;
   left: 0;
-  height: 40px;
+  height: 60px;
   background-color: #ffffff;
   overflow: hidden;
-  width: 92%;
-  padding: 10px 4%;
+  width: 96%;
+  padding-left: 4%;
   z-index: 10;
-  line-height: 40px;
+  line-height: 60px;
+}
+.footer .all_box{
+  float: right;
+  margin-right: 5px;
+  font-size: 12px;
+  padding: 10px;
+  line-height: 20px;
+  text-align: right;
+  color: #666666;
 }
 .footer .all{
   color: #fe6500;
-  float: right;
-  margin-right: 4%;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .check_label{
-  font-size: 12px;
+  font-size: 14px;
+  color: #666666;
 }
 .check_label1{
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 4%;
+  color: #666666;
 }
 .buy{
-  width:60px;
+  padding: 0;
+  width:100px;
   float: right;
-  height: 40px;
-  line-height: 30px;
+  height: 60px;
+  line-height: 60px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;
   font-size: 14px;
-  border-radius: 5px;
 }

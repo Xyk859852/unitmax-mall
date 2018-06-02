@@ -414,7 +414,7 @@ Page({
           // });
         } else {//未登录
           if (res.data.result == "1002") {//未登录
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../mine/mine',
             })
           } else {
@@ -551,7 +551,7 @@ Page({
           });
           that.calculateFinalPrice();
         } else if (res.data.result == "1002") {//未登录
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../mine/mine',
           })
         }

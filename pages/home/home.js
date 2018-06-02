@@ -23,12 +23,13 @@ Page({
     duration1: 30,
     size: 14,
     newsinterval: 300,
-    scrolltxt_box_width: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
+    scrolltxt_box_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.92 * 0.158,
     category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29 * 0.96,
-    swiper_width: wx.getSystemInfoSync().windowWidth * 0.92 - 40,
-    swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
-    category_commodity_container_width: wx.getSystemInfoSync().windowWidth * 0.28 - 2
+    swiper_width: (wx.getSystemInfoSync().windowWidth-1) * 0.92 - 40,
+    swiper_container_width: wx.getSystemInfoSync().windowWidth * 0.84 - 80,
+    category_commodity_container_width: wx.getSystemInfoSync().windowWidth * 0.28 - 2,
+    news_navigator_view_width: wx.getSystemInfoSync().windowWidth * 0.08 +40
   },
   onLoad: function () {
     this.toast = this.selectComponent("#toast");
@@ -168,6 +169,9 @@ Page({
   },
   gohome: function (e) {
     tempObj.gohome(e);
+  },
+  gocommodity: function (e) {
+    tempObj.gocommodity(e);
   },
   gocategory: function (e) {
     tempObj.gocategory(e);

@@ -1,5 +1,6 @@
 var header = getApp().globalData.header;
 var util = require("../../utils/util.js");
+var tempObj = require("../../utils/bottom.js");
 //commodity.js
 //获取应用实例
 const app = getApp()
@@ -352,5 +353,20 @@ Page({
   back: function(e){
     keywords = "";
     wx.navigateBack({ changed: true });//返回上一页  
-  }
+  },
+   gohome: function (e) {
+    tempObj.gohome(e);
+  },
+  gocommodity: function (e) {
+    tempObj.gocommodity(e);
+  },
+  gocategory: function (e) {
+    tempObj.gocategory(e);
+  },
+  goshoppingcart: function (e) {
+    tempObj.goshoppingcart(e);
+  },
+  getUserInfo: function (e) {
+    tempObj.getUserInfo(e)
+  },
 })

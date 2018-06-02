@@ -43,7 +43,7 @@ Page({
             isAll: false,
           });
         } else if (res.data.result == "noLogin") {//未登录
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../mine/mine',
           })
         }
@@ -262,7 +262,7 @@ Page({
             url: '../place_order/place_order?IDS=' + IDS
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../mine/mine',
           })
         } else if (res.data.result == "10001") {//未设置支付密码
@@ -333,6 +333,9 @@ Page({
   gohome: function (e) {
     tempObj.gohome(e);
   },
+  gocommodity: function (e) {
+    tempObj.gocommodity(e);
+  },
   gocategory: function (e) {
     tempObj.gocategory(e);
   },
@@ -399,7 +402,7 @@ Page({
                     isAll: false,
                   });
                 } else if (res.data.result == "noLogin") {//未登录
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '../mine/mine',
                   })
                 }

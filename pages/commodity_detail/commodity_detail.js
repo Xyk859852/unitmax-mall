@@ -134,7 +134,7 @@ Page({
             content: '用户是否去登陆？',
             success: function (sm) {
               if (sm.confirm) {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../mine/mine',
                 })
               }
@@ -197,7 +197,7 @@ Page({
             content: '用户是否去登陆？',
             success: function (sm) {
               if (sm.confirm) {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../mine/mine',
                 })
               }
@@ -228,7 +228,7 @@ Page({
     });
   },
   go_shopping_cart: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../shopping_cart/shopping_cart',
     })
   },
