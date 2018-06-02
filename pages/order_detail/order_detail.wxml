@@ -7,7 +7,7 @@
 <view class='body' wx:if="{{order.DELETESTATUS == '0'}}">
   <view class='top'>
     <image src='../../images/IMG_214.png' />
-    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking">
+    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking?ORDERFORM_ID={{order.ORDERFORM_ID}}">
       <view wx:if="{{order.ORDER_STATUS == '1'}}">待付款</view>
       <view wx:if="{{order.ORDER_STATUS == '2'}}">待发货</view>
       <view wx:if="{{order.ORDER_STATUS == '3'}}">待收货</view>

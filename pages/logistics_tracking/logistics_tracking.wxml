@@ -1,51 +1,92 @@
 <!--pages/logistics_tracking/logistics_tracking.wxml-->
+<!-- 交易关闭 -->
+<view class='body' wx:if="{{order.ORDER_STATUS == 6}}">
+  <view class='tracking'>
+    <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view class='white'></view>
+      <view>交易关闭</view>
+      <view class='time'>{{order.CLOSE_TIME}}</view>
+    </view>
+    <view class='finally_circle,circle'></view>
+  </view>
+  <view class='tracking'  wx:if="{{order.CLOSE_PRESTATUS == 4 || order.CLOSE_PRESTATUS == 5}}">
+    <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view class='white'></view>
+      <view>您已签收，订单完成</view>
+      <view class='time'>{{order.RECEIVE_TIME}}</view>
+    </view>
+    <view class='circle'></view>
+  </view>
+  <view class='tracking' wx:if="{{order.CLOSE_PRESTATUS >= 3}}">
+    <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view>您的订单已经发货，请注意签收</view><view>物流：{{order.EXPRESS_NAME}} 单号: {{order.EXPRESS_NO}}</view>
+      <view class='time'>{{order.SHIPTIME}}</view>
+    </view>
+    <view  class='circle'></view>
+  </view>
+  <view class='tracking' wx:if="{{order.CLOSE_PRESTATUS >= 2}}">
+    <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view>支付完成，等待发货</view>
+      <view class='time'>{{order.PAYTIME}}</view>
+    </view>
+    <view  class='circle'></view>
+  </view>
+  <view class='tracking' wx:if="{{order.CLOSE_PRESTATUS >= 1}}">
+    <view class='first_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
+      <view class='white'></view>
+      <view>您的订单已提交，请尽快支付</view>
+      <view class='time'>{{order.ADDTIME}}</view>
+    </view>
+     <view  class='circle'></view>
+  </view>
+</view>
 <!-- 订单完成 -->
-<view class='body'>
+<view class='body' wx:if="{{order.ORDER_STATUS == 4 || order.ORDER_STATUS == 5}}">
   <view class='tracking'>
     <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
       <view>您已签收，订单完成</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.RECEIVE_TIME}}</view>
     </view>
     <view class='finally_circle,circle'></view>
   </view>
   <view class='tracking'>
     <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
-      <view>您的订单已经发货，请注意签收</view><view>物流：申通快递 单号: 453266</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view>您的订单已经发货，请注意签收</view><view>物流：{{order.EXPRESS_NAME}} 单号: {{order.EXPRESS_NO}}</view>
+      <view class='time'>{{order.SHIPTIME}}</view>
     </view>
-    <view class='circle'></view>
+    <view  class='circle'></view>
   </view>
   <view class='tracking'>
     <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view>支付完成，等待发货</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.PAYTIME}}</view>
     </view>
-    <view class='circle'></view>
+    <view  class='circle'></view>
   </view>
   <view class='tracking'>
     <view class='first_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
       <view>您的订单已提交，请尽快支付</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.ADDTIME}}</view>
     </view>
-    <view class='circle'></view>
+     <view  class='circle'></view>
   </view>
 </view>
 <!-- 待收货 -->
-<view class='body'>
+ <view class='body'  wx:if="{{order.ORDER_STATUS == 3}}">
   <view class='tracking'>
     <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
-      <view>您的订单已经发货，请注意签收</view><view>物流：申通快递 单号: 453266</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view>您的订单已经发货，请注意签收</view><view>物流：{{order.EXPRESS_NAME}} 单号: {{order.EXPRESS_NO}}</view>
+      <view class='time'>{{order.SHIPTIME}}</view>
     </view>
     <view class='finally_circle,circle'></view>
   </view>
   <view class='tracking'>
     <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view>支付完成，等待发货</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.PAYTIME}}</view>
     </view>
     <view class='circle'></view>
   </view>
@@ -53,18 +94,18 @@
     <view class='first_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
       <view>您的订单已提交，请尽快支付</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.ADDTIME}}</view>
     </view>
     <view class='circle'></view>
   </view>
-</view>
+</view> 
 <!-- 待发货 -->
-<view class='body'>
+ <view class='body' wx:if="{{order.ORDER_STATUS == 2}}">
   <view class='tracking'>
     <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
       <view>支付完成，等待发货</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.SHIPTIME}}</view>
     </view>
     <view class='finally_circle,circle'></view>
   </view>
@@ -72,18 +113,18 @@
     <view class='first_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
       <view>您的订单已提交，请尽快支付</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.PAYTIME}}</view>
     </view>
     <view class='circle'></view>
   </view>
-</view>
+</view> 
 <!-- 待支付 -->
-<view class='body'>
+ <view class='body' wx:if="{{order.ORDER_STATUS == 1}}">
   <view class='tracking'>
     <view class='tracking_right,tracking_right2' style='padding-left:{{tracking_right}}px;'>
       <view>您的订单已提交，请尽快支付</view>
-      <view class='time'>2018-05-16 16:11:04</view>
+      <view class='time'>{{order.ADDTIME}}</view>
     </view>
     <view class='finally_circle,circle'></view>
   </view>
-</view>
+</view> 

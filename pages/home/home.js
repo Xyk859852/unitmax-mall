@@ -107,11 +107,11 @@ Page({
   goAdvertising: function (e) {
     console.log(e);
     var types = e.currentTarget.dataset.type;
-    if (types == 1) {
+    if (types == 1) {//超链接
       wx.navigateTo({
-        url: '../news_detail_url/news_detail_url?url=' + e.currentTarget.dataset.url
+        url: '../advert_detail_url/advert_detail_url?url=' + e.currentTarget.dataset.url
       })
-    } else {
+    } else {//富文本
       wx.navigateTo({
         url: "../advertising_detail/advertising_detail?ID=" + e.currentTarget.dataset.id
       })
