@@ -18,26 +18,31 @@
 }
 .top{
   position: relative;
-}
-.top image{
+  background-color:#fff8e9;
   width: 100%;
   height:60px;
 }
 .top navigator{
-  position: absolute;
-  top: 50%;
-  margin-top: -12px;
-  line-height: 20px;
-  left: 4%;
+  line-height: 60px;
+  margin-left: 4%;
   color: #ffffff;
   font-size: 16px;
 }
 .top navigator view{
+  line-height: 60px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  word-break: break-all
+  word-break: break-all;
+  color: #fe6500;
+}
+.top navigator view image{
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-right: 4%;
 }
 .top .time{
   font-size: 12px;
@@ -96,13 +101,6 @@
 }
 .location{
   margin-left: 4%;
-}
-.commodity_list{
-    margin-top: 10px;
-}
-.commodity_li{
-    width: 92%;
-      overflow: hidden;
 }
 .commodity_list{
   margin-top: 10px;
@@ -194,13 +192,28 @@
   font-size: 14px;
 }
 .contact{
-  padding: 10px 4%;
   margin-top: 10px;
-  background-color: #ffffff;
   overflow: hidden;
-  text-align: center;
-  font-size: 14px;
+  background-color: #ffffff;
+  display: flex;
 }
+  .contact view{
+    width: 50%;
+    float: left;
+    line-height: 40px;
+    font-size: 14px;
+  text-align: center;
+  }
+    .btn1{
+    border-right: 1px #f5f5f5 solid;
+  }
+  .contact image{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -2px;
+  }
 .order_detail{
   padding: 10px 4%;
   margin-top: 10px;

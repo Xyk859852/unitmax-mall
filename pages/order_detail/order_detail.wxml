@@ -6,17 +6,15 @@
 </view>
 <view class='body' wx:if="{{order.DELETESTATUS == '0'}}">
   <view class='top'>
-    <image src='../../images/IMG_214.png' />
-    <navigator style='width:{{contact_view_width}}px;' url="../logistics_tracking/logistics_tracking?ORDERFORM_ID={{order.ORDERFORM_ID}}">
-      <view wx:if="{{order.ORDER_STATUS == '1'}}">待付款</view>
-      <view wx:if="{{order.ORDER_STATUS == '2'}}">待发货</view>
-      <view wx:if="{{order.ORDER_STATUS == '3'}}">待收货</view>
-      <view wx:if="{{order.ORDER_STATUS == '4'}}">待评价</view>
-      <view wx:if="{{order.ORDER_STATUS == '5'}}">交易成功</view>
-      <view wx:if="{{order.ORDER_STATUS == '6'}}">交易关闭 </view>
-      <!-- <view class='time'>2018-05-18 15:00</view> -->
+    <navigator url="../logistics_tracking/logistics_tracking?ORDERFORM_ID={{order.ORDERFORM_ID}}">
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '1'}}"><image src='../../images/seller.png'/>您的订单已提交，请尽快支付</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '2'}}"><image src='../../images/seller.png'/>支付完成，等待发货</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '3'}}"><image src='../../images/seller.png'/>您的订单已经发货，请注意签收</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '4'}}"><image src='../../images/seller.png'/>待评价</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '5'}}"><image src='../../images/seller.png'/>您已签收，订单完成</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '6'}}"><image src='../../images/seller.png'/>交易关闭 </view>
+     <image class="right" src="../../images/right_fe6500.png"></image> 
     </navigator>
-     <image class="right" src="../../images/right_fff.png"></image> 
   </view>
 
   <view class='address_box'>
@@ -37,12 +35,12 @@
     </view>
   </view>
   <view class='commodity_list'>
-    <view class='other'>
+     <view class='other'>
       <image src='../../images/seller.png' />
-      <label class='seller_name'>聚脉商城</label>
-      <image class='location' src='../../images/address.png' />
-      <image src='../../images/right.png' />
-    </view>
+      <label class='seller_name'>商品信息</label>
+      <!-- <image class='location' src='../../images/address.png' /> -->
+      <!-- <image src='../../images/right.png' /> -->
+    </view> 
     <block wx:for="{{order.detailList}}" wx:key="this">
       <view bindtap='goodsDetail' data-goods_id='{{item.GOODS_ID}}' class='commodity_li'>
         <image src='{{appIP}}static/uploadImgs/order/goodsMainImg/{{item.GOODS_IMG}}'></image>
@@ -71,7 +69,10 @@
     <!-- <view class='actual'>实付款<text class='other_right'>￥100.00</text>
     <image src='../../images/order_price_bg.png'/></view> -->
   </view>
-  <view class='contact' bindtap='callmobile'>电话联系卖家</view>
+  <view class='contact'>
+  <view bindtap='callmobile' style='width:{{btn1_width}}px;' class='btn1'><image src='../../images/callcenter2_fe6500.png'/>平台热线</view>
+  <view><image src='../../images/callcenter1_fe6500.png'/>在线客服</view>
+  </view>
   <view class='order_detail'>
     <view class='other'>订单编号：{{order.ORDER_NO}}</view>
     <view class='other'>创建时间：{{order.ADDTIME}}</view>

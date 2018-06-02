@@ -50,3 +50,6 @@ navigator{
 	border-radius: 2px;
 	background: #ffffff;
 }
+input::placeholder{
+  color: #aaaaaa;
+}

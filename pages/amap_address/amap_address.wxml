@@ -8,6 +8,7 @@
 </view><image bindtap='getRegeo' src='../../images/location.png'/></view>
 <view class="title,{{content?'show1':'hide'}}">附近地址</view>
 <view class="title,{{content1?'show1':'hide'}}">搜索地址</view>
+<view class='no_data'>没有相关地址</view>
 <view data-keywords="{{j.name}}" data-adname='{{j.adname}}' data-cityname='{{j.cityname}}' data-pname='{{j.pname}}' data-district='{{j.name}}'  data-location='{{j.location}}' bindtap="bindSearch" class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">{{j.name}}
   <view>{{j.pname}}{{j.cityname}}{{j.adname}} {{j.address}}</view>
 </view>

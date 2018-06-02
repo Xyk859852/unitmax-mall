@@ -22,7 +22,7 @@
 
 </view>
 <view class='footer'>
- <navigator url="../add_address/add_address?TYPE=save">
-<button>新增地址</button>
+ <navigator hover-class="btn-hover" url="../add_address/add_address?TYPE=save">
+<button hover-class="btn-hover"><image src='../../images/addaddress.png'/>新增地址</button>
 </navigator>
 </view>

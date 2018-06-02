@@ -1,7 +1,7 @@
 <!--mine.wxml-->
 <toast id='toast' />
 <view class="container" style='background-image: url(../../images/1.png);'>
-  <!-- <button open-type="getUserInfo"  bindgetuserinfo="updateUser">123<image class='refresh' src='../../images/refresh.png'/></button> -->
+   <button class='refresh'><image class='refresh_img' src='../../images/refresh.png'/></button> 
 
   <view class="userinfo">
     <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">

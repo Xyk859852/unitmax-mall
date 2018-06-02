@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address:""
+    address:"",
+    input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
+    input_width2: wx.getSystemInfoSync().windowWidth * 0.84 - 105
   },
 
   /**
