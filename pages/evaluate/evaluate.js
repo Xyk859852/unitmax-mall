@@ -61,7 +61,7 @@ Page({
     selected1: false,
     selected2: false,
     selected3: false,
-    evaluate_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30
+    evaluate_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20
   },
 
   /**

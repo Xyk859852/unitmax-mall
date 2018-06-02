@@ -9,25 +9,34 @@
 .evaluate_list{
   margin-top: 10px;
 }
-.evaluate{
-  background-color: #ffffff;
+.evaluate {
+  background-color: #fff;
   padding: 10px 4%;
   border-bottom: #f5f5f5 1px solid;
   overflow: hidden;
-  border-radius: 5px;
 }
-.evaluate_nickname{
+
+.evaluate_nickname {
   font-size: 14px;
-  color: #aaaaaa;
+  color: #aaa;
 }
-.evaluate_nickname text{
+
+.evaluate_nickname text {
   float: right;
   font-size: 12px;
   margin-top: 2px;
 }
-.evaluate_container{
+
+.evaluate_container {
+  width: 100%;
   font-size: 14px;
-  margin-top: 5px;
+  color: #333;
+  padding-top: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 .evaluate_img_box{
   overflow: hidden;
@@ -38,10 +47,10 @@
   float: left;
 }
 .evaluate image{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   float: left;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .evaluate_right{
   float: left;

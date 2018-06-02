@@ -11,8 +11,8 @@
     <image src='{{item.HEADIMGURL}}'/>
     <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
       <view class='evaluate_nickname'>{{item.NAME}}<text>{{item.addTime}}</text></view>
-      <view class='evaluate_container'>{{item.evaluate_info}}</view>
     </view>
+      <view class='evaluate_container'>{{item.evaluate_info}}</view>
   </view>
 </view>
 <view class='no_data' wx:else>
