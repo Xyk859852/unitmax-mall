@@ -3,6 +3,10 @@ var header = getApp().globalData.header;
 // pages/evaluate_management/evaluate_management.js
 var page = 1;
 var GetList = function (that) {
+  wx.showToast({
+    title: "加载中...",
+    icon: "loading"
+  })
   wx.request({
     url: app.IP + 'chatEvaluate/findEvaluateForBuyer',
     data: {
@@ -25,7 +29,9 @@ var GetList = function (that) {
       console.log(l.length);
     },
     fail: function (res) { },
-    complete: function (res) { },
+    complete: function (res) { 
+      wx.hideToast();
+    },
   })
 }
 Page({
@@ -57,11 +63,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })
     var that = this;
     var user = wx.getStorageSync("user");
     console.log(user);

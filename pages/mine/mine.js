@@ -33,6 +33,31 @@ Page({
         avatarUrl: user.HEADIMGURL
       })
     }
+
+    //加载信息
+    wx.request({
+      url: app.IP + 'chatUser/userCenter',
+      header: header,
+      method: 'GET',
+      success: function (res) {
+        if (res.data.result == "true") {
+          that.setData({ orderCount: res.data.orderCount});
+        }
+
+        if (res.data.result == "1002") {
+          wx.navigateTo({
+            url: '../mine/mine',
+          });
+        }
+      },
+      fail: function (res) {
+
+       },
+      complete: function (res) {
+
+       },
+    });
+
   },
   onLoad: function () {
     this.toast = this.selectComponent("#toast");

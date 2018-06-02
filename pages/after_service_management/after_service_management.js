@@ -2,6 +2,10 @@ const app = getApp();
 var header = getApp().globalData.header;
 var page = 1;
 var GetList = function (that) {
+  wx.showToast({
+    title: "加载中...",
+    icon: "loading"
+  });
   wx.request({
     url: app.IP + 'chatSellafter/sellafterList',
     data: {
@@ -30,7 +34,7 @@ var GetList = function (that) {
      },
     complete: function (res) { 
       // complete
-      //wx.hideToast();
+      wx.hideToast();
     },
   })
 
@@ -52,11 +56,6 @@ Page({
    */
   onLoad: function (options) {
     this.toast = this.selectComponent("#toast");
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    });
     var that = this;
     page = 1;
     that.setData({

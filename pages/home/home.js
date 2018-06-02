@@ -35,7 +35,7 @@ Page({
     this.toast = this.selectComponent("#toast");
     var that = this;
     wx.showToast({
-      title: "Loading...",
+      title: "加载中...",
       icon: "loading"
     })   
     wx.request({
@@ -108,11 +108,11 @@ Page({
   goAdvertising: function (e) {
     console.log(e);
     var types = e.currentTarget.dataset.type;
-    if (types == 1) {
+    if (types == 1) {//超链接
       wx.navigateTo({
-        url: '../news_detail_url/news_detail_url?url=' + e.currentTarget.dataset.url
+        url: '../advert_detail_url/advert_detail_url?url=' + e.currentTarget.dataset.url
       })
-    } else {
+    } else {//富文本
       wx.navigateTo({
         url: "../advertising_detail/advertising_detail?ID=" + e.currentTarget.dataset.id
       })
@@ -124,7 +124,7 @@ Page({
    */
   onPullDownRefresh: function () {
     // 显示顶部刷新图标  
-    wx.showToast({ title: "Loading...", icon: "loading", duration: 2000 })
+    wx.showToast({ title: "加载中...", icon: "loading"})
     var that = this;
     wx.request({
       url: getApp().IP + 'chatIndex/index',
@@ -157,7 +157,7 @@ Page({
       },
       complete: function () {
         // complete
-        // wx.hideToast();
+        wx.hideToast();
       }
     })
     // 隐藏导航栏加载框  

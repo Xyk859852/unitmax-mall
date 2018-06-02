@@ -14,7 +14,10 @@ var keywords = '';
 var GOODSTYPE = '';
 var GOODSLEVEL = '';
 var GetList = function (that) {
-  wx.showNavigationBarLoading()
+  wx.showToast({
+    title: "加载中...",
+    icon: "loading"
+  });
   wx.request({
     url: url,
     header:header,
@@ -65,7 +68,7 @@ var GetList = function (that) {
           },
           complete: function () {
             // complete
-            //wx.hideToast();
+            wx.hideToast();
           }
         });
       }
@@ -118,11 +121,6 @@ Page({
       GOODSTYPE = e.GOODSTYPE_ID;
       GOODSLEVEL ='';
     }
-    wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
-    })
     var that = this;
     console.log(e);
     if (e.keywords != null && e.keywords != undefined){

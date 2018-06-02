@@ -29,9 +29,8 @@ Page({
     this.toast = this.selectComponent("#toast");
     
     wx.showToast({
-      title: "Loading...",
-      icon: "loading",
-      duration: 2000
+      title: "加载中...",
+      icon: "loading"
     })
     var that = this;
     ORDER_NO = options.ORDER_NO;
@@ -51,7 +50,7 @@ Page({
       },
       fail: function(res) {},
       complete: function(res) {
-        //wx.hideToast();
+        wx.hideToast();
       },
     })
   },

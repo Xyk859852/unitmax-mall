@@ -65,6 +65,12 @@ Page({
             service_phone: res.data.service_phone
           });
         }
+
+        if (res.data.result == "1002") {
+          wx.navigateTo({
+            url: '../mine/mine',
+          });
+        }
       },
       fail: function (res) { },
       complete: function (res) { },
