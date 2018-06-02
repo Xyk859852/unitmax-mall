@@ -3,7 +3,7 @@
 <view class="container" style='background-image: url(../../images/1.png);'>
    <button class='refresh'><image class='refresh_img' src='../../images/refresh.png'/></button> 
 
-  <view class="userinfo">
+  <navigator class="userinfo" url="../usercenter/usercenter">
     <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
       获取用户信息
     </button>
@@ -11,7 +11,7 @@
       <image class="userinfo-avatar" src='{{avatarUrl}}'></image>
       <view class="userinfo-nickname">{{nickName}}</view>
     </block>
-  </view>
+  </navigator>
 </view>
 <view class='mine_container'>
   <view class='mine_order_state'>
@@ -69,11 +69,11 @@
       <image src='../../images/callcenter.png'></image>
       <view>客服中心</view>
     </navigator>
-    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
+     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>换绑手机</view>
-    </navigator> -->
-    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
+    </navigator>
+     <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
       <image src='../../images/category.png'></image>
       <view>个人信息</view>
     </navigator> -->

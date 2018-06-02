@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "关于星睿"
+    "usingComponents": {
+      "toast": "/components/toast/toast"
+    },
+  "navigationBarTitleText": "关于我们"
 }
