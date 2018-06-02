@@ -8,9 +8,9 @@
 </view>
 <view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">
-    <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">综合</view>
-    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">销量</view>
-    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">价格</view>
+    <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">最新</view>
+    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">销量<image src='../../images/default_up.png'/></view>
+    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">价格<image src='../../images/default.png'/></view>
     <view style='border-left:1px solid #f5f5f5;' class="default" bindtap="selected3">筛选</view>
   </view>
   <view class="{{selected1?'show':'hide'}}">
@@ -47,10 +47,14 @@
       <image src='{{appIP}}{{item.IMGSRC}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-        <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}</view>
-        <view class='commodity_li_tip'>{{item.EVALUATECOUNT}}条评价 好评{{item.GOODEVARATE}}%</view>
+        <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}<text>包邮</text></view>
+        <view class='commodity_li_tip'>销量{{item.GOODS_SALENUM}}</view>
+        <!-- {{item.EVALUATECOUNT}}条评价 好评{{item.GOODEVARATE}}% -->
       </view>
     </navigator>
   </scroll-view>
 </view>
 <view wx:else class='no_data'>暂无数据</view>
+<!-- 声明需要使用的模板文件 -->
+<import src="../bottom/bottom.wxml" />
+<template is="msgItem" data="{{bottom_img1:'../../images/home.png',bottom_img2:'../../images/order_s.png',bottom_img3:'../../images/shopping.png',bottom_img4:'../../images/mine.png'}}" />

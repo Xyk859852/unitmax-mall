@@ -1,4 +1,7 @@
  @import "../bottom/bottom.wxss"; 
+ page{
+   padding-top:42px; 
+ }
  .category1_name{
    color: #ff9c35!important;
  }
@@ -52,25 +55,25 @@
   max-height: 300px;
 }
 #search_box{
-  /* position:fixed;
+   position:fixed;
   top:0;
-  left: 0; */
+  left: 0; 
   width:100%;
   background-color:rgba(255,255,255,1);
-  padding:10rpx 0;
+  padding:5px 0 7px 0;
   z-index:1;
 }
 #search{
   text-align: center;
   width:90%;
-  background-color:rgba(255,255,255,1);
+  background-color:#f5f5f5;
   margin: 0 auto;
-  border-radius: 10rpx;
-  padding: 5rpx 10rpx;
-  line-height: 40rpx;
-  height: 50rpx;
-  font-size: 30rpx;
-  color: #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  line-height: 20px;
+  height: 20px;
+  font-size: 14px;
+  color: #aaaaaa;
 }
 #notice_box{
   padding: 10rpx 4%;
@@ -124,8 +127,8 @@
   float: left;
 }
 #category_box{
-  width: 92%;
-  padding: 4%;
+  width: 96%;
+  padding: 2%;
   background-color: #ffffff;
   overflow: hidden;
   /* margin-top: 10px; */
@@ -142,7 +145,7 @@
   width: 100%;
   font-size: 12px;
   text-align: center;
-  color: #333;
+  color: #666;
 }
 .category_name{
   overflow: hidden;
@@ -166,15 +169,16 @@
   border:#ddd 1px solid;
   padding-bottom:5px;
   border-radius:5px;
+  overflow: hidden;
 }
 .category_commodity_container > image{
   width: 100%;
 }
 .category_commodity_container_title{
-  width: 100%;
-  font-size: 14px;
+  text-align: center;
+  font-size: 12px;
   color: #333;
-  padding: 0 2%;
+  padding: 0 4%;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -183,11 +187,12 @@
 }
 .category_commodity_container_price{
   overflow: hidden;
-  padding: 0 2%;
+  padding: 0 4%;
 }
 .category_commodity_container_price view{
   font-size: 12px;
   color: #ff6692;
+  font-weight: bold;
   /* width: 60%; */
   /* float: left; */
   margin-top: 5px;
@@ -223,16 +228,22 @@
   margin-left: 4%;
 }
 .swiper_item {
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
+  overflow: hidden;
+  background-size:120px 60px;
+  background-repeat:no-repeat;
+  background-position:right;
 }
 .swiper_item .view1{
   float: left;
-  height: 60px;
+  height: 40px;
+  padding: 10px 0;
+  background:linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,0.9));
 }
 .swiper_item .view1 view{
-  height: 30px;
-  line-height: 30px;
+  height: 20px;
+  line-height: 20px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -240,15 +251,15 @@
   word-break: break-all;
 }
 .news_navigator_img{
-  width:60px;
+  width:120px;
   height: 60px;
   float: right;
 }
 .news_navigator_view{
   display: block;
-  width: 60px;
+  /* width: 100px; */
   height: 60px;
-  background:linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+  background:linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0));
   position: absolute;
   right: 0;
   top: 0; 

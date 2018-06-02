@@ -6,8 +6,8 @@ var tempObj = require("../../utils/bottom.js");
 Page({
   data: {
     appIP: app.IP,
-    category_img_width: wx.getSystemInfoSync().windowWidth * 0.7 * 0.27,
-    category_width: wx.getSystemInfoSync().windowWidth /3 -1,
+    category_img_width: ((wx.getSystemInfoSync().windowWidth-1)/3-1) * 0.7,
+    category_width: (wx.getSystemInfoSync().windowWidth-1) /3 -1,
     svLeftHeight: '100',
     tabArr: {
       curHdIndex: 0,
@@ -70,6 +70,9 @@ Page({
   },
   gocategory: function (e) {
     tempObj.gocategory(e);
+  },
+  gocommodity: function (e) {
+    tempObj.gocommodity(e);
   },
   goshoppingcart: function (e) {
     tempObj.goshoppingcart(e);

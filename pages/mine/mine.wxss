@@ -4,7 +4,7 @@
  }
 /**mine.wxss**/
 .container {
-  height: 300px;
+  height: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,18 +18,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:100px;
+  margin-top:20px;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  border-radius: 50%;
-  margin-top: -20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }
 
 .userinfo-nickname {
   color: #fff;
+  font-size: 16px;
+  margin-top: 4px;
 }
 .refresh{
   width: 20px;
@@ -49,7 +50,7 @@
   width:92%;
   overflow: hidden;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 5px;
 	-webkit-box-shadow: 0 5px 8px #dddddd;
 	-moz-box-shadow: 0 5px 8px #dddddd;
 	box-shadow: 0 5px 8px #dddddd;
@@ -80,8 +81,8 @@
   width: 100%;
   text-align: center;
   line-height: 40px;
-  border-top: #eee 1px solid;
-  font-size: 12px;
+  border-top: #efefef 1px solid;
+  font-size: 14px;
   color: #666;
 }
 .mine_order image{
@@ -92,29 +93,35 @@
 }
 .mine_menu{
   overflow: hidden;
-  padding-top: 120px;
+  padding-top: 98px;
 }
 .mine_menu .mine_order_state_container{
-  border-bottom: #eee 1px solid;
+  border-bottom: #efefef 1px solid;
+}
+.no_border{
+  border:none;
 }
 .mine_menu .mine_order_state_container image{
   padding: 0;
 }
 .mine_menu .mine_order_state_container view{
   padding-top:10px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #666;
 }
 .number{
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   position: absolute;
   right: 15px;
   bottom: 35px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;
-  line-height: 20px;
-  font-size: 10px!important;
-  border-radius: 10px;
+  line-height: 16px;
+  font-size: 8px!important;
+  border-radius: 8px;
 }
 .copyright{
   text-align: center;

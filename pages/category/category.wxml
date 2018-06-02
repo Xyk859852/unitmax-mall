@@ -24,7 +24,7 @@
   <view class='category_right'>
     <view class='category_container'>
      <block wx:for="{{goodsTypeList}}"  wx:key="this">
-      <navigator class='category' style='width:{{category_width}}px;' url='../commodity/commodity?GOODSTYPE_ID={{item.goodstype_id}}'>
+      <navigator open-type='redirect' class='category' style='width:{{category_width}}px;' url='../commodity/commodity?GOODSTYPE_ID={{item.goodstype_id}}'>
         <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
         <view>{{item.name}}</view>
       </navigator>

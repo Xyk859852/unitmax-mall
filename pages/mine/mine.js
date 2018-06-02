@@ -180,6 +180,9 @@ Page({
   gohome: function (e) {
     tempObj.gohome(e);
   },
+  gocommodity: function (e) {
+    tempObj.gocommodity(e);
+  },
   gocategory: function (e) {
     tempObj.gocategory(e);
   },

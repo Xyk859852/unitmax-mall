@@ -57,15 +57,15 @@
       <image src='../../images/my_enshrine.png'></image>
       <view>我的收藏</view>
     </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../expense_detail/expense_detail">
+    <navigator hover-class="btn-hover" class='mine_order_state_container,no_border' url="../expense_detail/expense_detail">
       <image src='../../images/expense_detail.png'></image>
       <view>消费明细</view>
     </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../about/about">
+    <navigator hover-class="btn-hover" class='mine_order_state_container,no_border' url="../about/about">
       <image src='../../images/about.png'></image>
       <view>关于我们</view>
     </navigator>
-    <navigator hover-class="btn-hover" class='mine_order_state_container' url="../callcenter/callcenter">
+    <navigator hover-class="btn-hover" class='mine_order_state_container,no_border' url="../callcenter/callcenter">
       <image src='../../images/callcenter.png'></image>
       <view>客服中心</view>
     </navigator>

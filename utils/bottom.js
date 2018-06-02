@@ -43,6 +43,12 @@ function gocategory(e) {
   })
 }
 
+function gocommodity(e) {
+  wx.redirectTo({
+    url: '../commodity/commodity'
+  })
+}
+
 function goshoppingcart(e) {
   var that = this;
   var user = wx.getStorageSync("user");
@@ -77,5 +83,6 @@ function goshoppingcart(e) {
 }
 module.exports.getUserInfo = getUserInfo
 module.exports.gohome = gohome
+module.exports.gocommodity = gocommodity
 module.exports.gocategory = gocategory
 module.exports.goshoppingcart = goshoppingcart

@@ -59,7 +59,7 @@ Page({
         l.unshift(e.detail.value);
       }
       wx.setStorageSync("souList", l);
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../commodity/commodity?keywords=' + e.detail.value
       });
     }else{
@@ -84,7 +84,7 @@ Page({
       l.unshift(e.currentTarget.dataset.keywords);
     }
     wx.setStorageSync("souList", l);
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../commodity/commodity?keywords=' + e.currentTarget.dataset.keywords
     });
   },

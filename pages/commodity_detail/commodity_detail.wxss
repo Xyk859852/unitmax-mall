@@ -1,6 +1,6 @@
 /**commodity_detail.wxss**/
 page{
-  padding-bottom: 60px;
+  padding-bottom: 53px;
 }
 .slide-image{
   width:100%;
@@ -139,7 +139,7 @@ page{
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 60px;
+  height: 53px;
   overflow: hidden;
   width: 100%;
 
@@ -148,7 +148,7 @@ page{
   background-color: #ffffff;
   width: 16%;
   float: left;
-  height: 59px;
+  height: 52px;
   border-top: #f5f5f5 1px solid;
   position: relative;
 }
@@ -157,7 +157,7 @@ page{
   height: 20px;
   display: block;
   margin: 0 auto;
-  margin-top: 10px; 
+  margin-top: 5px; 
 }
 .shopping_cart view{
   font-size: 12px;
@@ -171,22 +171,22 @@ page{
   top: -5px;
 }
 .number{
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   position: absolute;
   right: 3px;
   top: -2px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;
-  line-height: 20px;
-  font-size: 10px!important;
-  border-radius: 10px;
+  line-height: 16px;
+  font-size: 8px!important;
+  border-radius: 8px;
 }
 .buy{
   width:26%;
   float: left;
-  line-height: 60px;
+  line-height: 53px;
   color: #ffffff;
   text-align: center;
   background-color: #fea900;
@@ -196,7 +196,7 @@ page{
 .add_cart{
   width:26%;
   float: left;
-  line-height: 60px;
+  line-height: 53px;
   background-color: #fe6500;
   color: #ffffff;
   text-align: center;

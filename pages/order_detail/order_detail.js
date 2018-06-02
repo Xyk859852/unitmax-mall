@@ -169,7 +169,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../mine/mine',
                 })
               }
@@ -225,7 +225,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../mine/mine',
                 })
               }
@@ -276,7 +276,7 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../mine/mine',
                 })
               }
