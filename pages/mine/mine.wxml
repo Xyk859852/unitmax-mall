@@ -16,22 +16,22 @@
 <view class='mine_container'>
   <view class='mine_order_state'>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=1">
-      <view class='number'>{{orderCount.dfkCount}}</view>
+      <view class='number'>{{orderCount.dfkCount > 99 ? "99+" : orderCount.dfkCount}}</view>
       <view>待付款</view>
       <image class='mine_order_state_img' src='../../images/orderstate1.png'></image>
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=2">
-      <view class='number'>{{orderCount.dfhCount}}</view>
+      <view class='number'>{{orderCount.dfhCount > 99 ? "99+" : orderCount.dfhCount}}</view>
       <view>待发货</view>
       <image class='mine_order_state_img' src='../../images/orderstate2.png'></image>
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=3">
-      <view class='number'>{{orderCount.dshCount}}</view>
+      <view class='number'>{{orderCount.dshCount > 99 ? "99+" : orderCount.dshCount}}</view>
       <view>待收货</view>
       <image class='mine_order_state_img' src='../../images/orderstate3.png'></image>
     </navigator>
     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../myOrder/myOrder_list?ORDER_STATUS=4">
-      <view class='number'>{{orderCount.dpjCount}}</view>
+      <view class='number'>{{orderCount.dpjCount > 99 ? "99+" : orderCount.dpjCount}}</view>
       <view>待评价</view>
       <image class='mine_order_state_img' src='../../images/orderstate4.png'></image>
     </navigator>

@@ -29,7 +29,9 @@ Page({
         address: options.MOBLE,
         ADDRESS_DTEAIL: options.ADDRESS_DTEAIL,
         ADDRESSBOOK_ID: options.ADDRESSBOOK_ID,
-        ISDEFAULT: options.ISDEFAULT
+        ISDEFAULT: options.ISDEFAULT,
+        LATITUDE: options.LATITUDE,
+        LONGITUDE: options.LONGITUDE
       })
     }
     
@@ -91,7 +93,7 @@ Page({
         this.toast.showView("手机号有误");
         return false;
       }
-      if(phone.length >= 11) {
+      if(phone.length > 11) {
         this.toast.showView("手机号有误");
         return false;
       }     

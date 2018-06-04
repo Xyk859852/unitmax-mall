@@ -52,6 +52,14 @@ Page({
       if (l[0] == '暂无搜索记录') {
         l = [];
       }
+     
+      for (var i = 0; i < l.length; i++) {
+        if (l[i] == e.detail.value){
+          l.splice(i, 1)
+          break;
+        }
+      }
+
       if(l.length==10){
         l.splice(9, 1);
         l.unshift(e.detail.value);

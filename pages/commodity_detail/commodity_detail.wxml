@@ -19,7 +19,7 @@
     </button>
     </view>
   <view class='commodity_price'>￥{{good.GOODS_PRICE}}</view>
-  <view class='commodity_tip'>运费：10.00元
+  <view class='commodity_tip'>运费：{{good.TRANS_FEE==0?"包邮":good.TRANS_FEE+"元"}}
     <text>库存：{{good.GOODS_INVENTORY}}</text><text>销量：{{good.GOODS_SALENUM}}</text>
   </view>
 </view>
@@ -47,7 +47,7 @@
 <image wx:for="{{good.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart' bindtap='go_shopping_cart'>
-    <view class='number'>{{goodsCartCount}}</view>
+    <view class='number'>{{goodsCartCount >99?"99+":goodsCartCount}}</view>
     <image src='../../images/shopping_cart.png' />
     <view>购物车</view>
   </view>

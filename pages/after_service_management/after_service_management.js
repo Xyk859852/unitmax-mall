@@ -1,6 +1,7 @@
 const app = getApp();
 var header = getApp().globalData.header;
 var page = 1;
+var util = require("../../utils/util.js");
 var GetList = function (that) {
   wx.showToast({
     title: "加载中...",
@@ -19,6 +20,9 @@ var GetList = function (that) {
       console.log(res);
       var l = that.data.list
       for (var i = 0; i < res.data.list.length; i++) {
+        for (var j = 0; j < res.data.list[i].goods.length; j++){
+             res.data.list[i].goods[j].GOODS_PRICE = util.changeTwoDecimal_f(res.data.list[i].goods[j].GOODS_PRICE);
+           }
         l.push(res.data.list[i])
       }
       that.setData({
@@ -48,7 +52,7 @@ Page({
   data: {
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
     list:[],
-    IP: app.IP
+    IP: getApp().IP
   },
 
   /**

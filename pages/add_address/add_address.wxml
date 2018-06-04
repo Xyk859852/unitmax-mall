@@ -16,6 +16,8 @@
   <input class='hide' name='ISDEFAULT' value='{{ISDEFAULT}}'/>
   <input class='hide' name='DRESSTYPE' value='{{DRESSTYPE}}'/>
   <input class='hide' name='ADCODE' value='{{adcode}}'/>
+  <input class='hide' name='LONGITUDE' value='{{LONGITUDE}}'/>
+  <input class='hide' name='LATITUDE' value='{{LATITUDE}}'/>
   </view>
 </navigator>
   <view>门牌号：<input style='width:{{input_width}}px;' name="ADDRESS_DTEAIL" value='{{ADDRESS_DTEAIL}}' placeholder='详细地址' type='text'/></view>

@@ -1,5 +1,6 @@
 const app = getApp();
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 // pages/after_service_detail/after_service_detail.js
 Page({
 
@@ -40,6 +41,11 @@ Page({
         success: function (res) {
           console.log(res.data);
           if(res.data.msg==undefined){
+            for (var i = 0; i < res.data.orderDetailList.length;i++){
+              res.data.orderDetailList[i].GOODS_PRICE = util.changeTwoDecimal_f(res.data.orderDetailList[i].GOODS_PRICE);
+            }
+            res.data.sellafter.BUYERTHAWMONEY = util.changeTwoDecimal_f(res.data.sellafter.BUYERTHAWMONEY);
+
             that.setData({
               order: res.data.order,
               orderDetailList: res.data.orderDetailList,

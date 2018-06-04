@@ -44,17 +44,26 @@
   <!-- 分类 -->
   <view id='category_box'>
     <view class='category_box' wx:for="{{varClass}}" wx:key="this">
-      <navigator open-type='redirect' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
-        <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
-        <view class='category_name'>{{item.NAME}}</view>
-      </navigator>
+      <view wx:if="{{index < 9}}">
+        <navigator open-type='redirect' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
+          <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+          <view class='category_name'>{{item.NAME}}</view>
+        </navigator>
+      </view>
+      <!-- 全部品类 -->
+      <view wx:else class='category_box'> 
+        <navigator open-type='redirect' hover-class="btn-hover" url='../category/category'>
+        <image src='{{appIP}}static/uploadImgs/goodstype/{{allType.PATH}}' style='height:{{category_img_width}}px'></image>
+        <view class='category_name'>{{allType.NAME}}</view>
+      </navigator>      
+      </view>
     </view>
-    <view class='category_box'>
+    <!-- <view class='category_box'>
       <navigator hover-class="btn-hover" url='../category/category'>
         <image src='../../images/index_news.png' style='height:{{category_img_width}}px'></image>
         <view class='category_name'>全部品类</view>
       </navigator>
-    </view>
+    </view> -->
   </view>
   <!-- <view class='classify_box'>
   <image class='classify_left' src='../../images/category_title.jpg'></image>
@@ -73,8 +82,8 @@
               <view>{{item.AD_TITLE}}</view>
               <view wx:if="{{newlist[idx+1].AD_TITLE != '' && newlist[idx+1].AD_TITLE!= undefined}}">{{newlist[idx+1].AD_TITLE}}</view>
             </view>
-             <!-- <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
-             <view class='news_navigator_view' style='width:{{news_navigator_view_width}}px;'></view>  
+            <!-- <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
+            <view class='news_navigator_view' style='width:{{news_navigator_view_width}}px;'></view>
           </view>
         </swiper-item>
       </navigator>

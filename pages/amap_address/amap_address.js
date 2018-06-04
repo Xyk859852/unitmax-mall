@@ -77,10 +77,12 @@ Page({
     var that = this;
     myAmapFun.getRegeo({
       success: function (data) {
+        console.log(data);
         that.setData({
           address: data[0].desc,
           address_detail: data[0].regeocodeData.addressComponent.province + data[0].regeocodeData.addressComponent.city + data[0].regeocodeData.addressComponent.district+" "+data[0].name,
-          location: data[0].longitude + "," + data[0].latitude
+          location: data[0].longitude + "," + data[0].latitude,
+          curLocatin: data[0]
         });
         myAmapFun.getPoiAround({
           querytypes: "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务 | 风景名胜 | 商务住宅 | 政府机构及社会团体 | 科教文化服务 |交通设施服务 | 金融保险服务 | 公司企业 | 道路附属设施 | 地名地址信息 | 公共设施",
@@ -94,6 +96,7 @@ Page({
                   nearby.push(data.poisData[i]);
                 }
               }
+              console.log(nearby);
               that.setData({
                 nearby: nearby,
                 content: true,
@@ -170,6 +173,7 @@ Page({
               tips.push(data.poisData[i]);
             }
           }
+          console.log(tips);
           that.setData({
             tips: tips,
             content1: true,
@@ -198,7 +202,8 @@ Page({
     var adname = e.currentTarget.dataset.adname;
     var pname = e.currentTarget.dataset.pname;
     var adcode = e.currentTarget.dataset.adcode;
-    console.log(adcode);
+    
+    var locationArray = location.split(",");
     
     if (keywords==undefined){
 
@@ -213,25 +218,39 @@ Page({
         city: cityname,
         district: adname,
         DRESSTYPE: 1,
-        adcode: adcode
+        adcode: adcode,
+        LATITUDE: locationArray[1],
+        LONGITUDE: locationArray[0]
       })
       wx.navigateBack({
         delta: -1
       });
     }
   },
-  bindSearch1: function (e) {
-    var location = e.currentTarget.dataset.location;
-    var keywords = e.currentTarget.dataset.keywords;
-    var moble = e.currentTarget.dataset.district;
+  bindSearch1: function () {
     var that = this;
+    console.log(that.data.curLocatin.latitude);
+    var location = that.data.location;
+    var keywords = that.data.address;
+    var moble = that.data.address;
+
+    var cityname = that.data.curLocatin.regeocodeData.addressComponent.city;
+    var adname = that.data.curLocatin.regeocodeData.addressComponent.district;
+    var pname = that.data.curLocatin.regeocodeData.addressComponent.province;
+    
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2]  //上一个页面
     prevPage.setData({
       address: keywords,
       location: location,
       moble: moble,
-      DRESSTYPE: 2
+      province: pname,
+      city: cityname,
+      district: adname,
+      DRESSTYPE: 1,
+      LATITUDE: that.data.curLocatin.latitude,
+      LONGITUDE: that.data.curLocatin.longitude
+
     })
     wx.navigateBack({
       delta: -1

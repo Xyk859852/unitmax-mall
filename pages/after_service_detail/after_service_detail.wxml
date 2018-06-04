@@ -20,11 +20,11 @@
   </view>
 <view class='other'>
   <label>处理时间：</label>
-  <label class="other_right">2018-05-25 15:00</label>
+  <label class="other_right">{{sellafter.HANDLE_TIME}}</label>
 </view>
 <view class='other'>
   <label>退款金额：</label>
-  <label class="other_right">25.00元</label>
+  <label class="other_right">{{sellafter.BUYERTHAWMONEY}}元</label>
 </view>
   <view class='other'>
     <label>处理内容：</label>
@@ -54,5 +54,5 @@
 </view>
 <view class='other'>
   <label>提交时间：</label>
-  <label class="other_right">2018-05-25 15:00</label>
+  <label class="other_right">{{sellafter.ADDTIME}}</label>
 </view>

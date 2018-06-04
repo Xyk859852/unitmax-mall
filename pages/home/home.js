@@ -57,6 +57,7 @@ Page({
           imgUrls: res.data.advertImgs,
           text: res.data.title,
           varClass: res.data.varClass,
+          allType: res.data.allType,
           newlist: res.data.newlist,
           marqueeDistance: res.data.title.length * that.data.size
         })

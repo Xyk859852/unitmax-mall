@@ -40,17 +40,21 @@ Page({
       success: function (res) {
         // success
         res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
-        console.log(res.data.evaluate.NAME.length);
-        if (res.data.evaluate.NAME.length == 1) {
-          res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.length
-        } else if (res.data.evaluate.NAME.length == 2) {
-          res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
-        } else {
-          res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+        res.data.good.TRANS_FEE = util.changeTwoDecimal_f(res.data.good.TRANS_FEE);
+        if (util.isAvalible(res.data.evaluate) && util.isAvalible(res.data.evaluate.NAME)) {
+          if (res.data.evaluate.NAME.length == 1) {
+            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.length
+          } else if (res.data.evaluate.NAME.length == 2) {
+            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+          } else {
+            res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+          }
+          that.setData({
+            evaluate: res.data.evaluate,
+          });
         }
         that.setData({
           good: res.data.good,
-          evaluate: res.data.evaluate,
           service_phone: res.data.service_phone,
           goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
         });
@@ -274,17 +278,10 @@ Page({
             that.setData({
               enshrineimg: "../../images/owned.png"
             })
-            wx.showModal({
-              title: '提示',
-              content: '收藏成功是否去列表查看',
-              success: function (sm) {
-                if (sm.confirm) {
-                  wx.navigateTo({
-                    url: '../enshrine/enshrine',
-                  })
-                }
-              }
-            })
+            wx.showToast({
+              title: "收藏成功",
+              duration: 1500
+            });
           }
         },
         fail: function (res) { },
