@@ -75,15 +75,17 @@
     <image id='new_box_img' src='../../images/index_news.png'></image>
     <swiper class="swiper_container" style='width:{{swiper_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
       <navigator hover-class="btn-hover" wx:for="{{newlist}}" wx:for-index="idx" wx:key="this" open-type="navigate" url="../news/news">
-        <swiper-item>
+         <swiper-item>
           <!-- <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
           <view class="swiper_item" style="background-image:url({{appIP}}static/uploadImgs/news/{{item.AD_IMG}});">
+          <view class="swiper_item,news_navigator_view">
             <view class='view1' style='width:{{swiper_container_width}}px;'>
               <view>{{item.AD_TITLE}}</view>
               <view wx:if="{{newlist[idx+1].AD_TITLE != '' && newlist[idx+1].AD_TITLE!= undefined}}">{{newlist[idx+1].AD_TITLE}}</view>
             </view>
-            <!-- <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
-            <view class='news_navigator_view' style='width:{{news_navigator_view_width}}px;'></view>
+             <!-- <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
+             <!-- <view class='news_navigator_view' style='width:{{news_navigator_view_width}}px;'></view>   -->
+          </view>
           </view>
         </swiper-item>
       </navigator>
