@@ -10,10 +10,12 @@ const app = getApp();
 var sessionKey;
 Page({
   data: {
+    appIP: getApp().IP,
     content: "自定义toast组件",
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    default_head_img:"../../images/default_head_img.png"
   },
   //事件处理函数
   bindViewTap: function () {
@@ -27,10 +29,7 @@ Page({
     if (user != undefined && user != '' && user != null) {
       console.log(user);
       that.setData({
-        hasUserInfo: true,
-        user:user,
-        nickName: user.USERNAME,
-        avatarUrl: user.HEADIMGURL
+        hasUserInfo: true
       })
     }
 
@@ -41,7 +40,13 @@ Page({
       method: 'GET',
       success: function (res) {
         if (res.data.result == "true") {
-          that.setData({ orderCount: res.data.orderCount});
+          wx.setStorageSync("user", res.data.user);
+          that.setData({ 
+            orderCount: res.data.orderCount,
+            user: res.data.user,
+            NICKNAME: res.data.user.NICKNAME,
+            HEADIMGURL: res.data.user.HEADIMGURL          
+            });
         }
 
         if (res.data.result == "1002") {
@@ -71,7 +76,7 @@ Page({
         url: '../binding_phone/binding_phone'
       })
     }else{
-      console.log("拒绝授权");
+     
       wx.openSetting({
         success: function (res) {
           if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
@@ -161,17 +166,17 @@ Page({
   updateUser:function(e){
     console.log(e);
     console.log(e.detail.userInfo.nickName);
-    console.log(e.detail.userInfo.avatarUrl);
+    console.log(e.detail.userInfo.HEADIMGURL);
     var that = this;
     that.setData({
-      nickName: e.detail.userInfo.nickName,
-      avatarUrl: e.detail.userInfo.avatarUrl,
+      NICKNAME: e.detail.userInfo.nickName,
+      HEADIMGURL: e.detail.userInfo.HEADIMGURL,
       hasUserInfo: true
     })
     wx.request({
       url: app.IP +'chatUser/updateUser',
       data: {
-        HEADIMGURL: e.detail.userInfo.avatarUrl,
+        HEADIMGURL: e.detail.userInfo.HEADIMGURL,
         NICKNAME: e.detail.userInfo.nickName
       },
       header: header,

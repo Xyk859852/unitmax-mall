@@ -7,7 +7,7 @@
   </view>
 </view> -->
 <view hover-class="btn-hover" id="search_box" bindtap='back'>
-    <view id="search"><image src='../../images/search.png'></image>{{(keywords == '' || keywords == undefined ||keywords == null)?"搜索":keywords}}</view>
+    <view id="search"><image src='../../images/search.png'></image>{{(keywords == '' || keywords == undefined || keywords == null)?"搜索":keywords}}</view>
   </view>
 <view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">

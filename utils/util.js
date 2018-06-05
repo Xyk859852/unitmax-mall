@@ -1,5 +1,6 @@
 
 const app = getApp();
+const header = getApp().globalData.header;
 const p_c = require("time.js");
 
 const formatTime = date => {
@@ -42,6 +43,34 @@ function changeTwoDecimal_f(x) {
   return s_x;
 }
 
+//获取当前登录用户信息
+function findCurLoginUser(){
+  var isSuccess = false;
+  wx.request({
+    url: app.IP + 'chatUser/findCurLoginUser',
+    data: {},
+    header: header,
+    method: 'GET',
+    dataType: 'json',
+    success: function (res) {
+      if (res.data.result == "true") {
+        isSuccess =  true;
+        //用户信息放进缓存
+        wx.setStorageSync("user", res.data.user);
+      }
+
+      if (res.data.result == "1002") {
+        wx.navigateTo({
+          url: '../pages/mine/mine',
+        });
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) { },
+  })
+}
+
+
 module.exports = {
   province: p_c.province,
   city: p_c.city,
@@ -50,4 +79,5 @@ module.exports = {
 
 module.exports.isAvalible = isAvalible;
 module.exports.changeTwoDecimal_f = changeTwoDecimal_f;
+module.exports.findCurLoginUser = findCurLoginUser;
 

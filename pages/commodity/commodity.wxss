@@ -189,10 +189,6 @@ line-height:20px;
 font-size:12px;
 padding:5px 10px;
 }
-.no_data{
-  margin-top: 30%;
-  text-align:center; 
-}
 .selected{
   background-color:#fe6500!important;
   color: #ffffff;

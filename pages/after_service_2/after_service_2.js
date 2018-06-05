@@ -242,8 +242,7 @@ Page({
       }
 
     });
-  }
-  ,
+  },
   AddSellafter: function () {
     var that = this;
     //判断是否重复提交

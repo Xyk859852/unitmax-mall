@@ -1,12 +1,13 @@
 function getUserInfo(e) {
   console.log(e);
-  var user = wx.getStorageSync("user");
+  //var user = wx.getStorageSync("user");
+  var user = null;
   if (user != undefined && user != '' && user != null) {
     console.log(user);
     wx.redirectTo({
       url: '../mine/mine'
     })
-  }else{
+  } else {
     if (e.detail.errMsg == "getUserInfo:ok") {
       wx.setStorageSync("wxuser", e.detail.userInfo);
       console.log(wx.getStorageSync("wxuser"));
@@ -15,20 +16,56 @@ function getUserInfo(e) {
       })
     } else {
       console.log("拒绝授权");
-      wx.openSetting({
-        success: function (res) {
-          if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
-            //这里是授权成功之后 填写你重新获取数据的js
-            //参考:
-            // that.getLogiCallback('', function () {
-            //   callback('')
-            // })
-          }
-        }
+      wx.navigateTo({
+        url: '../binding_phone/binding_phone?updatePhone=true'
       })
+      // wx.openSetting({
+      //   success: function (res) {
+      //     if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
+      //       //这里是授权成功之后 填写你重新获取数据的js
+      //       //参考:
+      //       // that.getLogiCallback('', function () {
+      //       //   callback('')
+      //       // })
+      //     }
+      //   }
+      // })
     }
   }
- 
+
+
+  // // if (user != undefined && user != '' && user != null) {
+  // //   console.log(user);
+  // //   wx.redirectTo({
+  // //     url: '../mine/mine'
+  // //   })
+  // // }else{
+  // if (e.detail.errMsg == "getUserInfo:ok") {
+  //   wx.setStorageSync("wxuser", e.detail.userInfo);
+  //   console.log(wx.getStorageSync("wxuser"));
+  //   wx.navigateTo({
+  //     url: '../binding_phone/binding_phone?updatePhone=true'
+  //   })
+  // } else {
+  //   console.log("拒绝授权");
+  //   wx.navigateTo({
+  //     url: '../binding_phone/binding_phone?updatePhone=true'
+  //   })
+
+  //   // wx.openSetting({
+  //   //   success: function (res) {
+  //   //     if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
+  //   //       //这里是授权成功之后 填写你重新获取数据的js
+  //   //       //参考:
+  //   //       // that.getLogiCallback('', function () {
+  //   //       //   callback('')
+  //   //       // })
+  //   //     }
+  //   //   }
+  //   // })
+  // }
+  // //}
+
 }
 
 function gohome(e) {
