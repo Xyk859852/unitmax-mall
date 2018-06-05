@@ -71,8 +71,8 @@
     <image src='../../images/order_price_bg.png'/></view> -->
   </view>
   <view class='contact'>
-  <view bindtap='callmobile' style='width:{{btn1_width}}px;' class='btn1'><image src='../../images/callcenter2_fe6500.png'/>平台热线</view>
-  <view><image src='../../images/callcenter1_fe6500.png'/>在线客服</view>
+  <view style='width:{{btn1_width}}px;' class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</view>
+  <view bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</view>
   </view>
   <view class='order_detail'>
     <view class='other'>订单编号：{{order.ORDER_NO}}</view>
