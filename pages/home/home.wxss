@@ -306,6 +306,6 @@ page {
 } */
 
 .news_navigator_view {
-  background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
 }
