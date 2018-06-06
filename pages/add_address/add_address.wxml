@@ -6,7 +6,7 @@
   <view>联系人：<input style='width:{{input_width}}px;' maxlength='11' name="CONSIGNEE" placeholder='请填写收货人的姓名' value='{{CONSIGNEE}}' type='text'/></view>
   <view>手机号：<input style='width:{{input_width}}px;' name="TAKEPHONE" placeholder='请填写收货人的手机号码' value='{{TAKEPHONE}}' maxlength='11' type='number'/></view>
  <navigator hover-class="btn-hover" url="../amap_address/amap_address">
-  <view>收货地址：<image class='img1' src='../../images/address_aaa.png'/><image class='img2' src='../../images/right.png'/><input style='width:{{input_width2}}px;' name='address' placeholder='点击选择' disabled='true' value='{{address}}'/>
+  <view style='position:relative;'>收货地址：<image class='img1' src='../../images/address_aaa.png'/><image class='img2' src='../../images/right.png'/><input style='width:{{input_width2}}px;margin-right:{{right_width}}px;' name='address' placeholder='点击选择' disabled='true' value='{{address}}'/>
   <input class='hide' name="addRessLocation" placeholder='选择地址' disabled='true' value='{{location}}'/>
   <input class='hide' name="MOBLE" placeholder='省' disabled='true' value='{{moble}}'/>
   <input class='hide' name="PROVINCE" placeholder='省' disabled='true' value='{{province}}'/>
@@ -26,6 +26,6 @@
   </view> -->
 </view>
 <view class='footer'>
-<button form-type='submit'>保存</button>
+<button hover-class="btn-hover" form-type='submit'>保存</button>
 </view>
 </form>

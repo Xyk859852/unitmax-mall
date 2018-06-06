@@ -11,7 +11,9 @@
     <input value='{{NICKNAME}}' bindblur='updateNickName' placeholder='请输入昵称' maxlength='11'/>
   </view>
 </view>
+<view class='btn_box1'>
+<button hover-class="btn-hover" bindtap='saveUserInfo'>保存修改</button>
+</view>
 <view class='btn_box'>
-<button  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">同步微信</button>
-<button bindtap='saveUserInfo'>保存</button>
+<button hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">同步微信</button>
 </view>

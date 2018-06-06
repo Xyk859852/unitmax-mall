@@ -26,17 +26,28 @@ page{
   color: #aaaaaa;
   text-align: right;
 }
+.btn_box1{
+  width: 92%;
+  padding: 10px 4%;
+  margin-top: 20px;
+}
 .btn_box{
   width: 92%;
   position: fixed;
-  bottom: 0;
+  bottom: 43px;
   left: 0;
-  padding: 0 4%;
+  padding: 10px 4%;
 }
-.btn_box button{
-  margin-bottom: 10px;
+.btn_box1 button{
   background-color: #fe6500;
   color: #ffffff;
+  font-size: 14px;
+  line-height: 40px;
+  height: 40px;
+}
+.btn_box button{
+  border: #fe6500 1px solid;
+  color: #fe6500;
   font-size: 14px;
   line-height: 40px;
   height: 40px;

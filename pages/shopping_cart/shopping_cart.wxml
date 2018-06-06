@@ -29,8 +29,8 @@
       <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
       <label for='all' class='check_label'>全选</label>
       <label bindtap='deleateAll' class='check_label1'>删除</label>
-      <!-- <navigator class='buy' url="../place_order/place_order">去结算</navigator> -->
-      <button class='buy' bindtap='submitOrder'>去结算(0)</button>
+      <!-- <navigator hover-class="btn-hover" class='buy' url="../place_order/place_order">去结算</navigator> -->
+      <button hover-class="btn-hover" class='buy' bindtap='submitOrder'>去结算(0)</button>
       <view class='all_box'><view>总计(不含运费)</view><view class="all">{{totalPrice}}元</view></view>
     </view>
   </block>

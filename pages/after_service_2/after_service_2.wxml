@@ -31,17 +31,17 @@
   <view>上传凭证</view>
   <view class='image_box'>
     <image style='height:{{image_box_width}}px;' class="{{image1?'show1':'hide'}}" src='{{appIP}}static/uploadImgs/order/sellafterImg/{{image1_src}}'>
-      <image class='del' bindtap='delimage1' src='../../images/right.png'></image>
+      <image class='del' bindtap='delimage1' src='../../images/del.png'></image>
     </image>
     <image style='height:{{image_box_width}}px;' class="{{image2?'show1':'hide'}}" src='{{appIP}}static/uploadImgs/order/sellafterImg/{{image2_src}}'>
-      <image class='del' bindtap='delimage2' src='../../images/right.png'></image>
+      <image class='del' bindtap='delimage2' src='../../images/del.png'></image>
     </image>
     <image style='height:{{image_box_width}}px;' class="{{image3?'show1':'hide'}}" src='{{appIP}}static/uploadImgs/order/sellafterImg/{{image3_src}}'>
-      <image class='del' bindtap='delimage3' src='../../images/right.png'></image>
+      <image class='del' bindtap='delimage3' src='../../images/del.png'></image>
     </image>
-    <image style='height:{{image_box_width}}px;' class="{{addimage?'show1':'hide'}}" bindtap='chooseImage' src='../../images/address.png' />
+    <image style='height:{{image_box_width}}px;' class="{{addimage?'show1':'hide'}}" bindtap='chooseImage' src='../../images/tianjia.png' />
   </view>
 </view>
 <view class='footer'>
-  <button form-type='submit' bindtap='AddSellafter'>提交</button>
+  <button hover-class="btn-hover" form-type='submit' bindtap='AddSellafter'>提交</button>
 </view>

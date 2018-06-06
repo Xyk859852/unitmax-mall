@@ -29,9 +29,9 @@
 
     <view class='order_total_money'>
       <!-- {{item.problem_desc}} -->
-      <navigator wx:if="{{item.state==0}}" class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
-      <navigator wx:else class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
-      <navigator class='small_btn' url='../order_detail/order_detail?ORDERFORM_ID={{item.orderform_id}}'>订单详情</navigator>
+      <navigator hover-class="btn-hover" wx:if="{{item.state==0}}" class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后中</navigator>
+      <navigator hover-class="btn-hover" wx:else class='small_btn' url='../after_service_detail/after_service_detail?sellafterid={{item.sellafterid}}&orderform_id={{item.orderform_id}}'>售后完成</navigator>
+      <navigator hover-class="btn-hover" class='small_btn' url='../order_detail/order_detail?ORDERFORM_ID={{item.orderform_id}}'>订单详情</navigator>
     </view>
   </view>
 </view>

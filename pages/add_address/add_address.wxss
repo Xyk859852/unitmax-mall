@@ -25,10 +25,12 @@
   margin-top: -2px;
 }
 .img2{
-  width:1.4rem;
-  height: 1.4rem;
-  float: right;
-  margin-left: 4%;
+  width:20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
 }
 navigator{
   font-size: 14px;

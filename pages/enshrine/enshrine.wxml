@@ -3,7 +3,7 @@
 <view wx:if="{{list.length>0}}">
 <view wx:for="{{list}}" class='commodity_list'>
   <scroll-view scroll-y="true" class="list">
-    <navigator url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" class='commodity_li'>
+    <navigator hover-class="btn-hover" url="../commodity_detail/commodity_detail?goods_id={{item.goods_id}}" class='commodity_li'>
       <image src='{{IP}}{{item.path}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.goods_name}}</view>

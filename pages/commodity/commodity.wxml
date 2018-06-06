@@ -37,8 +37,8 @@
         <view data-goodslevel_id='{{item.goodslevel_id}}' wx:for="{{goodsLevels}}" data-index='{{index}}' class="{{index==levelIndex?' selected':''}}" bindtap="bindLevel" >{{item.level_name}}</view>
       </view>
       <view class='filtrate_btn'>
-        <button bindtap='reset'>重置</button>
-        <button bindtap='submint'>确定</button>
+        <button hover-class="btn-hover" bindtap='reset'>重置</button>
+        <button hover-class="btn-hover" bindtap='submint'>确定</button>
       </view>
     </view>
   </view>
@@ -46,7 +46,7 @@
 
 <view wx:if="{{list.length>0}}" class='commodity_list'>
   <scroll-view scroll-y="true" class="list">
-    <navigator url="../commodity_detail/commodity_detail?goods_id={{item.GOODS_ID}}" class='commodity_li' wx:for="{{list}}" wx:key="this">
+    <navigator hover-class="btn-hover" url="../commodity_detail/commodity_detail?goods_id={{item.GOODS_ID}}" class='commodity_li' wx:for="{{list}}" wx:key="this">
       <image src='{{appIP}}{{item.IMGSRC}}'></image>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>

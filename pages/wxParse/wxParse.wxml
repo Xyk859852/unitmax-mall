@@ -51,7 +51,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse1" data="{{item}}" />
         </block>
@@ -136,7 +136,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse2" data="{{item}}" />
         </block>
@@ -213,7 +213,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse3" data="{{item}}" />
         </block>
@@ -289,7 +289,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse4" data="{{item}}" />
         </block>
@@ -365,7 +365,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse5" data="{{item}}" />
         </block>
@@ -441,7 +441,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse6" data="{{item}}" />
         </block>
@@ -517,7 +517,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse7" data="{{item}}" />
         </block>
@@ -592,7 +592,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse8" data="{{item}}" />
         </block>
@@ -668,7 +668,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse9" data="{{item}}" />
         </block>
@@ -744,7 +744,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse10" data="{{item}}" />
         </block>
@@ -820,7 +820,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse11" data="{{item}}" />
         </block>
@@ -896,7 +896,7 @@
   <!--判断是否是标签节点-->
   <block wx:if="{{item.node == 'element'}}">
     <block wx:if="{{item.tag == 'button'}}">
-      <button type="default" size="mini">
+      <button hover-class="btn-hover" type="default" size="mini">
         <block wx:for="{{item.nodes}}" wx:for-item="item" wx:key="">
           <template is="wxParse12" data="{{item}}" />
         </block>

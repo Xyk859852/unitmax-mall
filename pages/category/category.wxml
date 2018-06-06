@@ -1,6 +1,6 @@
 <!--category.wxml-->
  <toast id='toast' />
-<navigator id="search_box" url="../search/search">
+<navigator hover-class="btn-hover" id="search_box" url="../search/search">
 <view id="search">搜索</view>
 </navigator>
 <view class='f5f5f5'></view>
@@ -25,7 +25,7 @@
   <view class='category_right'>
     <view class='category_container'>
      <block wx:for="{{goodsTypeList}}"  wx:key="this">
-      <navigator open-type='redirect' class='category' style='width:{{category_width}}px;' url='../commodity/commodity?GOODSTYPE_ID={{item.goodstype_id}}'>
+      <navigator hover-class="btn-hover" open-type='redirect' class='category' style='width:{{category_width}}px;' url='../commodity/commodity?GOODSTYPE_ID={{item.goodstype_id}}'>
         <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
         <view>{{item.name}}</view>
       </navigator>

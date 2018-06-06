@@ -1,25 +1,25 @@
 <template name="msgItem">
   <!--pages/bottom/bottom.wxml-->
   <view id='category1_box'>
-    <button bindtap='gohome' class='category1_box'>
+    <button hover-class="btn-hover" bindtap='gohome' class='category1_box'>
       <image src='{{bottom_img1}}'></image>
       <view class='category_name,category1_name'>首页</view>
     </button>
-    <button bindtap='gocommodity' class='category1_box'>
+    <button hover-class="btn-hover" bindtap='gocommodity' class='category1_box'>
       <!-- bindtap='gocategory' -->
       <image src='{{bottom_img2}}'></image>
       <view class='category_name,category2_name'>全部商品</view>
     </button>
      <!-- open-type="getUserInfo" bindgetuserinfo="goshoppingcart" -->
-    <button bindtap='goshoppingcart' class='category1_box'>
+    <button hover-class="btn-hover" bindtap='goshoppingcart' class='category1_box'>
       <image src='{{bottom_img3}}'></image>
       <view class='category_name,category3_name'>购物车</view>
     </button>
-    <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
+    <!-- <button hover-class="btn-hover" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='category1_box'>
       <image src='{{bottom_img4}}'></image>
       <view class='category_name,category4_name'>我的</view>
   </button>  -->
-    <button bindtap='goMinePage' class='category1_box'>
+    <button hover-class="btn-hover" bindtap='goMinePage' class='category1_box'>
       <image src='{{bottom_img4}}'></image>
       <view class='category_name,category4_name'>我的</view>
     </button>

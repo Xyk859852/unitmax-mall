@@ -70,8 +70,8 @@
   <verifycode id='verifycode' title="请输入支付密码" content="" />
 </view>
 <view class='footer'>
-  <!-- <navigator url='../place_success/place_success'> -->
-  <button class='buy' bindtap='submitOrder'>提交订单</button>
+  <!-- <navigator hover-class="btn-hover" url='../place_success/place_success'> -->
+  <button hover-class="btn-hover" class='buy' bindtap='submitOrder'>提交订单</button>
   <!-- </navigator>  -->
   <label class='all'>总计：{{TOTALPRICE}}元</label>
 </view>

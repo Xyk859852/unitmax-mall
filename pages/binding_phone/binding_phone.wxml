@@ -1,6 +1,6 @@
 <!--pages/binding_phone/binding_phone.wxml-->
 <view wx:if="{{update==2}}" class='body'>
-  <image class='logo' src='../../images/mine_s.png'/>
+  <image class='logo' src='../../images/logo.png'/>
   <view class='phone'>
     <text>手机号：</text>
     <input style='width:{{phone_input_width}}px;' type='tel' bindblur='savePhone' placeholder='输入手机号码' />
@@ -8,10 +8,10 @@
   <view class='code'>
     <text>验证码：</text>
     <input style='width:{{input_width}}px;' type='tel' bindblur='saveCode' placeholder='输入验证码' />
-    <button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button>
+    <button hover-class="btn-hover" class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button>
   </view>
-  <button class='submit' bindtap='bindUserName'>提交</button>
-  <button class='submitwechat'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><image src='../../images/WeChat.png'/>微信手机号快捷登录</button>
+  <button hover-class="btn-hover" class='submit' bindtap='bindUserName'>手机号登录</button>
+  <button hover-class="btn-hover" class='submitwechat'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><image src='../../images/WeChat.png'/>微信手机号快捷登录</button>
 </view>
 <toast id='toast' />
 <!-- 验证码组件 -->

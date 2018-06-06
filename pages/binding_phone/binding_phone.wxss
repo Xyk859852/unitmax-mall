@@ -22,8 +22,10 @@ page{
 }
 .phone input,.phone text,.code input,.code text{
   float: left;
-  line-height: 26px;
+   line-height: 1.4rem; 
   padding: 5px 0;
+  height: 1.4rem;
+  min-height:1.4rem;
 }
 .bingding{
   color: #fe6500;
@@ -33,11 +35,13 @@ page{
 }
 .sendmsg{
   font-size: 14px;
-  width: 130px;
+  width: 128px;
   text-align: center;
-  background-color: #fe6500;
-  color: #ffffff;
+  border: #fe6500 1px solid;
+  color: #fe6500;
   border-radius: 5px;
+  margin-left: 4%;
+  float: right;
 }
 .sendmsgafter{
   font-size: 14px;
@@ -51,7 +55,7 @@ page{
   border-radius: 5px;
   width:100%;
   font-size: 14px;
-  margin-top: 40px;
+  margin-top: 30px;
   line-height: 40px;
   color: #ffffff;
   text-align: center;
@@ -59,7 +63,7 @@ page{
 }
 .submitwechat{
   position: fixed;
-  bottom: 20px;
+  bottom: 53px;
   left: 4%;
   border-radius: 5px;
   width:92%;

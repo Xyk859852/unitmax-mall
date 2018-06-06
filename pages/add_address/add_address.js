@@ -9,7 +9,8 @@ Page({
   data: {
     address:"",
     input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 56,
-    input_width2: wx.getSystemInfoSync().windowWidth * 0.84 - 105
+    input_width2: wx.getSystemInfoSync().windowWidth * 0.84 - 105,
+    right_width: wx.getSystemInfoSync().windowWidth * 0.04 + 20
   },
 
   /**

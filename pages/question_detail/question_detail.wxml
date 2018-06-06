@@ -9,6 +9,6 @@
   </view>
 </view>
   <view class='footer'>
-  <button class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
-  <button bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</button>
+  <button hover-class="btn-hover" class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
+  <button hover-class="btn-hover" bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</button>
   </view>

@@ -7,7 +7,7 @@
   </view>
 </view>
 <view class='after_service'>
-  <navigator class='address_box' url="../after_service_2/after_service_2">
+  <navigator hover-class="btn-hover" class='address_box' url="../after_service_2/after_service_2">
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>退款</view>
@@ -15,7 +15,7 @@
     </view>
     <image class='address_right' src='../../images/right.png' />
   </navigator>
-  <navigator class='address_box' url="../after_service_2/after_service_2">
+  <navigator hover-class="btn-hover" class='address_box' url="../after_service_2/after_service_2">
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>退货</view>
@@ -23,7 +23,7 @@
     </view>
     <image class='address_right' src='../../images/right.png' />
   </navigator>
-  <navigator class='address_box' url="../after_service_2/after_service_2">
+  <navigator hover-class="btn-hover" class='address_box' url="../after_service_2/after_service_2">
     <image class='address_left' src='../../images/address.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>换货</view>

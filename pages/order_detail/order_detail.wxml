@@ -6,13 +6,13 @@
 </view>
 <view class='body' wx:if="{{order.DELETESTATUS == '0'}}">
   <view class='top'>
-    <navigator url="../logistics_tracking/logistics_tracking?ORDERFORM_ID={{order.ORDERFORM_ID}}">
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '1'}}"><image src='../../images/seller.png'/>您的订单已提交，请尽快支付</view>
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '2'}}"><image src='../../images/seller.png'/>支付完成，等待发货</view>
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '3'}}"><image src='../../images/seller.png'/>您的订单已经发货，请注意签收</view>
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '4'}}"><image src='../../images/seller.png'/>待评价</view>
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '5'}}"><image src='../../images/seller.png'/>您已签收，订单完成</view>
-      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '6'}}"><image src='../../images/seller.png'/>交易关闭 </view>
+    <navigator hover-class="btn-hover" url="../logistics_tracking/logistics_tracking?ORDERFORM_ID={{order.ORDERFORM_ID}}">
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '1'}}"><image src='../../images/order_state1.png'/>您的订单已提交，请尽快支付</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '2'}}"><image src='../../images/order_state2.png'/>支付完成，等待发货</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '3'}}"><image src='../../images/order_state3.png'/>您的订单已经发货，请注意签收</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '4'}}"><image src='../../images/order_state4.png'/>待评价</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '5'}}"><image src='../../images/order_state5.png'/>您已签收，订单完成</view>
+      <view style='width:{{contact_view_width}}px;' wx:if="{{order.ORDER_STATUS == '6'}}"><image src='../../images/order_state6.png'/>交易关闭 </view>
      <image class="right" src="../../images/right_fe6500.png"></image> 
     </navigator>
   </view>
@@ -28,7 +28,7 @@
   </view>
   <!-- 有留言显示，没留言不显示 -->
   <view class='address_box' wx:if="{{order.MSG}}">
-    <image class='address_left' src='../../images/address.png' />
+    <image class='address_left' src='../../images/liuyan.png' />
     <view class='address' style='width:{{address_width}}px;margin-left:{{address_left}}px;'>
       <view>买家留言</view>
       <view class='address_detail'>{{order.MSG}}</view>

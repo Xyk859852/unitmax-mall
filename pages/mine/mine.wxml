@@ -1,9 +1,9 @@
 <!--mine.wxml-->
 <toast id='toast' />
 <view class="container" style='background-image: url(../../images/1.png);'>
-   <button class='refresh'><image class='refresh_img' src='../../images/refresh.png'/></button> 
+   <button hover-class="btn-hover" class='refresh'><image class='refresh_img' src='../../images/refresh.png'/></button> 
 
-  <navigator class="userinfo" url="../usercenter/usercenter">
+  <navigator hover-class="btn-hover" class="userinfo" url="../usercenter/usercenter">
     <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
       获取用户信息
     </button>
@@ -78,31 +78,31 @@
       <image src='../../images/category.png'></image>
       <view>个人信息</view>
     </navigator> -->
-    <!-- <navigator class='mine_order_state_container' url="../order_detail/order_detail">
+    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../order_detail/order_detail">
       <image src='../../images/category.png'></image>
       <view>订单详情</view>
     </navigator> -->
-    <!-- <navigator class='mine_order_state_container' url="../advertising_detail/advertising_detail">
+    <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../advertising_detail/advertising_detail">
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator> -->
-     <navigator class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
+     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
     </navigator> 
-     <!-- <navigator class='mine_order_state_container' url="../after_service_2/after_service_2">
+     <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_2/after_service_2">
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
     </navigator>  -->
-    <!-- <button bindtap='openToastPannel' class='mine_order_state_container'>
+    <!-- <button hover-class="btn-hover" bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>
     </button>  
-    <button bindtap='refund' class='mine_order_state_container'>
+    <button hover-class="btn-hover" bindtap='refund' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信退款</view>
     </button>  
-    <button bindtap='share' open-type="share" class='mine_order_state_container'>
+    <button hover-class="btn-hover" bindtap='share' open-type="share" class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信分享</view>
     </button>   -->
