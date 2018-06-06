@@ -1,7 +1,7 @@
 /* pages/logistics_tracking/logistics_tracking.wxss */
 .body{
   background-color: #ffffff;
-  padding: 10px 4%;
+  padding: 0 4%;
   overflow: hidden;
 }
 .tracking{
@@ -9,8 +9,8 @@
 }
 .tracking_right{
   margin-left: 14px;
-  padding: 10px 0;
-  border-left: #aaaaaa 1px solid;
+  padding: 20px 0;
+  border-left: #cccccc 1px solid;
   font-size: 14px;
   color: #aaaaaa;
 }
@@ -40,11 +40,11 @@
 .circle{
   width: 10px;
   height: 10px;
-  background-color: #aaaaaa;
-  border: 2px solid #ffffff;
+  background-color: #eeeeee;
+  border: 2px solid #efefef;  
   border-radius: 100%;
   position: absolute;
-  left: 7px;
+  left: 8px;
   top: 50%;
   margin-top: -7px;
 }
@@ -52,6 +52,7 @@
   background-color: #fe6500;
   border: 2px solid #f4cbb7;
 }
-.time{
-  margin-top: 5px;
-}
+/* .time{
+   margin-top: 5px; 
+  font-size:12px;
+} */

@@ -345,6 +345,9 @@ Page({
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
   },
+  goMinePage: function (e) {
+    tempObj.goMinePage(e)
+  },
   goodsDetail: function (e) {
     var goods_id = e.currentTarget.dataset.goods_id;
     wx.navigateTo({

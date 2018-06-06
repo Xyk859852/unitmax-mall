@@ -1,58 +1,26 @@
-/* pages/logistics_tracking/logistics_tracking.wxss */
-.body{
-  background-color: #ffffff;
-  padding: 0 4%;
-  overflow: hidden;
-}
-.tracking{
-  position: relative;  
-}
-.tracking_right{
-  margin-left: 14px;
-  padding: 20px 0;
-  border-left: #cccccc 1px solid;
-  font-size: 14px;
-  color: #aaaaaa;
-}
-.tracking_right2{
-  border-left: #ffffff 1px solid;
-}
-.finally_tracking{
-  color: #333;
-  position: relative;
-}
-.first_tracking{
-  position: relative;
-}
-.finally_tracking .white,.first_tracking .white{
-  background-color: #ffffff;
-  position: absolute;
-  width: 3px;
+/* components/toast/toast.wxss */
+.toast_content_box{
+  display: flex;
+  width: 100%;
   height: 100%;
-  left: -1px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
 }
-.finally_tracking .white{
-  top: -50%;
+.toast_content{
+  position: fixed;
+  top:35%;
+  z-index: 999;
+  width: 40%;
+  padding: 10px 4%;
+  background: rgba(0,0,0,0.8);
+  border-radius: 5px;
 }
-.first_tracking .white{
-  bottom: -50%;
+.toast_content_text{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
 }
-.circle{
-  width: 10px;
-  height: 10px;
-  background-color: #eeeeee;
-  border: 2px solid #efefef;  
-  border-radius: 100%;
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  margin-top: -7px;
-}
-.finally_circle{
-  background-color: #fe6500;
-  border: 2px solid #f4cbb7;
-}
-/* .time{
-   margin-top: 5px; 
-  font-size:12px;
-} */

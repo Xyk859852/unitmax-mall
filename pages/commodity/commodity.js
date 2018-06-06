@@ -369,4 +369,7 @@ Page({
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
   },
+  goMinePage: function(e){
+    tempObj.goMinePage(e)
+  }
 })
