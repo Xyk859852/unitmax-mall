@@ -161,7 +161,7 @@
 }
 .filtrate_btn{
   position: fixed;
-  bottom: 10px;
+  bottom: 65px;
   right: 0;
   width: 60%;
   padding: 0 4%;
@@ -175,6 +175,9 @@
   background-color: #fe6500;
   font-size: 14px;
   line-height: 30px;
+  height: 30px;
+  border-radius: 5px; 
+  padding: 0px;
 }
 .content{
   overflow: hidden;
