@@ -3,6 +3,7 @@ var WXBizDataCrypt = require('../../utils/crypto.js');
 var header = getApp().globalData.header;
 // import tempObj from '../bottom/bottom.js';
 var tempObj = require("../../utils/bottom.js");
+var util = require("../../utils/util.js");
 // var toastPannel = require('../../components/toast/toast.js');
 //mine.js
 //获取应用实例
@@ -15,7 +16,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    default_head_img:"../../images/default_head_img.png"
+    default_head_img: "../../images/default_head_img.png",
+    HEADIMGURL: "",
   },
   //事件处理函数
   bindViewTap: function () {
@@ -23,7 +25,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  onShow: function() {
+  onShow: function () {
     var that = this;
     var user = wx.getStorageSync("user");
     if (user != undefined && user != '' && user != null) {
@@ -41,12 +43,17 @@ Page({
       success: function (res) {
         if (res.data.result == "true") {
           wx.setStorageSync("user", res.data.user);
-          that.setData({ 
+          that.setData({
             orderCount: res.data.orderCount,
             user: res.data.user,
-            NICKNAME: res.data.user.NICKNAME,
-            HEADIMGURL: res.data.user.HEADIMGURL          
+            NICKNAME: res.data.user.NICKNAME
+          });
+
+          if (util.isAvalible(res.data.user.HEADIMGURL)){
+            that.setData({
+              HEADIMGURL: res.data.user.HEADIMGURL
             });
+          }
         }
 
         if (res.data.result == "1002") {
@@ -57,10 +64,10 @@ Page({
       },
       fail: function (res) {
 
-       },
+      },
       complete: function (res) {
 
-       },
+      },
     });
 
   },
@@ -69,14 +76,14 @@ Page({
   },
   getUserInfo: function (e) {
     console.log(e);
-    if (e.detail.errMsg =="getUserInfo:ok"){
+    if (e.detail.errMsg == "getUserInfo:ok") {
       wx.setStorageSync("wxuser", e.detail.userInfo);
       console.log(wx.getStorageSync("wxuser"));
       wx.navigateTo({
         url: '../binding_phone/binding_phone'
       })
-    }else{
-     
+    } else {
+
       wx.openSetting({
         success: function (res) {
           if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
@@ -92,12 +99,12 @@ Page({
   },
   openToastPannel: function () {
     wx.request({
-      url: app.IP +'WxPay/WxXiaoPayS',
-      data: { ZHIFUJINE:'0.01'},
+      url: app.IP + 'WxPay/WxXiaoPayS',
+      data: { ZHIFUJINE: '0.01' },
       header: header,
       method: 'GET',
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data);
         wx.requestPayment({
           timeStamp: res.data.timeStamp,
@@ -133,13 +140,13 @@ Page({
             // complete  
             console.log("pay complete")
           }
-        })  
+        })
       },
-      fail: function(res) {
+      fail: function (res) {
 
       },
-      complete: function(res) {
-        
+      complete: function (res) {
+
       },
     })
   },
@@ -163,7 +170,7 @@ Page({
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
-  updateUser:function(e){
+  updateUser: function (e) {
     console.log(e);
     console.log(e.detail.userInfo.nickName);
     console.log(e.detail.userInfo.HEADIMGURL);
@@ -174,7 +181,7 @@ Page({
       hasUserInfo: true
     })
     wx.request({
-      url: app.IP +'chatUser/updateUser',
+      url: app.IP + 'chatUser/updateUser',
       data: {
         HEADIMGURL: e.detail.userInfo.HEADIMGURL,
         NICKNAME: e.detail.userInfo.nickName
@@ -183,28 +190,30 @@ Page({
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
-      success: function(res) {
-        if(res.data.result=="true"){
+      success: function (res) {
+        if (res.data.result == "true") {
           wx.setStorageSync("user", res.data.user);
         }
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
-  refund:function(e){
+  refund: function (e) {
     wx.request({
       url: app.IP + 'apppay/refundPay',
-      data: { MONEY: '0.01' ,
-        PAYNO:"f7ee407d6b854390897de2b98d07b3e3"},
+      data: {
+        MONEY: '0.01',
+        PAYNO: "f7ee407d6b854390897de2b98d07b3e3"
+      },
       header: header,
       method: 'GET',
       dataType: 'json',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data);
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
   },
   gohome: function (e) {
@@ -221,5 +230,8 @@ Page({
   },
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
+  },
+  goMinePage: function(e){
+    tempObj.goMinePage(e)
   }
 })

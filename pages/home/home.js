@@ -184,6 +184,9 @@ Page({
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
   },
+  goMinePage: function (e) {
+    tempObj.goMinePage(e)
+  },
   shownotice: function () {
     this.setData({
       notice_popup: true
