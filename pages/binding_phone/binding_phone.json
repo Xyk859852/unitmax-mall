@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "verifycode": "/components/verifycode",
-    "toast": "/components/toast/toast"
+    "toast": "/components/toast/toast",
+    "verifycode": "/components/verifycode"   
   },
-  "navigationBarTitleText": "换绑手机"
+  "navigationBarTitleText": "切换账号"
 }

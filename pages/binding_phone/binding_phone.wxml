@@ -11,9 +11,9 @@
     <button class="{{sendmsg}}" bindtap="sendmessg">{{getmsg}}</button>
   </view>
   <button class='submit' bindtap='bindUserName'>提交</button>
-  <button class='submitwechat'><image src='../../images/WeChat.png'/>微信手机号一键绑定</button>
+  <button class='submitwechat'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><image src='../../images/WeChat.png'/>微信手机号一键绑定</button>
 </view>
-<button wx:else class='bingding' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
-<!-- 验证码组件 -->
-<verifycode id='verifycode' title="请输入验证码哈" content="已发送到手机:" />
+<button wx:else class='bingding'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
 <toast id='toast' />
+<!-- 验证码组件 -->
+<verifycode id='verifycode' title="请输入验证码" content="已发送到手机:" />

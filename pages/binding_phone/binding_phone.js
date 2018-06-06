@@ -1,5 +1,6 @@
 // 引入CryptoJS
 var WXBizDataCrypt = require('../../utils/crypto.js');
+var util = require("../../utils/util.js");
 var header = getApp().globalData.header;
 // pages/binding_phone/binding_phone.js
 var timer=1;
@@ -24,6 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.onLaunch();
     var that = this;
     //选择组件对象
     this.verifycode = this.selectComponent("#verifycode");
@@ -92,17 +94,20 @@ Page({
   sendmessg: function (e) {
     var that = this;
     console.log(phone);
-    if (phone != '' || phone != null){
-      this.toast.showView('请输入手机号');
+    if (!util.isAvalible(phone)){
+      that.toast.showView('请输入手机号');
+      return;
     }
     if (!(/^1[34578]\d{9}$/.test(phone))) {
-      this.toast.showView('手机号有误');
-      return false;
-      if (phone.length >= 11) {
-        this.toast.showView('手机号有误');
-        return false;
-      }
+      that.toast.showView('手机号有误');
+      return;
     }
+
+    if (phone.length > 11) {
+      that.toast.showView('手机号有误');
+      return;
+    }
+
     wx.request({
       url: app.IP+'chatUser/updateUsernameByNewPhone',
       data: {PHONE:phone},
@@ -259,22 +264,27 @@ Page({
     code = e.detail.value;
   },
   bindUserName: function(e){
-    if (!(/^1[34578]\d{9}$/.test(phone))) {
-      this.toast.showView('手机号有误');
-      return false;
-      if (phone.length >= 11) {
-        this.toast.showView('手机号有误');
-        return false;
-      }
+    var that = this;
+    if (!util.isAvalible(phone)) {
+      that.toast.showView('请输入手机号');
+      return;
     }
+    if (!(/^1[34578]\d{9}$/.test(phone))) {
+      that.toast.showView('手机号有误');
+      return;
+    }
+    if (phone.length > 11) {
+      that.toast.showView('手机号有误');
+      return;
+    }
+
     if(code==''){
-      this.toast.showView('输入验证码');
-      return false;
+      that.toast.showView('输入验证码');
+      return;
     }
     wx.request({
       url: app.IP +'chatUser/bindUserName',
-      data: {PHONE:phone,
-              CODE:code},
+      data: {PHONE:phone, CODE:code},
       header: header,
       method: 'GET',
       dataType: 'json',
@@ -284,6 +294,8 @@ Page({
           wx.redirectTo({
             url: '../mine/mine',
           })
+        }else{
+          that.toast.showView(res.data.result);
         }
       },
       fail: function(res) {

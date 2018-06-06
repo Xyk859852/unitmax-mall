@@ -6,14 +6,13 @@ function getUserInfo(e) {
     console.log(user);
     wx.redirectTo({
       url: '../mine/mine'
-    })
+    });
   } else {
     if (e.detail.errMsg == "getUserInfo:ok") {
       wx.setStorageSync("wxuser", e.detail.userInfo);
-      console.log(wx.getStorageSync("wxuser"));
-      wx.navigateTo({
-        url: '../binding_phone/binding_phone'
-      })
+      console.log(e);
+      console.log(e.detail.userInfo);
+      
     } else {
       console.log("拒绝授权");
       wx.navigateTo({
