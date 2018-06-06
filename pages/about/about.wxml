@@ -7,7 +7,7 @@
     <template is="wxParse" data="{{wxParseData:text.nodes}}"/>  
   </view>
 </view>
-<view class='footer'>
+<!-- <view class='footer'>
   <view>Copyright © 2014-2018</view>
   <view>上海星睿信息技术有限公司</view>
-</view>
+</view> -->

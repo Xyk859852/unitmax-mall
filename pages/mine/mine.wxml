@@ -8,8 +8,9 @@
       获取用户信息
     </button>
     <block wx:else>
-      <image class="userinfo-avatar" src='{{avatarUrl}}'></image>
-      <view class="userinfo-nickname">{{nickName}}</view>
+      <image wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" class="userinfo-avatar" src='{{default_head_img}}'></image>
+      <image class="userinfo-avatar" wx:else src='{{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}}'></image>
+      <view class="userinfo-nickname">{{NICKNAME}}</view>
     </block>
   </navigator>
 </view>
@@ -71,7 +72,7 @@
     </navigator>
      <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
-      <view>换绑手机</view>
+      <view>切换账号</view>
     </navigator>
      <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
       <image src='../../images/category.png'></image>

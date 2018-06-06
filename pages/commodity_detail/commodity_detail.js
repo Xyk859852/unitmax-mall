@@ -21,6 +21,7 @@ Page({
     selected1: false,
     selected2: false,
     goodsCartCount: 0,
+    goodsEvaCount: 0,
     service_phone: "",//客服电话
     swiper_height: wx.getSystemInfoSync().windowWidth,
     evaluate_img_width: wx.getSystemInfoSync().windowWidth * 0.292,
@@ -49,14 +50,23 @@ Page({
           } else {
             res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
           }
+
+          if (util.isAvalible(res.data.evaluate)) {
+            that.setData({
+              evaluate: res.data.evaluate,
+            });
+          }
+        }
+
+        if (util.isAvalible(res.data.goodsEvaCount) && util.isAvalible(res.data.goodsEvaCount[0])) {
           that.setData({
-            evaluate: res.data.evaluate,
+            goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
           });
         }
+
         that.setData({
           good: res.data.good,
-          service_phone: res.data.service_phone,
-          goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
+          service_phone: res.data.service_phone
         });
         if (res.data.favorite > 0) {
           that.setData({
@@ -133,17 +143,20 @@ Page({
             url: '../place_order/place_order?IDS='
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.showModal({
-            title: '提示',
-            content: '用户是否去登陆？',
-            success: function (sm) {
-              if (sm.confirm) {
-                wx.redirectTo({
-                  url: '../mine/mine',
-                })
-              }
-            }
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
           })
+          // wx.showModal({
+          //   title: '提示',
+          //   content: '用户是否去登陆？',
+          //   success: function (sm) {
+          //     if (sm.confirm) {
+          //       wx.redirectTo({
+          //         url: '../mine/mine',
+          //       })
+          //     }
+          //   }
+          // })
 
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");
@@ -196,17 +209,20 @@ Page({
             });
           }, 100)
         } else if (res.data.result == "1002") {//未登录
-          wx.showModal({
-            title: '提示',
-            content: '用户是否去登陆？',
-            success: function (sm) {
-              if (sm.confirm) {
-                wx.redirectTo({
-                  url: '../mine/mine',
-                })
-              }
-            }
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
           })
+          // wx.showModal({
+          //   title: '提示',
+          //   content: '用户是否去登陆？',
+          //   success: function (sm) {
+          //     if (sm.confirm) {
+          //       wx.redirectTo({
+          //         url: '../mine/mine',
+          //       })
+          //     }
+          //   }
+          // })
         } else if (res.data.result == "moreInventory") {//超过库存
           that.toast.showView("不能再加了");
         } else if (res.data.result == "addCountSuccess") {
@@ -249,6 +265,11 @@ Page({
         method: 'GET',
         dataType: 'json',
         success: function (res) {
+          if (res.data.result == "1002") {
+            wx.navigateTo({
+              url: '../binding_phone/binding_phone?updatePhone=true',
+            })
+          }
           if (res.data.result == "true") {
             wx.showToast({
               title: "取消成功",
@@ -274,6 +295,12 @@ Page({
         method: 'GET',
         dataType: 'json',
         success: function (res) {
+          if (res.data.result == "1002") {
+            wx.navigateTo({
+              url: '../binding_phone/binding_phone?updatePhone=true',
+            })
+          }
+
           if (res.data.result == "true") {
             that.setData({
               enshrineimg: "../../images/owned.png"

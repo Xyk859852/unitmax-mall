@@ -23,6 +23,7 @@ Page({
     duration1: 30,
     size: 14,
     newsinterval: 300,
+    swiper_height: wx.getSystemInfoSync().windowWidth*0.5,
     scrolltxt_box_width: wx.getSystemInfoSync().windowWidth * 0.88 - 20,
     category_img_width: wx.getSystemInfoSync().windowWidth * 0.92 * 0.158,
     category_commodity_img_width: wx.getSystemInfoSync().windowWidth * 0.29 * 0.96,
@@ -182,6 +183,9 @@ Page({
   },
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
+  },
+  goMinePage: function (e) {
+    tempObj.goMinePage(e)
   },
   shownotice: function () {
     this.setData({

@@ -121,7 +121,7 @@
 <!-- 待支付 -->
  <view class='body' wx:if="{{order.ORDER_STATUS == 1}}">
   <view class='tracking'>
-    <view class='tracking_right,tracking_right2' style='padding-left:{{tracking_right}}px;'>
+    <view class='finally_tracking,tracking_right,tracking_right2' style='padding-left:{{tracking_right}}px;'>
       <view>您的订单已提交，请尽快支付</view>
       <view class='time'>{{order.ADDTIME}}</view>
     </view>
