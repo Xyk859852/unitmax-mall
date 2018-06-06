@@ -16,7 +16,7 @@
   </navigator>
   <view>
     <!-- 顶部轮播图 -->
-    <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{swiper_height}}px;'>
       <block wx:for="{{imgUrls}}" wx:key="this">
         <view wx:if="{{item.AD_IMG!=''}}">
           <swiper-item>

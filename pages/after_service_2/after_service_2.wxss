@@ -118,13 +118,14 @@ page{
   right: 0;
 }
 .footer{
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  /* position: fixed;
+  bottom: 0; */
+   left: 0; 
   overflow: hidden;
   width: 92%;
   z-index: 10;
   padding: 10px 4%;
+  margin-top: 20px;
 }
 .footer button{
   width: 100%;
