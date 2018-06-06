@@ -241,7 +241,7 @@ page {
   height: 20px;
   display: block;
   margin: 0 auto;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .shopping_cart view {
