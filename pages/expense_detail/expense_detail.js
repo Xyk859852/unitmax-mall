@@ -12,7 +12,12 @@ var GetList = function (that) {
     method: 'GET',
     dataType: 'json',
     success: function (res) {
-      console.log(res.data);
+      if (res.data.result == "1002"){
+        wx.navigateTo({
+          url: '../binding_phone/binding_phone?updatePhone=true',
+        })
+      }
+      if (res.data.result == "true"){
       var l = that.data.list
       for (var i = 0; i < res.data.varList.length; i++) {
         l.push(res.data.varList[i])
@@ -21,7 +26,8 @@ var GetList = function (that) {
         list: l
       });
       page++;
-      console.log(l.length);
+    }
+      
     },
     fail: function (res) { },
     complete: function (res) { },

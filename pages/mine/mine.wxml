@@ -1,7 +1,7 @@
 <!--mine.wxml-->
 <toast id='toast' />
 <view class="container" style='background-image: url(../../images/1.png);'>
-   <button hover-class="btn-hover" class='refresh'><image class='refresh_img' src='../../images/refresh.png'/></button> 
+   <navigator hover-class="btn-hover" class='refresh' url="../binding_phone/binding_phone?updatePhone=true"><image class='refresh_img' src='../../images/refresh.png'/></navigator> 
 
   <navigator hover-class="btn-hover" class="userinfo" url="../usercenter/usercenter">
     <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
@@ -70,10 +70,10 @@
       <image src='../../images/callcenter.png'></image>
       <view>客服中心</view>
     </navigator>
-     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
+     <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../binding_phone/binding_phone?updatePhone=true">
       <image src='../../images/category.png'></image>
       <view>切换账号</view>
-    </navigator>
+    </navigator> -->
      <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../usercenter/usercenter">
       <image src='../../images/category.png'></image>
       <view>个人信息</view>
@@ -90,10 +90,10 @@
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
     </navigator> 
-     <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_2/after_service_2">
+      <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_2/after_service_2">
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
-    </navigator>  -->
+    </navigator>  
     <!-- <button hover-class="btn-hover" bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>

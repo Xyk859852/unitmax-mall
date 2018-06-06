@@ -17,19 +17,26 @@ var GetList = function (that) {
     method: 'GET',
     dataType: 'json',
     success: function (res) {
-      console.log(res.data);
-      var l = that.data.list
-      for (var i = 0; i < res.data.evaluateList.length; i++) {
-        l.push(res.data.evaluateList[i])
+      if (res.data.result == "1002"){
+        wx.navigateTo({
+          url: '../binding_phone/binding_phone?updatePhone=true',
+        })
+     }
+
+      if (res.data.result == "true") {
+        var l = that.data.list
+        for (var i = 0; i < res.data.evaluateList.length; i++) {
+          l.push(res.data.evaluateList[i])
+        }
+        that.setData({
+          list: l
+        });
+        page++;
       }
-      that.setData({
-        list: l
-      });
-      page++;
-      console.log(l.length);
+
     },
     fail: function (res) { },
-    complete: function (res) { 
+    complete: function (res) {
       wx.hideToast();
     },
   })
@@ -42,21 +49,21 @@ Page({
   data: {
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.8 - 55,
     list: [],
-    IP:app.IP
+    IP: app.IP
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -79,14 +86,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -119,9 +126,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  goDetail:function(e){
+  goDetail: function (e) {
     console.log(e);
     var goods_id = e.currentTarget.dataset.goods_id;
     wx.navigateTo({

@@ -67,10 +67,10 @@
       <contact-button type="default-light" session-from="weapp"></contact-button>
       <contact-button type="default-light" session-from="weapp"></contact-button>
     </view>
-    <view class='service'>
+    <button open-type="contact" class='service'>
       <image src='../../images/service.png' />
       <view>客服</view>
-    </view>
+    </button>
   </view>
   <view class='buy' bindtap='addGoods'>加入购物车</view>
   <button class='add_cart' bindtap='submitOrder' hover-class="btn-hover">立即购买</button>

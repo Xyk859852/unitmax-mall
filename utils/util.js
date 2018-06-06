@@ -61,8 +61,8 @@ function findCurLoginUser(){
 
       if (res.data.result == "1002") {
         wx.navigateTo({
-          url: '../pages/mine/mine',
-        });
+          url: '../pages/binding_phone/binding_phone?updatePhone=true',
+        })       
       }
     },
     fail: function (res) { },

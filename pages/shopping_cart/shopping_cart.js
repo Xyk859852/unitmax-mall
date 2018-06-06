@@ -18,51 +18,15 @@ Page({
   onLoad: function () {
     //选择组件对象
     this.toast = this.selectComponent("#toast");
-
+    this.initData();
     wx.showToast({
       title: "加载中...",
       icon: "loading"
     })
-    // 页面显示
-    var that = this;
-    wx.request({
-      url: app.IP + 'chatGoodscart/toList',
-      // data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: header, // 设置请求的 header
-      success: function (res) {
-        // success
-        if (res.data.result == "true") {
-          var cartlist = res.data.cartlist;
-          for (var i = 0; i < cartlist.length; i++) {
-            cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
-          }
-          that.setData({
-            cartlist: cartlist,
-            totalPrice: '0.00',
-            isAll: false,
-          });
-        } else if (res.data.result == "noLogin") {//未登录
-          wx.redirectTo({
-            url: '../mine/mine',
-          })
-        }
-      },
-      fail: function () {
-        // fail
-        setTimeout(function () {
-          that.toast.showView("加载失败");
-        }, 100)
-      },
-      complete: function () {
-        // complete
-       wx.hideToast();
-      }
-    });
 
   },
   onShow: function () {
-    
+
   },
   addNum: function (e) {
     var that = this;
@@ -77,7 +41,7 @@ Page({
           cartlist[i].price = util.changeTwoDecimal_f(parseFloat(cartlist[i].goods_price) * parseInt(cartlist[i].count));
           this.changeCart(id, cartlist[i].goods_price, cartlist[i].price, cartlist[i].count);
         } else {
-          that.toast.showView("不能再加了");          
+          that.toast.showView("不能再加了");
         }
         cartlist[i].count - 1;
         break;
@@ -219,7 +183,7 @@ Page({
         },
         complete: function () {
           // complete
-         //wx.hideToast();
+          //wx.hideToast();
         }
 
       });
@@ -262,8 +226,8 @@ Page({
             url: '../place_order/place_order?IDS=' + IDS
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.redirectTo({
-            url: '../mine/mine',
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
           })
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");
@@ -279,7 +243,7 @@ Page({
       },
       complete: function () {
         // complete
-       //wx.hideToast();
+        //wx.hideToast();
       }
     });
 
@@ -354,7 +318,7 @@ Page({
       url: '../commodity_detail/commodity_detail?goods_id=' + goods_id,
     })
   },
-  deleateAll: function(e){
+  deleateAll: function (e) {
     var that = this;
     //检查是否选择
     var cartlist = that.data.cartlist;
@@ -367,26 +331,26 @@ Page({
         } else {
           IDS += "," + cartlist[i].id;
         }
+      }
     }
-    }
-    if (IDS=="") {
+    if (IDS == "") {
       that.toast.showView("请勾选宝贝");
       return;
-    }else{
+    } else {
       wx.request({
-        url: app.IP +'chatGoodscart/deleteAll',
-        data: { DATA_IDS: IDS},
+        url: app.IP + 'chatGoodscart/deleteAll',
+        data: { DATA_IDS: IDS },
         header: header,
         method: 'GET',
         dataType: 'json',
-        success: function(res) {
-          if(res.data.result=="true"){
+        success: function (res) {
+          if (res.data.result == "true") {
             setTimeout(function () {
               wx.showToast({
                 title: "删除成功",
                 duration: 1500
               });
-            }, 100) 
+            }, 100)
             wx.request({
               url: app.IP + 'chatGoodscart/toList',
               // data: {},
@@ -423,9 +387,57 @@ Page({
             });
           }
         },
-        fail: function(res) {},
-        complete: function(res) {},
+        fail: function (res) { },
+        complete: function (res) { },
       })
     }
-  }
+  },
+  initData: function () {
+    var that = this;
+    wx.request({
+      url: app.IP + 'chatGoodscart/toList',
+      // data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header, // 设置请求的 header
+      success: function (res) {
+        // success
+        if (res.data.result == "true") {
+          var cartlist = res.data.cartlist;
+          for (var i = 0; i < cartlist.length; i++) {
+            cartlist[i].goods_price = util.changeTwoDecimal_f(cartlist[i].goods_price);
+          }
+          that.setData({
+            cartlist: cartlist,
+            totalPrice: '0.00',
+            isAll: false,
+          });
+        } else if (res.data.result == "noLogin") {//未登录
+          wx.redirectTo({
+            url: '../mine/mine',
+          })
+        }
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          that.toast.showView("加载失败");
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    });
+  },
+    /**
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    this.initData();
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
+  },
 })

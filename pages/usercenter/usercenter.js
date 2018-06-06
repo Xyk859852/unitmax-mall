@@ -38,8 +38,8 @@ Page({
 
         if (res.data.result == "1002") {
           wx.navigateTo({
-            url: '../pages/mine/mine',
-          });
+            url: '../binding_phone/binding_phone?updatePhone=true',
+          })
         }
       },
       fail: function (res) { },
@@ -173,8 +173,8 @@ Page({
 
         if (res.data.result == "1002") {
           wx.navigateTo({
-            url: '../mine/mine',
-          });
+            url: '../binding_phone/binding_phone?updatePhone=true',
+          })
         }
       },
       fail: function (res) { },
@@ -209,8 +209,8 @@ Page({
 
           if (res.data.result == "1002") {
             wx.navigateTo({
-              url: '../mine/mine',
-            });
+              url: '../binding_phone/binding_phone?updatePhone=true',
+            })
           }
         },
         fail: function (res) { },
