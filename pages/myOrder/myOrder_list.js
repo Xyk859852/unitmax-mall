@@ -136,7 +136,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log("刷新123");
+    console.log(8888888888);
     var that = this;
     // if (that.data.isFresh){
     // that.data.isFresh = false;
@@ -624,6 +624,7 @@ Page({
 * 页面相关事件处理函数--监听用户下拉动作
 */
   onPullDownRefresh: function () {
+    console.log(555555);
     this.data.page = 1
     this.getMyOrderList('正在刷新数据')
   },
@@ -673,6 +674,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.log(7777777);
     // 显示顶部刷新图标  
     wx.showNavigationBarLoading();
     this.getMyOrderList("加载更多数据");

@@ -95,7 +95,9 @@
   <view wx:for="{{varClass}}" id='category_commodity'>
     <view wx:if="{{item.goodList.length==9}}">
       <navigator open-type='redirect' id='category_commodity_title' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
-        <image src='../../images/category_title.jpg' mode="widthFix"></image>
+        <image wx:if="{{item.MAIN_IMG == '' || item.MAIN_IMG == undefined|| item.MAIN_IMG == null }}" src='../../images/category_title.jpg' mode="widthFix"></image>
+
+        <image wx:else src='{{appIP}}static/uploadImgs/goodstype/{{item.MAIN_IMG}}' mode="widthFix"></image>
       </navigator>
       <view id='category_commodity_list'>
         <navigator wx:for="{{item.goodList}}" hover-class="btn-hover" wx:for-item="good" wx:key="this" class='category_commodity_container' data-goods_id='{{good.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{good.goods_id}}" style='width:{{category_commodity_container_width}}px;'>

@@ -32,66 +32,8 @@ Page({
     var that = this;
     //选择组件对象
     this.toast = this.selectComponent("#toast");
-
-    wx.request({
-      url: getApp().IP + 'chatGoods/goodDetail',
-      data: { GOODS_ID: e.goods_id },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: header, // 设置请求的 header
-      success: function (res) {
-        // success
-        res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
-        res.data.good.TRANS_FEE = util.changeTwoDecimal_f(res.data.good.TRANS_FEE);
-        if (util.isAvalible(res.data.evaluate) && util.isAvalible(res.data.evaluate.NAME)) {
-          if (res.data.evaluate.NAME.length == 1) {
-            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.length
-          } else if (res.data.evaluate.NAME.length == 2) {
-            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
-          } else {
-            res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
-          }
-
-          if (util.isAvalible(res.data.evaluate)) {
-            that.setData({
-              evaluate: res.data.evaluate,
-            });
-          }
-        }
-
-        if (util.isAvalible(res.data.goodsEvaCount) && util.isAvalible(res.data.goodsEvaCount[0])) {
-          that.setData({
-            goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
-          });
-        }
-
-        that.setData({
-          good: res.data.good,
-          service_phone: res.data.service_phone
-        });
-        if (res.data.favorite > 0) {
-          that.setData({
-            enshrineimg: "../../images/owned.png"
-          })
-        }
-
-        if (util.isAvalible(res.data.goodsCartCount)) {
-          that.setData({
-            goodsCartCount: res.data.goodsCartCount
-          });
-        }
-
-      },
-      fail: function () {
-        // fail
-        setTimeout(function () {
-          that.toast.showView("加载失败");
-        }, 100)
-      },
-      complete: function () {
-        // complete
-        // wx.hideToast();
-      }
-    });
+    that.setData({ GOODS_ID: e.goods_id });
+    this.initData();
   },
   selected: function (e) {
     this.setData({
@@ -329,5 +271,78 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.service_phone
     })
+  },
+  /**
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    this.initData();
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
+  },
+  initData: function () {
+    var that = this;
+    wx.request({
+      url: getApp().IP + 'chatGoods/goodDetail',
+      data: { GOODS_ID: that.data.GOODS_ID },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header, // 设置请求的 header
+      success: function (res) {
+        // success
+        res.data.good.GOODS_PRICE = util.changeTwoDecimal_f(res.data.good.GOODS_PRICE);
+        res.data.good.TRANS_FEE = util.changeTwoDecimal_f(res.data.good.TRANS_FEE);
+        if (util.isAvalible(res.data.evaluate) && util.isAvalible(res.data.evaluate.NAME)) {
+          if (res.data.evaluate.NAME.length == 1) {
+            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.length
+          } else if (res.data.evaluate.NAME.length == 2) {
+            res.data.evaluate.NAME = res.data.evaluate.NAME + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+          } else {
+            res.data.evaluate.NAME = res.data.evaluate.NAME.slice(0, 2) + "***" + res.data.evaluate.NAME.slice(res.data.evaluate.NAME.length - 1, res.data.evaluate.NAME.length)
+          }
+
+          if (util.isAvalible(res.data.evaluate)) {
+            that.setData({
+              evaluate: res.data.evaluate,
+            });
+          }
+        }
+
+        if (util.isAvalible(res.data.goodsEvaCount) && util.isAvalible(res.data.goodsEvaCount[0])) {
+          that.setData({
+            goodsEvaCount: res.data.goodsEvaCount[0].evaluateCount
+          });
+        }
+
+        that.setData({
+          good: res.data.good,
+          service_phone: res.data.service_phone
+        });
+        if (res.data.favorite > 0) {
+          that.setData({
+            enshrineimg: "../../images/owned.png"
+          })
+        }
+
+        if (util.isAvalible(res.data.goodsCartCount)) {
+          that.setData({
+            goodsCartCount: res.data.goodsCartCount
+          });
+        }
+
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          that.toast.showView("加载失败");
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        // wx.hideToast();
+      }
+    });
   }
 })
