@@ -414,8 +414,8 @@ Page({
           // });
         } else {//未登录
           if (res.data.result == "1002") {//未登录
-            wx.redirectTo({
-              url: '../mine/mine',
+            wx.navigateTo({
+              url: '../binding_phone/binding_phone?updatePhone=true',
             })
           } else {
             that.toast.showView(res.data.result);
@@ -551,8 +551,8 @@ Page({
           });
           that.calculateFinalPrice();
         } else if (res.data.result == "1002") {//未登录
-          wx.redirectTo({
-            url: '../mine/mine',
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
           })
         }
       },

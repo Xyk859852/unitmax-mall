@@ -43,9 +43,15 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
+        if (res.data.result == "1002") {
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
+          })
+        } else if (res.data.result == "true"){
         that.setData({
           list: res.data.list
         })
+        }
       },
       fail: function (res) { },
       complete: function (res) { },

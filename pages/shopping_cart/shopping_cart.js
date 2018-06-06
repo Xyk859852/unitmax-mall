@@ -262,8 +262,8 @@ Page({
             url: '../place_order/place_order?IDS=' + IDS
           });
         } else if (res.data.result == "1002") {//未登录
-          wx.redirectTo({
-            url: '../mine/mine',
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
           })
         } else if (res.data.result == "10001") {//未设置支付密码
           //window.open("<%=basePath%>RongSafety/goSetPay");

@@ -17,26 +17,34 @@ var GetList = function (that) {
     method: 'GET',
     dataType: 'json',
     success: function (res) {
-      console.log(res);
-      var l = that.data.list
-      for (var i = 0; i < res.data.list.length; i++) {
-        for (var j = 0; j < res.data.list[i].goods.length; j++){
-             res.data.list[i].goods[j].GOODS_PRICE = util.changeTwoDecimal_f(res.data.list[i].goods[j].GOODS_PRICE);
-           }
-        l.push(res.data.list[i])
+      if (res.data.result == "1002") {
+        wx.navigateTo({
+          url: '../binding_phone/binding_phone?updatePhone=true',
+        })
       }
-      that.setData({
-        list: l
-      })
-      page++;
+
+      if (res.data.result == "true") {
+        var l = that.data.list
+        for (var i = 0; i < res.data.list.length; i++) {
+          for (var j = 0; j < res.data.list[i].goods.length; j++) {
+            res.data.list[i].goods[j].GOODS_PRICE = util.changeTwoDecimal_f(res.data.list[i].goods[j].GOODS_PRICE);
+          }
+          l.push(res.data.list[i])
+        }
+        that.setData({
+          list: l
+        })
+        page++;
+      }
+
     },
     fail: function (res) {
       // fail
       setTimeout(function () {
         that.toast.showView("加载失败");
       }, 100)
-     },
-    complete: function (res) { 
+    },
+    complete: function (res) {
       // complete
       wx.hideToast();
     },
@@ -51,7 +59,7 @@ Page({
    */
   data: {
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 80,
-    list:[],
+    list: [],
     IP: getApp().IP
   },
 
@@ -72,28 +80,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -111,7 +119,7 @@ Page({
     // 隐藏导航栏加载框  
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
-    
+
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -125,9 +133,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  goodsDetail:function(e){
+  goodsDetail: function (e) {
     console.log(e);
     var goods_id = e.currentTarget.dataset.goods_id;
     wx.navigateTo({

@@ -265,8 +265,8 @@ Page({
           }
         } else {
           if (res.data.result == "1002") {
-            wx.redirectTo({
-              url: '../mine/mine',
+            wx.navigateTo({
+              url: '../binding_phone/binding_phone?updatePhone=true',
             })
           } else {
             that.toast.showView(res.data.result);
@@ -318,8 +318,8 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.redirectTo({
-                  url: '../mine/mine',
+                wx.navigateTo({
+                  url: '../binding_phone/binding_phone?updatePhone=true',
                 })
               }
             },
@@ -379,8 +379,8 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.redirectTo({
-                  url: '../mine/mine',
+                wx.navigateTo({
+                  url: '../binding_phone/binding_phone?updatePhone=true',
                 })
               }
             },
@@ -432,8 +432,8 @@ Page({
               }
 
               if (res.data.result == "1002") {
-                wx.redirectTo({
-                  url: '../mine/mine',
+                wx.navigateTo({
+                  url: '../binding_phone/binding_phone?updatePhone=true',
                 })
               }
             },

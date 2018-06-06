@@ -20,16 +20,22 @@ var GetList = function (that) {
       pageNo: page
     },
     success: function (res) {
-      console.log(res.data);
-      var l = that.data.list
-      for (var i = 0; i < res.data.varList.length; i++) {
-        l.push(res.data.varList[i])
+      if (res.data.result == "1002") {
+        wx.navigateTo({
+          url: '../binding_phone/binding_phone?updatePhone=true',
+        })
       }
-      that.setData({
-        list: l
-      });
-      page++;
-      console.log(l.length);
+
+      if (res.data.result == "true") {
+        var l = that.data.list
+        for (var i = 0; i < res.data.varList.length; i++) {
+          l.push(res.data.varList[i])
+        }
+        that.setData({
+          list: l
+        });
+        page++;
+      }
     },
     fail: function () {
       // fail
@@ -43,15 +49,15 @@ var GetList = function (that) {
     }
   });
   wx.hideNavigationBarLoading();
-} 
+}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[],
-    IP:app.IP,
+    list: [],
+    IP: app.IP,
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
   },
 
@@ -80,21 +86,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -128,6 +134,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })
