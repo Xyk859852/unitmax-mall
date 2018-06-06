@@ -18,14 +18,15 @@ var GetList = function (that) {
     title: "加载中...",
     icon: "loading"
   });
+  that.setData({ jiage: jiage, xiaoliang: xiaoliang});
   wx.request({
     url: url,
     header:header,
     data: {
       pageSize: 10,
       pageNo: page,
-      xiaoliang: xiaoliang,
-      jiage: jiage,
+      xiaoliang: xiaoliang,//1降序,0升序
+      jiage: jiage,//1降序,0升序
       GOODSTYPE_ID: GOODSTYPE,
       GOODSLEVEL_ID: GOODSLEVEL,
       keywords: keywords
@@ -205,12 +206,22 @@ Page({
     })
   },
   selected1: function (e) {
-    if (this.data.selected1) {
-      this.setData({
+    var that = this;
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    if (that.data.selected1) {//降序
+      xiaoliang =1;
+      jiage = -1;
+      that.setData({
         selected1: false
       })
-    }else{
-      this.setData({
+    }else{//升序
+      xiaoliang = 0;
+      jiage = -1;
+      that.setData({
         selected: false,
         selected2: false,
         selected1: true,
@@ -220,14 +231,26 @@ Page({
         selectedbtn1: true
       })
     }
+    GetList(that);
+
   },
   selected2: function (e) {
-    if (this.data.selected2) {
-      this.setData({
+    var that = this; 
+    page = 1;
+    that.setData({
+      list: [],
+      scrollTop: 0
+    });
+    if (that.data.selected2) {//降序
+      jiage = 1;
+      xiaoliang = -1;
+      that.setData({
         selected2: false
       })
-    } else {
-    this.setData({
+    } else {//升序
+      jiage = 0;
+      xiaoliang = -1;
+      that.setData({
       selected: false,
       selected1: false,
       selected2: true,
@@ -237,6 +260,7 @@ Page({
       selectedbtn2: true,
     })
     }
+    GetList(this);
   },
   selected3: function (e) {
     if (this.data.selected3) {
