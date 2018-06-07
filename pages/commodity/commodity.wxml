@@ -12,18 +12,18 @@
 <view class="body,{{overflow?'hidden':'auto'}}">
   <view class="nav">
     <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">最新</view>
-    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">销量<image src='../../images/default_up.png'/></view>
-    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">价格<image src='../../images/default.png'/></view>
+    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">销量<image wx:if="{{xiaoliang == -1}}" src='../../images/default.png'/><image wx:elif="{{xiaoliang == 0}}" src='../../images/default_up.png'/><image wx:elif="{{xiaoliang == 1}}" src='../../images/default_down.png'/></view>
+    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">价格<image wx:if="{{jiage == -1}}" src='../../images/default.png'/><image wx:elif="{{jiage == 0}}" src='../../images/default_up.png'/><image wx:elif="{{jiage == 1}}" src='../../images/default_down.png'/></view>
     <view style='border-left:1px solid #f5f5f5;' class="default" bindtap="selected3">筛选</view>
   </view>
-  <view class="{{selected1?'show':'hide'}}">
+   <!-- <view class="{{selected1?'show':'hide'}}">
     <view data-xiaoliang='1' bindtap="select">销量从高到低</view>
     <view data-xiaoliang='0' bindtap="select">销量从低到高</view>
-  </view>
-  <view class="{{selected2?'show':'hide'}}">
+  </view>  -->
+  <!-- <view class="{{selected2?'show':'hide'}}">
     <view data-jiage='0' bindtap="select">价格从低到高</view>
     <view data-jiage='1' bindtap="select">价格从高到低</view>
-  </view>
+  </view> -->
   <view class="{{selected3?'show':'hide'}}">
     <view class='filtrate'>
       <view class='title'>品类</view>

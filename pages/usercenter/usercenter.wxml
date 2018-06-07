@@ -15,5 +15,5 @@
 <button hover-class="btn-hover" bindtap='saveUserInfo'>保存修改</button>
 </view>
 <view class='btn_box'>
-<button hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">同步微信</button>
+<button hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo"><image class='refresh_img' src='../../images/refresh.png'/>同步微信</button>
 </view>

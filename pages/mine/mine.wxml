@@ -1,7 +1,9 @@
 <!--mine.wxml-->
 <toast id='toast' />
-<view class="container" style='background-image: url(../../images/1.png);'>
-   <navigator hover-class="btn-hover" class='refresh' url="../binding_phone/binding_phone?updatePhone=true"><image class='refresh_img' src='../../images/refresh.png'/></navigator> 
+<view class="container" style='background-image: url(http://mall.systarsoft.com/static/uploadImgs/1.png);'>
+   <navigator hover-class="btn-hover" class='refresh' url="../binding_phone/binding_phone?updatePhone=true">
+    <!-- <image class='refresh_img' src='../../images/refresh.png'/>  -->
+   切换账号</navigator> 
 
   <navigator hover-class="btn-hover" class="userinfo" url="../usercenter/usercenter">
     <button hover-class="btn-hover" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
@@ -86,14 +88,14 @@
       <image src='../../images/category.png'></image>
       <view>广告详页</view>
     </navigator> -->
-     <navigator hover-class="btn-hover" class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
+     <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../post_evaluate/post_evaluate?ORDER_NO=11805090001&ORDERFORM_ID=af2177ac5d29446a820a9d554cacf8b1">
       <image src='../../images/category.png'></image>
       <view>发布评价</view>
-    </navigator> 
-      <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_2/after_service_2">
+    </navigator>  -->
+      <!-- <navigator hover-class="btn-hover" class='mine_order_state_container' url="../after_service_2/after_service_2">
       <image src='../../images/category.png'></image>
       <view>申请售后</view>
-    </navigator>  
+    </navigator>   -->
     <!-- <button hover-class="btn-hover" bindtap='openToastPannel' class='mine_order_state_container'>
       <image src='../../images/category.png'></image>
       <view>微信支付</view>
