@@ -164,11 +164,12 @@
 }
 .filtrate_btn{
   position: fixed;
-  bottom: 63px;
+  bottom: 53px;
   right: 0;
   width: 60%;
-  padding: 0 4%;
+  padding: 10px 4%;
   overflow: hidden;
+  background-color: #ffffff;
 }
 .filtrate_btn button{
   width: 40%;
