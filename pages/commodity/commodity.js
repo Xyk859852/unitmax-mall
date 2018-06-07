@@ -113,7 +113,8 @@ Page({
     goodsTypes:[],
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
-    search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.96 - 20
+    search_width: wx.getSystemInfoSync().windowWidth * 0.88 * 0.96 - 20,
+    filtrate_height: wx.getSystemInfoSync().windowHeight - 182
   },
   onLoad: function (e) {
     this.toast = this.selectComponent("#toast");

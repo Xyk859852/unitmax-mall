@@ -25,7 +25,7 @@
     <view data-jiage='1' bindtap="select">价格从高到低</view>
   </view> -->
   <view class="{{selected3?'show':'hide'}}">
-    <view class='filtrate'>
+    <view class='filtrate' style='height:{{filtrate_height}}px;'>
       <view class='title'>品类</view>
       <view class="content">
       <view bindtap="levelSelect" data-index='{{-1}}' data-goodstype_id='' class="{{-1==typeIndex?' selected':''}}">全部品类</view>
