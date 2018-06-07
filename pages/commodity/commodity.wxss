@@ -180,8 +180,8 @@
   font-size: 14px;
   line-height: 27px;
    height: 27px;
-  /* border-radius: 5px;
-  padding: 0;  */
+   border-radius: 5px;
+  /* padding: 0;   */
 
 }
 .content{

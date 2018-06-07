@@ -10,7 +10,7 @@
 .tracking_right{
   margin-left: 14px;
   padding: 20px 0;
-  border-left: #cccccc 1px solid;
+  border-left: #eeeeee 1px solid;
   font-size: 14px;
   color: #aaaaaa;
 }

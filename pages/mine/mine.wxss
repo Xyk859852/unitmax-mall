@@ -103,7 +103,7 @@
   border-bottom: #efefef 1px solid;
 }
 .no_border{
-  border:none;
+  border:none!important;
 }
 .mine_menu .mine_order_state_container image{
   padding: 0;
