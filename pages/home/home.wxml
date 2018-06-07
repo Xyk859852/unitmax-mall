@@ -20,7 +20,7 @@
       <block wx:for="{{imgUrls}}" wx:key="this">
         <view wx:if="{{item.AD_IMG!=''}}">
           <swiper-item>
-            <image bindtap='goAdvertising' data-id='{{item.ID}}' data-url='{{item.AD_URL}}' data-type='{{item.AD_TYPE}}' src="{{appIP}}static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image" mode="widthFix"></image>
+            <image bindtap='goAdvertising' data-id='{{item.ID}}' data-url='{{item.AD_URL}}' data-type='{{item.AD_TYPE}}' src="http://mall.systarsoft.com/static/uploadImgs/advert/{{item.AD_IMG}}" class="slide-image" mode="widthFix"></image>
           </swiper-item>
         </view>
       </block>
