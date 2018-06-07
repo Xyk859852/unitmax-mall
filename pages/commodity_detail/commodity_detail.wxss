@@ -1,5 +1,4 @@
 /**commodity_detail.wxss**/
-
 page {
   padding-bottom: 53px;
 }
@@ -248,13 +247,16 @@ page {
   font-size: 12px;
   text-align: center;
   margin-top: 5px;
+  line-height: 12px;
 }
 
 .contact-button-box, .service {
   width: 100%;
   position: absolute;
   left: 0;
-  top: -5px;
+  top: 0;
+  padding: 0;
+  height: 53px;
 }
 
 .number {

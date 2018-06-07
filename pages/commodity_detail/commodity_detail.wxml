@@ -67,7 +67,7 @@
       <contact-button type="default-light" session-from="weapp"></contact-button>
       <contact-button type="default-light" session-from="weapp"></contact-button>
     </view>
-    <button open-type="contact" class='service'>
+    <button open-type="contact" class='service' hover-class="btn-hover">
       <image src='../../images/service.png' />
       <view>客服</view>
     </button>
