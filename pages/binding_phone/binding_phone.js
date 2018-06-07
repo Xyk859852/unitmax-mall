@@ -15,7 +15,7 @@ Page({
    */
   data: {
     phone_input_width: wx.getSystemInfoSync().windowWidth * 0.92 - 56,
-    input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 186,
+    input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 178,
     sendmsg: "sendmsg",
     getmsg: "获取验证码",
     update: 1

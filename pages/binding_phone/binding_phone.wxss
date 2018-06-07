@@ -35,13 +35,15 @@ page{
 }
 .sendmsg{
   font-size: 14px;
-  width: 128px;
+  width: 120px;
   text-align: center;
   border: #fe6500 1px solid;
   color: #fe6500;
   border-radius: 5px;
   margin-left: 4%;
   float: right;
+  line-height: 1.4rem;
+  margin-top: 5px;
 }
 .sendmsgafter{
   font-size: 14px;

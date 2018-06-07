@@ -5,6 +5,7 @@ page{
   padding: 10px 4%;
   overflow: hidden;
   width: 92%;
+  position: relative;
 }
 .search_box_left{
   height: 30px;
@@ -13,19 +14,25 @@ page{
   float: left;
   border-radius: 5px;
   padding: 0 4%;
+  /* position: relative; */
 }
-.search_box_left image{
+.search_box image{
   width: 15px;
   height: 15px;
-  float: left;
-  margin-top: 8px;
+  /* float: left */
+  /* margin-top: 8px; */
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  /* left: 8%; */
 }
  #search{
-   padding: 5px 0;
-   margin-left: 4%;
+   /* padding: 5px 0; */
+   /* margin-left: 4%; */
    float: left;
-   line-height: 20px;
+   line-height: 30px;
    font-size: 14px;
+   height: 30px;
 } 
 #search_box_close{
   width: 32px;
