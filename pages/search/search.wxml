@@ -1,8 +1,8 @@
 <!--search.wxml-->
 <view class='search_box'>
+    <image style='left:{{search_img_left}}px;' src='../../images/search.png'></image>
   <view class='search_box_left' style='width:{{search_box_left_width}}px;'>
-    <image src='../../images/search.png'></image>
-    <input type='text' bindconfirm="realnameConfirm" confirm-type="search" style='width:{{search_width}}px;' id='search' placeholder-style="line-height:20px;color:#cccccc;font-size:14px;"></input>
+    <input type='text' bindconfirm="realnameConfirm" confirm-type="search" style='width:{{search_width}}px;margin-left:{{search_left}}px;' id='search' placeholder-style="line-height:20px;color:#cccccc;font-size:14px;"></input>
   </view>
   <view bindtap='back' id='search_box_close'>取消</view>
 </view>

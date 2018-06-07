@@ -7,6 +7,8 @@ Page({
   data: {
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88*0.92 - 32,
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.88 - 47,
+    search_left: wx.getSystemInfoSync().windowWidth * 0.88 * 0.04+15,
+    search_img_left: wx.getSystemInfoSync().windowWidth * 1.88 * 0.04,
     souList:[]
   },
   onLoad: function () {
