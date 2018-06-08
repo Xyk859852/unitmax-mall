@@ -18,7 +18,8 @@ Page({
     input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 178,
     sendmsg: "sendmsg",
     getmsg: "获取验证码",
-    update: 1
+    update: 1,
+    login_img:""
   },
 
   /**
@@ -42,6 +43,31 @@ Page({
         update: 2
       })
     }
+    
+    //加载信息
+    wx.request({
+      url: app.IP + 'chatConfig/findByName',
+      header: header,
+      method: 'GET',
+      data: {NAME:"切换账号图标"},
+      success: function (res) {
+        console.log(res.data.PARAMS);
+        if (res.data.result == "true") {
+          that.setData({
+            login_img: res.data.PARAMS
+          })
+        }else{
+          that.toast.showView(res.data.result);
+        }
+
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      },
+    });
   },
 
   /**

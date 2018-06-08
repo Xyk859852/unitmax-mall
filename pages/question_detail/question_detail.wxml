@@ -1,14 +1,18 @@
 <!--pages/question_detail/question_detail.wxml-->
+<toast id='toast' />
+<import src="../wxParse/wxParse.wxml"/>
 <view class='f5f5f5'></view>
 <view class='body'>
   <view class='news_title'>
-   问题标题 
+    {{questionanswer.NAME}}
   </view>
   <view class='news_content'>
-    问题详情
+    <template is="wxParse" data="{{wxParseData:text.nodes}}" />
   </view>
 </view>
-  <view class='footer'>
-  <button hover-class="btn-hover" class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
-  <button hover-class="btn-hover" bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</button>
-  </view>
+<view class='footer'>
+  <button open-type="contact" hover-class="btn-hover" class='btn1'>
+    <image src='../../images/callcenter1_fe6500.png' />在线客服</button>
+  <button hover-class="btn-hover" bindtap='callmobile'>
+    <image src='../../images/callcenter2_fe6500.png' />平台热线</button>
+</view>

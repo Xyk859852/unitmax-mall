@@ -1,4 +1,8 @@
 // pages/question_detail/question_detail.js
+var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
+var WxParse = require('../wxParse/wxParse.js');
+var app = getApp();
 Page({
 
   /**
@@ -12,7 +16,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    //选择组件对象
+    this.toast = this.selectComponent("#toast");
+    var that = this;
+   var data = { QUESTIONANSWER_ID: options.QUESTIONANSWER_ID};
+    wx.request({
+      url: app.IP + 'chatConfig/questionanswer_detail',
+      data: data,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: header, // 设置请求的 header
+      success: function (res) {
+        if (res.data.result == "true") {
+          WxParse.wxParse('text', 'html', res.data.questionanswer.ANSWER, that, 5);
+          that.setData({ questionanswer: res.data.questionanswer});
+        } else {
+          that.toast.showView(res.data.result);
+        }
+
+      },
+      fail: function () {
+        // fail
+        setTimeout(function () {
+          that.toast.showView("加载失败");
+        }, 100)
+      },
+      complete: function () {
+        // complete
+        wx.hideToast();
+      }
+    })
   },
 
   /**

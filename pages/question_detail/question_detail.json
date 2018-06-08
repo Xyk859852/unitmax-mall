@@ -1,3 +1,6 @@
 {
+    "usingComponents": {
+      "toast": "/components/toast/toast"
+    },
   "navigationBarTitleText": "问题详情"
 }

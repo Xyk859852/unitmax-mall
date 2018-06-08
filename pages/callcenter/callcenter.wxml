@@ -1,16 +1,20 @@
 <!--pages/callcenter/callcenter.wxml-->
-  <view class="nav">
-    <view class="{{selectedbtn?'red':'default'}}" bindtap="selected">基础问题</view>
-    <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">订单问题</view>
-    <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">优惠问题</view>
-  </view>
-  <!-- <view class='no_data'>暂无基础问题</view> -->
-  <view class='content'>
-  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
-  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
-  <navigator hover-class="btn-hover" url="../question_detail/question_detail"><label style='width:{{label_width}}px;'>问题问题问题</label><image src='../../images/right.png'/></navigator>
-  </view>
-  <view class='footer'>
-  <button hover-class="btn-hover" class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
-  <button hover-class="btn-hover" bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</button>
-  </view>
+<toast id='toast'/>
+<view class="nav" >
+  <view wx:for="{{typeList}}" wx:key="this" class="{{item.DICTIONARIES_ID==DICTIONARIES_ID?'red':'default'}}"  data-questiontype="{{item.DICTIONARIES_ID}}" bindtap="selected">{{item.NAME}}</view>
+  <!-- <view class="{{selectedbtn1?'red':'default'}}" bindtap="selected1">订单问题</view>
+  <view class="{{selectedbtn2?'red':'default'}}" bindtap="selected2">优惠问题</view> -->
+</view>
+<!-- <view class='no_data'>暂无基础问题</view> -->
+<view class='content'>
+  <navigator wx:for="{{varList}}" wx:key="this" hover-class="btn-hover" url="../question_detail/question_detail?QUESTIONANSWER_ID={{item.QUESTIONANSWER_ID}}">
+    <label style='width:{{label_width}}px;'>{{item.NAME}}</label>
+    <image src='../../images/right.png' />
+  </navigator>
+</view>
+<view class='footer'>
+  <button open-type="contact" hover-class="btn-hover" class='btn1'>
+    <image src='../../images/callcenter1_fe6500.png' />在线客服</button>
+  <button hover-class="btn-hover" bindtap='callmobile'>
+    <image src='../../images/callcenter2_fe6500.png' />平台热线</button>
+</view>

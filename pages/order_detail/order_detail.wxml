@@ -71,7 +71,7 @@
     <image src='../../images/order_price_bg.png'/></view> -->
   </view>
   <view class='contact'>
-  <view style='width:{{btn1_width}}px;' class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</view>
+  <button open-type="contact" style='width:{{btn1_width}}px;' class='btn1'><image src='../../images/callcenter1_fe6500.png'/>在线客服</button>
   <view bindtap='callmobile'><image src='../../images/callcenter2_fe6500.png'/>平台热线</view>
   </view>
   <view class='order_detail'>
