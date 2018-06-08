@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    appIP: app.IP,
     phone_input_width: wx.getSystemInfoSync().windowWidth * 0.92 - 56,
     input_width: wx.getSystemInfoSync().windowWidth * 0.88 - 178,
     sendmsg: "sendmsg",
@@ -50,14 +51,14 @@ Page({
       header: header,
       method: 'GET',
       data: {NAME:"切换账号图标"},
-      success: function (res) {
-        console.log(res.data.PARAMS);
+      success: function (res) {      
+        console.log(res);
         if (res.data.result == "true") {
           that.setData({
             login_img: res.data.PARAMS
-          })
+          });
         }else{
-          that.toast.showView(res.data.result);
+         // that.toast.showView(res.data.result);
         }
 
       },
