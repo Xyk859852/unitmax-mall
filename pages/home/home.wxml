@@ -46,14 +46,14 @@
     <view class='category_box' wx:for="{{varClass}}" wx:key="this">
       <view wx:if="{{index < 9}}">
         <navigator open-type='redirect' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
-          <image src='{{appIP}}static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
+          <image src='http://mall.systarsoft.com/static/uploadImgs/goodstype/{{item.PATH}}' style='height:{{category_img_width}}px'></image>
           <view class='category_name'>{{item.NAME}}</view>
         </navigator>
       </view>
       <!-- 全部品类 -->
       <view wx:else class='category_box'>
         <navigator open-type='redirect' hover-class="btn-hover" url='../category/category'>
-          <image src='{{appIP}}static/uploadImgs/goodstype/{{allType.PATH}}' style='height:{{category_img_width}}px'></image>
+          <image src='http://mall.systarsoft.com/static/uploadImgs/goodstype/{{allType.PATH}}' style='height:{{category_img_width}}px'></image>
           <view class='category_name'>{{allType.NAME}}</view>
         </navigator>
       </view>
@@ -76,14 +76,14 @@
     <swiper class="swiper_container" style='width:{{swiper_width}}px;' vertical="true" autoplay="true" circular="true" interval="3000">
       <navigator hover-class="btn-hover" wx:for="{{newlist}}" wx:for-index="idx" wx:key="this" open-type="navigate" url="../news/news">
         <swiper-item>
-          <!-- <image class='new_box_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
-          <view class="swiper_item" style="background-image:url({{appIP}}static/uploadImgs/news/{{item.AD_IMG}});">
+          <!-- <image class='new_box_img' src='http://mall.systarsoft.com/static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
+          <view class="swiper_item" style="background-image:url(http://mall.systarsoft.com/static/uploadImgs/news/{{item.AD_IMG}});">
             <view class="swiper_item,news_navigator_view">
               <view class='view1' style='width:{{swiper_container_width}}px;'>
                 <view>{{item.AD_TITLE}}</view>
                 <view wx:if="{{newlist[idx+1].AD_TITLE != '' && newlist[idx+1].AD_TITLE!= undefined}}">{{newlist[idx+1].AD_TITLE}}</view>
               </view>
-              <!-- <image class='news_navigator_img' src='{{appIP}}static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
+              <!-- <image class='news_navigator_img' src='http://mall.systarsoft.com/static/uploadImgs/news/{{item.AD_IMG}}'></image> -->
               <!-- <view class='news_navigator_view' style='width:{{news_navigator_view_width}}px;'></view>   -->
             </view>
           </view>
@@ -97,11 +97,11 @@
       <navigator open-type='redirect' id='category_commodity_title' hover-class="btn-hover" url='../commodity/commodity?GOODSTYPE_ID={{item.GOODSTYPE_ID}}'>
         <image wx:if="{{item.MAIN_IMG == '' || item.MAIN_IMG == undefined|| item.MAIN_IMG == null }}" src='../../images/category_title.jpg' mode="widthFix"></image>
 
-        <image wx:else src='{{appIP}}static/uploadImgs/goodstype/{{item.MAIN_IMG}}' mode="widthFix"></image>
+        <image wx:else src='http://mall.systarsoft.com/static/uploadImgs/goodstype/{{item.MAIN_IMG}}' mode="widthFix"></image>
       </navigator>
       <view id='category_commodity_list'>
         <navigator wx:for="{{item.goodList}}" hover-class="btn-hover" wx:for-item="good" wx:key="this" class='category_commodity_container' data-goods_id='{{good.goods_id}}' url="../commodity_detail/commodity_detail?goods_id={{good.goods_id}}" style='width:{{category_commodity_container_width}}px;'>
-          <image src='{{appIP}}{{good.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
+          <image src='http://mall.systarsoft.com/{{good.PATH}}' style='height:{{category_commodity_img_width}}px;'></image>
           <view class='category_commodity_container_title'>{{good.goods_name}}</view>
           <view class='category_commodity_container_price'>
             <view>￥{{good.goods_price}}</view>
