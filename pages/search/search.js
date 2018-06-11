@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 var header = getApp().globalData.header;
+var util = require("../../utils/util.js");
 var souList = [];
 Page({
   data: {
@@ -9,7 +10,8 @@ Page({
     search_width: wx.getSystemInfoSync().windowWidth * 0.88*0.88 - 47,
     search_left: wx.getSystemInfoSync().windowWidth * 0.88 * 0.04+15,
     search_img_left: wx.getSystemInfoSync().windowWidth * 1.88 * 0.04,
-    souList:[]
+    souList:[],
+    searchList:[]
   },
   onLoad: function () {
     //选择组件对象
@@ -18,8 +20,8 @@ Page({
   onShow: function() {
     var that = this;
     souList = wx.getStorageSync("souList");
-    if (souList == undefined || souList==''){
-      souList = ['暂无搜索记录'];
+    if (!util.isAvalible(souList)){
+      souList = [];
     }
     that.setData({
       souList: souList
@@ -51,10 +53,6 @@ Page({
     if (e.detail.value != undefined && e.detail.value != null && e.detail.value !=''){
       console.log(souList);
       var l = that.data.souList;
-      if (l[0] == '暂无搜索记录') {
-        l = [];
-      }
-     
       for (var i = 0; i < l.length; i++) {
         if (l[i] == e.detail.value){
           l.splice(i, 1)
@@ -84,9 +82,6 @@ Page({
     console.log(e);
     var that = this;
     var l = that.data.souList;
-    if (l[0] == '暂无搜索记录') {
-      l = [];
-    }
     if (l.length == 10) {
       l.splice(9, 1);
       l.unshift(e.currentTarget.dataset.keywords);
@@ -99,11 +94,21 @@ Page({
     });
   },
   removeList:function(e){
-    souList=['暂无搜索记录'];
-    console.log('清除信息');
-    this.setData({
-      souList: souList
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要清空搜索记录吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          souList = [];
+          that.setData({
+            souList: souList
+          })
+          wx.setStorageSync("souList", souList);
+        } else if (sm.cancel) {
+
+        }
+      }
     })
-    wx.setStorageSync("souList", souList);
   }
 })

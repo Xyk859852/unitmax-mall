@@ -77,7 +77,7 @@
   <view class='order_detail'>
     <view class='other'>订单编号：{{order.ORDER_NO}}</view>
     <view class='other'>创建时间：{{order.ADDTIME}}</view>
-    <view class='other'>付款时间：{{order.PAYTIME}}</view>
+    <view class='other' wx:if="{{order.ORDER_STATUS != '1'}}">付款时间：{{order.PAYTIME}}</view>
     <!-- <view class='other'>发货时间：{{order.SHIPTIME}}</view> -->
   </view>
   <view class='footer'>

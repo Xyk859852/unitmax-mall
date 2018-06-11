@@ -181,7 +181,7 @@ Page({
     if (this.data.hasMoreData) {
       this.getMyvarList('加载更多数据')
     } else {
-      that.toast.showView("没有更多数据");
+      //this.toast.showView("没有更多数据");
     }
   },
 })

@@ -6,13 +6,13 @@
   </view>
   <view bindtap='back' id='search_box_close'>取消</view>
 </view>
-<view class='search_history'>
+<view class='search_history' wx:if="{{souList.length > 0}}">
   <view class='search_title'>历史搜索<image bindtap='removeList' src='../../images/delete.png' class='search_delete'></image></view>
   <view class='search_container'>
     <view bindtap='goList' data-keywords='{{item}}' wx:for="{{souList}}" class='search_container_li'>{{item}}</view>
   </view>
 </view>
-<view class='search_hot'>
+<view class='search_hot' wx:if="{{searchList.length > 0}}">
   <view class='search_title'>热门搜索</view>
   <view class='search_container'>
     <view bindtap='goList' data-keywords='{{item.SEARCH_NAME}}' wx:for="{{searchList}}" class='search_container_li'>{{item.SEARCH_NAME}}</view>

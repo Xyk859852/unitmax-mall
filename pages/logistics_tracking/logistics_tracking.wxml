@@ -12,7 +12,7 @@
   <view class='tracking'  wx:if="{{order.CLOSE_PRESTATUS == 4 || order.CLOSE_PRESTATUS == 5}}">
     <view class='tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
-      <view>您已签收，订单完成</view>
+      <view>您已签收，交易完成</view>
       <view class='time'>{{order.RECEIVE_TIME}}</view>
     </view>
     <view class='circle'></view>
@@ -45,7 +45,7 @@
   <view class='tracking'>
     <view class='finally_tracking,tracking_right' style='padding-left:{{tracking_right}}px;'>
       <view class='white'></view>
-      <view>您已签收，订单完成</view>
+      <view>您已签收，交易完成</view>
       <view class='time'>{{order.RECEIVE_TIME}}</view>
     </view>
     <view class='finally_circle,circle'></view>

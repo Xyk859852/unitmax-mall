@@ -159,7 +159,7 @@ Page({
     var EVALUATE_INFO = this.data.EVALUATE_INFO;
     var DESCRIPTION_EVALUATE = this.data.DESCRIPTION_EVALUATE;
     if (this.data.DESCRIPTION_EVALUATE.length != this.data.list.length) {
-      that.toast.showView("有商品未评价");
+      that.toast.showView("请为所有商品打分");
       return false;
     }
     wx.request({

@@ -173,6 +173,8 @@ Page({
               if (res.data.result == "true") {
                 that.successTip(that, "取消成功");
                 //wx.navigateTo({ url: '../myOrder/myOrder_list' });
+              }else{
+                that.toast.showView("取消失败");
               }
 
               if (res.data.result == "1002") {

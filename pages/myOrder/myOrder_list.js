@@ -315,6 +315,8 @@ Page({
                   url: '../order_detail/order_detail?ORDERFORM_ID=' + ORDERFORM_ID,
                 });
                 that.data.isFresh = true;
+              }else{
+                that.toast.showView("取消失败");  
               }
 
               if (res.data.result == "1002") {
@@ -636,7 +638,7 @@ Page({
     if (this.data.hasMoreData) {
       this.getMyOrderList('加载更多数据')
     } else {
-      that.toast.showView("没有更多数据");  
+     // this.toast.showView("没有更多数据");  
     }
   },
 

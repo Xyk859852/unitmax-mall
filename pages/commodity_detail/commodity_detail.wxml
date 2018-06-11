@@ -47,7 +47,7 @@
 <image wx:for="{{good.xqImgList}}" wx:key="unique" class='detail_img' src='{{appIP}}{{item.path}}' mode="widthFix"></image>
 <view class='footer'>
   <view class='shopping_cart' bindtap='go_shopping_cart'>
-    <view class='number'>{{goodsCartCount >99?"99+":goodsCartCount}}</view>
+    <view class='number' wx:if="{{goodsCartCount > 0}}">{{goodsCartCount >99?"99+":goodsCartCount}}</view>
     <image src='../../images/shopping_cart.png' />
     <view>购物车</view>
   </view>

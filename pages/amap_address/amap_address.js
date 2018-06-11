@@ -11,7 +11,7 @@ Page({
     tips: {},
     nearby: {},
     location:{},
-    address:"",
+    address: "没能获取到您的定位",
     address_detail:"",
     content: false,
     content1: false,
@@ -106,10 +106,32 @@ Page({
           fail: function (info) {
             //失败回调
             that.setData({
+              address: "没能获取到您的定位",
               content: false,
             });
           }
         })
+      },
+      fail: function (info) {
+        //失败回调
+        that.setData({
+          address:"没能获取到您的定位",
+          content: false,
+        });
+      }
+    })
+  },
+  locateCurAddress: function () {//定位当前地址
+    var that = this;
+    myAmapFun.getRegeo({
+      success: function (data) {
+        //console.log(data);
+        that.setData({
+          address: data[0].desc,
+          address_detail: data[0].regeocodeData.addressComponent.province + data[0].regeocodeData.addressComponent.city + data[0].regeocodeData.addressComponent.district + " " + data[0].name,
+          location: data[0].longitude + "," + data[0].latitude,
+          curLocatin: data[0]
+        });
       },
       fail: function (info) {
         //失败回调

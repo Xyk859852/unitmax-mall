@@ -5,7 +5,7 @@
 <view class='title'>当前地址</view>
 <view class='address'><view style='width:{{address_label_width}}px;'  bindtap="bindSearch1">{{address}}
 <view style='font-size:12px;'>{{address_detail}}</view>
-</view><image bindtap='getRegeo' src='../../images/location.png'/></view>
+</view><image bindtap='locateCurAddress' src='../../images/location.png'/></view>
 <view class="title,{{content?'show1':'hide'}}">附近地址</view>
 <view class="title,{{content1?'show1':'hide'}}">搜索地址</view>
 <view bindtap="bindSearch" data-keywords="{{j.name}}" data-adname='{{j.adname}}' data-cityname='{{j.cityname}}' data-pname='{{j.pname}}' data-district='{{j.name}}'  data-location='{{j.location}}'  class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">{{j.name}}
