@@ -1,5 +1,5 @@
 <!--pages/address_management/address_management.wxml-->
-<view class='address_border' style='background-image: url(http://mall.systarsoft.com/static/uploadImgs/address_border.png);'></view>
+<view class='address_border' style='background-image: url({{appIP}}/static/uploadImgs/address_border.png);'></view>
 <view class='body'>
 <view wx:if="{{list.length>0}}">
 <radio-group>
