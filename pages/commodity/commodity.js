@@ -4,12 +4,10 @@ var tempObj = require("../../utils/bottom.js");
 //commodity.js
 //获取应用实例
 const app = getApp()
-var url = app.IP +"chatGoods/listPageGoods";
+var url = app.IP + "chatGoods/listPageGoods";
 var page = 1;
 var jiage = -1;
 var xiaoliang = -1;
-var GOODSLEVEL_ID = '';
-var GOODSTYPE_ID = '';
 var keywords = '';
 var GOODSTYPE = '';
 var GOODSLEVEL = '';
@@ -18,10 +16,10 @@ var GetList = function (that) {
     title: "加载中...",
     icon: "loading"
   });
-  that.setData({ jiage: jiage, xiaoliang: xiaoliang});
+  that.setData({ jiage: jiage, xiaoliang: xiaoliang, goodstype_id: util.isAvalible(GOODSTYPE) ? GOODSTYPE : -1, goodslevel_id: util.isAvalible(GOODSLEVEL)?GOODSLEVEL : -1 });
   wx.request({
     url: url,
-    header:header,
+    header: header,
     data: {
       pageSize: 10,
       pageNo: page,
@@ -45,13 +43,6 @@ var GetList = function (that) {
       if (GOODSTYPE != '' && GOODSTYPE != null && GOODSTYPE != undefined) {
         console.log(GOODSTYPE);
         var s = res.data.goodstypeList;
-        for (var i = 0; i < s.length; i++) {
-          if (s[i].goodstype_id == GOODSTYPE) {
-            that.setData({
-              typeIndex: i
-            })
-          }
-        }
         wx.request({
           url: app.IP + "chatGoods/listLevel",
           data: { GOODSTYPE_ID: GOODSTYPE },
@@ -91,14 +82,14 @@ var GetList = function (that) {
   that.setData({
     hidden: true
   });
-} 
+}
 Page({
   data: {
-    appIP:app.IP,
+    appIP: app.IP,
     hidden: true,
     list: [],
     scrollTop: 0,
-    scrollHeight: 0  ,
+    scrollHeight: 0,
     selected: true,
     selected1: false,
     selected2: false,
@@ -108,9 +99,9 @@ Page({
     selectedbtn2: false,
     selectedbtn3: false,
     search: false,
-    levelIndex: -1,
-    typeIndex: -1,
-    goodsTypes:[],
+    goodstype_id: -1,
+    goodslevel_id: -1,
+    goodsTypes: [],
     commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.88 - 100,
     search_box_left_width: wx.getSystemInfoSync().windowWidth * 0.88,
     search_width: wx.getSystemInfoSync().windowWidth * 0.88 * 0.96 - 20,
@@ -119,13 +110,13 @@ Page({
   onLoad: function (e) {
     this.toast = this.selectComponent("#toast");
     //接收参数
-    if (util.isAvalible(e.GOODSTYPE_ID)){
+    if (util.isAvalible(e.GOODSTYPE_ID)) {
       GOODSTYPE = e.GOODSTYPE_ID;
-      GOODSLEVEL ='';
+     // GOODSLEVEL = '';
     }
     var that = this;
     console.log(e);
-    if (e.keywords != null && e.keywords != undefined){
+    if (e.keywords != null && e.keywords != undefined) {
       keywords = e.keywords;
       that.setData({
         search: true,
@@ -139,11 +130,11 @@ Page({
     });
     GetList(that);
     //wx.hideToast();
-    
-  }, 
+
+  },
   onShow: function () {
     console.log(this.data.goodsTypes);
-   
+
   },
   scroll: function (event) {
     this.setData({
@@ -157,19 +148,19 @@ Page({
       scrollTop: 0
     });
     GetList(this)
-  },  
+  },
   select: function (e) {
     var that = this;
     // console.log(e.currentTarget.dataset.jiage);
-    if (e.currentTarget.dataset.xiaoliang != undefined 
-        && e.currentTarget.dataset.xiaoliang != null
-         && e.currentTarget.dataset.xiaoliang!=''){
+    if (e.currentTarget.dataset.xiaoliang != undefined
+      && e.currentTarget.dataset.xiaoliang != null
+      && e.currentTarget.dataset.xiaoliang != '') {
       xiaoliang = e.currentTarget.dataset.xiaoliang;
       jiage = -1;
     }
     if (e.currentTarget.dataset.jiage != undefined
       && e.currentTarget.dataset.jiage != null
-      && e.currentTarget.dataset.jiage != ''){
+      && e.currentTarget.dataset.jiage != '') {
       jiage = e.currentTarget.dataset.jiage;
       xiaoliang = -1;
     }
@@ -214,12 +205,12 @@ Page({
       scrollTop: 0
     });
     if (that.data.selected1) {//降序
-      xiaoliang =1;
+      xiaoliang = 1;
       jiage = -1;
       that.setData({
         selected1: false
       })
-    }else{//升序
+    } else {//升序
       xiaoliang = 0;
       jiage = -1;
       that.setData({
@@ -236,7 +227,7 @@ Page({
 
   },
   selected2: function (e) {
-    var that = this; 
+    var that = this;
     page = 1;
     that.setData({
       list: [],
@@ -252,14 +243,14 @@ Page({
       jiage = 0;
       xiaoliang = -1;
       that.setData({
-      selected: false,
-      selected1: false,
-      selected2: true,
-      selected3: false,
-      selectedbtn: false,
-      selectedbtn1: false,
-      selectedbtn2: true,
-    })
+        selected: false,
+        selected1: false,
+        selected2: true,
+        selected3: false,
+        selectedbtn: false,
+        selectedbtn1: false,
+        selectedbtn2: true,
+      })
     }
     GetList(this);
   },
@@ -269,17 +260,17 @@ Page({
         selected3: false
       })
     } else {
-    this.setData({
-      selected: false,
-      selected1: false,
-      selected2: false,
-      selected3: true
-    })
+      this.setData({
+        selected: false,
+        selected1: false,
+        selected2: false,
+        selected3: true
+      })
     }
   },
   //下拉
-  onPullDownRefresh: function(e){
-     // 显示顶部刷新图标  
+  onPullDownRefresh: function (e) {
+    // 显示顶部刷新图标  
     wx.showNavigationBarLoading();
     page = 1;
     this.setData({
@@ -287,35 +278,32 @@ Page({
       scrollTop: 0
     });
     GetList(this);
-      // 隐藏导航栏加载框  
-    wx.hideNavigationBarLoading();  
+    // 隐藏导航栏加载框  
+    wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
 
   //下拉
-  onReachBottom:function(e) {
+  onReachBottom: function (e) {
     var that = this;
     GetList(that);
   },
 
   //选择品类
-  levelSelect: function(e) {
+  levelSelect: function (e) {
     var that = this;
     console.log(e);
-    if (e.currentTarget.dataset.goodstype_id!=undefined
-      && e.currentTarget.dataset.goodstype_id!=null
-      && e.currentTarget.dataset.goodstype_id!=''){
-      GOODSTYPE_ID = e.currentTarget.dataset.goodstype_id;
-      var typeIndex = e.currentTarget.dataset.index;
-      console.log(typeIndex);
+    if (util.isAvalible(e.currentTarget.dataset.goodstype_id)) {
+      GOODSTYPE = e.currentTarget.dataset.goodstype_id;
       wx.request({
         url: app.IP + "chatGoods/listLevel",
-        data: { GOODSTYPE_ID: GOODSTYPE_ID},
+        data: { GOODSTYPE_ID: GOODSTYPE },
         success: function (res) {
           console.log(res.data);
           that.setData({
             goodsLevels: res.data.goodsLevels,
-            typeIndex: e.currentTarget.dataset.index
+            goodstype_id: GOODSTYPE,
+            goodslevel_id: -1
           });
         },
         fail: function () {
@@ -329,38 +317,41 @@ Page({
           //wx.hideToast();
         }
       });
-    } else if(e.currentTarget.dataset.index==-1){
-      GOODSTYPE_ID='';
-      GOODSLEVEL_ID='';
+    } else {
+      GOODSTYPE = '';
+      GOODSLEVEL = '';
       that.setData({
-        goodsLevels: '',
-        typeIndex: -1,
-        levelIndex:-1
+        goodstype_id: -1,
+        goodslevel_id: -1
       });
     }
-    
   },
   //选择等级
-  bindLevel: function(e) {
-    GOODSLEVEL_ID = e.currentTarget.dataset.goodslevel_id
+  bindLevel: function (e) {
+    if (util.isAvalible(e.currentTarget.dataset.goodslevel_id)){
+      GOODSLEVEL = e.currentTarget.dataset.goodslevel_id;
     this.setData({
-      levelIndex: e.currentTarget.dataset.index
+      goodslevel_id: e.currentTarget.dataset.goodslevel_id
     })
+    }else{
+      this.setData({
+        goodslevel_id: -1
+      });
+      GOODSLEVEL = '';
+    }
   },
   //重置
-  reset: function(e) {
-    GOODSLEVEL_ID = "";
+  reset: function (e) {
+    GOODSLEVEL = "";
     GOODSTYPE_ID = "";
     this.setData({
       goodsLevels: [],
-      levelIndex:-1,
-      typeIndex:-1
+      goodstype_id: -1,
+      goodslevel_id: -1
     });
   },
   //点击确定
-  submint: function(e) {
-    GOODSLEVEL = GOODSLEVEL_ID;
-    GOODSTYPE = GOODSTYPE_ID;
+  submint: function (e) {
     var that = this;
     page = 1;
     that.setData({
@@ -375,11 +366,11 @@ Page({
       selected3: false
     })
   },
-  back: function(e){
+  back: function (e) {
     keywords = "";
     wx.navigateBack({ changed: true });//返回上一页  
   },
-   gohome: function (e) {
+  gohome: function (e) {
     tempObj.gohome(e);
   },
   gocommodity: function (e) {
@@ -394,7 +385,7 @@ Page({
   getUserInfo: function (e) {
     tempObj.getUserInfo(e)
   },
-  goMinePage: function(e){
+  goMinePage: function (e) {
     tempObj.goMinePage(e)
   }
 })
