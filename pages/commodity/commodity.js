@@ -11,12 +11,14 @@ var xiaoliang = -1;
 var keywords = '';
 var GOODSTYPE = '';
 var GOODSLEVEL = '';
+var preTypeId = "";
+var preLevelId = "";
 var GetList = function (that) {
   wx.showToast({
     title: "加载中...",
     icon: "loading"
   });
-  that.setData({ jiage: jiage, xiaoliang: xiaoliang, goodstype_id: util.isAvalible(GOODSTYPE) ? GOODSTYPE : -1, goodslevel_id: util.isAvalible(GOODSLEVEL)?GOODSLEVEL : -1 });
+  that.setData({ jiage: jiage, xiaoliang: xiaoliang, goodstype_id: util.isAvalible(GOODSTYPE) ? GOODSTYPE : -1, goodslevel_id: util.isAvalible(GOODSLEVEL) ? GOODSLEVEL : -1 });
   wx.request({
     url: url,
     header: header,
@@ -30,6 +32,9 @@ var GetList = function (that) {
       keywords: keywords
     },
     success: function (res) {
+       preTypeId = GOODSTYPE;
+       preLevelId = GOODSLEVEL;
+
       console.log(res.data);
       var l = that.data.list
       for (var i = 0; i < res.data.goodslist.length; i++) {
@@ -66,6 +71,8 @@ var GetList = function (that) {
       }
       page++;
       console.log(l.length);
+
+
     },
     fail: function () {
       // fail
@@ -112,7 +119,6 @@ Page({
     //接收参数
     if (util.isAvalible(e.GOODSTYPE_ID)) {
       GOODSTYPE = e.GOODSTYPE_ID;
-     // GOODSLEVEL = '';
     }
     var that = this;
     console.log(e);
@@ -255,17 +261,48 @@ Page({
     GetList(this);
   },
   selected3: function (e) {
+    var that = this;
     if (this.data.selected3) {
       this.setData({
         selected3: false
       })
     } else {
+      GOODSTYPE = preTypeId;
+      GOODSLEVEL = preLevelId;
+
       this.setData({
         selected: false,
         selected1: false,
         selected2: false,
-        selected3: true
-      })
+        selected3: true,
+        goodstype_id: util.isAvalible(GOODSTYPE) ? GOODSTYPE:-1,
+        goodslevel_id: util.isAvalible(GOODSLEVEL) ? GOODSLEVEL : -1,
+      });
+      if (util.isAvalible(GOODSTYPE) && GOODSTYPE != -1) {
+        wx.request({
+          url: app.IP + "chatGoods/listLevel",
+          data: { GOODSTYPE_ID: GOODSTYPE },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              goodsLevels: res.data.goodsLevels,
+              goodstype_id: GOODSTYPE
+            });
+          },
+          fail: function () {
+            // fail
+            setTimeout(function () {
+              that.toast.showView("加载失败");
+            }, 100)
+          },
+          complete: function () {
+            // complete
+            //wx.hideToast();
+          }
+        });
+
+      }
+
     }
   },
   //下拉
@@ -292,6 +329,7 @@ Page({
   //选择品类
   levelSelect: function (e) {
     var that = this;
+    GOODSLEVEL = '';
     console.log(e);
     if (util.isAvalible(e.currentTarget.dataset.goodstype_id)) {
       GOODSTYPE = e.currentTarget.dataset.goodstype_id;
@@ -303,7 +341,7 @@ Page({
           that.setData({
             goodsLevels: res.data.goodsLevels,
             goodstype_id: GOODSTYPE,
-            goodslevel_id: -1
+            goodslevel_id: -1,
           });
         },
         fail: function () {
@@ -319,21 +357,21 @@ Page({
       });
     } else {
       GOODSTYPE = '';
-      GOODSLEVEL = '';
       that.setData({
         goodstype_id: -1,
-        goodslevel_id: -1
+        goodslevel_id: -1,
+        goodsLevels:[]
       });
     }
   },
   //选择等级
   bindLevel: function (e) {
-    if (util.isAvalible(e.currentTarget.dataset.goodslevel_id)){
+    if (util.isAvalible(e.currentTarget.dataset.goodslevel_id)) {
       GOODSLEVEL = e.currentTarget.dataset.goodslevel_id;
-    this.setData({
-      goodslevel_id: e.currentTarget.dataset.goodslevel_id
-    })
-    }else{
+      this.setData({
+        goodslevel_id: e.currentTarget.dataset.goodslevel_id
+      })
+    } else {
       this.setData({
         goodslevel_id: -1
       });
@@ -343,7 +381,7 @@ Page({
   //重置
   reset: function (e) {
     GOODSLEVEL = "";
-    GOODSTYPE_ID = "";
+    GOODSTYPE = "";
     this.setData({
       goodsLevels: [],
       goodstype_id: -1,
