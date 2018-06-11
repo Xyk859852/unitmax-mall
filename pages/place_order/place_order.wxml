@@ -16,7 +16,7 @@
     </view>
     <image class='address_right' src='../../images/right.png' />
   </view>
-  <view class='address_border' style='background-image: url(http://mall.systarsoft.com/static/uploadImgs/address_border.png);'></view>
+  <view class='address_border' style='background-image: url({{appIP}}/static/uploadImgs/address_border.png);'></view>
   <view class='commodity_list'>
     <view class='other'>
       <image src='../../images/seller.png' />
