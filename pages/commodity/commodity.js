@@ -184,6 +184,8 @@ Page({
     })
   },
   selected: function (e) {
+    GOODSTYPE = preTypeId;
+    GOODSLEVEL = preLevelId;
     var that = this;
     page = 1;
     jiage = -1;
@@ -204,6 +206,8 @@ Page({
     })
   },
   selected1: function (e) {
+    GOODSTYPE = preTypeId;
+    GOODSLEVEL = preLevelId;
     var that = this;
     page = 1;
     that.setData({
@@ -233,6 +237,8 @@ Page({
 
   },
   selected2: function (e) {
+    GOODSTYPE = preTypeId;
+    GOODSLEVEL = preLevelId;
     var that = this;
     page = 1;
     that.setData({
