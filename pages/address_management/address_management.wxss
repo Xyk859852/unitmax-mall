@@ -42,7 +42,7 @@
 .btn_box radio{
   margin-left: 4%;
   margin-right: 4%;
-  width: 24px;
+  width: 18px;
 }
 .btn_box label{
   font-size: 14px;

@@ -7,13 +7,14 @@ const app = getApp()
 
 Page({
   data: {
+    all:false,
     appIP: app.IP,
     totalPrice: '0.00',
     totalCount: 0,
     isAll: false,
     isOperating: false,
-    commodity_li_width: wx.getSystemInfoSync().windowWidth * 0.88 - 30,
-    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84 - 110
+    commodity_li_width: wx.getSystemInfoSync().windowWidth * 0.88 - 18,
+    commodity_li_right_width: wx.getSystemInfoSync().windowWidth * 0.84 - 98
   },
   onLoad: function () {
     //选择组件对象
@@ -112,11 +113,11 @@ Page({
   },
   checkItem: function (e) {
     var id = e.target.dataset.id;
-    var checked = e.detail.value;
+    // var checked = e.target.dataset.checked ? false : true ;
     var cartlist = this.data.cartlist;
     for (var i = 0; i < cartlist.length; i++) {
       if (cartlist[i].id == id) {
-        cartlist[i].checked = checked;
+        cartlist[i].checked = cartlist[i].checked ? false : true;
         break;
       }
     }
@@ -127,7 +128,10 @@ Page({
     this.checkIsAll()
   },
   checkAll: function (e) {
-    var checked = e.detail.value;
+    var checked = this.data.all ? false : true;
+    this.setData({
+      all: this.data.all ? false : true
+    })
     var cartlist = this.data.cartlist;
     for (var i = 0; i < cartlist.length; i++) {
       cartlist[i].checked = checked;
@@ -161,7 +165,8 @@ Page({
       }
     }
     this.setData({
-      isAll: isAll
+      isAll: isAll,
+      all: isAll
     })
   },
   //改变购物车

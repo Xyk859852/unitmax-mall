@@ -35,15 +35,16 @@
 .commodity_li_price{
   color: #ff6692;
   font-size: 16px;
-  margin-top:15px;
+  /* margin-top:15px; */
   font-weight: bold;
+  float: left;
 }
 .commodity_li_tip{
   font-size: 12px;
   color: #aaaaaa;
   margin-top: 10px;
 }
-.commodity_li_price text{
+.commodity_li_price_text{
   font-weight: normal;
   padding: 0 5px;
   text-align: center;
@@ -52,4 +53,6 @@
   border: #fe6500 1px solid;
   border-radius: 5px;
   margin-left: 4%;
+  margin-top: 1px;
+  float: left;
 }

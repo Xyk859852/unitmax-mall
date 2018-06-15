@@ -4,7 +4,7 @@
   <block wx:for="{{cartlist}}" wx:key="this">
     <checkbox-group>
       <view class="checkbox">
-        <switch type='checkbox' class='check' checked="{{item.checked}}" bindchange="checkItem" data-id="{{item.id}}" />
+        <checkbox class='check' checked="{{item.checked}}" bindtap="checkItem" data-id="{{item.id}}" />
         <view class='commodity_li' style='width:{{commodity_li_width}}px;'>
           <image bindtap='goodsDetail' data-goods_id='{{item.goods_id}}' src='{{appIP}}{{item.path}}'></image>
           <view bindtap='goodsDetail' data-goods_id='{{item.goods_id}}' class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
@@ -29,7 +29,7 @@
 </view>
 <view wx:else class='no_data'>暂无数据</view>
 <view class='footer'>
-      <switch type='checkbox' id='all' value="all" checked="{{isAll}}" bindchange="checkAll" />
+      <checkbox id='all' value="all" checked="{{isAll}}" bindtap="checkAll" />
       <label for='all' class='check_label'>全选</label>
       <label bindtap='deleateAll' class='check_label1'>删除</label>
       <!-- <navigator hover-class="btn-hover" class='buy' url="../place_order/place_order">去结算</navigator> -->

@@ -51,7 +51,10 @@
       <view class='sold_out' wx:if="{{item.GOODS_INVENTORY == 0 }}">卖光了</view>
       <view class='commodity_li_right' style='width:{{commodity_li_right_width}}px;'>
         <view class='commodity_li_title'>{{item.GOODS_NAME}}</view>
-        <view class='commodity_li_price'>￥{{item.GOODS_PRICE}}<text>包邮</text></view>
+        <view style='margin-top: 15px;overflow: hidden;'>
+          <text class='commodity_li_price'>￥{{item.GOODS_PRICE}}</text>
+          <text class='commodity_li_price_text'>包邮</text>
+        </view>
         <view class='commodity_li_tip'>销量{{item.GOODS_SALENUM}}</view>
         <!-- {{item.EVALUATECOUNT}}条评价 好评{{item.GOODEVARATE}}% -->
       </view>

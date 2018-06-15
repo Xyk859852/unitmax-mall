@@ -73,3 +73,53 @@ input::placeholder{
   color: #fe6500;
   border: #fe6500 1px solid;
 }
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 16px; /* 背景的宽 */
+   height: 16px; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #fe6500;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 16px;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 16px;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 16px;
+   text-align: center;
+   font-size:10px; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+/*  重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio .wx-radio-input{
+   border-radius: 50%;/* 圆角 */
+   width: 16px; /* 背景的宽 */
+   height: 16px; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   border: none;
+   background: #fe6500!important;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 16px;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 16px;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 16px;
+   text-align: center;
+   font-size:10px; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}

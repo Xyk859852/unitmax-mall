@@ -15,6 +15,10 @@ page{
 .check{
   float: left;
   line-height: 80px;
+  width: 18px;
+}
+#all{
+  width: 18px;
 }
 .commodity_li{
   overflow: hidden;
@@ -102,6 +106,7 @@ page{
 .check_label{
   font-size: 12px;
   color: #666666;
+  margin-left: 5px;
 }
 .check_label1{
   font-size: 12px;
