@@ -8,7 +8,9 @@
 <view class='evaluate_list'>
 <view wx:if="{{list.length>0}}">
   <view wx:for="{{list}}" class='evaluate'>
-    <image src='{{item.HEADIMGURL}}'/>
+    <view class='image' style='background-image:url({{IP}}{{item.HEADIMGURL}});background-size:100% 100%;'>
+      <!-- <image style='border-radius:10px;' src='{{IP}}{{item.HEADIMGURL}}'/> -->
+    </view>
     <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
       <view class='evaluate_nickname'>{{item.NAME}}<text>{{item.addTime}}</text></view>
     </view>

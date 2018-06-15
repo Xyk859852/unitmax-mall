@@ -26,7 +26,8 @@
 <navigator hover-class="btn-hover" open-type="navigate" url="../evaluate/evaluate?goods_id={{good.GOODS_ID}}">
 <view class="nav">商品评价({{goodsEvaCount}})  <text class='evaluate_more'>查看全部 ></text></view>
 <view wx:if="{{evaluate!=null || evaluate!= undefined}}" class='evaluate'>
-  <image src='{{evaluate.HEADIMGURL}}' />
+    <view class='image' style='background-image:url({{IP}}{{evaluate.HEADIMGURL}});background-size:100% 100%;'></view>
+  <!-- <image style='border-radius:15px;' src='{{IP}}{{evaluate.HEADIMGURL}}' /> -->
   <view class='evaluate_right' style='width:{{evaluate_right_width}}px;'>
     <view class='evaluate_nickname'>{{evaluate.NAME}}
       <text>{{evaluate.addTime}}</text>

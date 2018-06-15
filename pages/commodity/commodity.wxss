@@ -76,11 +76,25 @@
   overflow: hidden;
   width: 100%;
   height: 100px;
+  position: relative;
 }
 .commodity_li image{
   width: 100px;
   height: 100px;
   float: left;
+}
+.commodity_li .sold_out{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+	font-weight:bold;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  left: 0;
+  top: 10px;
 }
 .commodity_li_right{
   height: 99px;

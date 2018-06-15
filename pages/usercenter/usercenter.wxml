@@ -1,19 +1,34 @@
 <!--pages/usercenter/usercenter.wxml-->
 <toast id='toast' /> 
+<view class="nickname_popup,{{nickname_popup?'show1':'hide'}}">
+  <view class='nickname'>
+    <view class='nickname_title'>修改昵称</view>
+    <view class='nickname_content'>
+      <view>
+        <input bindblur='msgBlur' placeholder='请输入新昵称' maxlength='11'/>
+        <button hover-class="btn-hover" class='updateNickName' style='background-color:#cccccc;' bindtap="hidenickname">取消</button>
+        <button hover-class="btn-hover" class='updateNickName' style='margin-left:4%;' bindtap="updateNickName">保存修改</button>
+      </view>
+    </view>
+  </view>
+  <!-- <image bindtap='hidenickname' src='../../images/close.png' /> -->
+</view>
 <view class='usercenter'>
   <view class='head_img' bindtap='chooseImage' >
     头像
-    <image wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" src='{{default_head_img}}' />
-    <image wx:else src='{{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}}' />
+    <image class='img2' src='../../images/right.png'/>
+    <image style='margin-right:{{img_right}}px;' wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" src='{{default_head_img}}' />
+    <image style='margin-right:{{img_right}}px;' wx:else src='{{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}}' />
   </view>
-  <view>
+  <view bindtap='shownickname'>
     昵称
-    <input value='{{NICKNAME}}' bindblur='updateNickName' placeholder='请输入昵称' maxlength='11'/>
+    <image class='img2' src='../../images/right.png'/>
+    <label style='margin-right:{{img_right}}px;float:right;color:#666;'>{{NICKNAME}}</label>
   </view>
 </view>
-<view class='btn_box1'>
+<!-- <view class='btn_box1'>
 <button hover-class="btn-hover" bindtap='saveUserInfo'>保存修改</button>
-</view>
+</view> -->
 <view class='btn_box'>
-<button hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo"><image class='refresh_img' src='../../images/refresh.png'/>同步微信</button>
+<button hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo"><image class='refresh_img' src='../../images/WeChat.png'/>同步微信</button>
 </view>

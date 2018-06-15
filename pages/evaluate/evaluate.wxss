@@ -46,7 +46,7 @@
   margin: 2%;
   float: left;
 }
-.evaluate image{
+.evaluate .image{
   width: 20px;
   height: 20px;
   float: left;

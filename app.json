@@ -39,11 +39,12 @@
     "pages/question_detail/question_detail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "小事海淘",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f5f5f5"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

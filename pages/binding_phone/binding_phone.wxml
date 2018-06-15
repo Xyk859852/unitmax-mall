@@ -1,7 +1,7 @@
 <!--pages/binding_phone/binding_phone.wxml-->
 <view wx:if="{{update==2}}" class='body'>
    <image wx:if="{{login_img == undefined  ||  login_img == '' || login_img == null}}" class='logo' src='../../images/logo.png'/> 
-  <image wx:else class='logo' src='{{appIP}}/static/uploadImgs/config/{{login_img}}'/>
+  <image wx:else class='logo' src='{{appIP}}static/uploadImgs/config/{{login_img}}'/>
   <view class='phone'>
     <text>手机号：</text>
     <input style='width:{{phone_input_width}}px;' type='tel' bindblur='savePhone' placeholder='输入手机号码' />

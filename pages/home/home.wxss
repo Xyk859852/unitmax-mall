@@ -199,11 +199,22 @@ page {
   padding-bottom: 5px;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
-
-.category_commodity_container > image {
+.category_commodity_container .sold_out{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
+  color:#fff;
+  font-size: 14px;
+  text-align: center;
+	font-weight:bold;
 }
+ .category_commodity_container > image {
+  width: 100%;
+} 
 
 .category_commodity_container_title {
   text-align: center;

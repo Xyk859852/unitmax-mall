@@ -4,7 +4,7 @@
   background-color: #ffffff;
   margin-top: 10px;
 }
-.nickname image{
+.nickname .image{
   width: 30px;
   height: 30px;
   vertical-align: middle;

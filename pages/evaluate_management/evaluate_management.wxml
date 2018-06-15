@@ -2,7 +2,8 @@
 <view wx:if="{{list.length>0}}">
 <view wx:for="{{list}}" class='evaluate_list'>
   <view class='nickname'>
-    <image src='{{user.HEADIMGURL}}'/>
+    <view class='image' style='background-image:url({{IP}}{{user.HEADIMGURL}});background-size:100% 100%;'></view>
+    <!-- <image style='border-radius:15px;' src='{{IP}}{{user.HEADIMGURL}}'/> -->
     <label>{{user.USERNAME}}</label>
   </view>
   <view class='commodity_li_tip'>{{item.addTime}}</view>

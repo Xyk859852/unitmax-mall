@@ -8,12 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nickname_popup: false,
     appIP: getApp().IP,
     HEADIMGURL: "",
+    MSG: '',
     NICKNAME: "",
     isOperating: false,
     loginStatus: true,
-    default_head_img: "../../images/default_head_img.png"
+    default_head_img: "../../images/default_head_img.png",
+    img_right: wx.getSystemInfoSync().windowWidth*0.04+25
   },
 
   /**
@@ -31,7 +34,7 @@ Page({
       dataType: 'json',
       success: function (res) {
         if (res.data.result == "true") {
-          that.setData({ NICKNAME: res.data.user.NICKNAME, HEADIMGURL: res.data.user.HEADIMGURL });
+          that.setData({ NICKNAME: res.data.user.NICKNAME, MSG: res.data.user.NICKNAME, HEADIMGURL: res.data.user.HEADIMGURL });
           //用户信息放进缓存
           wx.setStorageSync("user", res.data.user);
         }
@@ -126,6 +129,30 @@ Page({
           that.setData({
             HEADIMGURL:resdata.HEADIMGURL
           });
+          wx.request({
+            url: getApp().IP + 'chatUser/updateUser',
+            data: { HEADIMGURL: that.data.HEADIMGURL },
+            header: header,
+            method: 'GET',
+            dataType: 'json',
+            success: function (res) {
+              that.data.isOperating = false;
+              if (res.data.result == "true") {
+                wx.showToast({
+                  title: '保存成功',
+                  duration: 1500
+                })
+              }
+
+              if (res.data.result == "1002") {
+                wx.navigateTo({
+                  url: '../binding_phone/binding_phone?updatePhone=true',
+                })
+              }
+            },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
         }
       },
       fail: function (res) {
@@ -182,7 +209,46 @@ Page({
     })
   },
   updateNickName: function (e) {
-    this.setData({ NICKNAME: e.detail.value });
+    var that = this;
+    //判断是否重复提交
+    if (that.data.isOperating) {
+      that.toast.showView("正在提交，请稍候…");
+      return;
+    }
+    if (!util.isAvalible(that.data.MSG)) {
+      that.toast.showView("请输入新昵称");
+      return;
+    }
+    
+    that.data.isOperating = true;
+    wx.request({
+      url: getApp().IP + 'chatUser/updateUser',
+      data: { NICKNAME: that.data.MSG },
+      header: header,
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        that.data.isOperating = false;
+        if (res.data.result == "true") {
+          wx.showToast({
+            title: '保存成功',
+            duration: 1500
+          })
+          that.setData({
+            NICKNAME: that.data.MSG,
+            nickname_popup: false
+          });
+        }
+
+        if (res.data.result == "1002") {
+          wx.navigateTo({
+            url: '../binding_phone/binding_phone?updatePhone=true',
+          })
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
   //同步用户微信信息
   getUserInfo: function (e) {
@@ -309,5 +375,21 @@ Page({
     //     }
     //   });
     // }
+  },
+  hidenickname: function () {
+    this.setData({
+      nickname_popup: false
+    })
+  },
+  shownickname: function () {
+    this.setData({
+      nickname_popup: true
+    })
+  },
+  msgBlur: function (e) {
+    var MSG = e.detail.value;
+    this.setData({
+      MSG: MSG
+    });
   }
 })

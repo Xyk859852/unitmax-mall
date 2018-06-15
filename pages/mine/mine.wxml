@@ -1,6 +1,6 @@
 <!--mine.wxml-->
 <toast id='toast' />
-<view class="container" style='background-image: url({{appIP}}/static/uploadImgs/1.png);'>
+<view class="container" style='background-image: url({{appIP}}static/uploadImgs/1.png);'>
    <navigator hover-class="btn-hover" class='refresh' url="../binding_phone/binding_phone?updatePhone=true">
     <!-- <image class='refresh_img' src='../../images/refresh.png'/>  -->
    切换账号</navigator> 
@@ -10,8 +10,10 @@
       获取用户信息
     </button>
     <block wx:else>
-      <image wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" class="userinfo-avatar" src='{{default_head_img}}'></image>
-      <image class="userinfo-avatar" wx:else src='{{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}}'></image>
+    <view wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" class='userinfo-avatar' style='background-image:url({{appIP}}static/uploadImgs/default_head_img.png);background-size:100% 100%;'></view>
+    <view wx:else class='userinfo-avatar' style='background-image:url({{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}});background-size:100% 100%;'></view>
+      <!-- <image wx:if="{{HEADIMGURL == '' || HEADIMGURL== undefined || HEADIMGURL == null}}" style='border-radius:30px;' class="userinfo-avatar" src='{{default_head_img}}'></image>
+      <image class="userinfo-avatar" style='border-radius:30px;' wx:else src='{{appIP}}static/uploadImgs/headimg/{{HEADIMGURL}}'></image> -->
       <view class="userinfo-nickname">{{NICKNAME}}</view>
     </block>
   </navigator>

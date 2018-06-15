@@ -1,5 +1,5 @@
 <!--pages/add_address/add_address.wxml-->
-<view class='address_border' style='background-image: url({{appIP}}/static/uploadImgs/address_border.png);'></view>
+<view class='address_border' style='background-image: url({{appIP}}static/uploadImgs/address_border.png);'></view>
 <toast id='toast' />
 <form bindsubmit="formBindsubmit" >
 <view class='body'>
