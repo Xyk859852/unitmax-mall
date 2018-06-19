@@ -11,10 +11,12 @@
 <view bindtap="bindSearch" data-keywords="{{j.name}}" data-adname='{{j.adname}}' data-cityname='{{j.cityname}}' data-pname='{{j.pname}}' data-district='{{j.name}}'  data-location='{{j.location}}'  class="text_box,{{content?'show1':'hide'}}" wx:for="{{nearby}}" wx:key="this" wx:for-item="j">{{j.name}}
   <view>{{j.pname}}{{j.cityname}}{{j.adname}} {{j.address}}</view>
 </view>
+<view class="{{content1?'show1':'hide'}}">
 <view wx:if="{{tips.length>0}}">
-<view bindtap="bindSearch" data-district='{{i.name}}' data-adcode='{{i.adcode}}' data-location='{{i.location}}' data-keywords="{{i.name}}" wx:key="this" class="text_box,{{content1?'show1':'hide'}}" wx:for="{{tips}}" wx:for-item="i">{{i.name}}
+<view bindtap="bindSearch" data-district='{{i.name}}' data-adcode='{{i.adcode}}' data-location='{{i.location}}' data-keywords="{{i.name}}" wx:key="this" class="text_box" wx:for="{{tips}}" wx:for-item="i">{{i.name}}
   <!-- <view>{{i.district}} {{i.address}}</view> -->
   <view>{{i.pname}}{{i.cityname}}{{i.adname}} {{i.address}}</view>
 </view>
 </view>
 <view wx:else class='no_data'>没有相关地址</view>
+</view>
